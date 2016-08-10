@@ -5,13 +5,18 @@ import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { createEpicMiddleware } from 'redux-observable';
+import { MainActions } from './actions';
 
 @Component({
   selector: 'main-container',
-  template: `<h1>Main container!</h1>`,
-  pipes: [ AsyncPipe ]
+  providers: [ MainActions ],
+  pipes: [ AsyncPipe ],
+  template: require('./main.html')
 })
 export class MainContainer {
-  private devTools: DevToolsExtension;
-  private ngReduxRouter: NgReduxRouter;
+
+  constructor(private action: MainActions) {
+
+  }
+
 }
