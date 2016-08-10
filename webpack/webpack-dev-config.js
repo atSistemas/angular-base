@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const clientPath = path.resolve(__dirname, '../src/app/index.ts');
+const clientPath = path.resolve(__dirname, '../src/base/bootstrap.ts');
 
 export const devTool = 'eval';
 
@@ -17,7 +17,6 @@ export const devPlugins = [
     this.plugin("done", function(stats){
       if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1){
         console.log(stats.compilation.errors);
-        //throw new Error(stats.compilation.errors);
       }
     });
   }
@@ -31,7 +30,7 @@ export const devEntries = [
 
 export const devLoaders = [
   { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
-  //{ test: /\.ts$/, loader: 'ts-loader', exclude: /node_modules/},
+  { test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
   { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
 ];
 

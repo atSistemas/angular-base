@@ -43,7 +43,8 @@ export const prodEntries = {
 };
 
 export const prodLoaders = [
-  { test: [/\.js$/, /\.jsx$/],loader: 'babel-loader',exclude: /node_modules/,include: mainPath, query: { presets: ["es2015", "stage-0", "react"] }},
+  { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
+  { test: /\.html$/, loader: 'raw', exclude: /node_modules/ },,
   { test: /\.css/, loader: ExtractTextPlugin.extract('style-loader',  'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader')}
 ];
 
