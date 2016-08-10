@@ -1,3 +1,4 @@
+/*
 import 'reflect-metadata';
 import 'babel-polyfill';
 import 'core-js/es6';
@@ -19,7 +20,11 @@ bootstrap(
   BaseApp, [
   NgRedux,
   NgReduxRouter,
+  HTTP_PROVIDERS,
   DevToolsExtension,
   provideRouter(Routes),
+]);*/
 
-]);
+import { MainContainer } from './containers/main';
+
+export { MainContainer };
