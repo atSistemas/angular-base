@@ -16,7 +16,8 @@ import { MainContainer } from '../../../app/containers/main/';
   ],
   pipes: [ AsyncPipe ],
   encapsulation: ViewEncapsulation.None,
-  template: `<h1>Base app!</h1><a routerLink="/container2">container2</a><router-outlet></router-outlet>`
+  template: `<h1>Base app!</h1>
+  <a routerLink="/container2">container2</a><router-outlet></router-outlet>`
   //templateUrl: 'index.html';//require('./index.html')
 })
 export class BaseApp{
