@@ -1,7 +1,8 @@
-import { symbols, color } from '../../src/base/shared/console';
-import ENV from '../../src/base/shared/Env';
+import environment from '../../environment';
+import devMiddleware from './development';
+import prodMiddleware from './production';
 
-const envMiddleware = (ENV === 'development') ? require('./dev-middleware') : require('./prod-middleware');
+const middleware = (ENV === 'development') ? devMiddleware : prodMiddleware;
 
 export default function applyEnvMiddleWare(env, app){
   envMiddleware().forEach(function(middleware){
@@ -10,3 +11,5 @@ export default function applyEnvMiddleWare(env, app){
     console.log('[BASE] ' + color('success', symbols.ok) + ' Applied ' + middlewareName);
   });
 }
+
+
