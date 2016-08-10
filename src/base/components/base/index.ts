@@ -6,7 +6,7 @@ import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { createEpicMiddleware } from 'redux-observable';
 
-import { AppState, ConfigureStore } from '../../store/';
+import { AppState, Store } from '../../store/';
 import { MainContainer } from '../../../app/containers/main/';
 
 @Component({
@@ -19,14 +19,13 @@ import { MainContainer } from '../../../app/containers/main/';
   template: require('./index.html')
 })
 export class BaseApp{
-  @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
 
   constructor(
     private devTools: DevToolsExtension,
     private ngRedux: NgRedux<AppState>,
+    private store: Store,
     private ngReduxRouter: NgReduxRouter){
-
-    ConfigureStore(ngRedux, {});
+    store.configureStore();
     ngReduxRouter.initialize();
   }
 };
