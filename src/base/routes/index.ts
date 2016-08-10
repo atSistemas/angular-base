@@ -6,4 +6,8 @@ export const Routes: RouterConfig = [{
   path: '',
   pathMatch: 'full',
   component: MainContainer
+},{
+  path: 'leches',
+  pathMatch: 'full',
+  component: MainContainer
 }];
