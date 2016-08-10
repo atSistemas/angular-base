@@ -1,6 +1,7 @@
 *.log
 .idea
 coverage/
+typings/
 dist/
 build/
 *.vimrc

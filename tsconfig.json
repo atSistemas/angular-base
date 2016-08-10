@@ -9,9 +9,7 @@
     "noImplicitAny": false,
     "removeComments": false,
     "sourceMap": false,
-    "inlineSourceMap": true,
-    "moduleResolution": "node"
-
+    "inlineSourceMap": true
   },
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
@@ -23,6 +21,7 @@
     "dist",
     "server",
     "webpack",
+    "typings",
     ".git"
   ]
 }
