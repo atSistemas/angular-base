@@ -6,6 +6,7 @@ import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { createEpicMiddleware } from 'redux-observable';
 import { MainActions } from './actions';
+import { MainTypes, MainModel, InitialState } from './models';
 
 @Component({
   selector: 'main-container',
@@ -14,6 +15,7 @@ import { MainActions } from './actions';
   template: require('./main.html')
 })
 export class MainContainer {
+  @select() main$: Observable<MainTypes>;
 
   constructor(private action: MainActions) {
 

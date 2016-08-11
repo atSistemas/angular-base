@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const clientPath = path.resolve(__dirname, '../src/base/bootstrap.ts');
+const clientPath = path.resolve(__dirname, '../src/app/bootstrap.ts');
 
 export const devTool = 'eval';
 

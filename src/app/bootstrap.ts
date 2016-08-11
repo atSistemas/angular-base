@@ -14,7 +14,7 @@ import { NgReduxRouter } from 'ng2-redux-router';
 
 import { BaseApp } from '../base/components/base/';
 import { Routes } from '../base/routes';
-import { Store } from './store';
+import { Store } from '../base/store';
 
 bootstrap(
   BaseApp, [
