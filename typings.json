@@ -1,5 +1,9 @@
 {
   "globalDependencies": {
-    "node": "registry:dt/node#6.0.0+20160709114037"
+    "handlebars": "registry:dt/handlebars#4.0.5+20160804082238",
+    "node": "registry:env/node#6.0.0+20160723033700"
+  },
+  "dependencies": {
+    "express": "registry:npm/express#4.14.0+20160810205701"
   }
 }
