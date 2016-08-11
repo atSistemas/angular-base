@@ -1,4 +1,4 @@
-import environmentInterface as environment from './environment';
+import { environmentInterface as environment } from './index';
 
 const production: environment = {
     port: 8000,
