@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import { symbols, color } from '../src/base/shared/console';
 
-const clientPath = path.resolve(__dirname, '../src/app/app.module.ts');
+const clientPath = path.resolve(__dirname, '../src/app/bootstrap.ts');
 export const devTool = 'eval';
 
 export const devContext = clientPath;

@@ -1,14 +1,3 @@
-import 'reflect-metadata';
-import 'babel-polyfill';
-import 'core-js/es6';
-import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
-import 'ts-helpers';
-
-import {platformBrowser} from '@angular/platform-browser';
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -24,10 +13,8 @@ import { Store } from '../base/store';
 
 @NgModule({
     imports:      [ BrowserModule, Routing ],
-    declarations: [ BaseApp, Store, NgRedux, NgReduxRouter, HTTP_PROVIDERS, DevToolsExtension],
-    providers:    [ AppRoutingProviders ],
+    declarations: [ BaseApp],
+    providers:    [ AppRoutingProviders, Store, NgRedux, NgReduxRouter, HTTP_PROVIDERS, DevToolsExtension],
     bootstrap:    [ BaseApp ]
 })
-class BaseModule { }
-
-platformBrowserDynamic().bootstrapModule(BaseModule);
+export class BaseModule { }
