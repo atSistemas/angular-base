@@ -1,0 +1,6 @@
+{
+  "typescriptOptions": {
+    "tsconfig": true,
+    "module": "system"
+  }
+}
