@@ -20,7 +20,6 @@ export default function (req, res, next) {
       if (exists) {
         var pathParts: string[] = modulePath.split('/')
         var moduleName: string = pathParts[pathParts.length - 1];
-        var camelName: string = camelize(moduleName);
 
         res.set('Accept-Ranges', 'bytes');
         res.send(`/**
@@ -45,11 +44,10 @@ export default function (req, res, next) {
  *    This file doesn't exist (and will never exist if you don't create it) in your code
  */
  
-import ${camelName} from './${moduleName}/index.ts';
+import ${camelize(moduleName)} from './${moduleName}/index.ts';
  
-export ${camelName};`
-
-        );
+export ${camelize(moduleName)};
+`);
       }
     });
   }

@@ -1,6 +1,6 @@
 import environment from '../environment';
-import devMiddleware from './development';
-import prodMiddleware from './production';
+import devMiddleware from './sets/development';
+import prodMiddleware from './sets/production';
 import { RequestHandler } from 'express';
 
 export interface middleware {

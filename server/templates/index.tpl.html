@@ -2,10 +2,11 @@
 <html>
 <!-- #docregion head -->
 <!-- #docregion base-href -->
+
 <head>
     <base href="/">
     <!-- #enddocregion base-href -->
-    <title>Angular 2 Tour of Heroes</title>
+    <title>Angular 2 Base</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- #enddocregion head -->
@@ -14,25 +15,26 @@
     <!-- #enddocregion css -->
     <!-- #docregion head -->
     <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+
+    <script src="typescript/typescript.js"></script>
+    <script src="systemjs/system.src.js"></script>
+    <script src="vendor.js"></script>
+    <!--<script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
+    <script src="node_modules/@angular/core/bundles/core.umd.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
     <script src="node_modules/typescript/lib/typescript.js"></script>
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    
+    
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <!-- #docregion router -->
+    <!-- #docregion router --
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <!-- #enddocregion router -->
     <script>
 
-        System.config({
-            transpiler: 'ts', 
-            typescriptOptions: { emitDecoratorMetadata: true }, 
-            packages: {'app': {defaultExtension: 'ts'}} 
-        });
-        System.import('app/main').then(null, console.error.bind(console));
+        System.config({{{json system}}});
+        System.import('app').then(null, console.error.bind(console));
 
     </script>
 </head>
@@ -41,4 +43,5 @@
 <body>
     <app>Loading...</app>
 </body>
+
 </html>

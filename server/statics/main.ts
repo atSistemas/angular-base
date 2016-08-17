@@ -1,21 +1,24 @@
-import { path } from '../common/node-libs';
+import * as path from 'path';
 
 export interface staticRoute {
   route: string,
-  dir: string
+  path: string,
+  source?: boolean
 };
 
 const commonStatics: staticRoute[] = [
-  { route: '/mocks', dir: path.join(path.resolve(), 'app', 'api', 'mocks') }
+  { route: '/mocks', path: path.join(path.resolve(), 'src', 'app', 'api', 'mocks') }
 ];
 
 const developmentStatics: staticRoute[] = [
-  { route: '/', dir: path.join(path.resolve(), 'app') },
+  { route: '/app', path: path.join(path.resolve(), 'src', 'app'), source: true },
+  { route: '/typescript', path: path.join(path.resolve(), 'node_modules', 'typescript', 'lib') },
+  { route: '/systemjs',path: path.join(path.resolve(), 'node_modules', 'systemjs', 'dist')}
 ];
 
 const productionStatics: staticRoute[] = [
-  { route: '/', dir: path.join(path.resolve(), 'dist') },
-  { route: '/assets', dir: path.join(path.resolve(), 'dist', 'assets') },
+  { route: '/', path: path.join(path.resolve(), 'dist') },
+  { route: '/assets', path: path.join(path.resolve(), 'dist', 'assets') },
 ];
 
 const statics: staticRoute[] = (process.env.NODE_ENV === 'development') ? commonStatics.concat(developmentStatics) : commonStatics.concat(productionStatics);

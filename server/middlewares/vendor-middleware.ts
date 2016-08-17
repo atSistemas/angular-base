@@ -1,21 +1,32 @@
-import * as Builder from 'systemjs-builder';
+const base = require('../../.base');
+const Builder = require('systemjs-builder');
+const systemConfig = require('../../system');
+const builder = new Builder('./src', './packages.js');
 
-var builder = new Builder('./', './system-config.json');
-var build: any;
+builder.config(systemConfig);
 
-builder.bundle('src/app/**/* - [src/**/*]', { minify: true, sourceMaps: true }).then(function(output) {
-  console.log("output");
-  console.log(output)
-  console.log(output.source);    // generated bundle source
-  console.log(output.sourceMap); // generated bundle source map
-  console.log(output.modules);   // array of module names defined in the bundle
-  build = output;
-}).catch(function(e) {
-  console.log(e)
+let bundle = new Promise((resolve, reject) => {
+  let bundleTimer = base.timer('bundle');
+  base.console.info(`Bundling front end dependencies...`);
+
+
+  builder.bundle('app - [app/**/*]', { minify: false, sourceMaps: false }).then((output) => {
+    let elapsed = bundleTimer();
+    base.console.success(`Third party dependencies bundled successfully in ${elapsed.time} seconds`);
+    resolve(output.source);
+  }).catch(function(err) {
+    console.log(err);
+    reject(err)
+  });
 });
 
-export default function (req, res, next) {
-
-    console.log(build);
-    
+export default function (req, res, next):void {
+  bundle.then((bundle) => {
+    if (req.baseUrl === '/vendor.js') {
+      console.log("returning build")
+      res.status(200).send(bundle);
+      return;
+    }
+    next();
+  });
 };
