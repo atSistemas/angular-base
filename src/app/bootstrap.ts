@@ -16,6 +16,7 @@ import { BaseApp } from '../base/components/base/';
 import { Routes } from '../base/routes';
 import { Store } from '../base/store';
 
+//enableProdMode();
 bootstrap(
   BaseApp, [
   Store,

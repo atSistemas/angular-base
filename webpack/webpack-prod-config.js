@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import copyWebpackPlugin from 'copy-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import { symbols, color } from '../src/base/shared/console';
 
 const mainPath = path.resolve(__dirname, '..');
 const clientPath = path.resolve(__dirname, '..', 'app','client/');
@@ -22,7 +23,7 @@ export const prodPlugins = [
   function(){
     this.plugin("done", function(stats){
       if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1){
-        throw new Error(stats.compilation.errors);
+        console.log('[BASE] ' + color('error', symbols.error) + stats.compilation.errors);
       }
     });
   }
