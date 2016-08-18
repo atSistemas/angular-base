@@ -12,8 +12,9 @@ const commonStatics: staticRoute[] = [
 
 const developmentStatics: staticRoute[] = [
   { route: '/app', path: path.join(path.resolve(), 'src', 'app'), source: true },
-  { route: '/typescript', path: path.join(path.resolve(), 'node_modules', 'typescript', 'lib') },
-  { route: '/systemjs',path: path.join(path.resolve(), 'node_modules', 'systemjs', 'dist')}
+  { route: '/typescript', path: path.join(path.resolve(), 'node_modules', 'typescript') },
+  { route: '/systemjs',path: path.join(path.resolve(), 'node_modules', 'systemjs', 'dist')},
+  { route: '/plugin-typescript', path: path.join(path.resolve(), 'packages', 'github', 'frankwallis', 'plugin-typescript@5.0.9') }
 ];
 
 const productionStatics: staticRoute[] = [

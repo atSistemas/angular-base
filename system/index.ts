@@ -1,44 +1,75 @@
 /// <reference path="../typings/globals/node/index.d.ts" />
 
+import * as path from 'path';
+import environment from '../server/environment';
+//import * as wakk from 'fs-walk';
+
 const walk = require('fs-walk');
-const path = require('path');
-const baseConfig = require("./config.base.json");
-const bootstrapConfig = require('./config.bootstrap.json');
-const moduleConfig = require('./config.module.json');
+var baseConfig = require("./config.base.json");
+var bootstrapConfig = require('./config.bootstrap.json');
+var moduleConfig = require('./config.module.json');
 
-function clone(obj:any):any {
-    if (null == obj || "object" != typeof obj) return obj;
-    var copy = obj.constructor();
-    for (var attr in obj) {
-        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+export default class SystemConfig {
+
+    //public config: any = null;
+
+    constructor() {
+
+        this.extend(baseConfig);
+        this.loadEnvironmentDefaults();
+        this.discoverPackages();
+
     }
-    return copy;
-}
 
-function discoverPackages():any {
-    let packages = {};
+    private loadEnvironmentDefaults() {
+        this.extend(require(`./config.${environment.ENV}.json`));
+    }
 
-    var rootdir = path.resolve(__dirname, '../src');
-    var rootdirRegExp = new RegExp(`^${rootdir}\/?`)
-    walk.dirsSync(rootdir, (basedir, filename, stat, next) => {
-        basedir = basedir.replace(rootdirRegExp, '');
-        const modulePath = basedir ? basedir + '/' + filename: filename;
-        switch (modulePath) {
-            case "app":
-                packages[modulePath] = clone(bootstrapConfig);
-                break;
-            default:
-                packages[modulePath] = clone(moduleConfig);
+    private _extend(obj: any, src: any): any {
+        Object.keys(src).forEach((key) => {
+            if (src[key] === Object(src[key])) {
+                obj[key] = obj[key] || {}
+                obj[key] = this._extend(obj[key], src[key]);
+            } else {
+                obj[key] = src[key];
+            }
+        });
+        return obj;
+    }
+
+    public clone(obj: any): any {
+        if (null == this || "object" != typeof this) return this;
+        var copy = this.constructor();
+        for (var key in this) {
+            if (this.hasOwnProperty(key)) copy[key] = this[key];
         }
-    }, (err) => {
-        if (err) console.log(err);
-    });
+        return copy;
+    }
 
-    return packages;
+    private discoverPackages() {
+        let packages = {};
 
-}
+        var rootdir = path.resolve(__dirname, '../src');
+        var rootdirRegExp = new RegExp(`^${rootdir}\/?`)
+        walk.dirsSync(rootdir, (basedir, filename, stat, next) => {
+            basedir = basedir.replace(rootdirRegExp, '');
+            const modulePath = basedir ? basedir + '/' + filename : filename;
+            switch (modulePath) {
+                case "app":
+                    packages[modulePath] = bootstrapConfig;
+                    break;
+                default:
+                    packages[modulePath] = moduleConfig;
+            }
+        }, (err) => {
+            if (err) console.log(err);
+        });
 
-const systemConfig = clone(baseConfig);
-systemConfig.packages = discoverPackages();
+        this.extend({ packages: packages });
+    }
 
-export default systemConfig;
+    public extend(obj: any) {
+        this._extend(this, obj);
+    }
+
+};

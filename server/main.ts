@@ -1,11 +1,10 @@
 import * as express from "express";
 import * as path from 'path';
-import statics from './statics/main';
-import { staticRoute } from './statics/main';
+import statics, { staticRoute } from './statics';
 import Template from './common/template';
 import environment from './environment';
 import middlewares from './middlewares';
-import * as systemConfig from '../system';
+import SystemConfig from '../system';
 
 const base = require('../.base');
 
@@ -45,6 +44,31 @@ export class Server {
   }
 
   private initializeIndex() {
+
+    let systemConfig = new SystemConfig();
+
+    systemConfig.extend({
+      typescriptOptions: {
+        "tsconfig": false
+      },
+      packages: {
+        "ts": {
+          "main": "plugin.js"
+        },
+        "typescript": {
+          "main": "lib/typescript.js",
+          "meta": {
+            "lib/typescript.js": {
+              "exports": "ts"
+            }
+          }
+        }
+      },
+      map: {
+        "ts": "/plugin-typescript",
+        "typescript": "/typescript"
+      }
+    });
 
     const templateContent = {
       system: systemConfig
