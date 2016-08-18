@@ -1,7 +1,11 @@
+import SystemConfig from '../../system';
 const base = require('../../.base');
 const Builder = require('systemjs-builder');
-const systemConfig = require('../../system');
+
 const builder = new Builder('./src', './packages.js');
+
+
+let systemConfig = new SystemConfig();
 
 builder.config(systemConfig);
 
