@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
-
 import { RootReducer } from '../reducers';
+import * as createLogger from 'redux-logger';
+import { MainTypes } from '../models';
 
-const createLogger = require('redux-logger');
 const middleware = [];
 
 export interface AppState {
