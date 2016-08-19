@@ -11,12 +11,10 @@ import { MainContainer } from '../../../app/containers/main/';
 
 @Component({
   selector: 'base-app',
-  directives: [
-    ROUTER_DIRECTIVES
-  ],
+  directives: [ROUTER_DIRECTIVES],
   pipes: [ AsyncPipe ],
   encapsulation: ViewEncapsulation.None,
-  template: require('./index.html')
+  template: './index.html'
 })
 export class BaseApp{
 
