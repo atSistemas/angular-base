@@ -1,36 +1,52 @@
-import SystemConfig from '../../system';
+
+//import Bundler from '../common/bundler';
 const base = require('../../.base');
-const Builder = require('systemjs-builder');
+import { VendorBundler } from '../common/bundler'
 
-const builder = new Builder('./src', './packages.js');
+let bundleTimer = base.timer('bundle');
 
+console.log("magic");
 
-let systemConfig = new SystemConfig();
-
-builder.config(systemConfig);
-
-let bundle = new Promise((resolve, reject) => {
-  let bundleTimer = base.timer('bundle');
-  base.console.info(`Bundling front end dependencies...`);
-
-
-  builder.bundle('app - [app/**/*]', { minify: false, sourceMaps: false }).then((output) => {
-    let elapsed = bundleTimer();
-    base.console.success(`Third party dependencies bundled successfully in ${elapsed.time} seconds`);
-    resolve(output.source);
-  }).catch(function(err) {
-    console.log(err);
-    reject(err)
-  });
+const vendorBundler = new VendorBundler();
+let bundle = vendorBundler.bundle({ minify: false, sourceMaps: false }).then((output) => {
+  let elapsed = bundleTimer();
+  base.console.success(`Third party dependencies bundled successfully in ${elapsed.time} seconds`);
+  return output;
 });
 
-export default function (req, res, next):void {
-  bundle.then((bundle) => {
+
+export default function (req, res, next): void {
+
+  bundle.then((output:any) => {
     if (req.baseUrl === '/vendor.js') {
       console.log("returning build")
-      res.status(200).send(bundle);
+      output.modules.forEach((oModule)=> console.log(oModule));
+      res.status(200).send(output.source);
       return;
     }
     next();
   });
+
 };
+;
+
+/*
+builder.config(systemConfig);
+
+console.log(builder);
+export let vendor = new Promise((resolve, reject) => {
+  let bundleTimer = base.timer('bundle');
+  base.console.info(`Bundling front end dependencies...`);
+
+
+  builder.bundle('app - [app/***]', { minify: false, sourceMaps: false }).then((output) => {
+    let elapsed = bundleTimer();
+    console.log(output.modules)
+    base.console.success(`Third party dependencies bundled successfully in ${elapsed.time} seconds`);
+    resolve(output.source);
+  }).catch(function (err) {
+    console.log(err);
+    reject(err)
+  });
+});
+*/

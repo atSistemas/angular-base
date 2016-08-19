@@ -18,7 +18,7 @@
 
     <!--<script src="typescript/typescript.js"></script>-->
     <script src="systemjs/system.src.js"></script>
-    <script src="vendor.js"></script>
+    <!--<script src="vendor.js"></script>
     <!--<script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
     <script src="node_modules/@angular/core/bundles/core.umd.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
@@ -32,8 +32,11 @@
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <!-- #enddocregion router -->
     <script>
-
+        
+        System.module('/vendor.js');
         System.config({{{json system}}});
+        console.log(System);
+        System.import("vendor.js");
         System.import('app').then(null, console.error.bind(console));
 
     </script>
