@@ -14,7 +14,7 @@ import { MainContainer } from '../../../app/containers/main/';
   directives: [ROUTER_DIRECTIVES],
   pipes: [ AsyncPipe ],
   encapsulation: ViewEncapsulation.None,
-  template: './index.html'
+  templateUrl: './index.html'
 })
 export class BaseApp{
 
