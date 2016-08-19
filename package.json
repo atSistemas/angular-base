@@ -14,7 +14,7 @@
     }
   ],
   "scripts": {
-    "logo": "node ./src/base/conf/.react-base/logo.js",
+    "logo": "node ./.base/logo.js",
     "webpack": "node_modules/webpack/bin/webpack.js",
     "typings": "node_modules/typings/dist/bin.js",
     "generate": "npm run logo && yo react-base",
