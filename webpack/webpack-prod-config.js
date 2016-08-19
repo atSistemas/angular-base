@@ -45,7 +45,8 @@ export const prodEntries = {
 
 export const prodLoaders = [
   { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
-  { test: /\.html$/, loader: 'raw', exclude: /node_modules/ },,
+  { test: /\.tsx?$/, loader: 'angular2-template-loader', exclude: /node_modules/},
+  { test: /\.html$/, loader: 'raw-loader', exclude: /node_modules/ },,
   { test: /\.css/, loader: ExtractTextPlugin.extract('style-loader',  'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader')}
 ];
 
