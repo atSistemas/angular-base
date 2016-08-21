@@ -15,12 +15,14 @@ System.config({
     "@angular/common": "npm:@angular/common@2.0.0-rc.5",
     "@angular/core": "npm:@angular/core@2.0.0-rc.5",
     "@angular/http": "npm:@angular/http@2.0.0-rc.5",
+    "@angular/platform-browser": "npm:@angular/platform-browser@2.0.0-rc.5",
     "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@2.0.0-rc.5",
     "@angular/router": "npm:@angular/router@3.0.0-rc.1",
     "babel": "npm:babel-core@5.8.38",
     "babel-polyfill": "npm:babel-polyfill@6.13.0",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@2.4.1",
+    "frankwallis/plugin-typescript": "github:frankwallis/plugin-typescript@5.0.9",
     "jspm/nodelibs-os": "github:jspm/nodelibs-os@0.1.0",
     "ng2-redux": "npm:ng2-redux@3.3.5",
     "ng2-redux-router": "npm:ng2-redux-router@1.0.3",
@@ -34,7 +36,7 @@ System.config({
     "ts-runtime": "npm:babel-runtime@5.8.38",
     "typed-immutable-record": "npm:typed-immutable-record@0.0.5",
     "typescript": "npm:typescript@1.8.7",
-    "zone.js": "npm:zone.js@0.6.13",
+    "zone.js": "npm:zone.js@0.6.15",
     "github:frankwallis/plugin-typescript@5.0.9": {
       "typescript": "npm:typescript@2.0.0"
     },
@@ -118,7 +120,7 @@ System.config({
     "npm:@angular/core@2.0.0-rc.5": {
       "process": "github:jspm/nodelibs-process@0.1.2",
       "rxjs": "npm:rxjs@5.0.0-beta.6",
-      "zone.js": "npm:zone.js@0.6.13"
+      "zone.js": "npm:zone.js@0.6.15"
     },
     "npm:@angular/http@2.0.0-rc.5": {
       "@angular/core": "npm:@angular/core@2.0.0-rc.5",
@@ -990,7 +992,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:zone.js@0.6.13": {
+    "npm:zone.js@0.6.15": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }

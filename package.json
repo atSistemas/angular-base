@@ -66,6 +66,7 @@
     "fs-walk": "0.0.1",
     "html-webpack-plugin": "^2.22.0",
     "immutable": "^3.8.1",
+    "jspm": "^0.16.42",
     "ng2-redux": "^3.3.3",
     "ng2-redux-router": "^1.0.1",
     "nodemon": "^1.10.0",
@@ -107,6 +108,7 @@
       "@angular/common": "npm:@angular/common@^2.0.0-rc.5",
       "@angular/core": "npm:@angular/core@^2.0.0-rc.5",
       "@angular/http": "npm:@angular/http@^2.0.0-rc.5",
+      "@angular/platform-browser": "npm:@angular/platform-browser@^2.0.0-rc.5",
       "@angular/platform-browser-dynamic": "npm:@angular/platform-browser-dynamic@^2.0.0-rc.5",
       "@angular/router": "npm:@angular/router@^3.0.0-rc.1",
       "babel-polyfill": "npm:babel-polyfill@^6.13.0",
@@ -128,7 +130,8 @@
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "ts-runtime": "npm:babel-runtime@^5.8.24",
-      "typescript": "npm:typescript@^1.6.2"
+      "typescript": "npm:typescript@^1.6.2",
+      "frankwallis/plugin-typescript": "github:frankwallis/plugin-typescript@^5.0.9"
     }
   },
   "dependencies": {
