@@ -1,13 +1,13 @@
 {
   "globalDependencies": {
-    "handlebars": "registry:dt/handlebars#4.0.5+20160804082238",
-    "node": "registry:env/node#6.0.0+20160723033700"
-  },
-  "dependencies": {
-    "express": "registry:npm/express#4.14.0+20160810205701",
-    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
     "node": "registry:dt/node#6.0.0+20160709114037",
+    "handlebars": "registry:dt/handlebars#4.0.5+20160804082238",
+    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
+    "node": "registry:env/node#6.0.0+20160723033700",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847"
+  },
+  "dependencies": {
+    "express": "registry:npm/express#4.14.0+20160810205701"
   }
 }
