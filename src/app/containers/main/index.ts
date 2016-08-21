@@ -11,8 +11,8 @@ import { MainTypes, MainModel, InitialState } from './models';
 @Component({
   selector: 'main-container',
   providers: [ MainActions ],
-  pipes: [ AsyncPipe ],
-  template: require('./main.html')
+  pipes: [ AsyncPipe],
+  templateUrl: './main.html'
 })
 export class MainContainer {
   @select() main$: Observable<MainTypes>;

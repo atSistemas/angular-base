@@ -1,14 +1,8 @@
-import { RouterConfig } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { routes, AppRoutingProviders } from '../../app/routes';
 
-import { MainContainer } from '../../app/containers/main';
-import { MainContainer2 } from '../../app/containers/main2';
+export const RoutingProviders: any[] = [
 
-export const Routes: RouterConfig = [{
-  path: '',
-  pathMatch: 'full',
-  component: MainContainer
-},{
-  path: 'container2',
-  pathMatch: 'full',
-  component: MainContainer2
-}];
+].concat(AppRoutingProviders);
+
+export const Routing = RouterModule.forRoot(routes);

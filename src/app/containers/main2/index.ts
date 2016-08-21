@@ -8,7 +8,7 @@ import { createEpicMiddleware } from 'redux-observable';
 
 @Component({
   selector: 'main-container2',
-  template: `<h1>Main container222!</h1>`,
+  templateUrl: './main.html',
   pipes: [ AsyncPipe ]
 })
 export class MainContainer2 {

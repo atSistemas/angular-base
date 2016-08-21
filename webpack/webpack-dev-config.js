@@ -1,9 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import { symbols, color } from '../src/base/shared/console';
 
 const clientPath = path.resolve(__dirname, '../src/app/bootstrap.ts');
-
 export const devTool = 'eval';
 
 export const devContext = clientPath;
@@ -16,7 +16,7 @@ export const devPlugins = [
   function(){
     this.plugin("done", function(stats){
       if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1){
-        console.log(stats.compilation.errors);
+        console.log('[BASE] ' + color('error', symbols.error) + stats.compilation.errors);
       }
     });
   }
@@ -29,7 +29,7 @@ export const devEntries = [
 ];
 
 export const devLoaders = [
-  { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: /node_modules/},
+  { test: /\.tsx?$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader'], exclude: /node_modules/},
   { test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
   { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
 ];

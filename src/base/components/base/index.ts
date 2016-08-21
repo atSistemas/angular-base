@@ -6,17 +6,14 @@ import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { createEpicMiddleware } from 'redux-observable';
 
-import { AppState, Store } from '../../store/';
-import { MainContainer } from '../../../app/containers/main/';
+import { AppState, Store } from '../../store';
 
 @Component({
   selector: 'base-app',
-  directives: [
-    ROUTER_DIRECTIVES
-  ],
+  directives: [ROUTER_DIRECTIVES],
   pipes: [ AsyncPipe ],
   encapsulation: ViewEncapsulation.None,
-  template: require('./index.html')
+  templateUrl: './index.html'
 })
 export class BaseApp{
 
