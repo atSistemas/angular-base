@@ -10,13 +10,8 @@
     "removeComments": false,
     "sourceMap": false,
     "inlineSourceMap": true,
-    "moduleResolution": "node"
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": true,
-    "useCache": false,
-    "emitRequireType": false,
-    "useWebpackText": true
+    "moduleResolution": "node",
+    "noEmitHelpers": true
   },
   "exclude": [
     "node_modules",
@@ -25,8 +20,5 @@
     "webpack",
     "typings",
     ".git"
-  ],
-  "files": [
-    "typings/index.d.ts"
   ]
 }
