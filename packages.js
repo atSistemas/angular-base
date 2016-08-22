@@ -3,7 +3,8 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "ts",
   typescriptOptions: {
-    "tsconfig": true
+    "tsconfig": true,
+    "module": "system"
   },
   paths: {
     "github:*": "./packages/github/*",
@@ -22,7 +23,6 @@ System.config({
     "babel-polyfill": "npm:babel-polyfill@6.13.0",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@2.4.1",
-    "frankwallis/plugin-typescript": "github:frankwallis/plugin-typescript@5.0.9",
     "jspm/nodelibs-os": "github:jspm/nodelibs-os@0.1.0",
     "ng2-redux": "npm:ng2-redux@3.3.5",
     "ng2-redux-router": "npm:ng2-redux-router@1.0.3",
@@ -31,14 +31,14 @@ System.config({
     "reflect-metadata": "npm:reflect-metadata@0.1.8",
     "rxjs": "npm:rxjs@5.0.0-beta.11",
     "text": "github:systemjs/plugin-text@0.0.8",
-    "ts": "github:frankwallis/plugin-typescript@5.0.9",
+    "ts": "github:frankwallis/plugin-typescript@4.0.16",
     "ts-helpers": "npm:ts-helpers@1.1.1",
     "ts-runtime": "npm:babel-runtime@5.8.38",
     "typed-immutable-record": "npm:typed-immutable-record@0.0.5",
-    "typescript": "npm:typescript@1.8.7",
+    "typescript": "npm:typescript@1.8.10",
     "zone.js": "npm:zone.js@0.6.15",
-    "github:frankwallis/plugin-typescript@5.0.9": {
-      "typescript": "npm:typescript@2.0.0"
+    "github:frankwallis/plugin-typescript@4.0.16": {
+      "typescript": "npm:typescript@1.8.10"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -315,14 +315,14 @@ System.config({
     },
     "npm:configstore@2.0.0": {
       "dot-prop": "npm:dot-prop@2.4.0",
-      "graceful-fs": "npm:graceful-fs@4.1.5",
+      "graceful-fs": "npm:graceful-fs@4.1.6",
       "mkdirp": "npm:mkdirp@0.5.1",
       "object-assign": "npm:object-assign@4.1.0",
       "os-tmpdir": "npm:os-tmpdir@1.0.1",
       "osenv": "npm:osenv@0.1.3",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "uuid": "npm:uuid@2.0.2",
-      "write-file-atomic": "npm:write-file-atomic@1.1.4",
+      "write-file-atomic": "npm:write-file-atomic@1.2.0",
       "xdg-basedir": "npm:xdg-basedir@2.0.0"
     },
     "npm:constants-browserify@0.0.1": {
@@ -464,7 +464,7 @@ System.config({
       "url": "github:jspm/nodelibs-url@0.1.0",
       "url-parse-lax": "npm:url-parse-lax@1.0.0"
     },
-    "npm:graceful-fs@4.1.5": {
+    "npm:graceful-fs@4.1.6": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "constants": "github:jspm/nodelibs-constants@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -859,19 +859,18 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "npm:ts-helpers@1.1.1": {
-      "typescript": "npm:typescript@2.0.0"
+      "typescript": "npm:typescript@1.8.10"
     },
     "npm:typed-immutable-record@0.0.5": {
       "immutable": "npm:immutable@3.8.1"
     },
+    "npm:typescript@1.8.10": {
+      "os": "github:jspm/nodelibs-os@0.1.0"
+    },
     "npm:typescript@1.8.7": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
-    "npm:typescript@2.0.0": {
-      "crypto": "github:jspm/nodelibs-crypto@0.1.0",
-      "os": "github:jspm/nodelibs-os@0.1.0"
-    },
-    "npm:typings-core@1.4.0": {
+    "npm:typings-core@1.4.1": {
       "any-promise": "npm:any-promise@1.3.0",
       "array-uniq": "npm:array-uniq@1.0.3",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -880,7 +879,7 @@ System.config({
       "detect-indent": "npm:detect-indent@4.0.0",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "graceful-fs": "npm:graceful-fs@4.1.5",
+      "graceful-fs": "npm:graceful-fs@4.1.6",
       "has": "npm:has@1.0.1",
       "invariant": "npm:invariant@2.2.1",
       "is-absolute": "npm:is-absolute@0.2.5",
@@ -925,7 +924,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.2",
-      "typings-core": "npm:typings-core@1.4.0",
+      "typings-core": "npm:typings-core@1.4.1",
       "update-notifier": "npm:update-notifier@1.0.2",
       "wordwrap": "npm:wordwrap@1.0.0",
       "xtend": "npm:xtend@4.0.1"
@@ -977,11 +976,12 @@ System.config({
     "npm:widest-line@1.0.0": {
       "string-width": "npm:string-width@1.0.2"
     },
-    "npm:write-file-atomic@1.1.4": {
-      "graceful-fs": "npm:graceful-fs@4.1.5",
+    "npm:write-file-atomic@1.2.0": {
+      "graceful-fs": "npm:graceful-fs@4.1.6",
       "imurmurhash": "npm:imurmurhash@0.1.4",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "slide": "npm:slide@1.1.6"
+      "slide": "npm:slide@1.1.6",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:xdg-basedir@2.0.0": {
       "os-homedir": "npm:os-homedir@1.0.1",
