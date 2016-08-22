@@ -29,7 +29,7 @@ export const devEntries = [
 ];
 
 export const devLoaders = [
-  { test: /\.tsx?$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader'], exclude: /node_modules/},
+  { test: /\.tsx?$/, loaders: ['angular2-template-loader', 'awesome-typescript-loader'], exclude: /node_modules/},
   { test: /\.html$/, loader: 'raw', exclude: /node_modules/ },
   { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
 ];
