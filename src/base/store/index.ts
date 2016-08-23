@@ -8,7 +8,6 @@ import { MainTypes } from '../models';
 
 const middleware = [];
 
-console.log(createLogger)
 export interface AppState {
   main?: MainTypes;
 };
