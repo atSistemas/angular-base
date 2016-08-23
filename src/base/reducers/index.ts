@@ -10,6 +10,6 @@ export interface rootReducer {
 };
 
 export const RootReducer = combineReducers<AppState>({
-  mainReducer: MainReducer,
+  main: MainReducer,
   router: routerReducer,
 });
