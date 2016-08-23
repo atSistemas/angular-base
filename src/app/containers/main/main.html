@@ -1,6 +1,6 @@
 <div>
     <h1>Main Container</h1>
-    InitialState = {{ main$ }}
+    InitialState = {{ main$ | async }}
     <br>
     <span (click)="action.click()">Click on me to dispatch an action!</span>
 </div>
