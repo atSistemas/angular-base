@@ -1,1 +1,1 @@
-export * from './reducer-display';
+export * from './main-display';
