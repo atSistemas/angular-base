@@ -9,7 +9,4 @@ import { MainTypes } from '../models';
 })
 export class MainDisplay {
   @Input() main: MainTypes;
-  constructor() {
-    console.log(this)
-  }
 }
