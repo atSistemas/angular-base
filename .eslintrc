@@ -13,18 +13,20 @@
     "ecmaVersion": 6
   },
   "rules": {
+    "comma-dangle": 0,
     "import/default": 0,
-    "import/no-duplicates": 0,
     "import/named": 0,
     "import/namespace": 0,
-    "import/no-unresolved": 0,
+    "import/no-duplicates": 0,
     "import/no-named-as-default": 0,
-    "comma-dangle": 0,
+    "import/no-unresolved": 0,
     "indent": [2, 2, {"SwitchCase": 1}],
-    "no-console": 0,
+    "keyword-spacing": 2,
     "no-alert": 0,
-    "semi": 1,
+    "no-console": 0,
     "no-var": 2,
-    "prefer-template": 1
+    "prefer-template": 1,
+    "semi": 1,
+    "space-before-blocks": 2
   }
 }

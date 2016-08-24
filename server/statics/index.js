@@ -2,7 +2,7 @@ import path from 'path';
 import ENV from '../../src/base/shared/Env';
 
 const commonStatics = [
-  {route: '/mocks', dir: path.join(__dirname, '..', '..', 'app', 'api', 'mocks')}
+  {route: '/mocks', dir: path.join(__dirname, '../../src/app/api/mocks')}
 ];
 
 const devStatics = [
