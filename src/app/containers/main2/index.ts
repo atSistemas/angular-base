@@ -6,19 +6,33 @@ import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { createEpicMiddleware } from 'redux-observable';
 import { CORE_DIRECTIVES } from '@angular/common';
-import { people, Person } from './mocks/people';
+
+import { MainService2 } from './services/main2.service';
 
 @Component({
   selector: 'main-container2',
   templateUrl: './main.html',
+  providers: [MainService2],
   directives: [CORE_DIRECTIVES],
   pipes: [ AsyncPipe ]
 })
+
 export class MainContainer2 {
   private devTools: DevToolsExtension;
   private ngReduxRouter: NgReduxRouter;
-  people: Person[];
-  constructor() {
-    this.people = people;
+
+  public people: Object[];
+
+  constructor(
+      private service: MainService2
+  ) { }
+
+  ngOnInit(): void {
+    let people = [];
+
+    this.service.getMain()
+    .then((res) => {
+      this.people = res;
+    });
   }
 }

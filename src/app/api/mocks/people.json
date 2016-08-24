@@ -1,13 +1,4 @@
-export interface Person {
-    id: number,
-    first_name: string,
-    last_name: string,
-    email: string,
-    gender: string,
-    ip_address: string
-}
-
-export const people: Person[] = [{ "id": 1, "first_name": "Irene", "last_name": "Duncan", "email": "iduncan0@yellowbook.com", "gender": "Female", "ip_address": "52.191.50.254" },
+[{ "id": 1, "first_name": "Irene", "last_name": "Duncan", "email": "iduncan0@yellowbook.com", "gender": "Female", "ip_address": "52.191.50.254" },
     { "id": 2, "first_name": "Martha", "last_name": "Gutierrez", "email": "mgutierrez1@squidoo.com", "gender": "Female", "ip_address": "142.109.40.19" },
     { "id": 3, "first_name": "Walter", "last_name": "Kim", "email": "wkim2@drupal.org", "gender": "Male", "ip_address": "210.20.165.131" },
     { "id": 4, "first_name": "Carolyn", "last_name": "Ramirez", "email": "cramirez3@dyndns.org", "gender": "Female", "ip_address": "196.171.183.188" },
@@ -1006,4 +997,5 @@ export const people: Person[] = [{ "id": 1, "first_name": "Irene", "last_name": 
     { "id": 997, "first_name": "Deborah", "last_name": "Nelson", "email": "dnelsonro@latimes.com", "gender": "Female", "ip_address": "99.164.244.41" },
     { "id": 998, "first_name": "Barbara", "last_name": "Gonzalez", "email": "bgonzalezrp@umich.edu", "gender": "Female", "ip_address": "41.45.137.118" },
     { "id": 999, "first_name": "Jose", "last_name": "Johnson", "email": "jjohnsonrq@google.cn", "gender": "Male", "ip_address": "30.142.107.232" },
-    { "id": 1000, "first_name": "Alice", "last_name": "Graham", "email": "agrahamrr@archive.org", "gender": "Female", "ip_address": "251.246.249.79" }];
+    { "id": 1000, "first_name": "Alice", "last_name": "Graham", "email": "agrahamrr@archive.org", "gender": "Female", "ip_address": "251.246.249.79"
+}]
