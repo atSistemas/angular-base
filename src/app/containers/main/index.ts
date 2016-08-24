@@ -19,7 +19,7 @@ export { MainDisplay } from './components';
 })
 
 export class MainContainer {
-  @select() main$: Observable<MainTypes>
+  @select() main$: Observable<MainTypes>;
 
   public friends: Object[];
   public tags: string[];
@@ -30,11 +30,11 @@ export class MainContainer {
   ) { }
 
   ngOnInit(): void {
+    let friends = [];
+    let tags = [];
+
     this.service.getMain()
     .then((res) => {
-      let friends = [];
-      let tags = [];
-
       res.forEach((data) => {
         friends = friends.concat(data.friends);
         tags = tags.concat(data.tags);
