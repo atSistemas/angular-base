@@ -4,7 +4,8 @@ export interface Reducer<Cr> {
   (state: Cr, action: Action): Object;
 }
 
-export default function CreateReducer<Cr>(actionHandler: {[type: string]: Reducer<Cr>}, initialState: Cr): Reducer<Cr> {
+//FIXME 
+export default function CreateReducer<Cr>(actionHandler: any, initialState: Cr): Reducer<Cr> {
   return function (state: Cr, action: Action): Cr {
 
     if(!state) return initialState;

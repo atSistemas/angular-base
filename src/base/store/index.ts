@@ -1,3 +1,5 @@
+
+/// <reference path="../../../typings/globals/redux/index.d.ts" />
 /// <reference path="../../../typings/globals/redux-logger/index.d.ts" />
 
 import { Injectable } from '@angular/core';

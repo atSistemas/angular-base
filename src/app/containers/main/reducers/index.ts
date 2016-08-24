@@ -11,4 +11,5 @@ const actionHandlers = {
   [Types.CLICK]: click
 }
 
-export default CreateReducer<MainTypes>(actionHandlers, InitialState);
+const MainReducer = CreateReducer<MainTypes>(actionHandlers, InitialState);
+export { MainReducer }
