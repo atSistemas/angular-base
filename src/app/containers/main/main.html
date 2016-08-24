@@ -3,4 +3,7 @@
     <main-display [main]="main$ | async"></main-display>
     <br>
     <span (click)="action.click()">Click on me to dispatch an action!</span>
+
+    <div *ngFor="let friend of friends">Friend: {{ friend.name }}</div>
+    <div *ngFor="let tag of tags">Tag: {{ tag }}</div>
 </div>
