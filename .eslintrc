@@ -25,6 +25,8 @@
     "no-alert": 0,
     "semi": 1,
     "no-var": 2,
-    "prefer-template": 1
+    "prefer-template": 1,
+    "space-before-blocks": 2,
+    "keyword-spacing": 2
   }
 }
