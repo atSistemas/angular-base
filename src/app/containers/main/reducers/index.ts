@@ -1,18 +1,14 @@
 import { Action } from 'redux';
+
 import { Types } from '../types';
-import { MainModel, InitialState } from '../models';
+import { MainTypes, MainModel, InitialState } from '../models';
+import CreateReducer from '../../../../base/shared/CreateReducer';
 
-//TODO improve reducer with actionHandlers
-export function MainReducer(
-  state: MainModel = InitialState,
-  action: Action): MainModel {
+const click = (state) =>
+  state.update('main', (value) => "eooo");
 
-  switch (action.type) {
-    case Types.CLICK:
-      console.log('Hello from reducer!!!');
-      return state.update('main', (value) => "eooo");
+const actionHandlers = {
+  [Types.CLICK]: click
+}
 
-   default:
-     return state;
- }
-};
+export default CreateReducer<MainTypes>(actionHandlers, InitialState);
