@@ -30,7 +30,7 @@ const config = {
         }
     },
     map: {
-        'ts': 'plugin-typescript',
+        //'ts': 'plugin-typescript',
         'typescript': 'typescript',
         'express': '@empty'
     },

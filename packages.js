@@ -1,10 +1,12 @@
 System.config({
-  baseURL: "./src",
+  baseURL: './src',
   defaultJSExtensions: true,
-  transpiler: "ts",
-  typescriptOptions: {
-    "tsconfig": true,
-    "module": "system"
+  transpiler: "babel",
+  babelOptions: {
+    "optional": [
+      "runtime",
+      "optimisation.modules.system"
+    ]
   },
   paths: {
     "github:*": "./packages/github/*",
@@ -24,8 +26,10 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@2.4.1",
     "jspm/nodelibs-os": "github:jspm/nodelibs-os@0.1.0",
+    "jspm/nodelibs-process": "github:jspm/nodelibs-process@0.1.2",
     "ng2-redux": "npm:ng2-redux@3.3.5",
     "ng2-redux-router": "npm:ng2-redux-router@1.0.3",
+    "process": "github:jspm/nodelibs-process@0.1.2",
     "redux": "npm:redux@3.5.2",
     "redux-logger": "npm:redux-logger@2.6.1",
     "reflect-metadata": "npm:reflect-metadata@0.1.8",
@@ -36,7 +40,7 @@ System.config({
     "ts-runtime": "npm:babel-runtime@5.8.38",
     "typed-immutable-record": "npm:typed-immutable-record@0.0.5",
     "typescript": "npm:typescript@1.8.10",
-    "zone.js": "npm:zone.js@0.6.15",
+    "zone.js": "npm:zone.js@0.6.16",
     "github:frankwallis/plugin-typescript@4.0.16": {
       "typescript": "npm:typescript@1.8.10"
     },
@@ -120,7 +124,7 @@ System.config({
     "npm:@angular/core@2.0.0-rc.5": {
       "process": "github:jspm/nodelibs-process@0.1.2",
       "rxjs": "npm:rxjs@5.0.0-beta.6",
-      "zone.js": "npm:zone.js@0.6.15"
+      "zone.js": "npm:zone.js@0.6.16"
     },
     "npm:@angular/http@2.0.0-rc.5": {
       "@angular/core": "npm:@angular/core@2.0.0-rc.5",
@@ -794,7 +798,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:semver-diff@2.1.0": {
-      "semver": "npm:semver@5.3.0"
+      "semver": "npm:semver@5.0.3"
     },
     "npm:semver@5.0.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -992,7 +996,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:zone.js@0.6.15": {
+    "npm:zone.js@0.6.16": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }

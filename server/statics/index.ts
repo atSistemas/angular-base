@@ -11,11 +11,14 @@ const commonStatics: staticRoute[] = [
 ];
 
 const developmentStatics: staticRoute[] = [
-  { route: '/app', path: path.join(path.resolve(), 'src', 'app') },
+  { route: '/src', path: path.join(path.resolve(), 'src') },
   { route: '/base', path: path.join(path.resolve(), 'src', 'base') },
   { route: '/typescript', path: path.join(path.resolve(), 'node_modules', 'typescript') },
-  { route: '/systemjs',path: path.join(path.resolve(), 'node_modules', 'systemjs', 'dist')},
-  { route: '/plugin-typescript', path: path.join(path.resolve(), 'packages', 'github', 'frankwallis', 'plugin-typescript@5.0.9') }
+  { route: '/packages',path: path.join(path.resolve(), 'packages')},
+  { route: '/packages/packages.js',path: path.join(path.resolve(), 'packages.js')},
+   { route: '/runtime/typescript', path: path.join(path.resolve(), 'node_modules', 'typescript') },
+  { route: '/runtime/plugin-typescript', path: path.join(path.resolve(), 'packages', 'github', 'frankwallis', 'plugin-typescript@4.0.16') },
+  { route: '/tsconfig.json', path: path.join(path.resolve(), 'tsconfig.json') }
 ];
 
 const productionStatics: staticRoute[] = [

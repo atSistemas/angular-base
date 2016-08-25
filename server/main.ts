@@ -1,3 +1,5 @@
+///<reference path="../typings/index.d.ts"/>
+
 import * as express from "express";
 import * as path from 'path';
 import statics, { staticRoute } from './statics';
@@ -28,9 +30,10 @@ export class Server {
 
   private configure() {
 
-    this.initializeIndex();
+    
     this.initializeStaticPaths();
     this.initializeMiddlewares();
+    this.initializeIndex();
 
     this.app.listen(port, function (err: any) {
       if (err) {
@@ -49,7 +52,9 @@ export class Server {
 
     systemConfig.extend({
       typescriptOptions: {
-        "tsconfig": false
+        "tsconfig": true,
+        "sourceMap": true,
+        "inlineSourceMap": false
       },
       packages: {
         "ts": {
@@ -65,10 +70,11 @@ export class Server {
         }
       },
       map: {
-        "ts": "/plugin-typescript",
-        "typescript": "/typescript"
+        "ts": "./runtime/plugin-typescript",
+        "typescript": "./runtime/typescript"
       }
     });
+
 
     const templateContent = {
       system: systemConfig
@@ -76,15 +82,13 @@ export class Server {
 
     const page = new Template("index.tpl.html");
 
-    //console.log(page.populate(templateContent));
-
     this.app.use((req: express.Request, res: express.Response, next: any) => {
-      if (req.url === '/') {
+      //if (req.url === '/') {
         console.log(templateContent)
         res.status(200).send(page.populate(templateContent));
         return;
-      }
-      next();
+      //}
+      //next();
 
     });
   }

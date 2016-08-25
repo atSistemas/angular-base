@@ -1,6 +1,7 @@
+/// <reference path="../../typings/index.d.ts" />
 import environment from '../environment';
-import devMiddleware from './sets/development';
-import prodMiddleware from './sets/production';
+import devMiddleware from './development';
+import prodMiddleware from './production';
 import { RequestHandler } from 'express';
 
 export interface middleware {

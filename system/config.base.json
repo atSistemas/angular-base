@@ -2,5 +2,8 @@
   "typescriptOptions": {
     "tsconfig": true,
     "module": "system"
+  },
+  "map":  {
+    "process": "github:jspm/nodelibs-process@0.1.2"
   }
 }

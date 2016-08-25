@@ -9,6 +9,7 @@ export interface rootReducer {
   main: MainModel;
 };
 
+
 export const RootReducer = combineReducers<AppState>({
   mainReducer: MainReducer,
   router: routerReducer,

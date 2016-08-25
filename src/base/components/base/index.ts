@@ -13,7 +13,7 @@ import { AppState, Store } from '../../store';
   directives: [ROUTER_DIRECTIVES],
   pipes: [ AsyncPipe ],
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './index.html'
+  templateUrl: './base/components/base/index.html'
 })
 export class BaseApp{
 

@@ -1,5 +1,5 @@
 import * as postcssMiddleware from 'postcss-middleware';
-import { middleware } from '../index';
+import { middleware } from './index';
 
 const middlewares:middleware[] = [];
 

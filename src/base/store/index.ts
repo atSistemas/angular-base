@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
+import { NgRedux } from 'ng2-redux';
 import { RootReducer } from '../reducers';
-import * as createLogger from 'redux-logger';
+import * as reduxLogger from "redux-logger";
 import { MainTypes } from '../models';
 
 const middleware = [];
@@ -14,13 +14,14 @@ export interface AppState {
 export class Store {
   constructor(private ngRedux: NgRedux<AppState>) {
   }
-  configureStore(){
+  configureStore() {
 
-    middleware.push(
-      createLogger({
+    const loggerMiddleware = (reduxLogger.default as any)({
       level: 'info',
       collapsed: true,
-    }));
+    });
+
+    middleware.push(loggerMiddleware);
 
     this.ngRedux.configureStore(RootReducer, {}, middleware);
   }

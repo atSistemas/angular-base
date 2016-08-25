@@ -1,3 +1,4 @@
+/// <reference path="../../../../typings/index.d.ts" />
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
@@ -12,7 +13,7 @@ import { MainTypes, MainModel, InitialState } from './models';
   selector: 'main-container',
   providers: [ MainActions ],
   pipes: [ AsyncPipe],
-  templateUrl: './main.html'
+  templateUrl: './src/app/containers/main/main.html'
 })
 export class MainContainer {
   @select() main$: Observable<MainTypes>;

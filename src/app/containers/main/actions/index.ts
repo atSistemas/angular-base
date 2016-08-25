@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AppState } from '../../../../base';
 import { NgRedux } from 'ng2-redux';
-import { AppState } from '../../../../base/store';
 import { Types } from '../types';
+
+console.log(Injectable);
+console.log(AppState);
+console.log(NgRedux);
+console.log(Types);
 
 @Injectable()
 export class MainActions {

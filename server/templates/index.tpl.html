@@ -17,7 +17,8 @@
     <!-- IE required polyfills, in this exact order -->
 
     <!--<script src="typescript/typescript.js"></script>-->
-    <script src="systemjs/system.src.js"></script>
+    <script src="packages/system.src.js"></script>
+    <script src="packages/packages.js"></script>
     <!--<script src="vendor.js"></script>
     <!--<script src="node_modules/rxjs/bundles/Rx.umd.js"></script>
     <script src="node_modules/@angular/core/bundles/core.umd.js"></script>
@@ -33,10 +34,10 @@
     <!-- #enddocregion router -->
     <script>
         
-        System.module('/vendor.js');
+        //System.import('./vendor.js');
         System.config({{{json system}}});
         console.log(System);
-        System.import("vendor.js");
+        //System.import("vendor.js");
         System.import('app').then(null, console.error.bind(console));
 
     </script>
@@ -44,7 +45,7 @@
 <!-- #enddocregion head -->
 
 <body>
-    <app>Loading...</app>
+    <base-app>Loading...</base-app>
 </body>
 
 </html>
