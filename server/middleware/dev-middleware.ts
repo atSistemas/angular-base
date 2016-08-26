@@ -9,7 +9,8 @@ const bundleTimer = base.timer('bundleStart');
 const compiler = webpack(config);
 
 compiler.plugin('done', function() {
-  base.console.success(`Bundled project in ${bundleTimer()} ms!`);
+  let timing = bundleTimer();
+  base.console.success(`Bundled project in ${timing.time} seconds!`);
 });
 
 const serverOptions = {
