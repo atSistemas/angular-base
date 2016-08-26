@@ -1,5 +1,7 @@
 /// <reference path="./webpack.d.ts" />
 
+
+import * as path from 'path';
 import 'core-js/es6';
 import 'core-js/es7/reflect';
 import 'ts-helpers';
@@ -7,9 +9,6 @@ import { root } from './externals';
 import {polyfills, vendor} from './dll';
 // needed to create context for resolveNgRoute
 
-/**
- * @author: @AngularClass
- */
 const {
   ContextReplacementPlugin,
   HotModuleReplacementPlugin,
@@ -27,7 +26,6 @@ const {ForkCheckerPlugin} = require('awesome-typescript-loader');
 const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const AssetsPlugin = require('assets-webpack-plugin');
 
-const path = require('path');
 
 
 
