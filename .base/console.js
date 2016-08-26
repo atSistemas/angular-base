@@ -3,12 +3,14 @@ exports.useColors = process.browser ? null : require('supports-color');
 exports.colors = {
   success: 32,
   error: 31,
-  default: 32
+  default: 32,
+  info: 34
 };
 
 exports.symbols = {
   ok: '✓',
   err: '✖',
+  info: 'i',
   dot: '․',
   CR: '\u000A'
 };
@@ -16,6 +18,7 @@ exports.symbols = {
 if (process.platform === 'win32') {
   exports.symbols.ok = '\u221A';
   exports.symbols.err = '\u00D7';
+  exports.symbols.info = 'i';
   exports.symbols.dot = '.';
   exports.symbols.CR = '\u000D\u000A';
 }
@@ -50,17 +53,17 @@ exports.line = function (str) {
 
 exports.info = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [' [BASE] '].concat(args));
+  return console.log.apply(console, [' ', exports.color('info', exports.symbols.info), '[BASE] '].concat(args));
 };
 
 exports.success = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [' ', exports.color('success', exports.symbols.ok), ' [BASE] '].concat(args));
+  return console.log.apply(console, [' ', exports.color('success', exports.symbols.ok), '[BASE] '].concat(args));
 };
 
 exports.error = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [' ', exports.color('error', exports.symbols.error), ' [BASE] '].concat(args));
+  return console.log.apply(console, [' ', exports.color('error', exports.symbols.error), '[BASE] '].concat(args));
 };
 
 exports.clear = function () {
