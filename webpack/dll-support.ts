@@ -3,35 +3,74 @@ const fs = require('fs');
 const base = require('../.base');
 const webpack = require('webpack');
 const path = require('path');
-const dllConfig = require('./webpack.dll');
+const getDllConfig = require('./webpack.dll');
 
-function tryDll(cb) {
-    try {
-        return cb()
-    } catch (e) {
-        base.console.info("Bundling %s...", "external modules");
-        webpack(dllConfig({ENV: environment.ENV}), cb);
+export interface iManifestDictionary {
+    [index: string]: {
+        id: number,
+        meta: any,
+        hasStarExport: boolean,
+        activeExports: Array<any>
+    }
+}
+export interface iManifest {
+    name: string,
+    content: {
+        iManifestDictionary
     }
 }
 
-export function root(__path = '.') {
-  return path.join(__dirname, '..', __path);
+interface iManifests {
+    vendor: iManifest,
+    polyfills: iManifest
 }
 
-export function getManifest(__path) {
-    var manifest = tryDll(() => JSON.parse(fs.readFileSync(root('./dist/dll/' + __path + '-manifest.json'), 'utf8')
+export function buildDll(): PromiseLike<iManifests> {
+
+    function getManifests(): iManifests {
+        let vendor: iManifest = getManifest('vendor');
+        let polyfills: iManifest = getManifest('polyfills');
+        return { vendor: vendor, polyfills: polyfills };
+    }
+
+    return new Promise((resolve, reject) => {
+        base.console.info("Checking external modules...");
+        try {
+            const manifests: iManifests = getManifests();
+            base.console.success("External modules already bundled!");
+            resolve(manifests);
+        } catch (e) {
+            base.console.info("Bundling external modules...");
+            webpack(getDllConfig({ ENV: environment.ENV })).run((err, stats) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+                base.console.success("External modules bundled successfully");
+                resolve(getManifests());
+            });
+        }
+    });
+}
+
+export function root(__path: string = '.'): string {
+    return path.join(__dirname, '..', __path);
+}
+
+export function getManifest(__path: string): iManifest {
+    var manifest = JSON.parse(fs.readFileSync(root('./dist/dll/' + __path + '-manifest.json'), 'utf8')
         // TODO(gdi2290): workaround until webpack fixes dll generation
-        .replace(/}(.*[\n\r]\s*)}(.*[\n\r]\s*)}"activeExports": \[\]/, '')))
+        .replace(/}(.*[\n\r]\s*)}(.*[\n\r]\s*)}"activeExports": \[\]/, ''));
     return manifest;
 }
-export function getDllAssets(chunk) {
-    var assets = tryDll(() => require(root('./dist/dll/webpack-assets.json')));
-    // {"vendors":{"js":"vendors.js"},"polyfills":{"js":"polyfills.js"}}
+export function getDllAssets(chunk: string): string {
+    var assets = require(root('./dist/dll/webpack-assets.json'));
+    // {"vendor":{"js":"vendor.js"},"polyfills":{"js":"polyfills.js"}}
     return assets[chunk]['js']
 }
-export function getAssets(chunk) {
-    var assets = tryDll(() => require(root('./dist/webpack-assets.json')));
-    // {"vendors":{"js":"vendors.js"},"polyfills":{"js":"polyfills.js"}}
+export function getAssets(chunk: string): string {
+    var assets = require(root('./dist/webpack-assets.json'));
+    // {"vendor":{"js":"vendor.js"},"polyfills":{"js":"polyfills.js"}}
     return assets[chunk]['js']
 }
 
