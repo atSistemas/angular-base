@@ -10,10 +10,9 @@ import applyEnvMiddleWare from './middleware';
 
 const port = 8000;
 const app = express();
-app.use(compression({level: 6}));
 const context = 'server';
-const staticPaths = setStaticsPaths(statics);
 const envMiddleware = applyEnvMiddleWare(ENV, app);
+const staticPaths = setStaticsPaths(statics);
 
 function setStaticsPaths(staticPaths){
   staticPaths.map(function(staticPath){
