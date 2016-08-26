@@ -1,8 +1,9 @@
 import environment from '../server/environment';
-const fs = require('fs');
+import * as fs from 'fs';
+import * as path from 'path';
+
 const base = require('../.base');
 const webpack = require('webpack');
-const path = require('path');
 const getDllConfig = require('./webpack.dll');
 
 export interface iManifestDictionary {
@@ -23,6 +24,14 @@ export interface iManifest {
 interface iManifests {
     vendor: iManifest,
     polyfills: iManifest
+}
+
+export function getPolyfills(env?:any): Array<string> {
+    return Object.keys(require('../package.json').polyfills);
+}
+
+export function getVendorModules(env?: any): Array<string> {
+  return Object.keys(require('../package.json').dependencies);
 }
 
 export function buildDll(): PromiseLike<iManifests> {

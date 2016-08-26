@@ -4,7 +4,6 @@ import buildConfig from './webpack-config';
 import * as dllSupport from './dll-support';
 
 const base = require('../.base');
-const dll = require('./dll');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { ConcatSource } = require('webpack-sources');
 const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
@@ -21,7 +20,7 @@ const {
   }
 } = require('webpack');
 
-const polyfills = dll.polyfills(environment.ENV);
+const polyfills = dllSupport.getPolyfills(environment.ENV);
 
 const context = buildConfig['context'] || path.resolve(__dirname, '../')
 
@@ -31,8 +30,8 @@ const webpackConfig = {
 
   entry: {
     main: (buildConfig['entries'] ?
-      polyfills.concat('./src/app/index').concat(buildConfig['entries']) :
-      polyfills.concat('./src/app/index'))
+      polyfills.concat('./src/app/bootstrap').concat(buildConfig['entries']) :
+      polyfills.concat('./src/app/bootstrap'))
   },
 
   context: context,
@@ -45,7 +44,7 @@ const webpackConfig = {
     }),
     new DllReferencePlugin({
       context: context,
-      manifest: dllSupport.getManifest('vendors'),
+      manifest: dllSupport.getManifest('vendor'),
     }),
     new DllReferencePlugin({
       context: context,
@@ -104,17 +103,9 @@ const webpackConfig = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.ts', '.tsx', '.css'],
-    alias: {
-      'app': path.resolve(__dirname, '../src/app'),
-      'base': path.resolve(__dirname, '../src/base'),
-      'components': path.resolve(__dirname, '../src/app/components'),
-      'containers': path.resolve(__dirname, '../src/app/containers'),
-      'shared': path.resolve(__dirname, '../src/base/shared'),
-      'store': path.resolve(__dirname, '../src/base/store')
-    }
+    extensions: ['', '.js', '.ts', '.tsx', '.css']
   }
 
 };
 
-export default webpackConfig
+export default webpackConfig;
