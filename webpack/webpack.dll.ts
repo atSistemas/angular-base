@@ -2,7 +2,7 @@ import 'core-js/es6';
 import 'core-js/es7/reflect';
 import 'ts-helpers';
 import { root } from './dll-support';
-import {polyfills, vendors} from './dll';
+import {polyfills, vendor} from './dll';
 // needed to create context for resolveNgRoute
 
 /**
@@ -36,7 +36,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
     devtool: '#source-map',
     entry: {
       polyfills: polyfills(options),
-      vendors: vendors(options)
+      vendor: vendor(options)
     },
     context: options.context || path.resolve(__dirname + '../'),
     output: {
