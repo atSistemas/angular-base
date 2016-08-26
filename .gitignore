@@ -10,5 +10,6 @@ node_modules/
 bower_components/
 jspm_packages/
 .nyc_output/
+.awcache/
 *.sublime-project
 *.sublime-workspace
