@@ -1,8 +1,0 @@
-{
-  "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
-    "node": "registry:dt/node#6.0.0+20160709114037",
-    "redux": "registry:dt/redux#3.5.2+20160703092728",
-    "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847"
-  }
-}
