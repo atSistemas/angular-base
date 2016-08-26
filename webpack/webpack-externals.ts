@@ -6,7 +6,7 @@ import 'core-js/es6';
 import 'core-js/es7/reflect';
 import 'ts-helpers';
 import { root } from './externals';
-import {getPolyfills, getVendorModules} from './externals';
+import { getPolyfills, getVendorModules } from './externals';
 // needed to create context for resolveNgRoute
 
 const {
@@ -25,13 +25,12 @@ const {
 const {ForkCheckerPlugin} = require('awesome-typescript-loader');
 const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const AssetsPlugin = require('assets-webpack-plugin');
-
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 
 
 // type definition for WebpackConfig is defined in webpack.d.ts
 function webpackConfig(options: EnvOptions = {}): WebpackConfig {
-
   return {
     devtool: '#source-map',
     entry: {
@@ -112,8 +111,8 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
         resolveNgRoute(root('./src'))
       ),
       // end angular2 fix
-
-      new ProgressPlugin({}),
+      //new ProgressPlugin({}),
+      new ProgressBarPlugin({}),
 
       new DedupePlugin(),
 

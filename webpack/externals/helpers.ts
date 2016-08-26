@@ -3,16 +3,16 @@ import * as path from 'path';
 import { iManifest } from './index';
 
 export function getPolyfills(env?:any): Array<string> {
-    return Object.keys(require('../package.json').polyfills);
+    return require('../../package.json').polyfills;
 }
 
 export function getVendorModules(env?: any): Array<string> {
-  return Object.keys(require('../package.json').dependencies);
+  return Object.keys(require('../../package.json').dependencies);
 }
 
 
 export function root(__path: string = '.'): string {
-    return path.join(__dirname, '..', __path);
+    return path.join(__dirname, '..', '..', __path);
 }
 
 export function getManifest(__path: string): iManifest {
