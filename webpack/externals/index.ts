@@ -2,7 +2,7 @@ import * as helpers from './helpers';
 import environment from '../../server/environment';
 export * from './helpers';
 
-const base = require('../.base');
+const base = require('../../.base');
 const webpack = require('webpack');
 const externalsConfig = require('../webpack-externals');
 
