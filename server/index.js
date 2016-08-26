@@ -1,4 +1,9 @@
-require('babel-core/register');
-var ENV = require('../src/base/shared/Env');
-console.log('[BASE] Starting '+ ENV.default +' enviroment...');
-require("./server.js");
+require('ts-node/register');
+
+const base = require('../.base');
+
+process.env['NODE_ENV'] = process.env.NODE_ENV || 'development';
+
+base.console.info(`Starting ${ (process.env.NODE_ENV).toUpperCase() } enviroment...`);
+
+require('./server');
