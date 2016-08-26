@@ -3,7 +3,7 @@
 import 'core-js/es6';
 import 'core-js/es7/reflect';
 import 'ts-helpers';
-import { root } from './dll-support';
+import { root } from './externals';
 import {polyfills, vendor} from './dll';
 // needed to create context for resolveNgRoute
 

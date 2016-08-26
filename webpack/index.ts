@@ -1,7 +1,7 @@
 import * as path from 'path';
 import environment from '../server/environment';
 import buildConfig from './webpack-config';
-import * as dllSupport from './dll-support';
+import * as externals from './externals';
 
 const base = require('../.base');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -20,7 +20,7 @@ const {
   }
 } = require('webpack');
 
-const polyfills = dllSupport.getPolyfills(environment.ENV);
+const polyfills = externals.getPolyfills(environment.ENV);
 
 const context = buildConfig['context'] || path.resolve(__dirname, '../')
 
@@ -38,17 +38,17 @@ const webpackConfig = {
 
   plugins: [
     new AssetsPlugin({
-      path: dllSupport.root('dist'),
+      path: externals.root('dist'),
       filename: 'webpack-assets.json',
       prettyPrint: true
     }),
     new DllReferencePlugin({
       context: context,
-      manifest: dllSupport.getManifest('vendor'),
+      manifest: externals.getManifest('vendor'),
     }),
     new DllReferencePlugin({
       context: context,
-      manifest: dllSupport.getManifest('polyfills'),
+      manifest: externals.getManifest('polyfills'),
     }),
     new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
     new ProgressBarPlugin({}),
@@ -74,7 +74,7 @@ const webpackConfig = {
           replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
           flags: 'g'
         },
-        include: [dllSupport.root('src')]
+        include: [externals.root('src')]
       },
     ],
     loaders: [
@@ -86,16 +86,16 @@ const webpackConfig = {
           '@angularclass/hmr-loader'
         ],
         exclude: [/\.(spec|e2e|d)\.ts$/],
-        include: [dllSupport.root('./src')]
+        include: [externals.root('./src')]
       },
-      { test: /\.json$/, loader: 'json-loader', include: [dllSupport.root('./src')] },
-      { test: /\.html/, loader: 'raw-loader', include: [dllSupport.root('./src')] },
-      { test: /\.css$/, loader: 'raw-loader', include: [dllSupport.root('./src')] }
+      { test: /\.json$/, loader: 'json-loader', include: [externals.root('./src')] },
+      { test: /\.html/, loader: 'raw-loader', include: [externals.root('./src')] },
+      { test: /\.css$/, loader: 'raw-loader', include: [externals.root('./src')] }
       //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
     ].concat(buildConfig.loaders)
   },
   output: {
-    path: dllSupport.root('build'),
+    path: externals.root('build'),
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',

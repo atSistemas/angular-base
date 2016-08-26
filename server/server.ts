@@ -3,8 +3,7 @@ import * as path from 'path';
 import statics, { iStaticRoute } from './statics';
 import renderIndex from './templates';
 import environment from './environment';
-import middlewares from './middleware';
-//import base from '../.base';
+import buildExternals from '../webpack/externals';
 
 const base = require('../.base');
 
@@ -28,17 +27,19 @@ export class Server {
 
   private configure() {
 
-    this.initializeStaticPaths();
-    this.initializeMiddlewares();
-    this.initializeIndex();
+    buildExternals().then(() => {
+      this.initializeStaticPaths();
+      this.initializeMiddlewares();
+      this.initializeIndex();
 
-    this.app.listen(environment.port, function (err: any) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      base.console.success(`Server up on http://localhost:${environment.port}`);
+      this.app.listen(environment.port, function (err: any) {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        base.console.success(`Server up on http://localhost:${environment.port}`);
 
+      });
     });
 
   }
@@ -46,13 +47,15 @@ export class Server {
   private initializeIndex() {
 
     this.app.use((req: express.Request, res: express.Response, next: any) => {
-        let page =  renderIndex();
-        res.status(200).send(page);
-        return;
+      let page = renderIndex();
+      res.status(200).send(page);
+      return;
     });
   }
 
   private initializeMiddlewares() {
+    const middlewares = require('./middleware');
+    
     middlewares.forEach((middleware) => {
       this.app.use(middleware);
       base.console.success(`Applied ${middleware.name || ''} middleware`);
