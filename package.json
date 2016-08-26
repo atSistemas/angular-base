@@ -56,12 +56,9 @@
     "core-js/es6/weak-set",
     "core-js/es6/typed",
     "core-js/es6/reflect",
-    // "core-js/es6/promise", // problem with firefox
     "core-js/es7/reflect",
-    // zone.js
     "zone.js/dist/zone",
     "zone.js/dist/long-stack-trace-zone",
-    // typescript helpers
     "ts-helpers"
   ],
   "dependencies": {
