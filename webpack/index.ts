@@ -1,0 +1,120 @@
+import * as path from 'path';
+import environment from '../server/environment';
+import buildConfig from './webpack-config';
+import * as dllSupport from './dll-support';
+
+const base = require('../.base');
+const dll = require('./dll');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { ConcatSource } = require('webpack-sources');
+const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
+const AssetsPlugin = require('assets-webpack-plugin');
+
+const {
+  ContextReplacementPlugin,
+  HotModuleReplacementPlugin,
+  DefinePlugin,
+  DllReferencePlugin,
+  optimize: {
+    CommonsChunkPlugin,
+    DedupePlugin
+  }
+} = require('webpack');
+
+const polyfills = dll.polyfills(environment.ENV);
+
+const context = buildConfig['context'] || path.resolve(__dirname, '../')
+
+const webpackConfig = {
+
+  devtool: buildConfig.devTool || 'eval',
+
+  entry: {
+    main: (buildConfig['entries'] ?
+      polyfills.concat('./src/app/index').concat(buildConfig['entries']) :
+      polyfills.concat('./src/app/index'))
+  },
+
+  context: context,
+
+  plugins: [
+    new AssetsPlugin({
+      path: dllSupport.root('dist'),
+      filename: 'webpack-assets.json',
+      prettyPrint: true
+    }),
+    new DllReferencePlugin({
+      context: context,
+      manifest: dllSupport.getManifest('vendors'),
+    }),
+    new DllReferencePlugin({
+      context: context,
+      manifest: dllSupport.getManifest('polyfills'),
+    }),
+    new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
+    new ProgressBarPlugin({}),
+    new ForkCheckerPlugin(),
+    function () {
+      this.plugin("done", function (stats) {
+        if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
+          base.console.error(stats.compilation.errors);
+        }
+      });
+    }
+  ].concat(buildConfig.plugins),
+
+  //postcss: buildConfig.postCss,
+
+  module: {
+    preLoaders: [
+      {
+        test: /\.ts$/,
+        loader: 'string-replace-loader',
+        query: {
+          search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
+          replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
+          flags: 'g'
+        },
+        include: [dllSupport.root('src')]
+      },
+    ],
+    loaders: [
+      {
+        test: /\.ts$/,
+        loaders: [
+          'awesome-typescript-loader',
+          'angular2-template-loader',
+          '@angularclass/hmr-loader'
+        ],
+        exclude: [/\.(spec|e2e|d)\.ts$/],
+        include: [dllSupport.root('./src')]
+      },
+      { test: /\.json$/, loader: 'json-loader', include: [dllSupport.root('./src')] },
+      { test: /\.html/, loader: 'raw-loader', include: [dllSupport.root('./src')] },
+      { test: /\.css$/, loader: 'raw-loader', include: [dllSupport.root('./src')] }
+      //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
+    ].concat(buildConfig.loaders)
+  },
+  output: {
+    path: dllSupport.root('build'),
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
+    chunkFilename: '[id].chunk.js',
+    publicPath: '/'
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.ts', '.tsx', '.css'],
+    alias: {
+      'app': path.resolve(__dirname, '../src/app'),
+      'base': path.resolve(__dirname, '../src/base'),
+      'components': path.resolve(__dirname, '../src/app/components'),
+      'containers': path.resolve(__dirname, '../src/app/containers'),
+      'shared': path.resolve(__dirname, '../src/base/shared'),
+      'store': path.resolve(__dirname, '../src/base/store')
+    }
+  }
+
+};
+
+export default webpackConfig

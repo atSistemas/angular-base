@@ -1,4 +1,29 @@
-import path from 'path';
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const HotModuleReplacementPlugin = require('webpack').HotModuleReplacementPlugin;
+
+export const devTool = 'source-map';
+
+export const plugins = [
+  new HotModuleReplacementPlugin(),
+  new ForkCheckerPlugin()
+];
+
+export const loaders = [
+
+];
+
+export const postCss = function (webpack) {
+  return [
+    /*require("postcss-import")({ addDependencyTo: webpack }),
+    require('postcss-modules-extract-imports')(),
+    require("postcss-url")(),
+    require("postcss-cssnext")(),
+    require("postcss-reporter")()*/
+  ];
+}
+
+
+/*import * as path from 'path';
 import webpack from 'webpack';
 import copyWebpackPlugin from 'copy-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -66,3 +91,4 @@ export const prodPostCss = function (webpack) {
     require("postcss-reporter")()
   ];
 };
+*/
