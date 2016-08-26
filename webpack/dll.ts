@@ -1,5 +1,5 @@
 // Polyfills
-export function polyfills(env?: any) {
+export function polyfills(env?: any): Array<string> {
   return [
     // 'ie-shim',
 
@@ -32,8 +32,6 @@ export function polyfills(env?: any) {
   ];
 }
 
-export function vendors(env?: any) {
-
- return Object.keys(require('../package.json').dependencies);
-
+export function vendor(env?: any): Array<string> {
+  return Object.keys(require('../package.json').dependencies);
 }
