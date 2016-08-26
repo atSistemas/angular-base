@@ -1,11 +1,7 @@
-
-/// <reference path="../../../typings/globals/redux/index.d.ts" />
-/// <reference path="../../../typings/globals/redux-logger/index.d.ts" />
-
 import { Injectable } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { RootReducer } from '../reducers';
-import createLogger = require('redux-logger');
+import * as createLogger from 'redux-logger';
 import { MainTypes } from '../models';
 
 const middleware = [];
