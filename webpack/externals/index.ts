@@ -1,10 +1,11 @@
 import * as helpers from './helpers';
 import environment from '../../server/environment';
+
 export * from './helpers';
 
 const base = require('../../.base');
 const webpack = require('webpack');
-const externalsConfig = require('../webpack-externals');
+const webpackConfig = require('../webpack-externals');
 
 export interface iManifestDictionary {
     [index: string]: {
@@ -26,8 +27,6 @@ interface iManifests {
     polyfills: iManifest
 }
 
-
-
 export default function buildExternals(): PromiseLike<iManifests> {
 
     function getManifests(): iManifests {
@@ -45,8 +44,9 @@ export default function buildExternals(): PromiseLike<iManifests> {
             resolve(manifests);
         } catch (e) {
             base.console.info("Bundling external modules...");
-            webpack(externalsConfig({ ENV: environment.ENV })).run((err, stats) => {
+            webpack(webpackConfig({ ENV: environment.ENV })).run((err, stats) => {
                 if (err) {
+                    base.console.error(err);
                     reject(err);
                     return;
                 }
