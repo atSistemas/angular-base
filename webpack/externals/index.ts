@@ -27,6 +27,9 @@ interface iManifests {
     polyfills: iManifest
 }
 
+export const externalsPath:string = 'dist/externals';
+export const assetsPath:string = 'dist';
+
 export default function buildExternals(): PromiseLike<iManifests> {
 
     function getManifests(): iManifests {

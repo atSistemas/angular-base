@@ -5,7 +5,7 @@ import * as path from 'path';
 import 'core-js/es6';
 import 'core-js/es7/reflect';
 import 'ts-helpers';
-import { root } from './externals';
+import { root, externalsPath } from './externals';
 import { getPolyfills, getVendorModules } from './externals';
 // needed to create context for resolveNgRoute
 
@@ -39,7 +39,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
     },
     context: options.context || path.resolve(__dirname + '../'),
     output: {
-      path: root('dist/dll'),
+      path: root(externalsPath),
       filename: '[name].[hash].js',
       sourceMapFilename: '[name].[hash].map',
       library: "__[name]"
@@ -94,13 +94,13 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
 
     plugins: [
       new AssetsPlugin({
-        path: root('dist/dll'),
+        path: root(externalsPath),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
       new DllPlugin({
         name: '__[name]',
-        path: root('dist/dll/[name]-manifest.json'),
+        path: root(`${externalsPath}/[name]-manifest.json`),
       }),
 
       // fix angular2
