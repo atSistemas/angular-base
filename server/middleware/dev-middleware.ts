@@ -8,9 +8,10 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const bundleTimer = base.timer('bundleStart');
 const compiler = webpack(config);
 
+base.console.info(`Bundling project...`);
 compiler.plugin('done', function() {
   let timing = bundleTimer();
-  base.console.success(`Bundled project in ${timing.time} seconds!`);
+  base.console.success(`Bundled project in ${timing.time} seconds`);
 });
 
 const serverOptions = {
@@ -26,9 +27,12 @@ const serverOptions = {
   headers: { 'Access-Control-Allow-Origin': '*' }
 };
 
-const middlewares:Array<any> = [
-    webpackHotMiddleware(compiler),
-    webpackDevMiddleware(compiler, serverOptions)
+const devMiddleware = webpackDevMiddleware(compiler, serverOptions);
+const hotMiddleware = webpackHotMiddleware(compiler);
+
+const middlewares:Array<Function> = [
+    hotMiddleware,
+    devMiddleware
 ];
 
 export default middlewares;

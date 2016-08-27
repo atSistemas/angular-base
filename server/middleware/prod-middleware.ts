@@ -10,6 +10,6 @@ compiler.plugin('done', function() {
   base.console.success(`Bundled project in ${bundleTimer()} ms!`);
 });
 
-const middlewares:Array<any> = [];
+const middlewares:Array<Function> = [];
 
 export default middlewares;
