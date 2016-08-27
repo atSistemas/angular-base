@@ -31,17 +31,14 @@ export class Server {
       this.initializeStaticPaths();
       this.initializeMiddlewares();
       this.initializeIndex();
-
       this.app.listen(environment.port, function (err: any) {
         if (err) {
           console.log(err);
           return;
         }
         base.console.success(`Server up on http://localhost:${environment.port}`);
-
       });
     });
-
   }
 
   private initializeIndex() {
@@ -54,7 +51,7 @@ export class Server {
   }
 
   private initializeMiddlewares() {
-    const middlewares = require('./middleware');
+    const middlewares = require('./middleware').default;
     
     middlewares.forEach((middleware) => {
       this.app.use(middleware);
@@ -64,7 +61,6 @@ export class Server {
 
   private initializeStaticPaths() {
     statics.map((staticRoute: iStaticRoute) => {
-
       this.app.use(staticRoute.route, express.static(staticRoute.path));
       base.console.success(`Applied static path "${staticRoute.route}"`);
     });
