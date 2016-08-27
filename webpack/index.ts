@@ -22,7 +22,7 @@ const {
 
 const polyfills = externals.getPolyfills(environment.ENV);
 
-const context = buildConfig['context'] || path.resolve(__dirname, '../')
+const context = buildConfig['context'] || __dirname;
 
 const webpackConfig = {
 
@@ -34,7 +34,7 @@ const webpackConfig = {
       polyfills.concat('./src/app/bootstrap'))
   },
 
-  context: context,
+  context: path.resolve(__dirname, '../'),
 
   plugins: [
     new AssetsPlugin({
@@ -51,8 +51,8 @@ const webpackConfig = {
       manifest: externals.getManifest('polyfills'),
     }),
     new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
-    new ProgressBarPlugin({}),
-    new ForkCheckerPlugin(),
+    //new ProgressBarPlugin({}),
+    //new ForkCheckerPlugin(),
     function () {
       this.plugin("done", function (stats) {
         if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
