@@ -1,4 +1,5 @@
 import config from '../../webpack';
+import { RequestHandler } from 'express';
 
 const base  = require ('../../.base');
 const webpack = require('webpack');
@@ -10,6 +11,6 @@ compiler.plugin('done', function() {
   base.console.success(`Bundled project in ${bundleTimer()} ms!`);
 });
 
-const middlewares:Array<Function> = [];
+const middlewares:RequestHandler[] = [];
 
 export default middlewares;

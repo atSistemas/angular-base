@@ -5,7 +5,7 @@ import * as path from 'path';
 import statics, { iStaticRoute } from './statics';
 import renderIndex from './templates';
 import environment from './environment';
-
+import configureMiddlewares from './middleware';
 import buildExternals from '../webpack/externals';
 import { RequestHandler } from 'express';
 
@@ -56,8 +56,7 @@ export class Server {
 
   private initializeMiddlewares() {
 
-    const middlewares = require('./middleware').default;
-
+    const middlewares: RequestHandler[] = configureMiddlewares();
     middlewares.forEach((middleware: RequestHandler) => {
       this.app.use(middleware);
       base.console.success(`Applied ${middleware.name || ''} middleware`);

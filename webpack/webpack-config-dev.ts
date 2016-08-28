@@ -5,10 +5,11 @@ export const devTool = 'source-map';
 
 export const entries = [
   'webpack/hot/dev-server',
-  'webpack-hot-middleware/client'
+  'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
 ];
 
 export const plugins = [
+
   new HotModuleReplacementPlugin(),
   new ForkCheckerPlugin()
 ];
