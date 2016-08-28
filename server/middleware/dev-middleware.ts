@@ -36,7 +36,7 @@ const serverOptions = {
 
 const devMiddleware = webpackDevMiddleware(compiler, serverOptions);
 const hotMiddleware = webpackHotMiddleware(compiler, {
-  log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+  log: false, path: '/__webpack_hmr', heartbeat: 10 * 1000
 });
 const externalsMiddleware = new ExternalsMiddleware('\/externals\/*');
 const middlewares: RequestHandler[] = [
