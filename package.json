@@ -38,7 +38,7 @@
     "create:typings": "rimraf typings/ && typings install",
     "postinstall": "npm run create:typings && npm run yo && npm run test:coverage"
   },
-  "polyfills": [
+  "_polyfills": [
     "core-js/es6/symbol",
     "core-js/es6/object",
     "core-js/es6/function",
@@ -106,6 +106,7 @@
     "eslint": "^3.2.2",
     "ignore-loader": "^0.1.1",
     "json-loader": "^0.5.4",
+    "path-to-regexp": "^1.5.3",
     "perfy": "^1.1.2",
     "progress-bar-webpack-plugin": "^1.9.0",
     "raw-loader": "^0.5.1",
