@@ -1,5 +1,7 @@
 import * as helpers from './helpers';
+import * as path from 'path';
 import environment from '../../server/environment';
+import * as pathToRegExp from 'path-to-regexp';
 
 export * from './helpers';
 
@@ -27,8 +29,29 @@ interface iManifests {
     polyfills: iManifest
 }
 
-export const externalsPath:string = 'dist/externals';
-export const assetsPath:string = 'dist';
+export const externalsPath: string = 'dist/externals';
+export const assetsPath: string = 'dist';
+
+export class ExternalsMiddleware {
+    constructor(pathExp: string) {
+        return function externalsMiddleware(req, res, next) {
+            
+            const pathRegEx = new RegExp(pathToRegExp(pathExp));
+
+            if (pathRegEx.test(req.url)) {
+                var files = req.path.split('/');
+                var chunk = files[files.length - 1].replace('.js', '');
+                try {
+                    res.sendFile(path.resolve(helpers.root(externalsPath), helpers.getExternals(chunk)));
+                } catch(e) {
+                    next();
+                }
+            } else {
+                next();
+            }
+        }
+    }
+}
 
 export default function buildExternals(): PromiseLike<iManifests> {
 

@@ -8,11 +8,11 @@ export interface iStaticRoute {
 };
 
 const common:iStaticRoute[] = [
-  { route: '/mocks', path: path.join(__dirname, '../../src/app/api/mocks') }
+  { route: '/mocks', path: path.join(__dirname, '..', '..', 'src/app/api/mocks') }
 ];
 
 const development:iStaticRoute[] = [
-  { route: '/', path: path.join(__dirname, '..', '..', 'src', 'app') },
+  { route: '/externals', path: path.join(__dirname, '..', '..', 'dist', 'externals') }
 ];
 
 const production:iStaticRoute[] = [

@@ -1,15 +1,16 @@
 import config from '../../webpack';
+import { ExternalsMiddleware } from '../../webpack/externals';
 
 const base = require('../../.base');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-
 const bundleTimer = base.timer('bundleStart');
+
 const compiler = webpack(config);
 
 base.console.info(`Bundling project...`);
-compiler.plugin('done', function() {
+compiler.plugin('done', () => {
   let timing = bundleTimer();
   base.console.success(`Bundled project in ${timing.time} seconds`);
 });
@@ -28,11 +29,12 @@ const serverOptions = {
 };
 
 const devMiddleware = webpackDevMiddleware(compiler, serverOptions);
-const hotMiddleware = webpackHotMiddleware(compiler);
-
-const middlewares:Array<Function> = [
-    hotMiddleware,
-    devMiddleware
+const hotMiddleware = webpackHotMiddleware(compiler, { log: false });
+const externalsMiddleware = new ExternalsMiddleware('\/externals\/*');
+const middlewares: Array<Function> = [
+  externalsMiddleware,
+  hotMiddleware,
+  devMiddleware
 ];
 
 export default middlewares;

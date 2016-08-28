@@ -3,7 +3,7 @@ import * as path from 'path';
 import { iManifest, externalsPath, assetsPath } from './index';
 
 export function getPolyfills(env?:any): Array<string> {
-    return require('../../package.json').polyfills;
+    return require('../../package.json')._polyfills;
 }
 
 export function getVendorModules(env?: any): Array<string> {
@@ -21,7 +21,7 @@ export function getManifest(__path: string): iManifest {
         .replace(/}(.*[\n\r]\s*)}(.*[\n\r]\s*)}"activeExports": \[\]/, ''));
     return manifest;
 }
-export function getDllAssets(chunk: string): string {
+export function getExternals(chunk: string): string {
     var assets = require(root(`${externalsPath}/webpack-assets.json`));
     // {"vendor":{"js":"vendor.js"},"polyfills":{"js":"polyfills.js"}}
     return assets[chunk]['js']
