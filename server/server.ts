@@ -1,9 +1,13 @@
+///<reference path="../node_modules/@types/node/index.d.ts"/>
+
 import * as express from "express";
 import * as path from 'path';
 import statics, { iStaticRoute } from './statics';
 import renderIndex from './templates';
 import environment from './environment';
+
 import buildExternals from '../webpack/externals';
+import { RequestHandler } from 'express';
 
 const base = require('../.base');
 
@@ -51,9 +55,10 @@ export class Server {
   }
 
   private initializeMiddlewares() {
+
     const middlewares = require('./middleware').default;
-    
-    middlewares.forEach((middleware) => {
+
+    middlewares.forEach((middleware: RequestHandler) => {
       this.app.use(middleware);
       base.console.success(`Applied ${middleware.name || ''} middleware`);
     });

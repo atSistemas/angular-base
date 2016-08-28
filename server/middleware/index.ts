@@ -5,8 +5,10 @@ import { RequestHandler } from 'express';
 
 const compression = require('compression');
 
-const commonMiddlewares: Array<Function> = [compression()];
+const commonMiddlewares: RequestHandler[] = [
+    compression()
+];
 
-const middlewares:Array<Function> = commonMiddlewares.concat((environment.ENV === envConstants.DEVELOPMENT) ? devMiddleware : prodMiddleware);
+const middlewares: RequestHandler[] = commonMiddlewares.concat((environment.ENV === envConstants.DEVELOPMENT) ? devMiddleware : prodMiddleware);
 
 export default middlewares;
