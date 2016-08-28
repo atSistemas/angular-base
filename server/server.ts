@@ -28,8 +28,8 @@ export class Server {
   private configure() {
 
     buildExternals().then(() => {
-      this.initializeStaticPaths();
       this.initializeMiddlewares();
+      this.initializeStaticPaths();
       this.initializeIndex();
       this.app.listen(environment.port, function (err: any) {
         if (err) {
