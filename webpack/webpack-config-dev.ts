@@ -3,6 +3,11 @@ const { HotModuleReplacementPlugin } = require('webpack');
 
 export const devTool = 'source-map';
 
+export const entries = [
+  'webpack/hot/dev-server',
+  'webpack-hot-middleware/client'
+];
+
 export const plugins = [
   new HotModuleReplacementPlugin(),
   new ForkCheckerPlugin()
