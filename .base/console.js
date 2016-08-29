@@ -8,7 +8,7 @@ exports.colors = {
 };
 
 exports.symbols = {
-  ok: '✓',
+  success: '✓',
   err: '✖',
   info: 'i',
   dot: '․',
@@ -16,7 +16,7 @@ exports.symbols = {
 };
 
 if (process.platform === 'win32') {
-  exports.symbols.ok = '\u221A';
+  exports.symbols.success = '\u221A';
   exports.symbols.err = '\u00D7';
   exports.symbols.info = 'i';
   exports.symbols.dot = '.';
@@ -46,6 +46,18 @@ exports.color = function (type, str) {
   return '\u001b[' + exports.colors[type] + 'm' + str + '\u001b[0m';
 };
 
+function printLog(type, args) {
+
+  let decorators = [' ', exports.color(type, exports.symbols[type]), '[BASE]'].join(' ');
+  
+  if(typeof args[0] !== 'object') {
+    args[0] = decorators + ' ' + args[0];
+  } else {
+    args.unshift(decorators)
+  }
+  return console.log.apply(console, args)
+}
+
 exports.line = function (str) {
    const args = Array.prototype.slice.call(arguments);
   return console.log.apply(console, [exports.symbols.CR].concat(ars).concat(exports.symbols.CR));
@@ -53,17 +65,17 @@ exports.line = function (str) {
 
 exports.info = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [' ', exports.color('info', exports.symbols.info), '[BASE] '].concat(args));
+  return printLog('info', args);
 };
 
 exports.success = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [' ', exports.color('success', exports.symbols.ok), '[BASE] '].concat(args));
+  return printLog('success', args);
 };
 
 exports.error = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [' ', exports.color('error', exports.symbols.error), '[BASE] '].concat(args));
+  return printLog('error', args);
 };
 
 exports.clear = function () {
