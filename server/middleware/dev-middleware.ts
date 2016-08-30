@@ -1,8 +1,8 @@
 ///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { ExternalsMiddleware } from '../../webpack/externals';
 import { RequestHandler } from 'express';
+import * as base from '../../.base';
 
-const base = require('../../.base');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');

@@ -8,8 +8,7 @@ import environment from './environment';
 import configureMiddlewares from './middleware';
 import buildExternals from '../webpack/externals';
 import { RequestHandler } from 'express';
-
-const base = require('../.base');
+import * as base from '../.base';
 
 const context = 'server';
 

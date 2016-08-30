@@ -5,10 +5,9 @@ import * as helpers from './helpers';
 import * as path from 'path';
 import environment from '../../server/environment';
 import * as pathToRegExp from 'path-to-regexp';
-
+import * as base from '../../.base';
 export * from './helpers';
 
-const base = require('../../.base');
 const webpack = require('webpack');
 const webpackConfig = require('../webpack-externals');
 

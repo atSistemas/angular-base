@@ -4,8 +4,8 @@ import * as path from 'path';
 import environment from '../server/environment';
 import buildConfig from './webpack-config';
 import * as externals from './externals';
+import * as base from '../.base';
 
-const base = require('../.base');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { ConcatSource } = require('webpack-sources');
 const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');

@@ -1,6 +1,6 @@
 ///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { RequestHandler } from 'express';
-const base  = require ('../../.base');
+import * as base from '../../.base';
 const webpack = require('webpack');
 
 export default function():RequestHandler[] {
