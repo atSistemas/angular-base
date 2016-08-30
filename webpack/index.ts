@@ -1,3 +1,5 @@
+/// <reference path="./webpack.d.ts" />
+/// <reference path="../node_modules/@types/node/index.d.ts"/>
 import * as path from 'path';
 import environment from '../server/environment';
 import buildConfig from './webpack-config';
