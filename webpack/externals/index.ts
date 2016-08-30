@@ -56,10 +56,9 @@ export class ExternalsMiddleware {
 export default function buildExternals(): PromiseLike<iManifests> {
 
     function getManifests(): iManifests {
-        let vendor: iManifest = helpers.getManifest('vendor');
-        let polyfills: iManifest = helpers.getManifest('polyfills');
-
-        return { vendor: vendor, polyfills: polyfills };
+            let vendor: iManifest = helpers.getManifest('vendor');
+            let polyfills: iManifest = helpers.getManifest('polyfills');
+            return { vendor: vendor, polyfills: polyfills };
     }
 
     return new Promise((resolve, reject) => {
