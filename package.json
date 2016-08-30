@@ -35,8 +35,7 @@
     "postYeomanGenerator": "npm run regenerate && npm run start",
     "yo": "npm link src/conf/.react-base/templates/generator-react-base",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "create:typings": "rimraf typings/ && typings install",
-    "postinstall": "npm run create:typings && npm run yo && npm run test:coverage"
+    "postinstall": "npm run yo && npm run test:coverage"
   },
   "_polyfills": [
     "core-js/es6/symbol",
