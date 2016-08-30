@@ -11,7 +11,7 @@ export default function configureMiddlewares(): RequestHandler[] {
         compression()
     ];
 
-    const middlewares: RequestHandler[] = commonMiddlewares.concat((environment.ENV === envConstants.DEVELOPMENT) ? devMiddleware : prodMiddleware);
+    const middlewares: RequestHandler[] = commonMiddlewares.concat((environment.ENV === envConstants.DEVELOPMENT) ? devMiddleware() : prodMiddleware());
 
     return middlewares;
 }
