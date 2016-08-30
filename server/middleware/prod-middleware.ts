@@ -1,4 +1,4 @@
-
+///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { RequestHandler } from 'express';
 const base  = require ('../../.base');
 const webpack = require('webpack');

@@ -1,4 +1,4 @@
-
+///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { ExternalsMiddleware } from '../../webpack/externals';
 import { RequestHandler } from 'express';
 
