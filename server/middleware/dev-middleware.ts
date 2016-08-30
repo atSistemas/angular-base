@@ -1,27 +1,15 @@
 ///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { ExternalsMiddleware } from '../../webpack/externals';
 import { RequestHandler } from 'express';
-import * as base from '../../.base';
+import timedCompiler from './helpers';
 
-const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const perfy = require('perfy');
 
 export default function():RequestHandler[] {
 
     const config = require('../../webpack').default;  
-    const compiler = webpack(config);
-
-    compiler.plugin('compile', function () {
-      perfy.start('build');
-      base.console.info('Bundling project...');
-    });
-
-    compiler.plugin('done', function () {
-      const timing = perfy.end('build');
-      base.console.success(`Bundled project in ${timing.time} seconds`);
-    });
+    const compiler = timedCompiler(config);
 
     const serverOptions = {
       hot: true,
