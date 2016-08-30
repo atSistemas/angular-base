@@ -1,3 +1,6 @@
+/// <reference path="../webpack.d.ts" />
+/// <reference path="../../node_modules/@types/node/index.d.ts"/>
+
 import * as helpers from './helpers';
 import * as path from 'path';
 import environment from '../../server/environment';
@@ -35,15 +38,15 @@ export const assetsPath: string = 'dist';
 export class ExternalsMiddleware {
     constructor(pathExp: string) {
         return function externalsMiddleware(req, res, next) {
-            
-            const pathRegEx = new RegExp(pathToRegExp(pathExp));
+
+            const pathRegEx: RegExp = pathToRegExp(pathExp);
 
             if (pathRegEx.test(req.url)) {
                 var files = req.path.split('/');
                 var chunk = files[files.length - 1].replace('.js', '');
                 try {
                     res.sendFile(path.resolve(helpers.root(externalsPath), helpers.getExternals(chunk)));
-                } catch(e) {
+                } catch (e) {
                     next();
                 }
             } else {
@@ -56,9 +59,9 @@ export class ExternalsMiddleware {
 export default function buildExternals(): PromiseLike<iManifests> {
 
     function getManifests(): iManifests {
-            let vendor: iManifest = helpers.getManifest('vendor');
-            let polyfills: iManifest = helpers.getManifest('polyfills');
-            return { vendor: vendor, polyfills: polyfills };
+        let vendor: iManifest = helpers.getManifest('vendor');
+        let polyfills: iManifest = helpers.getManifest('polyfills');
+        return { vendor: vendor, polyfills: polyfills };
     }
 
     return new Promise((resolve, reject) => {
