@@ -30,7 +30,6 @@ export class Server {
   }
 
   private configure() {
-
     buildExternals().then(() => {
       this.initializeMiddlewares();
       this.initializeStaticPaths();
