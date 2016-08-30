@@ -6,7 +6,6 @@ import * as base from '../../.base';
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const bundleTimer = base.timer('bundleStart');
 const perfy = require('perfy');
 
 export default function():RequestHandler[] {
