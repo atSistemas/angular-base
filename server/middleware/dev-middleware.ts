@@ -11,7 +11,7 @@ const perfy = require('perfy');
 
 export default function():RequestHandler[] {
 
-    const config = require('../../webpack');  
+    const config = require('../../webpack').default;  
     const compiler = webpack(config);
 
     compiler.plugin('compile', function () {

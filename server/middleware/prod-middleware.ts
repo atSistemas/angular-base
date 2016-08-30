@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 export default function():RequestHandler[] {
    
-    const config = require('../../webpack');
+    const config = require('../../webpack').default;
 
     const bundleTimer = base.timer('bundleStart');
     const compiler = webpack(config);

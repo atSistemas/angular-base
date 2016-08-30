@@ -1,6 +1,6 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
 
-import * as express from "express";
+import * as express from 'express';
 import * as path from 'path';
 import statics, { iStaticRoute } from './statics';
 import renderIndex from './templates';
@@ -56,6 +56,7 @@ export class Server {
   private initializeMiddlewares() {
 
     const middlewares: RequestHandler[] = configureMiddlewares();
+    
     middlewares.forEach((middleware: RequestHandler) => {
       this.app.use(middleware);
       base.console.success(`Applied ${middleware.name || ''} middleware`);
