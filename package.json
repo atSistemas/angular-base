@@ -34,7 +34,7 @@
     "start:prod": "npm run build && cross-env NODE_ENV=production node server/",
     "postYeomanGenerator": "npm run regenerate && npm run start",
     "yo": "npm link src/conf/.react-base/templates/generator-react-base",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "_polyfills": [
     "core-js/es6/symbol",
