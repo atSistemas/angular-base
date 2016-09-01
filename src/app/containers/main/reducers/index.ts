@@ -4,16 +4,18 @@ import { MainModelInterface, MainModel, InitialState } from '../models';
 import CreateReducer from '../../../../base/shared/CreateReducer';
 
 const click = (state) => {
-  console.log('cliiiiick');
-  state.update('main', (value) => "eooo");
+  console.log('cliiiik');
+  return state.update('main', (value) => "eooo");
 }
 
-const request = (state) => {
-  console.log('requesssst');
+const request = (state, data) =>{
+  console.log('requeeeeeeest!!!');
+  return state;
 }
 
-const success = (state) =>{
-  console.log('sucessss');
+const success = (state, action, data) =>{
+  console.log('sucesssssss!');
+  return state.update('main', (value) => data);
 }
 
 const actionHandlers = {
