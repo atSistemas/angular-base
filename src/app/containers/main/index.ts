@@ -7,7 +7,7 @@ import { createEpicMiddleware } from 'redux-observable';
 
 import { MainActions } from './actions';
 import { MainService } from './services/main.service';
-import { MainTypes, MainModel, InitialState } from './models';
+import { MainModelInterface, MainModel, InitialState } from './models';
 export { MainDisplay } from './components';
 
 @Component({
@@ -17,7 +17,7 @@ export { MainDisplay } from './components';
 })
 
 export class MainContainer {
-  @select() main$: Observable<MainTypes>;
+  @select() main$: Observable<MainModelInterface>;
 
   public friends: Object[];
   public tags: string[];

@@ -1,6 +1,6 @@
 
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { MainTypes } from '../models';
+import { MainModelInterface } from '../models';
 
 @Component({
   selector: 'main-display',
@@ -8,5 +8,5 @@ import { MainTypes } from '../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainDisplay {
-  @Input() main: MainTypes;
+  @Input() main: MainModelInterface;
 }

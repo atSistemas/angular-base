@@ -1,4 +1,4 @@
-export const Types = {
+export const actionTypes = {
   CLICK: 'CLICK',
   MAIN_CONTAINER: 'MAIN_CONTAINER',
   GOTO_MAINCONTAINER2: 'GOTO_MAINCONTAINER2'

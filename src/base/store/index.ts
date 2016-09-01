@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { RootReducer } from '../reducers';
 import * as createLogger from 'redux-logger';
-import { MainTypes } from '../models';
+import { MainModelInterface } from '../models';
 
 const middleware = [];
 
 export interface AppState {
-  main?: MainTypes;
+  main?: MainModelInterface;
 };
 
 @Injectable()
@@ -18,9 +18,9 @@ export class Store {
 
     middleware.push(
       createLogger({
-      level: 'info',
-      collapsed: true,
-    }));
+        level: 'info',
+        collapsed: true,
+      }));
 
     this.ngRedux.configureStore(RootReducer, {}, middleware);
   }
