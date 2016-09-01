@@ -6,17 +6,27 @@ import { actionTypes } from '../action-types';
 @Injectable()
 export class MainActions {
 
-  constructor(private ngRedux: NgRedux<AppState>) {}
+  constructor(private ngRedux: NgRedux<AppState>) {
+    this.dispatch = this.ngRedux.dispatch;
+  }
 
   load() {
-    this.ngRedux.dispatch({ type: actionTypes.MAIN_CONTAINER });
+    this.dispatch({ type: actionTypes.MAIN_CONTAINER });
   }
 
   gotoTo() {
-    this.ngRedux.dispatch({ type: actionTypes.GOTO_MAINCONTAINER2 });
+    this.dispatch({ type: actionTypes.GOTO_MAINCONTAINER2 });
   }
 
   click() {
-    this.ngRedux.dispatch({ type: actionTypes.CLICK });
+    this.dispatch({ type: actionTypes.CLICK });
+  }
+
+  request(){
+    this.dispatch({ type: actionTypes.MAIN_REQUEST });
+  }
+
+  sucess(){
+    this.dispatch({ type: actionTypes.MAIN_SUCCESS });
   }
 }
