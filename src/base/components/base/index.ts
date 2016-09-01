@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
@@ -10,8 +9,6 @@ import { AppState, Store } from '../../store';
 
 @Component({
   selector: 'base-app',
-  directives: [ROUTER_DIRECTIVES],
-  pipes: [ AsyncPipe ],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './index.html'
 })

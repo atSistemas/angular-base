@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
@@ -14,7 +13,6 @@ export { MainDisplay } from './components';
 @Component({
   selector: 'main-container',
   providers: [MainActions, MainService],
-  pipes: [AsyncPipe],
   templateUrl: './main.html'
 })
 
