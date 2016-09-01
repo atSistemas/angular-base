@@ -7,11 +7,29 @@ import { Observable } from 'rxjs';
 export class MainService {
   constructor(private http: Http) {}
 
-  getMain(): Promise<any> {
-    return this.http
-      .get('mocks/main.json')
-      .toPromise()
-      .then((res) => res.json())
-      .catch((res) => res.json());
+  getMain(friends, tags) {
+    const setDatas = (data) => {
+      data.friends.forEach((friend) => {
+        friends.push(friend);
+      });
+
+      data.tags.forEach((tag) => {
+        tags.push(tag);
+      });
+    }
+
+    const thenPromise = (res) => {
+      res
+      .json()
+      .forEach((data) => {
+        setDatas(data);
+      });
+    }
+
+    this.http
+    .get('mocks/main.json')
+    .toPromise()
+    .then(thenPromise)
+    .catch((res) => console.log(res));
   }
 }
