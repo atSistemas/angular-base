@@ -25,21 +25,12 @@ export class MainContainer {
   constructor(
     private action: MainActions,
     private service: MainService
-  ) { }
+  ) {
+    this.friends = [];
+    this.tags = [];
+  }
 
   ngOnInit(): void {
-    let friends = [];
-    let tags = [];
-
-    this.service.getMain()
-    .then((res) => {
-      res.forEach((data) => {
-        friends = friends.concat(data.friends);
-        tags = tags.concat(data.tags);
-      });
-
-      this.friends = friends;
-      this.tags = tags;
-    });
+    this.service.getMain(this.friends, this.tags);
   }
 }
