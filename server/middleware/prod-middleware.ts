@@ -7,11 +7,11 @@ export default function():RequestHandler[] {
    
     const config = require('../../webpack').default;
 
-    const bundleTimer = base.timer('bundleStart');
+    
     const compiler = webpack(config);
 
     compiler.plugin('done', function() {
-      base.console.success(`Bundled project in ${bundleTimer()} ms!`);
+      base.console.success(`Bundled project in  ms!`);
     });
 
     const middlewares:RequestHandler[] = [];
