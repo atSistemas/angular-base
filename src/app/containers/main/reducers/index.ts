@@ -17,8 +17,8 @@ const success = (state) =>{
 }
 
 const actionHandlers = {
-  [actionTypes.CLICK]: click
-  [actionTypes.MAIN_REQUEST]: request
+  [actionTypes.CLICK]: click,
+  [actionTypes.MAIN_REQUEST]: request,
   [actionTypes.MAIN_SUCCESS]: success
 }
 
