@@ -12,7 +12,8 @@
     "baseUrl": "./src",
     "paths": {},
     "types": [
-      "core-js"
+      "core-js",
+      "node"
     ]
   },
   "exclude": [
