@@ -14,7 +14,6 @@ export default function renderIndex() {
       ${ style}
     </head>
     <body>
-    <div id="root"></div>
     <base-app>
     Loading....
     </base-app>

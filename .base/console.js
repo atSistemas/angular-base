@@ -8,15 +8,15 @@ exports.colors = {
 };
 
 exports.symbols = {
-  ok: '✓',
-  err: '✖',
+  success: '✓',
+  error: '✖',
   info: 'i',
   dot: '․',
   CR: '\u000A'
 };
 
 if (process.platform === 'win32') {
-  exports.symbols.ok = '\u221A';
+  exports.symbols.success = '\u221A';
   exports.symbols.err = '\u00D7';
   exports.symbols.info = 'i';
   exports.symbols.dot = '.';
@@ -35,26 +35,38 @@ exports.color = function (type, str) {
   return '\u001b[' + exports.colors[type] + 'm' + str + '\u001b[0m';
 };
 
-exports.line = function () {
-  const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [exports.symbols.CR].concat(args).concat(exports.symbols.CR));
+function printLog(type, args) {
+
+  let decorators = [' ', '[BASE]', exports.color(type, exports.symbols[type])].join(' ');
+  
+  if(typeof args[0] !== 'object') {
+    args[0] = decorators + ' ' + args[0];
+  } else {
+    args.unshift(decorators)
+  }
+  return console.log.apply(console, args)
+}
+
+exports.line = function (str) {
+   const args = Array.prototype.slice.call(arguments);
+  return console.log.apply(console, [exports.symbols.CR].concat(ars).concat(exports.symbols.CR));
 };
 
-exports.info = function () {
+exports.info = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, ['[BASE]', exports.color('info', exports.symbols.info)].concat(args));
+  return printLog('info', args);
 };
 
-exports.success = function () {
+exports.success = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, ['[BASE]', exports.color('success', exports.symbols.ok)].concat(args));
+  return printLog('success', args);
 };
 
-exports.error = function () {
+exports.error = function (str) {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, ['[BASE]', exports.color('error', exports.symbols.error)].concat(args));
+  return printLog('error', args);
 };
 
 exports.clear = function () {
-  process.stdout.write("\x1B[2J\x1B[0f");
+  process.stdout.write("\x1B[2J\x1B[0f");//\u001b[2J\u001b[0;0H");
 };

@@ -3,5 +3,5 @@ const timer = require('./timer');
 
 module.exports = {
     console: console,
-    timer: timer   
+    timer: timer
 };
