@@ -27,10 +27,12 @@ export class MainService {
       data.tags.forEach((tag) => {
         tags.push(tag);
       });
+
+      console.log(44444);
+      this.dispatch({ type: actionTypes.MAIN_SUCCESS, payload: data  }))
     }
 
     const thenPromise = (res) => {
-      this.dispatch({ type: actionTypes.MAIN_SUCCESS }))
       res
       .json()
       .forEach((data) => {
