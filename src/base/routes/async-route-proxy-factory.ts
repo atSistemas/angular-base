@@ -1,3 +1,5 @@
+///<reference path="../../../node_modules/@types/systemjs/index.d.ts"/>
+
 import {Component, ComponentFactoryResolver, ViewContainerRef, Injector, Type, ElementRef} from '@angular/core';
 import { Route } from '@angular/router';
 
