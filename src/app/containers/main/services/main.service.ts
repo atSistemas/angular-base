@@ -4,10 +4,11 @@ import 'rxjs/add/operator/toPromise';
 import { NgRedux } from 'ng2-redux';
 import { Observable } from 'rxjs';
 import { actionTypes } from '../action-types';
-
+import { AppState } from '../../../../base';
 
 @Injectable()
 export class MainService {
+  private dispatch: Function
   constructor(
     private ngRedux: NgRedux<AppState>,
     private http: Http
@@ -17,7 +18,7 @@ export class MainService {
 
   getMain(friends, tags) {
 
-    this.dispatch({ type: actionTypes.MAIN_REQUEST }));
+    this.dispatch({ type: actionTypes.MAIN_REQUEST });
 
     const setDatas = (data) => {
       data.friends.forEach((friend) => {
@@ -30,17 +31,18 @@ export class MainService {
     }
 
     const thenPromise = (res) => {
-      this.dispatch({ type: actionTypes.MAIN_SUCCESS }))
+      this.dispatch({ type: actionTypes.MAIN_SUCCESS });
       res
-      .json()
-      .forEach((data) => {
-        setDatas(data);
-      });
+        .json()
+        .forEach((data) => {
+          setDatas(data);
+        });
     }
 
     this.http
-    .get('mocks/main.json')
-    .toPromise()
-    .then(thenPromise)
-    .catch((res) => console.log(res));
+      .get('mocks/main.json')
+      .toPromise()
+      .then(thenPromise)
+      .catch((res) => console.log(res));
+  }
 }
