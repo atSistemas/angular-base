@@ -31,9 +31,9 @@ const webpackConfig = {
   devtool: buildConfig.devTool || 'eval',
 
   entry: {
-    main: (buildConfig['entries'] ?
-      polyfills.concat('./src/app/bootstrap').concat(buildConfig['entries']) :
-      polyfills.concat('./src/app/bootstrap'))
+    application: (buildConfig['entries'] ?
+      polyfills.concat('./src/app').concat(buildConfig['entries']) :
+      polyfills.concat('./src/app'))
   },
 
   context: path.resolve(__dirname, '../'),
