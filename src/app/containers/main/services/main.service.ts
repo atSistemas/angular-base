@@ -1,48 +1,34 @@
+import 'rxjs';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/catch';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
-import { NgRedux } from 'ng2-redux';
-import { Observable } from 'rxjs';
+import { Http } from '@angular/http';
+import { ActionsObservable } from 'redux-observable';
+import { Observable } from 'rxjs/Observable';
+
 import { actionTypes } from '../action-types';
+import { IPayloadAction } from '../actions/';
+import { AppState } from '../../../../base/store';
 
 
 @Injectable()
 export class MainService {
-  constructor(
-    private ngRedux: NgRedux<AppState>,
-    private http: Http
-  ) {
-    this.dispatch = this.ngRedux.dispatch;
-  }
+  constructor(private http: Http) {}
 
-  getMain(friends, tags) {
-
-    this.dispatch({ type: actionTypes.MAIN_REQUEST }));
-
-    const setDatas = (data) => {
-      data.friends.forEach((friend) => {
-        friends.push(friend);
-      });
-
-      data.tags.forEach((tag) => {
-        tags.push(tag);
-      });
-
-      console.log(44444);
-      this.dispatch({ type: actionTypes.MAIN_SUCCESS, payload: data  }))
-    }
-
-    const thenPromise = (res) => {
-      res
-      .json()
-      .forEach((data) => {
-        setDatas(data);
+  getData = (action$: Observable<IPayloadAction>) => {
+    //FIXME SHOULD USE ofType
+    return action$.filter(({ type }) => type === actionTypes.MAIN_REQUEST)
+    .flatMap(({payload}) => {
+      return this.http.get('mocks/main.json')
+        .map(result => ({
+          type: actionTypes.MAIN_SUCCESS,
+          payload: result.json()
+        }))
+        .catch(error => Observable.of({
+          type: actionTypes.MAIN_ERROR
+        }));
       });
     }
-
-    this.http
-    .get('mocks/main.json')
-    .toPromise()
-    .then(thenPromise)
-    .catch((res) => console.log(res));
 }

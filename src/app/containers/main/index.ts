@@ -3,11 +3,11 @@ import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
-import { createEpicMiddleware } from 'redux-observable';
 
 import { MainActions } from './actions';
 import { MainService } from './services/main.service';
 import { MainModelInterface, MainModel, InitialState } from './models';
+
 export { MainDisplay } from './components';
 
 @Component({
@@ -31,6 +31,6 @@ export class MainContainer {
   }
 
   ngOnInit(): void {
-    this.service.getMain(this.friends, this.tags);
+    this.action.mainRequest();
   }
 }

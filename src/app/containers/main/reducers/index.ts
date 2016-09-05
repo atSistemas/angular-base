@@ -14,7 +14,7 @@ const request = (state, data) =>{
 }
 
 const success = (state, action) =>{
-  console.log('sucesssssss!', state, action.payload);
+  console.log('sucesssssss!', action.payload);
   const data = action.payload;
   return state.update('main', (value) => data);
 }
