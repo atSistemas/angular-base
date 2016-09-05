@@ -1,16 +1,16 @@
 import { TypedRecord } from 'typed-immutable-record';
 import { makeTypedFactory } from 'typed-immutable-record';
 
-export interface MainModelInterface {
-  main: String;
+export interface Main2ModelInterface {
+  main2: String;
 };
 
-export interface MainModel extends TypedRecord<MainModel>,
-  MainModelInterface {
+export interface Main2Model extends TypedRecord<MainModel>,
+  Main2ModelInterface {
 };
 
-const MainModelFactory = makeTypedFactory<MainModelInterface, MainModel>({
-  main: 'Maaaain!'
+const Main2ModelFactory = makeTypedFactory<Main2ModelInterface, Main2Model>({
+  main2: 'Maaaain 2!'
 });
 
-export const InitialState = MainModelFactory();
+export const InitialState = Main2ModelFactory();

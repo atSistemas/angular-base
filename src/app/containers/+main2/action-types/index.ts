@@ -1,3 +1,3 @@
-export const Types = {
+export const actionTypes = {
  MAIN_CONTAINER: 'MAIN_CONTAINER'
 };

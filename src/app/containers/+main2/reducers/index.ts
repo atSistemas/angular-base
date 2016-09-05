@@ -1,16 +1,16 @@
 import { Action } from 'redux';
-import { Types } from '../types';
-import { MainModel, InitialState } from '../models';
+import { actionTypes } from '../action-types';
+import { Main2ModelInterface, Main2Model, InitialState } from '../models';
+import CreateReducer from '../../../../base/shared/CreateReducer';
 
-export function MainReducer(
-  state: MainModel = InitialState,
-  action: Action): MainModel {
+const returnToMain = (state) => {
+  console.log('return to main');
+  return state;
+}
 
-  switch (action.type) {
-    case Types.MAIN_CONTAINER:
-      return state.update('main', (value) => "eooo");
+const actionHandlers = {
+  [actionTypes.MAIN_CONTAINER]: returnToMain
+}
 
-   default:
-     return state;
- }
-};
+const Main2Reducer = CreateReducer<Main2ModelInterface>(actionHandlers, InitialState);
+export { Main2Reducer }
