@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { MainContainer, MainContainer2 } from '../containers';
-import { asyncRouteProxyFactory } from '../../base';
+import { MainContainer } from '../containers';
 
 export const AppRoutingProviders: any[] = [
 
@@ -11,9 +10,9 @@ export const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: MainContainer
-  },
-  asyncRouteProxyFactory({
-    path: '/main2',
-    provide: m => m.mainContainer2
-  })
+  }, {
+    path: 'container2',
+    pathMatch: 'full',
+    loadChildren: () => System.import('../containers/+main2'),
+  }
 ];
