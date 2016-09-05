@@ -9,11 +9,11 @@ import { DevToolsExtension, NgRedux } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 import { Routing, RoutingProviders } from '../base';
 import { Store } from '../base/store';
-import { MainContainer, MainContainer2, MainDisplay } from './containers'
+import { MainContainer, MainDisplay } from './containers'
 
 @NgModule({
     imports:      [ BrowserModule, HttpModule, Routing ],
-    declarations: [ BaseApp, MainContainer, MainContainer2, MainDisplay ],
+    declarations: [ BaseApp, MainContainer, MainDisplay ],
     providers:    [ RoutingProviders, Store, NgRedux, NgReduxRouter, DevToolsExtension],
     bootstrap:    [ BaseApp ]
 })
