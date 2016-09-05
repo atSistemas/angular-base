@@ -10,4 +10,4 @@ import { MainContainer2 } from './main2';
     ])
   ]
 })
-export class Main2Module { }
+export default class Main2Module { }
