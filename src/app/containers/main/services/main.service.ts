@@ -17,9 +17,8 @@ import { AppState } from '../../../../base/store';
 export class MainService {
   constructor(private http: Http) {}
 
-  getData = (action$: Observable<IPayloadAction>) => {
-    //FIXME SHOULD USE ofType
-    return action$.filter(({ type }) => type === actionTypes.MAIN_REQUEST)
+  getData = (action$: ActionsObservable) => {
+    return action$.ofType(actionTypes.MAIN_REQUEST)
     .flatMap(({payload}) => {
       return this.http.get('mocks/main.json')
         .map(result => ({
