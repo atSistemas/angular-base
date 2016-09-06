@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+
 import { actionTypes } from '../action-types';
 import { MainModelInterface, MainModel, InitialState } from '../models';
 import CreateReducer from '../../../../base/shared/CreateReducer';
@@ -16,7 +17,8 @@ const request = (state, data) =>{
 const success = (state, action) =>{
   console.log('sucesssssss!', action.payload);
   const data = action.payload;
-  return state.update('main', (value) => data);
+  return state.update('main', (value) => action.payload);
+
 }
 
 const actionHandlers = {
