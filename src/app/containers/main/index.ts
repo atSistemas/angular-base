@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
@@ -16,19 +16,16 @@ export { MainDisplay } from './components';
   templateUrl: './main.html'
 })
 
-export class MainContainer {
-  @select() main$: Observable<MainModelInterface>;
+export class MainContainer implements OnInit{
+  @select(state=>state.main) main$:Observable<any>
+  @select(state=>state.main) main:Observable<any>
+  //@select(['main','main']) main$;
 
-  public friends: Object[];
-  public tags: string[];
 
   constructor(
     private action: MainActions,
     private service: MainService
-  ) {
-    this.friends = [];
-    this.tags = [];
-  }
+  ) {}
 
   ngOnInit(): void {
     this.action.mainRequest();
