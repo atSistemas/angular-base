@@ -23,11 +23,11 @@ export class MainContainer implements OnInit{
 
 
   constructor(
-    private action: MainActions,
+    private actions: MainActions,
     private service: MainService
   ) {}
 
   ngOnInit(): void {
-    this.action.mainRequest();
+    this.actions.mainRequest();
   }
 }
