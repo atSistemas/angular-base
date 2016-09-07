@@ -13,6 +13,6 @@ export const routes: Routes = [
   }, {
     path: 'container2',
     pathMatch: 'full',
-    loadChildren: () => System.import('../containers/+main2'),
+    loadChildren: () => System.import('../containers/+lazy'),
   }
 ];
