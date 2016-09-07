@@ -1,3 +1,7 @@
+import Enumerable from '../../../../base/shared/Enumerable';
+
 export const actionTypes = {
- MAIN_CONTAINER: 'MAIN_CONTAINER'
-};
+    LAZY_REQUEST:   'LAZY_REQUEST',
+    LAZY_SUCCESS:   'LAZY_SUCCESS',
+    LAZY_ERROR:     'LAZY_ERROR'
+}
