@@ -19,7 +19,7 @@ export class MainService {
 
   getData = (action$: ActionsObservable) => {
     return action$.ofType(actionTypes.MAIN_REQUEST)
-    .flatMap(({payload}) => {
+    .flatMap((/*{payload}*/) => {
       return this.http.get('mocks/main.json')
         .map(result => ({
           type: actionTypes.MAIN_SUCCESS,
