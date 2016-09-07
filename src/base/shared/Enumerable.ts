@@ -2,7 +2,6 @@ function Enumerable(...keyPairs: string[]): void;
 function Enumerable(keyPairs: { [id: string]: String; }): void;
 function Enumerable(keyPairs): void {
 	keyPairs = arguments.length === 1 ? keyPairs : Array.prototype.slice.call(arguments);
-	console.log(keyPairs)
 	if (Array.isArray(keyPairs)) {
 		for (let i = 0; i < keyPairs.length; i++) {
 			this[keyPairs[i]] = keyPairs[i];
