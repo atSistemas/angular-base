@@ -3,30 +3,22 @@ import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 
-import { MainService2 } from './services/main2.service';
+import { LazyService } from './services/lazy-service';
 
 @Component({
-  selector: 'main-container2',
-  templateUrl: './main.html',
-  providers: [MainService2],
+  selector: 'lazy-container',
+  templateUrl: './lazy.html',
+  providers: [LazyService],
 })
 
-export class MainContainer2 {
+export class LazyContainer {
   private devTools: DevToolsExtension;
   private ngReduxRouter: NgReduxRouter;
 
   public people: Object[];
 
-  constructor(
-      private service: MainService2
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    let people = [];
-
-    this.service.getMain()
-    .then((res) => {
-      this.people = res;
-    });
   }
 }

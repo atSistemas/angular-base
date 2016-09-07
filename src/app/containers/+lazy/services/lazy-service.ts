@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class MainService2 {
+export class LazyService {
   constructor(private http: Http) {}
 
   getMain(): Promise<any> {
