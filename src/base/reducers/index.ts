@@ -5,7 +5,7 @@ import { combineEpics } from 'redux-observable';
 import { MainModelInterface, MainModel } from '../models';
 import { MainReducer } from '../../app/containers/main/reducers';
 import { AppState } from '../store';
-import { MainService } from '../../app/containers/main/services/main.service';
+import { MainService } from '../../app/containers/main/services/main-service';
 
 export interface rootReducer {
   main: MainModel;

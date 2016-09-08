@@ -5,7 +5,7 @@ import * as createLogger from 'redux-logger';
 import { MainModelInterface } from '../models';
 import { createEpicMiddleware } from 'redux-observable';
 import { createStore, applyMiddleware } from 'redux';
-import { MainService } from '../../app/containers/main/services/main.service';
+import { MainService } from '../../app/containers/main/services/main-service';
 import { LazyService } from '../../app/containers/+lazy/services/lazy-service';
 const middleware = [];
 

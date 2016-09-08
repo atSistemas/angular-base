@@ -5,7 +5,7 @@ import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
 
 import { MainActions } from './actions';
-import { MainService } from './services/main.service';
+import { MainService } from './services/main-service';
 import { MainModelInterface, MainModel, InitialState } from './models';
 
 export { MainDisplay } from './components';
