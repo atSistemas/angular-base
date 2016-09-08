@@ -1,85 +1,27 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
 import * as base from '../.base';
 import environment from '../server/environment';
+import * as common from './webpack-config-common';
 import { getPolyfills, getManifest, root } from './dll';
 const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
-const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
+const { HotModuleReplacementPlugin } = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 
 export const devtool = 'source-map';
 
-export const context = __dirname;
-
 export const entry = {
-  main: getPolyfills().concat(
-    './src/app/bootstrap',
+  main: common.entry.main.concat(
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
   )
 };
 
 export const plugins = [
-  new HotModuleReplacementPlugin(),
-  new AssetsPlugin({
-    path: root('dist'),
-    filename: 'webpack-assets.json',
-    prettyPrint: true
-  }),
-  new DllReferencePlugin({
-    context: context,
-    manifest: getManifest('vendor'),
-  }),
-  new DllReferencePlugin({
-    context: context,
-    manifest: getManifest('polyfills'),
-  }),
-  new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
-  //  TODO: Enable ForkCheckerPlugin as soon as the plugin is fixed
-  //new ForkCheckerPlugin(),
-  function () {
-    this.plugin("done", function (stats) {
-      if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
-        base.console.error(stats.compilation.errors);
-      }
-    });
-  }
-];
+  new HotModuleReplacementPlugin()
+].concat(common.plugins);
 
-export const preLoaders = [
-  {
-    test: /\.ts$/,
-    loader: 'string-replace-loader',
-    query: {
-      search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-      replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-      flags: 'g'
-    },
-    include: [root('src')]
-  },
-];
-export const loaders = [
-  {
-    test: /\.ts$/,
-    loaders: [
-      'awesome-typescript-loader',
-      'angular2-template-loader',
-      '@angularclass/hmr-loader'
-    ],
-    exclude: [/\.(spec|e2e|d)\.ts$/],
-    include: [root('./src')]
-  },
-  { test: /\.json$/, loader: 'json-loader', include: [root('./src')] },
-  { test: /\.html/, loader: 'raw-loader', include: [root('./src')] },
-  { test: /\.css$/, loader: 'raw-loader', include: [root('./src')] }
-  //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
-];
+export const preLoaders = common.preLoaders;
 
-export const postCss = function (webpack) {
-  return [
-    /*require("postcss-import")({ addDependencyTo: webpack }),
-    require('postcss-modules-extract-imports')(),
-    require("postcss-url")(),
-    require("postcss-cssnext")(),
-    require("postcss-reporter")()*/
-  ];
-}
+export const loaders = common.loaders;
+
+export const postCss = common.postCss;
