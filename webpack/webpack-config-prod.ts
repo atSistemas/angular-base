@@ -1,13 +1,23 @@
-const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const HotModuleReplacementPlugin = require('webpack').HotModuleReplacementPlugin;
+///<reference path="../node_modules/@types/node/index.d.ts"/>
+import environment from '../server/environment';
+import { getPolyfills } from './dll';
+const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 
-export const devTool = 'source-map';
+export const devtool = 'source-map';
+
+export const context = __dirname;
+
+export const entry = {
+  main: getPolyfills().concat(
+    './src/app/bootstrap'
+  )
+};
 
 export const plugins = [
-  new HotModuleReplacementPlugin(),
   new ForkCheckerPlugin()
 ];
 
+export const preLoaders = [];
 export const loaders = [
 
 ];
