@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { iManifest, externalsPath, assetsPath } from './index';
 
-export function getPolyfills(env?:any): Array<string> {
+export function getPolyfills(): string[] {
     return require('../../package.json')._polyfills;
 }
 

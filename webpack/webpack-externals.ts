@@ -34,7 +34,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
   return {
     devtool: '#source-map',
     entry: {
-      polyfills: getPolyfills(options),
+      polyfills: getPolyfills(),
       vendor: getVendorModules(options)
     },
     context: options.context || path.resolve(__dirname + '../'),
