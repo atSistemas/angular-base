@@ -31,7 +31,7 @@ interface iManifests {
     polyfills: iManifest
 }
 
-export const externalsPath: string = 'dist/externals';
+export const externalsPath: string = 'dist/dll';
 export const assetsPath: string = 'dist';
 
 export class ExternalsMiddleware {

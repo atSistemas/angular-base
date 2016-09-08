@@ -6,7 +6,7 @@ import statics, { iStaticRoute } from './statics';
 import renderIndex from './templates';
 import environment from './environment';
 import configureMiddlewares from './middleware';
-import buildExternals from '../webpack/externals';
+import buildExternals from '../webpack/dll';
 import { RequestHandler } from 'express';
 import * as base from '../.base';
 
