@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers, ReducersMapObject } from 'redux';
 import { routerReducer } from 'ng2-redux-router';
 import { combineEpics } from 'redux-observable';
 
@@ -18,7 +18,9 @@ export const RootEpic = combineEpics(
 );
 */
 
-export const RootReducer = combineReducers<AppState>({
+export const BaseReducers: ReducersMapObject = {
   main: MainReducer,
   router: routerReducer,
-});
+}
+
+export const RootReducer = combineReducers<AppState>(BaseReducers);
