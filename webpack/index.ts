@@ -3,7 +3,7 @@
 import * as path from 'path';
 import envConfig from './env-config';
 import * as base from '../.base';
-import { root as dllRoot } from './externals';
+import { root } from './dll';
 
 const webpackConfig = {
 
@@ -23,7 +23,7 @@ const webpackConfig = {
   },
   
   output: {
-    path: dllRoot('build'),
+    path: root('build'),
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',

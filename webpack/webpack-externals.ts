@@ -5,9 +5,7 @@ import * as path from 'path';
 import 'core-js/es6';
 import 'core-js/es7/reflect';
 import 'ts-helpers';
-import { root, externalsPath } from './externals';
-import { getPolyfills, getVendorModules } from './externals';
-// needed to create context for resolveNgRoute
+import { root, externalsPath, getPolyfills, getVendorModules } from './dll';
 
 const {
   ContextReplacementPlugin,

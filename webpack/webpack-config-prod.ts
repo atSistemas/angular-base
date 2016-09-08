@@ -1,6 +1,6 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
 import environment from '../server/environment';
-import { getPolyfills } from './externals';
+import { getPolyfills } from './dll';
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 
 export const devtool = 'source-map';

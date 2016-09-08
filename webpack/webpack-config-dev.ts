@@ -1,7 +1,7 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
 import * as base from '../.base';
 import environment from '../server/environment';
-import { getPolyfills, getManifest, root as dllRoot } from './externals';
+import { getPolyfills, getManifest, root } from './dll';
 const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -21,7 +21,7 @@ export const entry = {
 export const plugins = [
   new HotModuleReplacementPlugin(),
   new AssetsPlugin({
-    path: dllRoot('dist'),
+    path: root('dist'),
     filename: 'webpack-assets.json',
     prettyPrint: true
   }),
@@ -54,7 +54,7 @@ export const preLoaders = [
       replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
       flags: 'g'
     },
-    include: [dllRoot('src')]
+    include: [root('src')]
   },
 ];
 export const loaders = [
@@ -66,11 +66,11 @@ export const loaders = [
       '@angularclass/hmr-loader'
     ],
     exclude: [/\.(spec|e2e|d)\.ts$/],
-    include: [dllRoot('./src')]
+    include: [root('./src')]
   },
-  { test: /\.json$/, loader: 'json-loader', include: [dllRoot('./src')] },
-  { test: /\.html/, loader: 'raw-loader', include: [dllRoot('./src')] },
-  { test: /\.css$/, loader: 'raw-loader', include: [dllRoot('./src')] }
+  { test: /\.json$/, loader: 'json-loader', include: [root('./src')] },
+  { test: /\.html/, loader: 'raw-loader', include: [root('./src')] },
+  { test: /\.css$/, loader: 'raw-loader', include: [root('./src')] }
   //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
 ];
 
