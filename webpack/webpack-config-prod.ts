@@ -1,36 +1,21 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
 import environment from '../server/environment';
 import { getPolyfills } from './dll';
+import * as common from './webpack-config-common';
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 
 export const devtool = 'source-map';
 
-export const context = __dirname;
+export const context = common.context;
 
-export const entry = {
-  main: getPolyfills().concat(
-    './src/app/bootstrap'
-  )
-};
+export const entry = common.entry;
 
-export const plugins = [
-  new ForkCheckerPlugin()
-];
+export const plugins = common.plugins;
 
-export const preLoaders = [];
-export const loaders = [
+export const preLoaders = common.preLoaders;
+export const loaders = common.loaders;
 
-];
-
-export const postCss = function (webpack) {
-  return [
-    /*require("postcss-import")({ addDependencyTo: webpack }),
-    require('postcss-modules-extract-imports')(),
-    require("postcss-url")(),
-    require("postcss-cssnext")(),
-    require("postcss-reporter")()*/
-  ];
-}
+export const postCss = common.postCss;
 
 
 /*import * as path from 'path';
