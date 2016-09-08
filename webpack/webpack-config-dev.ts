@@ -9,6 +9,8 @@ const AssetsPlugin = require('assets-webpack-plugin');
 
 export const devtool = 'source-map';
 
+export const context = common.context;
+
 export const entry = {
   main: common.entry.main.concat(
     'webpack/hot/dev-server',
