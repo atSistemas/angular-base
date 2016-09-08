@@ -11,7 +11,7 @@ const request = (state, data) =>{
 const success = (state, action) =>{
   console.log('lazy sucesssssss!', action.payload);
   const data = action.payload;
-  return state.update('main', (value) => action.payload);
+  return state.update('lazy', (value) => action.payload);
 
 }
 

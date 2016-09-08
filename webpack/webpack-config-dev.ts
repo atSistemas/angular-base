@@ -12,7 +12,7 @@ export const entries = [
 export const plugins = [
 
   new HotModuleReplacementPlugin(),
-  new ForkCheckerPlugin()
+  //new ForkCheckerPlugin()
 ];
 
 export const loaders = [
