@@ -12,7 +12,7 @@ export const devtool = 'source-map';
 export const context = __dirname;
 
 export const entry = {
-    main: getPolyfills().concat(
+    application: getPolyfills().concat(
         './src/app'
     )
 };
