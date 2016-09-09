@@ -7,7 +7,7 @@ const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-lo
 const { HotModuleReplacementPlugin } = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 
-export const devtool = 'source-map';
+export const devtool = 'cheap-source-map';
 
 export const context = common.context;
 
