@@ -9,6 +9,7 @@ build/
 node_modules/
 bower_components/
 jspm_packages/
+.vscode/
 .nyc_output/
 .awcache/
 *.sublime-project
