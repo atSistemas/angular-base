@@ -12,7 +12,7 @@ export const devtool = 'source-map';
 export const context = common.context;
 
 export const entry = {
-  main: common.entry.main.concat(
+  application: common.entry.application.concat(
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
   )
