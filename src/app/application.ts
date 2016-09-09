@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { BaseApp } from '../base';
+import { BaseApp, Reducers } from '../base';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpModule  } from '@angular/http';
@@ -17,7 +17,7 @@ import { LazyService } from './containers/+lazy/services/lazy-service';
 @NgModule({
     imports:      [ BrowserModule, HttpModule, Routing ],
     declarations: [ BaseApp, MainContainer, MainDisplay ],
-    providers:    [ RoutingProviders, Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService, LazyService],
+    providers:    [ RoutingProviders, Store, Reducers, NgRedux, NgReduxRouter, DevToolsExtension, MainService, LazyService],
     bootstrap:    [ BaseApp ]
 })
 export class Application { }

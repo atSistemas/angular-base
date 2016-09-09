@@ -1,16 +1,14 @@
-import { Action, combineReducers } from 'redux';
-//  FIXME: This won't work; we need a callable method to get the reducers properly'
-import { BaseReducers } from '../../base';
-import { AppState } from '../../base/store';
+import { Action, ReducersMapObject } from 'redux';
+import { Reducers } from '../../base';
 
 export interface AsyncReduxOptions {
-    reducers: { [index: string]: Action },
+    reducers: ReducersMapObject,
     epics: { [index: string]: string[] },
     redux?: string
     store?: string
 }
 
-function AsyncRedux(options: AsyncReduxOptions) {
+function Reduxify(options: AsyncReduxOptions) {
     return function (target: Function) {
 
         let constructor = function () {
@@ -69,7 +67,7 @@ function AsyncRedux(options: AsyncReduxOptions) {
         }
 
         constructor.prototype.asyncReduxReconfigure = () => {
-            this.ngRedux.replaceReducer(combineReducers<AppState>(Object.assign(BaseReducers, this.reducers)));
+            Reducers.combineReducers(this.reducers);
             this.epics.forEach((epic) => this.store.epic$.nexts(epic));
         }
         return <any>constructor;
@@ -77,4 +75,4 @@ function AsyncRedux(options: AsyncReduxOptions) {
     }
 }
 
-export default AsyncRedux;
+export default Reduxify;

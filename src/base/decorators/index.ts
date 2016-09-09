@@ -1,1 +1,1 @@
-export * as AsyncRedux from './async-redux';
+export { default as Reduxify } from './reduxify';

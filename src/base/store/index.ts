@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
-import { RootReducer } from '../reducers';
+import Reducers from '../reducers';
 import * as createLogger from 'redux-logger';
 import { MainModelInterface } from '../models';
 import { Observable } from 'rxjs/Observable';
@@ -24,7 +24,8 @@ export class Store {
   public epic$: BehaviorSubject<Epic>;
   constructor(private ngRedux: NgRedux<AppState>,
     private MainServiceEpic: MainService,
-    private LazyServiceEpic: LazyService) { }
+    private LazyServiceEpic: LazyService,
+    private Reducers: Reducers) { }
 
   configureStore() {
 
@@ -43,6 +44,6 @@ export class Store {
 
     middleware.push(createEpicMiddleware(rootEpic));
 
-    this.ngRedux.configureStore(RootReducer, {}, middleware);
+    this.ngRedux.configureStore(this.Reducers.RootReducer, {}, middleware);
   }
 }

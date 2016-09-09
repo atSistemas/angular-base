@@ -8,7 +8,6 @@ import { NgReduxRouter } from 'ng2-redux-router';
   selector: 'lazy-container',
   templateUrl: './lazy.html'
 })
-
 export class LazyContainer {
   private devTools: DevToolsExtension;
   private ngReduxRouter: NgReduxRouter;
