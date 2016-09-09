@@ -3,7 +3,7 @@ import * as path from 'path';
 import { iManifest, externalsPath, assetsPath } from './index';
 
 export function getPolyfills(): string[] {
-    return require('../../package.json')._polyfills;
+    return require('../../package.json')._packages.polyfills;
 }
 
 export function getVendorModules(env?: any): Array<string> {
