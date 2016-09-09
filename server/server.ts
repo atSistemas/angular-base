@@ -65,7 +65,7 @@ export class Server {
         this.app.use(middleware);
         if (middleware['waitUntilValid']) {
           wait = true;
-          middleware['waitUntilValid'](function () {
+          middleware['waitUntilValid'](() => {
             base.console.success(`Applied ${middleware.name} middleware`);
             resolve(true);
           });
