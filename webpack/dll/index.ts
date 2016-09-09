@@ -31,8 +31,8 @@ interface iManifests {
     polyfills: iManifest
 }
 
-export const externalsPath: string = 'dist/dll';
-export const assetsPath: string = 'dist';
+export const externalsPath: string = 'build/dll';
+export const assetsPath: string = 'build';
 
 export class ExternalsMiddleware {
     constructor(pathExp: string) {
