@@ -12,7 +12,7 @@ const common:iStaticRoute[] = [
 ];
 
 const development:iStaticRoute[] = [
-  { route: '/dll', path: path.join(__dirname, '..', '..', 'build', 'externals') }
+  { route: '/dll', path: path.join(__dirname, '..', '..', 'build', 'dll') }
 ];
 
 const production:iStaticRoute[] = [
