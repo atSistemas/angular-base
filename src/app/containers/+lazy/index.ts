@@ -12,12 +12,10 @@ import { LazyService } from './services/lazy-service';
 import { LazyActions } from './actions';
 import { Reduxify } from '../../../base/decorators';
 import { Store } from '../../../base/store';
-import { Reducers } from '../../../base';
-
 
 @NgModule({
   declarations: [LazyContainer],
-  providers: [Reducers, LazyActions, LazyService],
+  providers: [LazyActions, LazyService],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -36,9 +34,7 @@ import { Reducers } from '../../../base';
 export default class LazyContainerModule {
   public epics: Observable<Action>[] = [];
   constructor(
-    private ngRedux: NgRedux<AppState>,
     private store: Store,
-    private reducers: Reducers,
     private actions: LazyActions,
     private lazyService: LazyService
   ) { }

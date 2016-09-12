@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { BaseApp, Reducers } from '../base';
+import { BaseApp } from '../base';
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpModule } from '@angular/http';
@@ -20,7 +20,7 @@ import { AppState } from '../base';
 @NgModule({
   imports: [BrowserModule, HttpModule, Routing],
   declarations: [BaseApp, MainContainer, MainDisplay],
-  providers: [RoutingProviders, Reducers, Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService, MainActions],
+  providers: [RoutingProviders, Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService, MainActions],
   bootstrap: [BaseApp]
 })
 @Reduxify({
@@ -32,7 +32,6 @@ import { AppState } from '../base';
 export class Application {
   constructor(
     private store: Store,
-    private reducers: Reducers,
     private actions: MainActions,
     private mainService: MainService
   ) { }

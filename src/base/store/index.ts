@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
-import { combineReducers, ReducersMapObject } from 'redux';
-import Reducers from '../reducers';
+import { combineReducers, ReducersMapObject, Reducer } from 'redux';
 import * as createLogger from 'redux-logger';
 import { MainModelInterface } from '../models';
 import { routerReducer } from 'ng2-redux-router';
@@ -20,18 +19,37 @@ export interface AppState {
 
 @Injectable()
 export class Store {
-  public defaultReducers: ReducersMapObject = {
+  static createReducer<Cr>(actionHandler: any, initialState: Cr): Reducer<Cr> {
+    return function (state: Cr, action: Action): Cr {
+
+      if (!state) return initialState;
+
+      if (typeof actionHandler[action.type] === 'function') {
+        return actionHandler[action.type](state, action);
+      }
+
+      return state;
+
+    }
+  }
+  private _reducers: ReducersMapObject;
+  private _defaultReducers: ReducersMapObject = {
     router: routerReducer,
   }
   private epics: Observable<Action>[] = [];
   public epic$: BehaviorSubject<Epic>;
   constructor(
     public ngRedux: NgRedux<AppState>,
-  ) { 
+  ) {
+    console.log("configuring store");
+    
     this.configureStore();
   }
   get RootReducer() {
-    return combineReducers<AppState>(this.defaultReducers);
+    return combineReducers<AppState>(this._defaultReducers);
+  }
+  get reducers(): ReducersMapObject {
+    return this._reducers || this._defaultReducers;
   }
   configureStore() {
 
@@ -51,5 +69,18 @@ export class Store {
     middleware.push(createEpicMiddleware(rootEpic));
 
     this.ngRedux.configureStore(this.RootReducer, {}, middleware);
+  }
+  attachReducers(reducers: ReducersMapObject) {
+    return Object.assign(this.reducers, reducers);
+  }
+  protected replaceReducer(combinedReducers: Reducer<{}>) {
+    return this.ngRedux.replaceReducer(combinedReducers);
+  }
+  public combineReducers(reducers?: ReducersMapObject) {
+    if (reducers) {
+      return this.replaceReducer(combineReducers(this.attachReducers(reducers)));
+    } else {
+      return this.replaceReducer(combineReducers(this.reducers));
+    }
   }
 }
