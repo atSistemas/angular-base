@@ -3,7 +3,7 @@ import { combineReducers, ReducersMapObject, Reducer, Action } from 'redux';
 import { NgRedux } from 'ng2-redux';
 import { routerReducer } from 'ng2-redux-router';
 import { combineEpics } from 'redux-observable';
-
+import { Store } from '../../base/store';
 import { MainModelInterface, MainModel } from '../models';
 import { AppState } from '../store';
 import { MainService } from '../../app/containers/main/services/main-service';
@@ -14,9 +14,7 @@ export interface Reducer<Cr> {
 
 @Injectable()
 class Reducers {
-  private reducers: ReducersMapObject = {
-    router: routerReducer,
-  }
+  private reducersMap: ReducersMapObject;
   static create<Cr>(actionHandler: any, initialState: Cr): Reducer<Cr> {
     return function (state: Cr, action: Action): Cr {
 
@@ -31,28 +29,23 @@ class Reducers {
     }
   }
 
-  constructor(private ngRedux: NgRedux<AppState>) { }
+  constructor(private store:Store) { 
+    this.reducersMap = this.store.defaultReducers;
+  }
   get RootReducer() {
-    return combineReducers<AppState>(this.reducers);
+    return combineReducers<AppState>(this.reducersMap);
   }
-  /*get ngRedux() {
-    if (!this.ngReduxInstance) {
-      const injector = ReflectiveInjector.resolveAndCreate([NgRedux]);
-      this.ngReduxInstance = injector.get(NgRedux);
-    }
-    return this.ngReduxInstance;
-  }*/
   attachReducers(reducers: ReducersMapObject) {
-    return Object.assign(this.reducers, reducers);
+    return Object.assign(this.reducersMap, reducers);
   }
-  private replaceReducer(combinedReducers: Reducer<{}>) {
-    return this.ngRedux.replaceReducer(combinedReducers);
+  protected replaceReducer(combinedReducers: Reducer<{}>) {
+    return this.store.ngRedux.replaceReducer(combinedReducers);
   }
-  combineReducers(reducers?: ReducersMapObject) {
+  public combineReducers(reducers?: ReducersMapObject) {
     if (reducers) {
       return this.replaceReducer(combineReducers(this.attachReducers(reducers)));
     } else {
-      return this.replaceReducer(combineReducers(this.reducers));
+      return this.replaceReducer(combineReducers(this.reducersMap));
     }
   }
 }
