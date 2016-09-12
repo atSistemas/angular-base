@@ -1,77 +1,89 @@
 import { Action, ReducersMapObject } from 'redux';
+import { ReflectiveInjector } from '@angular/core';
 import { Reducers } from '../../base';
+//import * as base from '../../../.base';
+import { NgRedux } from 'ng2-redux';
 
-export interface AsyncReduxOptions {
+export interface reduxifyOptions {
     reducers: ReducersMapObject,
     epics: { [index: string]: string[] },
-    redux?: string
     store?: string
 }
 
-function Reduxify(options: AsyncReduxOptions) {
+function Reduxify(options: reduxifyOptions) {
     return function (target: Function) {
 
-        let constructor = function () {
-            target.apply(this);
-            this.asyncReduxInit();
+        let Reduxify = function () {
+            target.apply(this, arguments);
+            this.reduxify_init();
         };
 
-        constructor.prototype = Object.create(target.prototype);
-        constructor.prototype.constructor = target;
+        Reduxify.prototype = Object.create(target.prototype);
+        Reduxify.prototype.constructor = target;
 
-        constructor.prototype.epics = [];
-        constructor.prototype.asyncReduxInit = () => {
-            if(!this.asyncReduxChecks()) return;
-            this.asyncReduxMapEpics();
-            this.asyncReduxMepReducers();
-            this.asyncReduxReconfigure();
+        Reduxify.prototype.epics = [];
+        
+        Reduxify.prototype.reduxify = {};
+        
+        Reduxify.prototype.reduxify_init = function () {
+            if (!this.reduxify_checks()) return;
+
+            //const injector = ReflectiveInjector.resolveAndCreate([Reducers, this.store.NgRedux]);
+            //this.reducers = injector.get(Reducers);
+
+            this.reduxify_mapEpics();
+            this.reduxify_mapReducers();
+            this.reduxify_reconfigure();
         }
 
-        constructor.prototype.asyncReduxChecks = () => {
-            if (!this.ngRedux && !this[options.redux]) {
-                console.error("You must inject ngRedux to use AsyncRedux decorator");
+        Reduxify.prototype.reduxify_checks = function () {
+            /*if (!this.ngRedux && !this[options.redux]) {
+                console.error("You must inject ngRedux to use reduxify decorator");
                 return false;
-            }
+            }*/
             if (!this.store && !this[options.store]) {
-                console.error("You must inject a Redux store to use AsyncRedux decorator");
+                console.error("You must inject a Redux store to use reduxify decorator");
                 return false;
             }
-            for (var key in options.epics) {
-                if (!this[key]) {
-                    console.error(`You must inject a ${key} service to declare an epic for it`);
-                    return false;
-                } else {
-                    for (var i = 0; i < options.epics[key].length; i++) {
-                        if (!this[key][options.epics[key][i]]) {
-                            console.error(`${key} doesn't have a method ${options.epics[key][i]}`);
-                            return false;
+            if (options.epics) {
+                for (var key in options.epics) {
+                    if (!this[key]) {
+                        console.error(`You must inject ${key} injectable to declare an epic for it`);
+                        return false;
+                    } else {
+                        for (var i = 0; i < options.epics[key].length; i++) {
+                            if (!this[key][options.epics[key][i]]) {
+                                console.error(`${key} doesn't have a method ${options.epics[key][i]}`);
+                                return false;
+                            }
                         }
                     }
                 }
             }
+            return true;
         }
 
-        constructor.prototype.asyncReduxMapEpics = () => {
-            for(var key in options.epics) {
-                this.asyncReduxMapEpicMethods(this[key], options.epics[key])
+        Reduxify.prototype.reduxify_mapEpics = function () {
+            for (var key in options.epics) {
+                this.reduxify_mapEpicMethods(this[key], options.epics[key])
             }
-            
+
         }
 
-        constructor.prototype.asyncReduxMapEpicMethods = (service:any, methods: string[]) => {
+        Reduxify.prototype.reduxify_mapEpicMethods = function (service: any, methods: string[]) {
             methods.forEach((method) => this.epics.push(service[method]));
         }
 
-        constructor.prototype.asyncReduxMapReducers = () => {
-            this.reducers = options.reducers;
+        Reduxify.prototype.reduxify_mapReducers = function () {
+            this.reducersMap = options.reducers;
         }
 
-        constructor.prototype.asyncReduxReconfigure = () => {
-            Reducers.combineReducers(this.reducers);
-            this.epics.forEach((epic) => this.store.epic$.nexts(epic));
+        Reduxify.prototype.reduxify_reconfigure = function () {
+            this.reducers.combineReducers(this.reducersMap);
+            this.epics.forEach((epic) => this.reducers.store.epic$.next(epic));
         }
-        return <any>constructor;
-            
+        return <any>Reduxify;
+
     }
 }
 
