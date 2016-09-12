@@ -1,6 +1,6 @@
 import { Action, ReducersMapObject } from 'redux';
 import { ReflectiveInjector } from '@angular/core';
-import { Reducers } from '../../base';
+import { Store } from '../../base';
 //import * as base from '../../../.base';
 import { NgRedux } from 'ng2-redux';
 
@@ -26,21 +26,14 @@ function Reduxify(options: reduxifyOptions) {
         Reduxify.prototype.reduxify = {};
         
         Reduxify.prototype.reduxify_init = function () {
+            
             if (!this.reduxify_checks()) return;
-
-            //const injector = ReflectiveInjector.resolveAndCreate([Reducers, this.store.NgRedux]);
-            //this.reducers = injector.get(Reducers);
-
             this.reduxify_mapEpics();
             this.reduxify_mapReducers();
             this.reduxify_reconfigure();
         }
 
         Reduxify.prototype.reduxify_checks = function () {
-            /*if (!this.ngRedux && !this[options.redux]) {
-                console.error("You must inject ngRedux to use reduxify decorator");
-                return false;
-            }*/
             if (!this.store && !this[options.store]) {
                 console.error("You must inject a Redux store to use reduxify decorator");
                 return false;
@@ -75,12 +68,12 @@ function Reduxify(options: reduxifyOptions) {
         }
 
         Reduxify.prototype.reduxify_mapReducers = function () {
-            this.reducersMap = options.reducers;
+            this.reducers = options.reducers;
         }
 
         Reduxify.prototype.reduxify_reconfigure = function () {
-            this.reducers.combineReducers(this.reducersMap);
-            this.epics.forEach((epic) => this.reducers.store.epic$.next(epic));
+            this.store.combineReducers(this.reducers);
+            this.epics.forEach((epic) => this.store.epic$.next(epic));
         }
         return <any>Reduxify;
 
