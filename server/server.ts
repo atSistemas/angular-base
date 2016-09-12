@@ -30,15 +30,16 @@ export class Server {
 
   private configure() {
     buildExternals().then(() => {
-      this.initializeMiddlewares();
-      this.initializeStaticPaths();
-      this.initializeIndex();
-      this.app.listen(environment.port, function (err: any) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        base.console.success(`Server up on http://localhost:${environment.port}`);
+      this.initializeMiddlewares().then(() => {
+        this.initializeStaticPaths();
+        this.initializeIndex();
+        this.app.listen(environment.port, function (err: any) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          base.console.success(`Server up on http://localhost:${environment.port}`);
+        });
       });
     });
   }
@@ -52,14 +53,32 @@ export class Server {
     });
   }
 
-  private initializeMiddlewares() {
+  private initializeMiddlewares(): PromiseLike<boolean> {
 
     const middlewares: RequestHandler[] = configureMiddlewares();
-    
-    middlewares.forEach((middleware: RequestHandler) => {
-      this.app.use(middleware);
-      base.console.success(`Applied ${middleware.name || ''} middleware`);
+
+    return new Promise((resolve, reject) => {
+
+      let wait = false;
+
+      middlewares.forEach((middleware: RequestHandler) => {
+        this.app.use(middleware);
+        if (middleware['waitUntilValid']) {
+          wait = true;
+          middleware['waitUntilValid'](() => {
+            base.console.success(`Applied ${middleware.name} middleware`);
+            resolve(true);
+          });
+        } else {
+          base.console.success(`Applied ${middleware.name || ''} middleware`);
+        }
+      });
+
+      if (!wait) {
+        resolve(true);
+      }
     });
+
   }
 
   private initializeStaticPaths() {
@@ -72,3 +91,32 @@ export class Server {
 
 const server = new Server();
 export default server;
+
+/*
+export default function applyEnvMiddleWare(app) {
+
+  base.console.info(`Checking Env middlewares...`);
+
+  return new Promise((resolve, reject) => {
+    let serverUp = false;
+
+    envMiddleware().forEach(function(middleware) {
+      const middlewareName = middleware.name || 'middleware';
+      app.use(middleware);
+
+      if (base.env == 'production' && !serverUp) {
+        serverUp = true;
+        base.console.success(`Applied ${middlewareName} middleware`);
+        resolve(true);
+      } else {
+        if (middleware.waitUntilValid) {
+          middleware.waitUntilValid(function() {
+            base.console.success(`Applied ${middlewareName} middleware`);
+            resolve(true);
+          });
+        }
+      }
+    });
+  });
+}
+*/

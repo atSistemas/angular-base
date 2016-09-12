@@ -1,0 +1,1 @@
+export { default as BaseReduxify } from './reduxify';

@@ -17,9 +17,9 @@ export class MainActions {
   load() {
     this.ngRedux.dispatch({ type: actionTypes.MAIN_CONTAINER });
   }
-
-  gotoTo() {
-    this.ngRedux.dispatch({ type: actionTypes.GOTO_MAINCONTAINER2 });
+  
+  lazy() {
+    this.ngRedux.dispatch({ type: actionTypes.LAZY_CONTAINER });
   }
 
   click() {

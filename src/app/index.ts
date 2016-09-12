@@ -1,4 +1,13 @@
-import { MainContainer } from './containers/main';
-import { MainContainer2 } from './containers/main2';
+import 'reflect-metadata';
+import 'babel-polyfill';
+import 'core-js/es6';
+import 'core-js/es7/reflect';
+import 'zone.js/dist/zone';
+import 'ts-helpers';
 
-export { MainContainer, MainContainer2 };
+import {platformBrowser} from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { Application } from './application';
+
+platformBrowserDynamic().bootstrapModule(Application);

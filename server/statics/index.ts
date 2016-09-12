@@ -12,12 +12,12 @@ const common:iStaticRoute[] = [
 ];
 
 const development:iStaticRoute[] = [
-  { route: '/dll', path: path.join(__dirname, '..', '..', 'dist', 'externals') }
+  { route: '/dll', path: path.join(__dirname, '..', '..', 'build', 'dll') }
 ];
 
 const production:iStaticRoute[] = [
-  { route: '/', path: path.join(__dirname, '..', '..', 'dist') },
-  { route: '/assets', path: path.join(__dirname, '..', '..', 'dist', 'assets') },
+  { route: '/', path: path.join(__dirname, '..', '..', 'build') },
+  { route: '/assets', path: path.join(__dirname, '..', '..', 'build', 'assets') },
 ];
 
 const envStatics = (environment.ENV === envConstants.DEVELOPMENT) ? common.concat(development) : common.concat(production);

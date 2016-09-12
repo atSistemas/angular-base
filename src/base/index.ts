@@ -1,5 +1,5 @@
 export * from './store';
 export * from './routes';
-export * from './reducers';
+export { BaseReduxify } from './decorators';
 export * from './models';
 export * from './components';

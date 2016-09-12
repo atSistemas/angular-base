@@ -17,7 +17,7 @@ export default function renderIndex() {
     <base-app>
     Loading....
     </base-app>
-    <script src="/main.bundle.js"></script>
+    <script src="/application.bundle.js"></script>
     </body>
   </html>
   `;

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { MainContainer, MainContainer2 } from '../containers';
+import { MainContainer } from '../containers';
 
 export const AppRoutingProviders: any[] = [
 
@@ -13,6 +13,6 @@ export const routes: Routes = [
   }, {
     path: 'container2',
     pathMatch: 'full',
-    component: MainContainer2
+    loadChildren: () => System.import('../containers/+lazy'),
   }
 ];

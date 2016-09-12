@@ -112,7 +112,8 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
       //new ProgressPlugin({}),
       new ProgressBarPlugin({}),
 
-      new DedupePlugin(),
+      // FIX: WE NEED THE DEDUPE PLUGIN;
+      //new DedupePlugin(),
 
     ],
     node: {

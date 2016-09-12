@@ -19,7 +19,6 @@ export class BaseApp{
     private ngRedux: NgRedux<AppState>,
     private store: Store,
     private ngReduxRouter: NgReduxRouter){
-    store.configureStore();
     ngReduxRouter.initialize();
   }
 };

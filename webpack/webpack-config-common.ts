@@ -20,7 +20,7 @@ export const entry = {
 export const plugins = [
     new base.webpack.ProgressBarPlugin(),
     new AssetsPlugin({
-        path: root('dist'),
+        path: root('build'),
         filename: 'webpack-assets.json',
         prettyPrint: true
     }),

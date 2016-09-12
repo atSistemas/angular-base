@@ -9,24 +9,24 @@ import { ActionsObservable } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 
 import { actionTypes } from '../action-types';
-import { IPayloadAction } from '../actions/';
+import { IPayloadAction } from '../../main/actions'
 import { AppState } from '../../../../base/store';
 
 
 @Injectable()
-export class MainService {
+export class LazyService {
   constructor(private http: Http) {}
 
   getData = (action$: ActionsObservable) => {
-    return action$.ofType(actionTypes.MAIN_REQUEST)
-    .flatMap(({payload}) => {
+    return action$.ofType(actionTypes.LAZY_REQUEST)
+    .flatMap(() => {
       return this.http.get('mocks/main.json')
         .map(result => ({
-          type: actionTypes.MAIN_SUCCESS,
+          type: actionTypes.LAZY_SUCCESS,
           payload: result.json()
         }))
         .catch(error => Observable.of({
-          type: actionTypes.MAIN_ERROR
+          type: actionTypes.LAZY_ERROR
         }));
       });
     }
