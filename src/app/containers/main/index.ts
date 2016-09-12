@@ -1,12 +1,9 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
-import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
-import { NgReduxRouter } from 'ng2-redux-router';
-
+import { select } from 'ng2-redux';
 import { MainActions } from './actions';
 import { MainService } from './services/main-service';
-import { MainModelInterface, MainModel, InitialState } from './models';
 
 export { MainDisplay } from './components';
 
@@ -17,8 +14,8 @@ export { MainDisplay } from './components';
 })
 
 export class MainContainer implements OnInit{
-  @select(state=>state.main) main$:Observable<any>
-  @select(state=>state.main) main:Observable<any>
+  @select(state=>state.main.main) main:Observable<any>
+  //@select(state=>state.main) main:Observable<any>
   //@select(['main','main']) main$;
 
 
