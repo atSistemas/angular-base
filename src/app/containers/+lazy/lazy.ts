@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
-
+import { LazyActions } from './actions';
 
 @Component({
   selector: 'lazy-container',
@@ -13,5 +13,7 @@ export class LazyContainer {
   private ngReduxRouter: NgReduxRouter;
 
   public people: Object[];
-  constructor( ) { }
+  constructor(private actions:LazyActions ) { 
+    this.actions.lazyRequest();
+  }
 }
