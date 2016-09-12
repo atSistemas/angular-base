@@ -10,17 +10,11 @@ import { NgRedux } from 'ng2-redux';
 import { LazyReducer } from './reducers';
 import { LazyService } from './services/lazy-service';
 import { LazyActions } from './actions';
-import { Reducers, Reduxify } from '../../../base';
+import { Reduxify } from '../../../base/decorators';
 import { Store } from '../../../base/store';
+import { Reducers } from '../../../base';
 
-@Reduxify({
-  reducers: {
-    lazy: LazyReducer
-  },
-  epics: {
-    lazyService: ['getData']
-  }
-})
+
 @NgModule({
   declarations: [LazyContainer],
   providers: [Reducers, LazyActions, LazyService],
@@ -31,14 +25,21 @@ import { Store } from '../../../base/store';
     ])
   ]
 })
+@Reduxify({
+  reducers: {
+    lazy: LazyReducer
+  },
+  epics: {
+    lazyService: ['getData']
+  }
+})
 export default class LazyContainerModule {
-  public reducers: any;
   public epics: Observable<Action>[] = [];
   constructor(
     private ngRedux: NgRedux<AppState>,
     private store: Store,
-    private reducersStore: Reducers,
+    private reducers: Reducers,
     private actions: LazyActions,
-    lazyService: LazyService
+    private lazyService: LazyService
   ) { }
 }
