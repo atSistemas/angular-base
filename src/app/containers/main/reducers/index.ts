@@ -2,7 +2,7 @@ import { Action, ReducersMapObject } from 'redux';
 
 import { actionTypes } from '../action-types';
 import { MainModelInterface, MainModel, InitialState } from '../models';
-import Reducers from '../../../../base/reducers';
+import { Store } from '../../../../base';
 
 const click = (state) => {
   console.log('cliiiik');
@@ -28,7 +28,7 @@ const actionHandlers = {
 }
 
 const MainReducer: ReducersMapObject = {
-  main: Reducers.create<MainModelInterface>(actionHandlers, InitialState)
+  main: Store.createReducer<MainModelInterface>(actionHandlers, InitialState)
 }
 
 export { MainReducer }
