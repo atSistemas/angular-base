@@ -14,7 +14,7 @@ export { MainDisplay } from './components';
 })
 
 export class MainContainer implements OnInit{
-  @select(state=>state.main.main) main:Observable<any>
+  @select() main$:Observable<any>
   //@select(state=>state.main) main:Observable<any>
   //@select(['main','main']) main$;
 
