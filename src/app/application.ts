@@ -32,7 +32,6 @@ import { AppState } from '../base';
 export class Application {
   constructor(
     private store: Store,
-    private actions: MainActions,
     private mainService: MainService
   ) { }
 }
