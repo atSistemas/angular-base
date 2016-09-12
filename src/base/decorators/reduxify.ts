@@ -10,22 +10,22 @@ export interface reduxifyOptions {
     store?: string
 }
 
-function Reduxify(options: reduxifyOptions) {
+function BaseReduxify(options: reduxifyOptions) {
     return function (target: Function) {
 
-        let Reduxify = function () {
+        let BaseReduxify = function () {
             target.apply(this, arguments);
             this.reduxify_init();
         };
 
-        Reduxify.prototype = Object.create(target.prototype);
-        Reduxify.prototype.constructor = target;
+        BaseReduxify.prototype = Object.create(target.prototype);
+        BaseReduxify.prototype.constructor = target;
 
-        Reduxify.prototype.epics = [];
+        BaseReduxify.prototype.epics = [];
         
-        Reduxify.prototype.reduxify = {};
+        BaseReduxify.prototype.reduxify = {};
         
-        Reduxify.prototype.reduxify_init = function () {
+        BaseReduxify.prototype.reduxify_init = function () {
             
             if (!this.reduxify_checks()) return;
             this.reduxify_mapEpics();
@@ -33,7 +33,7 @@ function Reduxify(options: reduxifyOptions) {
             this.reduxify_reconfigure();
         }
 
-        Reduxify.prototype.reduxify_checks = function () {
+        BaseReduxify.prototype.reduxify_checks = function () {
             if (!this.store && !this[options.store]) {
                 console.error("You must inject a Redux store to use reduxify decorator");
                 return false;
@@ -56,28 +56,28 @@ function Reduxify(options: reduxifyOptions) {
             return true;
         }
 
-        Reduxify.prototype.reduxify_mapEpics = function () {
+        BaseReduxify.prototype.reduxify_mapEpics = function () {
             for (var key in options.epics) {
                 this.reduxify_mapEpicMethods(this[key], options.epics[key])
             }
 
         }
 
-        Reduxify.prototype.reduxify_mapEpicMethods = function (service: any, methods: string[]) {
+        BaseReduxify.prototype.reduxify_mapEpicMethods = function (service: any, methods: string[]) {
             methods.forEach((method) => this.epics.push(service[method]));
         }
 
-        Reduxify.prototype.reduxify_mapReducers = function () {
+        BaseReduxify.prototype.reduxify_mapReducers = function () {
             this.reducers = options.reducers;
         }
 
-        Reduxify.prototype.reduxify_reconfigure = function () {
+        BaseReduxify.prototype.reduxify_reconfigure = function () {
             this.store.combineReducers(this.reducers);
             this.epics.forEach((epic) => this.store.epic$.next(epic));
         }
-        return <any>Reduxify;
+        return <any>BaseReduxify;
 
     }
 }
 
-export default Reduxify;
+export default BaseReduxify;

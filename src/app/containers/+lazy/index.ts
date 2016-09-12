@@ -10,7 +10,7 @@ import { NgRedux } from 'ng2-redux';
 import { LazyReducer } from './reducers';
 import { LazyService } from './services/lazy-service';
 import { LazyActions } from './actions';
-import { Reduxify } from '../../../base/decorators';
+import { BaseReduxify } from '../../../base/decorators';
 import { Store } from '../../../base/store';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { Store } from '../../../base/store';
     ])
   ]
 })
-@Reduxify({
+@BaseReduxify({
   reducers: {
     lazy: LazyReducer
   },

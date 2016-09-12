@@ -13,7 +13,7 @@ import { MainContainer, MainDisplay } from './containers'
 import { MainService } from './containers/main/services/main-service';
 import { MainReducer } from './containers/main/reducers';
 import { MainActions } from './containers/main/actions';
-import { Reduxify } from '../base/decorators';
+import { BaseReduxify } from '../base/decorators';
 import { AppState } from '../base';
 
 
@@ -23,7 +23,7 @@ import { AppState } from '../base';
   providers: [RoutingProviders, Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService, MainActions],
   bootstrap: [BaseApp]
 })
-@Reduxify({
+@BaseReduxify({
   reducers: MainReducer,
   epics: {
     mainService: ['getData']

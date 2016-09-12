@@ -1,1 +1,1 @@
-export { default as Reduxify } from './reduxify';
+export { default as BaseReduxify } from './reduxify';
