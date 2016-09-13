@@ -1,5 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';
 import { MainActions } from './actions';
