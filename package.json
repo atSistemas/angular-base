@@ -39,6 +39,8 @@
   "_packages": {
     "common": [],
     "polyfills": [
+      "zone.js/dist/zone",
+      "zone.js/dist/long-stack-trace-zone",
       "ts-helpers"
     ]
   },
