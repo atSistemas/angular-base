@@ -1,5 +1,3 @@
-import Enumerable from '../../../../base/shared/Enumerable';
-
 export const actionTypes = {
     CLICK:          'CLICK',
     MAIN_CONTAINER: 'MAIN_CONTAINER',
