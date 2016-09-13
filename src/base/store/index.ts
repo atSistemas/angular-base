@@ -11,8 +11,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 const middleware = [];
 
-//const epicMiddleware = createEpicMiddleware(RootEpic);
-
 export interface AppState {
   main?: MainModelInterface;
 };
