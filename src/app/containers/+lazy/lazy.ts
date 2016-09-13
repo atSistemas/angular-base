@@ -13,6 +13,7 @@ export class LazyContainer {
   private ngReduxRouter: NgReduxRouter;
 
   public people: Object[];
+  @select() lazy$:Observable<any[]>
   constructor(private actions:LazyActions ) { 
     this.actions.lazyRequest();
   }
