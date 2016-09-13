@@ -51,7 +51,7 @@ export class Store {
   get reducers(): ReducersMapObject {
     return this._reducers || this._defaultReducers;
   }
-  configureStore() {
+  private configureStore() {
 
     middleware.push(
       createLogger({
@@ -70,10 +70,10 @@ export class Store {
 
     this.ngRedux.configureStore(this.RootReducer, {}, middleware);
   }
-  attachReducers(reducers: ReducersMapObject) {
+  protected attachReducers(reducers: ReducersMapObject) {
     return Object.assign(this.reducers, reducers);
   }
-  protected replaceReducer(combinedReducers: Reducer<{}>) {
+  public replaceReducer(combinedReducers: Reducer<{}>) {
     return this.ngRedux.replaceReducer(combinedReducers);
   }
   public combineReducers(reducers?: ReducersMapObject) {
