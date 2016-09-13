@@ -36,7 +36,7 @@ export class Store {
   private _defaultReducers: ReducersMapObject = {
     router: routerReducer,
   }
-  private epics: Observable<Action>[] = [];
+  private epics: Epic[] = [];
   public epic$: BehaviorSubject<Epic>;
   constructor(
     public ngRedux: NgRedux<AppState>,
