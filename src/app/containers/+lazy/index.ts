@@ -11,7 +11,7 @@ import { LazyReducer } from './reducers';
 import { LazyService } from './services/lazy-service';
 import { LazyActions } from './actions';
 import { BaseReduxify } from '../../../base/decorators';
-import { Store } from '../../../base/store';
+import { Store } from 'base/store';
 
 @NgModule({
   declarations: [LazyContainer],

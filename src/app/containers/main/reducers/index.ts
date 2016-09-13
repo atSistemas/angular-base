@@ -2,7 +2,7 @@ import { Action, ReducersMapObject } from 'redux';
 
 import { actionTypes } from '../action-types';
 import { MainModelInterface, MainModel, InitialState } from '../models';
-import { Store } from '../../../../base';
+import { Store } from 'base';
 
 const click = (state) => {
   console.log('cliiiik');

@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { actionTypes } from '../action-types';
 import { LazyModelInterface, LazyModel, InitialState } from '../models';
-import CreateReducer from '../../../../base/shared/CreateReducer';
+import CreateReducer from 'base/shared/CreateReducer';
 
 const request = (state, data) =>{
   console.log('lazy requeeeeeeest!!!');

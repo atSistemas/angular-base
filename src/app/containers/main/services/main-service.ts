@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { actionTypes } from '../action-types';
 import { IPayloadAction } from '../actions/';
-import { AppState } from '../../../../base/store';
+import { AppState } from 'base/store';
 
 
 @Injectable()
