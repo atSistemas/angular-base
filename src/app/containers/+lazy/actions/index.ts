@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
-import { AppState } from 'base/store';
+import { AppState } from 'base';
 import { actionTypes } from '../action-types';
 
 //FIXME THIS SHOULD BE UNDER BASE
