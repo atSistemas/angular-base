@@ -1,7 +1,7 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
-
+import * as path from 'path';
 import * as base from '../.base';
-import environment from '../server/environment';
+import environment, { isTesting } from '../server/environment';
 import { getPolyfills, getManifest, root } from './dll';
 
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -24,6 +24,11 @@ export const plugins = [
         filename: 'webpack-assets.json',
         prettyPrint: true
     }),
+    /*new ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        path.resolve(__dirname, '..', 'src') // location of your src
+    ),*/
     new DllReferencePlugin({
         context: context,
         manifest: getManifest('vendor'),
@@ -36,11 +41,9 @@ export const plugins = [
     //  TODO: Enable ForkCheckerPlugin as soon as the plugin is fixed
     //new ForkCheckerPlugin(),
     new base.webpack.CompileErrorsPlugin()
-
 ];
 
-export const preLoaders = [
-  {
+const systemImportPreloader = {
     test: /\.ts$/,
     loader: 'string-replace-loader',
     query: {
@@ -49,8 +52,8 @@ export const preLoaders = [
         flags: 'g'
     },
     include: [root('src')]
-  },
-];
+}
+export const preLoaders = isTesting ? [systemImportPreloader] : [{ test: /\.ts$/, loader: 'tslint' }, systemImportPreloader];
 
 export const loaders = [
     {

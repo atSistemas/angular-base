@@ -1,13 +1,15 @@
 /// <reference path="./webpack.d.ts" />
 /// <reference path="../node_modules/@types/node/index.d.ts"/>
 import * as path from 'path';
-import envConfig from './env-config';
+import envConfig, { isTesting } from './env-config';
 import * as base from '../.base';
 import { root } from './dll';
 
 const webpackConfig = {
 
   devtool: envConfig.devtool,
+
+  debug: envConfig.debug,
 
   entry: envConfig.entry,
 
@@ -17,12 +19,19 @@ const webpackConfig = {
 
   //postcss: envConfig.postCss,
 
+  tslint: {
+    emitErrors: false,
+    failOnHint: false,
+    formattersDirectory: './node_modules/custom-tslint-formatters/formatters',
+    formatter: 'grouped'
+  },
+
   module: {
     preLoaders: envConfig.preLoaders,
     loaders: envConfig.loaders
   },
-  
-  output: {
+
+  output: isTesting ? {} : {
     path: root('build'),
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
@@ -31,6 +40,7 @@ const webpackConfig = {
   },
 
   resolve: {
+    cache: !isTesting,
     extensions: ['', '.js', '.ts', '.tsx', '.css'],
     alias: {
       'base': path.resolve(__dirname, '../src/base')

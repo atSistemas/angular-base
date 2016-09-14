@@ -1,12 +1,13 @@
 ///<reference path="../node_modules/@types/node/index.d.ts"/>
 
-import environment from '../server/environment';
+import environment, { isTesting } from '../server/environment';
 import { getPolyfills } from './dll';
 import * as common from './webpack-config-common';
 
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
 
-export const devtool = 'cheap-module-source-map';
+export const devtool = 'source-map';
+export const debug = !isTesting;
 export const context = common.context;
 export const entry = common.entry;
 export const plugins = common.plugins;
