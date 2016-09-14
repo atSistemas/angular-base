@@ -1,20 +1,23 @@
 ///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { RequestHandler } from 'express';
 import * as base from '../../.base';
+const compression = require('compression');
+
 const webpack = require('webpack');
 
 export default function():RequestHandler[] {
-   
+
     const config = require('../../webpack').default;
 
-    
     const compiler = webpack(config);
 
     compiler.plugin('done', function() {
       base.console.success(`Bundled project in  ms!`);
     });
 
-    const middlewares:RequestHandler[] = [];
+    const middlewares:RequestHandler[] = [
+      compression()
+    ];
 
     return middlewares;
 }
