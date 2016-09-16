@@ -1,13 +1,9 @@
 const console = require('./console');
 const timer = require('./timer');
-const ProgressBar = require('./webpack/progress-bar-plugin');
-const CompileErrors = require('./webpack/compile-errors-plugin');
+const webpackPlugins = require('./webpack-plugins');
 
 module.exports = {
     console: console,
     timer: timer,
-    webpack: {
-        ProgressBarPlugin: ProgressBar,
-        CompileErrorsPlugin: CompileErrors
-    }
+    webpack: webpackPlugins
 };
