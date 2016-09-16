@@ -13,7 +13,9 @@
     ],
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "rootDirs": ["./src"],
+    "paths": {
+      "base": ["./base"]
+    },
     "types": [
       "core-js",
       "node",
