@@ -1,4 +1,3 @@
-///<reference path="../node_modules/@types/node/index.d.ts"/>
 import * as path from 'path';
 import * as base from '../.base';
 import environment, { isTesting } from '../server/environment';
@@ -8,6 +7,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
+const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 
 export const devtool = 'source-map';
 export const context = __dirname;
@@ -24,11 +24,9 @@ export const plugins = [
         filename: 'webpack-assets.json',
         prettyPrint: true
     }),
-    /*new ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        path.resolve(__dirname, '..', 'src') // location of your src
-    ),*/
+    new DefinePlugin({
+        'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
+    }),
     new DllReferencePlugin({
         context: context,
         manifest: getManifest('vendor'),
@@ -38,22 +36,23 @@ export const plugins = [
         manifest: getManifest('polyfills'),
     }),
     new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
-    //  TODO: Enable ForkCheckerPlugin as soon as the plugin is fixed
-    //new ForkCheckerPlugin(),
+    new ForkCheckerPlugin(),
     new base.webpack.CompileErrorsPlugin()
 ];
 
-const systemImportPreloader = {
-    test: /\.ts$/,
-    loader: 'string-replace-loader',
-    query: {
-        search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-        replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-        flags: 'g'
-    },
-    include: [root('src')]
-}
-export const preLoaders = isTesting ? [systemImportPreloader] : [{ test: /\.ts$/, loader: 'tslint' }, systemImportPreloader];
+export const preLoaders = [
+    // UNCOMMENT THIS TO ENABLE LINTING RULES CHECKING
+    //{ test: /\.ts$/, loader: 'tslint' },
+    {
+        test: /\.ts$/,
+        loader: 'string-replace-loader',
+        query: {
+            search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
+            replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
+            flags: 'g'
+        },
+        include: [root('src')]
+    }];
 
 export const loaders = [
     {
@@ -62,7 +61,7 @@ export const loaders = [
             'awesome-typescript-loader',
             'angular2-template-loader'
         ],
-        exclude: [/\.(spec|e2e|d)\.ts$/],
+        exclude: isTesting ? [] : [/\.(spec|e2e|d)\.ts$/],
         include: [root('./src')]
     },
     { test: /\.json$/, loader: 'json-loader', include: [root('./src')] },
@@ -70,6 +69,20 @@ export const loaders = [
     { test: /\.css$/, loader: 'raw-loader', include: [root('./src')] }
     //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
 ];
+
+export const postLoaders = [];
+
+
+if (isTesting) {
+    // instrument only testing sources with Istanbul, covers ts files
+    postLoaders.push({
+        test: /\.ts$/,
+        include: root('src'),
+        loader: 'istanbul-instrumenter-loader',
+        exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
+    });
+
+}
 
 export const postCss = function (webpack) {
     return [
