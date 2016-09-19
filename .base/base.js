@@ -1,7 +1,7 @@
 import console from './console';
 import timer from './timer';
 import webpackPlugins from './webpack-plugins';
-import fileSystem from './FileSystem';
+import fileSystem from './file-system';
 
 const base = {
     console: console,
