@@ -1,3 +1,7 @@
+/**
+ * @fileoverview bootstraps development server
+ * @author Rafa Bernad [rbernad@atsistemas.com]
+ */
 require('ts-node/register');
 
 const base = require('../.base');
