@@ -1,5 +1,3 @@
-///<reference path="../node_modules/@types/node/index.d.ts"/>
-
 import environment, { isTesting } from '../server/environment';
 import { getPolyfills } from './dll';
 import * as common from './webpack-config-common';

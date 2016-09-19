@@ -1,5 +1,3 @@
-/// <reference path="./webpack.d.ts" />
-/// <reference path="../node_modules/@types/node/index.d.ts"/>
 import * as path from 'path';
 import envConfig, { isTesting } from './env-config';
 import * as base from '../.base';
