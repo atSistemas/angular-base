@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActionsObservable } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
-
+import { Action } from 'redux';
 import { actionTypes } from '../action-types';
 import { IPayloadAction } from '../actions/';
 import { AppState } from 'base';
@@ -17,7 +17,7 @@ import { AppState } from 'base';
 export class MainService {
   constructor(private http: Http) {}
 
-  getData = (action$: ActionsObservable) => {
+  getData = (action$: ActionsObservable<Action>) => {
     return action$.ofType(actionTypes.MAIN_REQUEST)
     .flatMap((/*{payload}*/) => {
       return this.http.get('mocks/main.json')
