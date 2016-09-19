@@ -1,5 +1,3 @@
-///<reference path="../node_modules/@types/node/index.d.ts"/>
-
 import * as express from 'express';
 import * as path from 'path';
 import statics, { iStaticRoute } from './statics';
@@ -89,34 +87,4 @@ export class Server {
   }
 };
 
-const server = new Server();
-export default server;
-
-/*
-export default function applyEnvMiddleWare(app) {
-
-  base.console.info(`Checking Env middlewares...`);
-
-  return new Promise((resolve, reject) => {
-    let serverUp = false;
-
-    envMiddleware().forEach(function(middleware) {
-      const middlewareName = middleware.name || 'middleware';
-      app.use(middleware);
-
-      if (base.env == 'production' && !serverUp) {
-        serverUp = true;
-        base.console.success(`Applied ${middlewareName} middleware`);
-        resolve(true);
-      } else {
-        if (middleware.waitUntilValid) {
-          middleware.waitUntilValid(function() {
-            base.console.success(`Applied ${middlewareName} middleware`);
-            resolve(true);
-          });
-        }
-      }
-    });
-  });
-}
-*/
+export default Server;
