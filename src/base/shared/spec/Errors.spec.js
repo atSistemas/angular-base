@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import ReactBaseError from '../Errors';
+import BaseError from '../Errors';
 
 describe('shared / Errors', () => {
 
@@ -7,7 +7,7 @@ describe('shared / Errors', () => {
 
     it('should be an Error prototype', () => {
 
-      const err = new ReactBaseError('foo');
+      const err = new BaseError('foo');
       const isErr = err instanceof Error;
       expect(isErr).to.equal(true);
 
@@ -16,7 +16,7 @@ describe('shared / Errors', () => {
   it('should have a name and error msg ', () => {
 
     const msg = 'test';
-    const err = new ReactBaseError(msg);
+    const err = new BaseError(msg);
     expect(err.name).to.equal('React Base Error');
     expect(err.msg).to.equal('[BASE ERROR] test');
 
