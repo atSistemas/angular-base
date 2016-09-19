@@ -10,6 +10,11 @@ declare module base {
     export function ProgressBarPlugin(): void;
     export function CompileErrorsPlugin(): void;
   }
+  export module fs {
+    export function fileExists(file: string): boolean;
+    export function readDir(path: string): any;
+    export function writeFile(file:string, content: string): boolean;
+  }
 }
 
 

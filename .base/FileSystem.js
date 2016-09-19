@@ -1,5 +1,5 @@
 import fs from 'fs';
-import ReactBaseError from './Errors';
+import BaseError from './Errors';
 
 function fileExists(filename){
   try{
@@ -19,7 +19,7 @@ function writeFile(file, content){
     fs.writeFileSync(file, content, 'utf8');
     return true;
   }catch(e){
-    throw new ReactBaseError(e);
+    throw new BaseError(e);
   }
 }
 
