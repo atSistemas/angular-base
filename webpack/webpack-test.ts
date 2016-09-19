@@ -1,5 +1,6 @@
 /**
- * @fileoverview Webpack configuration file for testing
+ * @fileoverview Webpack configuration file for testing bundle
+ * @author Rafa Bernad [rbernad@atsistiemas.com]
  */
 import * as path from 'path';
 import * as base from '../.base';
@@ -25,9 +26,7 @@ module.exports = {
         new base.webpack.ProgressBarPlugin(),
         new TsConfigPathsPlugin(),
         new DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-            },
+            'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
         }),
         new ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
