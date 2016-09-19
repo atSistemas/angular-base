@@ -1,10 +1,10 @@
-/// <reference path="./webpack.d.ts" />
-/// <reference path="../node_modules/@types/node/index.d.ts"/>
+/**
+ * @fileoverview Defines webpack configuration for project's third party dependencies
+ * @author Rafa Bernad [rbernad@atsistemas.com]
+ */
 
 import * as path from 'path';
-import 'core-js/es6';
-import 'core-js/es7/reflect';
-import 'ts-helpers';
+import * as base from '../.base';
 import { root, externalsPath, getPolyfills, getVendorModules } from './dll';
 
 const {
@@ -45,7 +45,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
 
     module: {
       preLoaders: [
-        // fix angular2
+        // fix Angular2 imports
         {
           test: /(systemjs_component_resolver|system_js_ng_module_factory_loader)\.js$/,
           loader: 'string-replace-loader',
@@ -65,7 +65,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
             flags: 'g'
           }
         }
-        // end angular2 fix
+        // end Angular2 imports fix
       ],
 
       loaders: [
@@ -109,10 +109,9 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
         resolveNgRoute(root('./src'))
       ),
       // end angular2 fix
-      //new ProgressPlugin({}),
-      new ProgressBarPlugin({}),
+      new base.webpack.ProgressBarPlugin(),
 
-      // FIX: WE NEED THE DEDUPE PLUGIN;
+      // FIXME: WE NEED THE DEDUPE PLUGIN;
       //new DedupePlugin(),
 
     ],
