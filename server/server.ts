@@ -13,6 +13,7 @@ const context = 'server';
 /**
  * @class {object} Server
  * @description Generates development server instances, with configurable environment middlewares
+ * @author Rafa Bernad [rbernad@atsistemas.com]
  */
 export class Server {
 
