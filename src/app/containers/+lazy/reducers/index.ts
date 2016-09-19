@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { actionTypes } from '../action-types';
 import { LazyModelInterface, LazyModel, InitialState } from '../models';
-import CreateReducer from 'base/shared/CreateReducer';
+import { Store } from 'base';
 
 const request = (state, data) =>{
   console.log('lazy requeeeeeeest!!!');
@@ -20,5 +20,5 @@ const actionHandlers = {
   [actionTypes.LAZY_SUCCESS]: success
 }
 
-const LazyReducer = CreateReducer<LazyModelInterface>(actionHandlers, InitialState);
+const LazyReducer = Store.createReducer<LazyModelInterface>(actionHandlers, InitialState);
 export { LazyReducer }
