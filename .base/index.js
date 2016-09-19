@@ -1,11 +1,5 @@
-const console = require('./console');
-const timer = require('./timer');
-const webpackPlugins = require('./webpack-plugins');
-const fileSystem = require('./FileSystem');
+require('babel-core/register');
 
-module.exports = {
-    console: console,
-    timer: timer,
-    webpack: webpackPlugins,
-    fs: fileSystem
-};
+const base = require('./base').default;
+
+module.exports = base;

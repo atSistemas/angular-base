@@ -1,5 +1,5 @@
 import fs from 'fs';
-import BaseError from './Errors';
+import BaseError from './Error';
 
 function fileExists(filename){
   try{
