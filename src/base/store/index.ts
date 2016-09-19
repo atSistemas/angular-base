@@ -1,3 +1,5 @@
+declare var BASE_ENVIRONMENT: any;
+
 import { Injectable } from '@angular/core';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { combineReducers, ReducersMapObject, Reducer } from 'redux';
@@ -34,13 +36,13 @@ export class Store {
   private _defaultReducers: ReducersMapObject = {
     router: routerReducer,
   }
-  private epics: Epic[] = [];
-  public epic$: BehaviorSubject<Epic>;
+  private epics: Epic<Action>[] = [];
+  public epic$: BehaviorSubject<Epic<Action>>;
   constructor(
     public ngRedux: NgRedux<AppState>,
   ) {
     console.log("configuring store");
-    
+
     this.configureStore();
   }
   get RootReducer() {
@@ -51,16 +53,18 @@ export class Store {
   }
   private configureStore() {
 
-    middleware.push(
-      createLogger({
-        level: 'info',
-        collapsed: true,
-      }));
+    if (BASE_ENVIRONMENT === 'development') {
+      middleware.push(
+        createLogger({
+          level: 'info',
+          collapsed: true,
+        }));
+    }
 
     this.epic$ = new BehaviorSubject(combineEpics(...this.epics))
 
-    const rootEpic = (action$: ActionsObservable, store): Observable<Action> =>
-      this.epic$.mergeMap(epic =>
+    const rootEpic = (action$: ActionsObservable<Action>, store): Observable<Action> =>
+      this.epic$.mergeMap((epic) =>
         epic(action$, store)
       );
 
