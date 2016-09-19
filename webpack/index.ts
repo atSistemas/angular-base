@@ -40,7 +40,6 @@ const webpackConfig = {
   },
 
   resolve: {
-    cache: !isTesting,
     extensions: ['', '.js', '.ts', '.tsx', '.css'],
     alias: {
       'base': path.resolve(__dirname, '../src/base')
