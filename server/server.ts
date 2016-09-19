@@ -10,6 +10,10 @@ import * as base from '../.base';
 
 const context = 'server';
 
+/**
+ * @class {object} Server
+ * @description Generates development server instances, with configurable environment middlewares
+ */
 export class Server {
 
   public app: express.Application;
