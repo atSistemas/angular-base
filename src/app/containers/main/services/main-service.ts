@@ -15,19 +15,19 @@ import { AppState } from 'base';
 
 @Injectable()
 export class MainService {
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
-  getData = (action$: ActionsObservable<Action>) => {
+  getData = (action$: ActionsObservable<Action>): Observable<Action> => {
     return action$.ofType(actionTypes.MAIN_REQUEST)
-    .flatMap((/*{payload}*/) => {
-      return this.http.get('mocks/main.json')
-        .map(result => ({
-          type: actionTypes.MAIN_SUCCESS,
-          payload: result.json()
-        }))
-        .catch(error => Observable.of({
-          type: actionTypes.MAIN_ERROR
-        }));
+      .flatMap((/*{payload}*/) => {
+        return this.http.get('mocks/main.json')
+          .map(result => ({
+            type: actionTypes.MAIN_SUCCESS,
+            payload: result.json()
+          }))
+          .catch(error => Observable.of({
+            type: actionTypes.MAIN_ERROR
+          }));
       });
-    }
+  }
 }
