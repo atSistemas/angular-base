@@ -1,6 +1,6 @@
 /**
- * @fileoverview    Sets up testing environment for Angular 2 with webppack.
- * @author      <Rafa Bernad> rbernad@atsistemas.com
+ * @fileoverview Sets up testing environment for Angular 2 with webppack.
+ * @author Rafa Bernad [rbernad@atsistemas.com]
  */
 
 Error.stackTraceLimit = Infinity;
