@@ -1,6 +1,6 @@
-import { iEnvironment } from './index';
+import { environmentInterface } from './index';
 
-const production: iEnvironment = {
+const production: environmentInterface = {
     port: 8000,
     ENV: process.env.NODE_ENV
 };

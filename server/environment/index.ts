@@ -10,7 +10,7 @@ export const constants = {
 };
 
 
-export interface iEnvironment {
+export interface environmentInterface {
     port: number,
     ENV: string
 }
