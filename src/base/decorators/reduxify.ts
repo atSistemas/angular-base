@@ -1,7 +1,6 @@
 import { Action, ReducersMapObject } from 'redux';
 import { ReflectiveInjector } from '@angular/core';
 import { Store } from 'base';
-//import * as base from '../../../.base';
 import { NgRedux } from 'ng2-redux';
 
 export interface reduxifyOptions {
