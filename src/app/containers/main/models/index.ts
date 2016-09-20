@@ -2,7 +2,7 @@ import { TypedRecord } from 'typed-immutable-record';
 import { makeTypedFactory } from 'typed-immutable-record';
 
 export interface MainModelInterface {
-  main: any[];
+  mainValue: any[];
 };
 
 export interface MainModel extends TypedRecord<MainModel>,
@@ -10,7 +10,7 @@ export interface MainModel extends TypedRecord<MainModel>,
 };
 
 const MainModelFactory = makeTypedFactory<MainModelInterface, MainModel>({
-  main: []
+  mainValue: []
 });
 
 export const InitialState = MainModelFactory();
