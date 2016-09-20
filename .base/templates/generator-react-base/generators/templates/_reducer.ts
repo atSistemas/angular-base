@@ -10,7 +10,7 @@ const queryRequest = (state, data) =>{
 
 const querySuccess = (state, action) =>{
   console.log('<%= name %> query sucess', action.payload);
-  return state.update('<%= name %>', (value) => action.payload);
+  return state.update('<%= name %>Value', (value) => action.payload);
 }
 
 const queryError = (state, action) =>{
