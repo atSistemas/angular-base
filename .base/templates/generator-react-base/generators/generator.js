@@ -8,21 +8,19 @@ import _s from 'underscore.string';
 export default class AngularBaseGenerator extends Base {
   basePath = 'src/app';
   submodules = {
-    container: [/*'api',
+    container: [/*'api',*/
       'action',
-      'action_spec',*/
+      'action_spec',
       'module',
       'module-spec',
       'container',
       'template',
-      'spec'/*,
-      'container_spec',
-      'component_spec',
-      'models',
+      'spec',
+      'model',
       'reducers',
       'reducers_spec',
       'styles',
-      'types'*/
+      'types'
     ],
     component: [
       'component',
@@ -110,7 +108,7 @@ export default class AngularBaseGenerator extends Base {
 
     this.fs.copyTpl(
       this.templatePath(opts.template),
-      this.destinationPath(destPath, opts.filename), {
+      this.destinationPath(destPath, opts.folder, opts.filename), {
           name: name,
           _: _s,
           options: this.options
