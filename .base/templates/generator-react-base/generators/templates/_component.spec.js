@@ -1,30 +1,14 @@
-import { expect } from 'chai';
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import <%= name %> from '../';
+import <%= name %> from './';
 
-function setup() {
-  let props = {
-    
-  };
-
-  let renderer = TestUtils.createRenderer();
-  renderer.render(<<%= name %> />);
-  let output = renderer.getRenderOutput();
-
-  return {
-    props,
-    output,
-    renderer
-  };
-}
-
-describe('components', () => {
+describe('Component', () => {
   describe('<%= name %> component', () => {
-   /* it('should render correctly', () => {
-      const { output, renderer } = setup();
 
-      expect(output.type).toBe('div');
-    });*/
+    it('Should exist', () => {
+
+      const component = mount(<<%= name %>  name="<%= name %>"/>);
+      expect(component.props().name).to.equal("<%= name %>");
+
+    });
+    
   });
 });

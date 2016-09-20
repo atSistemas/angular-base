@@ -1,18 +1,10 @@
-import React, { PropTypes } from 'react';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
-const propTypes= {
-  name: PropTypes.string.isRequired
-};
-
-const <%= name %> = ({ name }) => {
-
-  return (
-    <div>
-      Hello { name } Container !
-    </div>
-  );
-};
-
-<%= name %>.propTypes = propTypes;
-
-export default <%= name %>;
+@Component({
+  selector: '<%= _.dasherize(name) %>',
+  templateUrl: './<%= _.dasherize(name) %>.html'
+})
+export class <%= _.capitalize(name) %>Component {
+  @Input() <%= name %>: <%= _.capitalize(name) %>ModelInterface;
+}

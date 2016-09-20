@@ -1,0 +1,10 @@
+<% if (!options.container) { %>
+Hello world!
+I'm <%= _.capitalize(name) %>Component, and my initial state is = {{<%= name %>}}
+<% } else { %>
+<div>
+    <a routerLink="/">Back to index</a>
+    <h1><%= _.capitalize(name) %> Container</h1>
+    <div>{{<%= name %>$ | async}}</div>
+</div>
+<% } %>

@@ -1,26 +1,18 @@
 import { expect } from 'chai';
 import reducer from '..';
-import types from '../../types';
+import types from '../action-types';
 
 describe('Reducers', () => {
-  describe('<%= name %> reducer', () => {
+  describe('<%= _.capitalize(name) %> reducer', () => {
 
    /* it('Should return the initial state', () => {
 
       const action = {
-        type: types.<%= nameUpper %>_REQUEST
+        type: types.<%= _.capitalize(name) %>_QUERY_REQUEST
       };
 
       expect(reducer([], action)).toEqual([]);
     });*/
 
-  /*  it('should return the state of <%= name %> request fail', () => {
-
-      const action = {
-        type: types.<%= nameUpper %>_ERROR
-      };
-
-      expect(reducer([], action)).toEqual([]);
-    });*/
   });
 });
