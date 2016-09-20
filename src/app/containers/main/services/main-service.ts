@@ -9,9 +9,7 @@ import { ActionsObservable } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 import { Action } from 'redux';
 import { actionTypes } from '../action-types';
-import { IPayloadAction } from '../actions/';
-import { AppState } from 'base';
-
+import { AppState, PayloadAction } from 'base';
 
 @Injectable()
 export class MainService {
