@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';
 import { MainActions } from './actions';
-import { MainService } from './services/main-service';
+import { MainService } from './services';
 
 export { MainDisplay } from './components';
 

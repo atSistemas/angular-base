@@ -4,11 +4,6 @@ import { NgRedux } from 'ng2-redux';
 import { AppState } from 'base';
 import { actionTypes } from '../action-types';
 
-//FIXME MOVE TO CORRECT PLACE
-export interface IPayloadAction extends Action {
-  payload?: any;
-}
-
 @Injectable()
 export class MainActions {
 
