@@ -20,6 +20,6 @@ export class <%= _.capitalize(name) %>Container implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.actions.mainRequest();
+    this.actions.query();
   }
 }

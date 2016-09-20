@@ -1,5 +1,5 @@
 export const actionTypes = {
-    <%= name.toUpperCase() %>_REQUEST:  '<%= name.toUpperCase() %>_REQUEST',
-    <%= name.toUpperCase() %>_SUCCESS:  '<%= name.toUpperCase() %>_SUCCESS',
-    <%= name.toUpperCase() %>_ERROR:    '<%= name.toUpperCase() %>_ERROR'
+    <%= name.toUpperCase() %>_QUERY:  '<%= name.toUpperCase() %>_QUERY',
+    <%= name.toUpperCase() %>_QUERY_SUCCESS:  '<%= name.toUpperCase() %>_QUERY_SUCCESS',
+    <%= name.toUpperCase() %>_QUERY_ERROR:    '<%= name.toUpperCase() %>_QUERY_ERROR'
 }
