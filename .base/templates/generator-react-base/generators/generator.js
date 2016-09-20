@@ -20,11 +20,11 @@ export default class AngularBaseGenerator extends Base {
       'reducers',
       'reducers_spec',
       'styles',
-      'types'
+      'types',
+      'services'
     ],
     component: [
       'component',
-      
       'template',
       'styles',
       'spec'
