@@ -76,6 +76,12 @@ const templateTypes =  {
     template: '_action-types.ts',
     filename: 'index.ts',
     type: 'types'
+  },
+  services: {
+    folder: '/services/',
+    template: '_service.ts',
+    filename: 'index.ts',
+    type: 'services'
   }
 };
 
