@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as base from '../../../../.base'
 import { Base } from 'yeoman-generator';
 import optionOrPrompt from 'yeoman-option-or-prompt';
 import templates from './templates';
@@ -10,9 +11,12 @@ export default class AngularBaseGenerator extends Base {
     container: [/*'api',
       'action',
       'action_spec',*/
-      'container'/*,
+      'module',
+      'module-spec',
+      'container',
+      'template',
+      'spec'/*,
       'container_spec',
-      'component',
       'component_spec',
       'models',
       'reducers',
@@ -22,8 +26,10 @@ export default class AngularBaseGenerator extends Base {
     ],
     component: [
       'component',
+      
+      'template',
       'styles',
-      'component_spec'
+      'spec'
     ]
   };
   constructor(...args) {
@@ -31,15 +37,29 @@ export default class AngularBaseGenerator extends Base {
     this.option('container');
     this.option('lazy');
     this.argument('name', { type: String, required: false });
+  }
+  initializing () {
+    if(this.name) this._processName();
+  }
+  _processName() {
+    const componentPath = this.name.split('/');
+    if(componentPath.length > 1) {
+        this.name = componentPath.splice(componentPath.length - 1, 1)[0];
+        if(componentPath.length > 1 || this.options.container) {
+          base.console.error(`${this.options.container ? 'Container':'Component'} generator: Subcontainers are not allowed (yet?)`);
+          process.exit(1);
+        } else {
+          this.path = path.join.apply(null, componentPath.map((item) => _s.dasherize(item).replace(/\+-/g, '+')));
+        }
+    }
     if(_s.startsWith(this.name,'+')) {
       if(this.options.container) {
-        this.options.lazy = true;
-        this.name = this.name.substring(1);
+        this.options.lazy = true;  
       }
+      this.name = this.name.substring(1);
     }
-    this.name = _s.camelize(this.name);
+    this.name = _s.camelize(_s.decapitalize(this.name));
   }
-
   prompting() {
 
     if (!this.name) {
@@ -65,28 +85,66 @@ export default class AngularBaseGenerator extends Base {
       }.bind(this));
     }
   }
-  _createSubmodule(route, name, opts) {
+  _createSubmoduleElement(route, name, type) {
+
+    let opts;
+    if(type === 'module-spec') {
+      opts = JSON.parse(JSON.stringify(templates['spec']));
+      opts.type = 'module-spec';
+    } else {
+      opts = JSON.parse(JSON.stringify(templates[type]));
+    }
+    const dashName = _s.dasherize(name);
+
+    let destPath = path.join(route, (this.options.container && this.options.lazy) ? `+${dashName}` : dashName);
+
+    switch(opts.type) {
+      
+      case 'container':
+      case 'spec':
+      case 'template':
+        opts.filename = `${dashName}${opts.type === 'spec' ? '.spec': ''}.${opts.filename.substr(opts.filename.lastIndexOf('.') + 1)}`;
+        break;
+      default:
+    }
+
     this.fs.copyTpl(
       this.templatePath(opts.template),
-      this.destinationPath(path.join(route, (this.options.container && this.options.lazy) ? `+${name}` : name, opts.folder, opts.filename)), {
-        name: name,
-        _: _s
-      });
+      this.destinationPath(destPath, opts.filename), {
+          name: name,
+          _: _s,
+          options: this.options
+        }
+      );
+  }
+  _createComponentElement(route, name, type) {
+
+    const opts = templates[type];
+    
+    this.fs.copyTpl(
+      this.templatePath(opts.template),
+      this.destinationPath(
+        path.join(route, opts.filename)
+        ), {
+          name: name,
+          _: _s,
+          options: this.options
+        }
+      );
   }
   get writing() {
 
-    return {
-      
+    return {  
       component() {
         if (this.options.container) return;
 
-        let componentPath = path.join(this.basePath, 'components', this.name);
-        this.submodules.component.forEach(submodule => this._createSubmodule(componentPath, this.name, templates[submodule]));
+        let componentPath = path.join(this.basePath, this.path ? path.join('containers', this.path, 'components') : 'components', _s.dasherize(this.name));
+        this.submodules.component.forEach(submodule => this._createComponentElement(componentPath, this.name, submodule));
       },
       container() {
         if (!this.options.container) return;
         let modulePath = path.join(this.basePath, 'containers');
-        this.submodules.container.forEach(submodule => this._createSubmodule(modulePath, this.name, templates[submodule]));
+        this.submodules.container.forEach(submodule => this._createSubmoduleElement(modulePath, this.name, submodule));
       }
     }
   }

@@ -2,74 +2,80 @@ const templateTypes =  {
   action: {
     folder: '/actions/',
     template: '_action.js',
-    filename: '/index.js',
-    nameType: 'action'
+    filename: '/index.ts',
+    type: 'action'
   },
   action_spec: {
     folder: '/actions/spec/',
     template: '_action.spec.js',
     filename: '.action.spec.js',
-    nameType: 'actionSpec'
+    type: 'actionSpec'
   },
   api: {
     folder: '/api/',
     template: '_api.js',
     filename: '/index.js',
-    nameType: 'api'
+    type: 'api'
   },
   component: {
     folder: '/components/',
     template: '_component.js',
-    filename: '/index.jsx',
-    nameType: 'component'
+    filename: '/index.ts',
+    type: 'component'
   },
-  component_spec: {
+  template: {
+    folder: '/components/',
+    template: '_component.html',
+    filename: 'index.html',
+    type: 'template'
+  },
+  spec: {
     folder: '/components/spec/',
     template: '_component.spec.js',
-    filename: '.component.spec.js',
-    nameType: 'component_spec'
+    filename: 'index.spec.js',
+    type: 'spec'
+  },
+  module: {
+    folder: '/',
+    template: '_module.ts',
+    filename: '/index.ts',
+    type: 'module'
   },
   container: {
     folder: '/',
-    template: '_container.js',
-    filename: '/index.jsx',
-    nameType: 'container'
-  },
-  container_spec: {
-    folder: '/spec/',
-    template: '_container.spec.js',
-    filename: '.container.spec.js',
-    nameType: 'container_spec'
+    template: '_container.ts',
+    filename: '/index.ts',
+    type: 'container'
   },
   models: {
     folder: '/models/',
     template: '_models.js',
-    filename: '/index.js',
-    nameType: 'models'
+    filename: '/index.ts',
+    type: 'models'
   },
-  reducer: {
+  reducers: {
     folder: '/reducers/',
     template: '_reducer.js',
-    filename: '/index.js',
-    nameType: 'reducer'
+    filename: '/index.ts',
+    type: 'reducer'
   },
-  reducer_spec: {
+  reducers_spec: {
     folder: '/reducers/spec/',
     template: '_reducer.spec.js',
     filename: '.reducer.spec.js',
-    nameType: 'reducer_spec'
+    type: 'reducer_spec'
   },
   styles: {
     folder: '/',
     template: '_styles.css',
     filename: '/styles.css',
-    nameType: 'styles'
+    type: 'styles'
   },
   types: {
     folder: '/types/',
     template: '_types.js',
     filename: '/index.js',
-    nameType: 'types'
+    type: 'types'
   }
 };
 
