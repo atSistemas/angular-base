@@ -7,6 +7,7 @@ import _s from 'underscore.string';
 import regenerate from './regenerators';
 
 export default class AngularBaseGenerator extends Base {
+  home = 'main';
   basePath = 'src/app';
   submodules = {
     container: [/*'api',*/
@@ -34,26 +35,31 @@ export default class AngularBaseGenerator extends Base {
   constructor(...args) {
     super(...args);
     this.option('container');
+    this.option('refresh');
     this.option('lazy');
     this.argument('name', { type: String, required: false });
   }
-  initializing () {
-    if(this.name) this._processName();
+  initializing() {
+    if (this.options.refresh) {
+      regenerate.call(this);
+      process.exit(1);
+    }
+    if (this.name) this._processName();
   }
   _processName() {
     const componentPath = this.name.split('/');
-    if(componentPath.length > 1) {
-        this.name = componentPath.splice(componentPath.length - 1, 1)[0];
-        if(componentPath.length > 1 || this.options.container) {
-          base.console.error(`${this.options.container ? 'Container':'Component'} generator: Subcontainers are not allowed (yet?)`);
-          process.exit(1);
-        } else {
-          this.path = path.join.apply(null, componentPath.map((item) => _s.dasherize(item).replace(/\+-/g, '+')));
-        }
+    if (componentPath.length > 1) {
+      this.name = componentPath.splice(componentPath.length - 1, 1)[0];
+      if (componentPath.length > 1 || this.options.container) {
+        base.console.error(`${this.options.container ? 'Container' : 'Component'} generator: Subcontainers are not allowed (yet?)`);
+        process.exit(1);
+      } else {
+        this.path = path.join.apply(null, componentPath.map((item) => _s.dasherize(item).replace(/\+-/g, '+')));
+      }
     }
-    if(_s.startsWith(this.name,'+')) {
-      if(this.options.container) {
-        this.options.lazy = true;  
+    if (_s.startsWith(this.name, '+')) {
+      if (this.options.container) {
+        this.options.lazy = true;
       }
       this.name = this.name.substring(1);
     }
@@ -86,8 +92,11 @@ export default class AngularBaseGenerator extends Base {
   }
   _createSubmoduleElement(route, name, type) {
 
+    if ((type === 'module' || type === 'module-spec') && !this.options.lazy) return;
+
     let opts;
-    if(type === 'module-spec') {
+
+    if (type === 'module-spec') {
       opts = JSON.parse(JSON.stringify(templates['spec']));
       opts.type = 'module-spec';
     } else {
@@ -97,12 +106,13 @@ export default class AngularBaseGenerator extends Base {
 
     let destPath = path.join(route, (this.options.container && this.options.lazy) ? `+${dashName}` : dashName);
 
-    switch(opts.type) {
-      
+    switch (opts.type) {
+
       case 'container':
       case 'spec':
       case 'template':
-        opts.filename = `${dashName}${opts.type === 'spec' ? '.spec': ''}.${opts.filename.substr(opts.filename.lastIndexOf('.') + 1)}`;
+        let filename = this.options.lazy ? `${dashName}` : 'index';
+        opts.filename = `${filename}${opts.type === 'spec' ? '.spec' : ''}.${opts.filename.substr(opts.filename.lastIndexOf('.') + 1)}`;
         break;
       default:
     }
@@ -110,30 +120,30 @@ export default class AngularBaseGenerator extends Base {
     this.fs.copyTpl(
       this.templatePath(opts.template),
       this.destinationPath(destPath, opts.folder, opts.filename), {
-          name: name,
-          _: _s,
-          options: this.options
-        }
-      );
+        name: name,
+        _: _s,
+        options: this.options
+      }
+    );
   }
   _createComponentElement(route, name, type) {
 
     const opts = templates[type];
-    
+
     this.fs.copyTpl(
       this.templatePath(opts.template),
       this.destinationPath(
         path.join(route, opts.filename)
-        ), {
-          name: name,
-          _: _s,
-          options: this.options
-        }
-      );
+      ), {
+        name: name,
+        _: _s,
+        options: this.options
+      }
+    );
   }
   get writing() {
 
-    return {  
+    return {
       component() {
         if (this.options.container) return;
 
