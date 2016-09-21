@@ -6,6 +6,7 @@
 import * as path from 'path';
 import * as base from '../.base';
 import { root, externalsPath, getPolyfills, getVendorModules } from './dll';
+import environment, { constants as envConstants } from '../server/environment';
 
 const {
   ContextReplacementPlugin,
@@ -13,10 +14,11 @@ const {
   DefinePlugin,
   ProgressPlugin,
   DllPlugin,
-
+  LoaderOptionsPlugin,
   optimize: {
     CommonsChunkPlugin,
-    DedupePlugin
+    DedupePlugin,
+    UglifyJsPlugin
   }
 
 } = require('webpack');
@@ -44,9 +46,11 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
     },
 
     module: {
-      preLoaders: [
-        // fix Angular2 imports
+
+      rules: [
+        // fix angular 2 imports
         {
+          enforce: 'right',
           test: /(systemjs_component_resolver|system_js_ng_module_factory_loader)\.js$/,
           loader: 'string-replace-loader',
           query: {
@@ -56,7 +60,9 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
           },
           include: [root('node_modules/@angular/core')]
         },
+        // end fix angular 2 imports
         {
+          enforce: 'right',
           test: /.js$/,
           loader: 'string-replace-loader',
           query: {
@@ -64,20 +70,15 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
             replace: '',
             flags: 'g'
           }
-        }
-        // end Angular2 imports fix
-      ],
-
-      loaders: [
+        },
         {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
           exclude: [root('src/app')],
           include: [root('./src')]
         },
-      ],
-      postLoaders: [
         {
+          enforce: 'left',
           test: /.json$/,
           loader: 'string-replace-loader',
           query: {
@@ -87,7 +88,6 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
           }
         }
       ]
-
     },
 
     plugins: [
@@ -108,6 +108,19 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
         root('./src'),
         resolveNgRoute(root('./src'))
       ),
+      new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+      }),
+      new UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: environment.ENV === envConstants.DEVELOPMENT
+    }),
       // end angular2 fix
       new base.webpack.ProgressBarPlugin(),
 
@@ -116,7 +129,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
 
     ],
     node: {
-      global: 'window',
+      global: true,
       process: true,
       Buffer: false,
       crypto: 'empty',
