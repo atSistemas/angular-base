@@ -9,8 +9,7 @@ export interface envConfig {
     entry?: { [propName: string]: any },
     context?: string,
     plugins?: any[],
-    preLoaders?: any[],
-    loaders?: any[],
+    rules?: any[],
     postCss?: Function
 }
 

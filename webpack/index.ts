@@ -7,8 +7,6 @@ const webpackConfig = {
 
   devtool: envConfig.devtool,
 
-  debug: envConfig.debug,
-
   entry: envConfig.entry,
 
   context: path.resolve(envConfig['context'], '../'),
@@ -17,16 +15,15 @@ const webpackConfig = {
 
   //postcss: envConfig.postCss,
 
-  tslint: {
+  /*tslint: {
     emitErrors: false,
     failOnHint: false,
     formattersDirectory: './node_modules/custom-tslint-formatters/formatters',
     formatter: 'grouped'
-  },
+  },*/
 
   module: {
-    preLoaders: envConfig.preLoaders,
-    loaders: envConfig.loaders
+    rules: envConfig.rules
   },
 
   output: isTesting ? {} : {
@@ -38,7 +35,7 @@ const webpackConfig = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.ts', '.tsx', '.css'],
+    extensions: ['.js', '.ts', '.tsx', '.css'],
     alias: {
       'base': path.resolve(__dirname, '../src/base')
     }

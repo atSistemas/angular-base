@@ -1,6 +1,6 @@
 
 import { Component, Input } from '@angular/core';
-import { MainModelInterface } from '../models';
+import { MainModelInterface } from '../../models';
 
 @Component({
   selector: 'main-display',

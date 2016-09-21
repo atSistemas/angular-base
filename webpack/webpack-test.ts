@@ -14,7 +14,7 @@ const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 module.exports = {
     devTool: 'inline-source-map',
     module: {
-        loaders: [
+        rules: [
             {
                 exclude: /node_modules/,
                 loader: 'awesome-typescript-loader',
