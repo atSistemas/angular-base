@@ -40,11 +40,9 @@ export default class AngularBaseGenerator extends Base {
     this.argument('name', { type: String, required: false });
   }
   initializing() {
-    if (this.options.refresh) {
-      regenerate.call(this);
-      process.exit(1);
+    if (!this.options.refresh) {
+      if (this.name) this._processName();
     }
-    if (this.name) this._processName();
   }
   _processName() {
     const componentPath = this.name.split('/');
@@ -67,7 +65,7 @@ export default class AngularBaseGenerator extends Base {
   }
   prompting() {
 
-    if (!this.name) {
+    if (!this.name && !this.options.refresh) {
       var done = this.async();
 
       var promptsAll = [{
@@ -145,13 +143,13 @@ export default class AngularBaseGenerator extends Base {
 
     return {
       component() {
-        if (this.options.container) return;
+        if (this.options.container || this.options.refresh) return;
 
         let componentPath = path.join(this.basePath, this.path ? path.join('containers', this.path, 'components') : 'components', _s.dasherize(this.name));
         this.submodules.component.forEach(submodule => this._createComponentElement(componentPath, this.name, submodule));
       },
       container() {
-        if (!this.options.container) return;
+        if (!this.options.container || this.options.refresh) return;
         let modulePath = path.join(this.basePath, 'containers');
         this.submodules.container.forEach(submodule => this._createSubmoduleElement(modulePath, this.name, submodule));
       }
