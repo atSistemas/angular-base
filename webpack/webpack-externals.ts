@@ -50,7 +50,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
       rules: [
         // fix angular 2 imports
         {
-          enforce: 'left',
+          enforce: 'right',
           test: /(systemjs_component_resolver|system_js_ng_module_factory_loader)\.js$/,
           loader: 'string-replace-loader',
           query: {
@@ -62,7 +62,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
         },
         // end fix angular 2 imports
         {
-          enforce: 'left',
+          enforce: 'right',
           test: /.js$/,
           loader: 'string-replace-loader',
           query: {
@@ -78,7 +78,7 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
           include: [root('./src')]
         },
         {
-          enforce: 'right',
+          enforce: 'left',
           test: /.json$/,
           loader: 'string-replace-loader',
           query: {
