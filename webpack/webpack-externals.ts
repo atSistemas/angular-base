@@ -27,7 +27,7 @@ const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
-function webpackConfig(options: EnvOptions = {}): any {
+function webpackConfig(options: any = {}): any {
   return {
     devtool: '#source-map',
     entry: {
