@@ -40,10 +40,11 @@ export const plugins = [
     new base.webpack.CompileErrorsPlugin()
 ];
 
-export const preLoaders = [
+export const rules = [
     // UNCOMMENT THIS TO ENABLE LINTING RULES CHECKING
-    //{ test: /\.ts$/, loader: 'tslint' },
+    //{ enforce: 'right', test: /\.ts$/, loader: 'tslint' },
     {
+        enforce: 'right',
         test: /\.ts$/,
         loader: 'string-replace-loader',
         query: {
@@ -52,9 +53,7 @@ export const preLoaders = [
             flags: 'g'
         },
         include: [root('src')]
-    }];
-
-export const loaders = [
+    },
     {
         test: /\.ts$/,
         loaders: [
@@ -70,14 +69,12 @@ export const loaders = [
     //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
 ];
 
-export const postLoaders = [];
-
-
 if (isTesting) {
     // instrument only testing sources with Istanbul, covers ts files
-    postLoaders.push({
+    rules.push({
+        enforce: 'left',
         test: /\.ts$/,
-        include: root('src'),
+        include: [root('src')],
         loader: 'istanbul-instrumenter-loader',
         exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
     });

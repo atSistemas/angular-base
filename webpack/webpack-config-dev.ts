@@ -9,8 +9,7 @@ const AssetsPlugin = require('assets-webpack-plugin');
 
 export const devtool = 'eval-source-map';
 export const debug = true;
-export const preLoaders = common.preLoaders;
-export const loaders = common.loaders;
+export const rules = common.rules;
 export const postCss = common.postCss;
 export const context = common.context;
 

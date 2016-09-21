@@ -9,8 +9,7 @@ export const debug = !isTesting;
 export const context = common.context;
 export const entry = common.entry;
 export const plugins = common.plugins;
-export const preLoaders = common.preLoaders;
-export const loaders = common.loaders;
+export const rules = common.rules;
 export const postCss = common.postCss;
 
 

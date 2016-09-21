@@ -27,10 +27,7 @@ const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
-
-
-// type definition for WebpackConfig is defined in webpack.d.ts
-function webpackConfig(options: EnvOptions = {}): WebpackConfig {
+function webpackConfig(options: EnvOptions = {}): any {
   return {
     devtool: '#source-map',
     entry: {
