@@ -4,7 +4,7 @@ import { Base } from 'yeoman-generator';
 import optionOrPrompt from 'yeoman-option-or-prompt';
 import templates from './templates';
 import _s from 'underscore.string';
-import regenerate from './regenerators';
+import link from './linkers';
 
 export default class AngularBaseGenerator extends Base {
   home = 'main';
@@ -156,7 +156,7 @@ export default class AngularBaseGenerator extends Base {
     }
   }
   end() {
-    regenerate.call(this);
+    link.call(this);
     /*var done = this.async();
     this.spawnCommand('npm', ['run', 'postYeomanGenerator']).on('close', done);*/
   }
