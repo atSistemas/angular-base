@@ -6,13 +6,16 @@ import { enableProdMode } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { DevToolsExtension, NgRedux } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
-import { MainContainer, MainDisplay } from './containers'
+import { MainContainer } from './containers/main';
 import { MainService } from './containers/main/services/main-service';
 import { MainReducer } from './containers/main/reducers';
 
+import SharedComponents from './components';
+import MainComponents from './containers/main/components';
+
 @NgModule({
   imports: [BrowserModule, HttpModule, Routing],
-  declarations: [BaseApp, MainContainer, MainDisplay],
+  declarations: [BaseApp, MainContainer, ...SharedComponents, ...MainComponents],
   providers: [RoutingProviders, Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService],
   bootstrap: [BaseApp]
 })
