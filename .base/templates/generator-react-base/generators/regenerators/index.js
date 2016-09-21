@@ -7,5 +7,5 @@ export default function regenerate() {
     base.console.info('Linking application routes...');
     this.conflicter.force = true;
     linkComponents.call(this);
-    //regenerateRoutes.call(this);
+    linkRoutes.call(this);
 }

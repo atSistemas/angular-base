@@ -1,3 +1,3 @@
-<% references.forEach((reference) => { %>
-export { <%= _.capitalize(_.camelize(reference)) %> } from './<%= reference %>';
-<% } %> 
+<% components.forEach((component) => { %>
+export { <%= _.capitalize(_.camelize(component)) %> } from './<%= component %>';
+<% }) %> 

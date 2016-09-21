@@ -4,7 +4,7 @@ import _s from 'underscore.string';
 
 const template = path.join(__dirname, 'templates', '_routes.ts');
 //const destination = 
-export default function regenerateRoutes() {
+export default function linkRoutes() {
 
   const folders = base.fs.getDirectories(path.join(this.basePath, 'containers'));
 
