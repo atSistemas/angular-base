@@ -1,13 +1,12 @@
-/// <reference path="./webpack.d.ts" />
-/// <reference path="../node_modules/@types/node/index.d.ts"/>
+/**
+ * @fileoverview Defines webpack configuration for project's third party dependencies
+ * @author Rafa Bernad [rbernad@atsistemas.com]
+ */
 
 import * as path from 'path';
-import 'core-js/es6';
-import 'core-js/es7/reflect';
-import 'ts-helpers';
-import { root, externalsPath } from './externals';
-import { getPolyfills, getVendorModules } from './externals';
-// needed to create context for resolveNgRoute
+import * as base from '../.base';
+import { root, externalsPath, getPolyfills, getVendorModules } from './dll';
+import environment, { constants as envConstants } from '../server/environment';
 
 const {
   ContextReplacementPlugin,
@@ -15,10 +14,11 @@ const {
   DefinePlugin,
   ProgressPlugin,
   DllPlugin,
-
+  LoaderOptionsPlugin,
   optimize: {
     CommonsChunkPlugin,
-    DedupePlugin
+    DedupePlugin,
+    UglifyJsPlugin
   }
 
 } = require('webpack');
@@ -27,14 +27,11 @@ const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
-
-
-// type definition for WebpackConfig is defined in webpack.d.ts
-function webpackConfig(options: EnvOptions = {}): WebpackConfig {
+function webpackConfig(options: any = {}): any {
   return {
     devtool: '#source-map',
     entry: {
-      polyfills: getPolyfills(options),
+      polyfills: getPolyfills(),
       vendor: getVendorModules(options)
     },
     context: options.context || path.resolve(__dirname + '../'),
@@ -46,9 +43,11 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
     },
 
     module: {
-      preLoaders: [
-        // fix angular2
+
+      rules: [
+        // fix angular 2 imports
         {
+          enforce: 'right',
           test: /(systemjs_component_resolver|system_js_ng_module_factory_loader)\.js$/,
           loader: 'string-replace-loader',
           query: {
@@ -58,7 +57,9 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
           },
           include: [root('node_modules/@angular/core')]
         },
+        // end fix angular 2 imports
         {
+          enforce: 'right',
           test: /.js$/,
           loader: 'string-replace-loader',
           query: {
@@ -66,20 +67,15 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
             replace: '',
             flags: 'g'
           }
-        }
-        // end angular2 fix
-      ],
-
-      loaders: [
+        },
         {
           test: /\.ts$/,
           loader: 'awesome-typescript-loader',
           exclude: [root('src/app')],
           include: [root('./src')]
         },
-      ],
-      postLoaders: [
         {
+          enforce: 'left',
           test: /.json$/,
           loader: 'string-replace-loader',
           query: {
@@ -89,7 +85,6 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
           }
         }
       ]
-
     },
 
     plugins: [
@@ -110,15 +105,28 @@ function webpackConfig(options: EnvOptions = {}): WebpackConfig {
         root('./src'),
         resolveNgRoute(root('./src'))
       ),
+      new LoaderOptionsPlugin({
+        minimize: true,
+        debug: false
+      }),
+      new UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: environment.ENV === envConstants.DEVELOPMENT
+    }),
       // end angular2 fix
-      //new ProgressPlugin({}),
-      new ProgressBarPlugin({}),
+      new base.webpack.ProgressBarPlugin(),
 
-      new DedupePlugin(),
+      // FIXME: WE NEED THE DEDUPE PLUGIN;
+      //new DedupePlugin(),
 
     ],
     node: {
-      global: 'window',
+      global: true,
       process: true,
       Buffer: false,
       crypto: 'empty',

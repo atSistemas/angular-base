@@ -9,16 +9,15 @@ export default function renderIndex() {
     <head>
       <title>Angular2 Base</title>
       <base href="/">
-      <script src="externals/polyfills.js"></script>
-      <script src="externals/vendor.js"></script>
+      <script src="dll/polyfills.js"></script>
+      <script src="dll/vendor.js"></script>
       ${ style}
     </head>
     <body>
-    <div id="root"></div>
     <base-app>
     Loading....
     </base-app>
-    <script src="/main.bundle.js"></script>
+    <script src="/application.bundle.js"></script>
     </body>
   </html>
   `;

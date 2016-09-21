@@ -1,7 +1,8 @@
+import { Action } from 'redux';
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
-import { AppState } from '../../../../base/store';
-import { Types } from '../types';
+import { AppState } from 'base';
+import { actionTypes } from '../action-types';
 
 @Injectable()
 export class MainActions {
@@ -9,14 +10,18 @@ export class MainActions {
   constructor(private ngRedux: NgRedux<AppState>) {}
 
   load() {
-    this.ngRedux.dispatch({ type: Types.MAIN_CONTAINER });
+    this.ngRedux.dispatch({ type: actionTypes.MAIN_CONTAINER });
   }
-
-  gotoTo() {
-    this.ngRedux.dispatch({ type: Types.GOTO_MAINCONTAINER2 });
+  
+  lazy() {
+    this.ngRedux.dispatch({ type: actionTypes.LAZY_CONTAINER });
   }
 
   click() {
-    this.ngRedux.dispatch({ type: Types.CLICK });
+    this.ngRedux.dispatch({ type: actionTypes.CLICK });
+  }
+
+  mainRequest(){
+    this.ngRedux.dispatch({ type: actionTypes.MAIN_REQUEST });
   }
 }

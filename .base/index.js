@@ -1,7 +1,5 @@
-const console = require('./console');
-const timer = require('./timer');
+require('babel-core/register');
 
-module.exports = {
-    console: console,
-    timer: timer   
-};
+const base = require('./base').default;
+
+module.exports = base;

@@ -9,7 +9,7 @@ exports.colors = {
 
 exports.symbols = {
   success: '✓',
-  err: '✖',
+  error: '✖',
   info: 'i',
   dot: '․',
   CR: '\u000A'
@@ -23,17 +23,6 @@ if (process.platform === 'win32') {
   exports.symbols.CR = '\u000D\u000A';
 }
 
-/**
- * Color `str` with the given `type`,
- * allowing colors to be disabled,
- * as well as user-defined color
- * schemes.
- *
- * @param {string} type
- * @param {string} str
- * @return {string}
- * @api private
- */
 exports.color = function (type, str) {
   if (!exports.useColors) {
     return String(str);
@@ -48,7 +37,7 @@ exports.color = function (type, str) {
 
 function printLog(type, args) {
 
-  let decorators = [' ', exports.color(type, exports.symbols[type]), '[BASE]'].join(' ');
+  let decorators = [' ', '[BASE]', exports.color(type, exports.symbols[type])].join(' ');
   
   if(typeof args[0] !== 'object') {
     args[0] = decorators + ' ' + args[0];

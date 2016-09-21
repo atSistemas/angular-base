@@ -1,29 +1,25 @@
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+import * as base from '../.base';
+import environment, { isTesting } from '../server/environment';
+import * as common from './webpack-config-common';
+import { getPolyfills, getManifest, root } from './dll';
+
+const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const { HotModuleReplacementPlugin } = require('webpack');
+const AssetsPlugin = require('assets-webpack-plugin');
 
-export const devTool = 'source-map';
+export const devtool = 'eval-source-map';
+export const debug = true;
+export const rules = common.rules;
+export const postCss = common.postCss;
+export const context = common.context;
 
-export const entries = [
-  'webpack/hot/dev-server',
-  'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
-];
+export const entry = {
+  application: common.entry.application.concat(
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
+  )
+};
 
 export const plugins = [
-
-  new HotModuleReplacementPlugin(),
-  new ForkCheckerPlugin()
-];
-
-export const loaders = [
-
-];
-
-export const postCss = function (webpack) {
-  return [
-    /*require("postcss-import")({ addDependencyTo: webpack }),
-    require('postcss-modules-extract-imports')(),
-    require("postcss-url")(),
-    require("postcss-cssnext")(),
-    require("postcss-reporter")()*/
-  ];
-}
+  new HotModuleReplacementPlugin()
+].concat(common.plugins);

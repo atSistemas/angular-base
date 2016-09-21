@@ -4,15 +4,22 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "pretty": true,
     "sourceMap": true,
-    "lib": ["es5", "dom"],
+    "lib": [
+      "es5",
+      "dom"
+    ],
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": {},
+    "paths": {
+      "base": ["./base"]
+    },
     "types": [
-      "core-js"
+      "core-js",
+      "node",
+      "systemjs"
     ]
   },
   "exclude": [
@@ -25,5 +32,7 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
