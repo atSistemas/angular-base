@@ -25,7 +25,7 @@
     "regenerate:reducerIndex": "node ./src/base/shared/Regenerate.js --reducer",
     "regenerate": "npm run logo && node ./src/base/shared/Regenerate.js --all",
     "build": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/index.ts",
-    "generate:dll": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/webpack-externals.ts",
+    "generate:dll": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/webpack.dll.config.ts",
     "lint": "npm run logo && tslint -s node_modules/custom-tslint-formatters/formatters -t grouped \"src/**/*.ts\"",
     "lint:css": "npm run logo && stylelint \"src/**/*.css\" --config .stylelintrc",
     "lint:all": "npm run lint && npm run lint:css",
@@ -35,7 +35,8 @@
     "start:prod": "npm run build && cross-env NODE_ENV=production node server/",
     "postYeomanGenerator": "npm run regenerate && npm run start",
     "yo": "npm link src/conf/.react-base/templates/generator-react-base",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "postinstall": "npm run generate:dll"
   },
   "_packages": {
     "common": [],
@@ -54,6 +55,7 @@
     "@angular/platform-browser-dynamic": "^2.0.0",
     "@angular/router": "^3.0.0",
     "angular2-template-loader": "^0.5.0",
+    "express": "^4.14.0",
     "immutable": "^3.8.1",
     "ng2-redux": "^4.0.0-beta.0",
     "ng2-redux-router": "^1.0.1",
