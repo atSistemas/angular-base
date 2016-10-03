@@ -1,84 +1,46 @@
+import * as base from '../.base';
+import * as common from './webpack.common.config';
 import environment, { isTesting } from '../server/environment';
-//import { getPolyfills } from './dll';
-import * as common from './webpack-config-common';
 
-const { ForkCheckerPlugin } = require('awesome-typescript-loader');
+const webpack = require('webpack');
+const AssetsPlugin = require('assets-webpack-plugin');
+const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 
-export const devtool = 'source-map';
-export const debug = !isTesting;
-export const context = common.context;
-export const entry = common.entry;
-export const plugins = common.plugins;
+export const cache = common.cache;
 export const module = common.module;
-//export const postCss = common.postCss;
-
-
-/*import * as path from 'path';
-import webpack from 'webpack';
-import copyWebpackPlugin from 'copy-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import { symbols, color } from '../src/base/shared/console';
-
-const mainPath = path.resolve(__dirname, '..');
-const clientPath = path.resolve(__dirname, '../src/app/bootstrap.ts');
-
-export const prodTool = 'cheap-module-source-map';
-
-export const prodContext = path.resolve(__dirname, '../app');
-
-export const prodPlugins = [
-  new webpack.NoErrorsPlugin(),
-  new ExtractTextPlugin('bundle.css'),
-  new webpack.optimize.DedupePlugin(),
-  new webpack.NoErrorsPlugin(),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
-  new copyWebpackPlugin([{ from: 'assets', to: 'assets' }]),
-  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
-  new webpack.optimize.UglifyJsPlugin({compressor: { warnings: false }, output: {comments: false}}),
-  function(){
-    this.plugin("done", function(stats){
-      if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1){
-        console.log('[BASE] ' + color('error', symbols.error) + stats.compilation.errors);
-      }
-    });
-  }
-];
-
-export const prodEntries = {
-  app: clientPath,
-  common: [
-    '@angular/core',
-    '@angular/common',
-    '@angular/http',
-    '@angular/platform-browser',
-    '@angular/platform-browser-dynamic',
-    '@angular/router',
-    'rxjs',
-    'ng2-redux',
-    'ng2-redux-router',
-    'redux',
-    'immutable',
-    'redux-observable',
-    'redux-logger',
-    'typed-immutable-record'
+export const output = common.output;
+export const resolve = common.resolve;
+export const context = common.context;
+export const devtool = 'cheap-module-source-map';
+export const entry = {
+  app: [
+    common.appPath,
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
   ]
 };
 
-export const prodLoaders = [
-  { test: /\.tsx?$/, loader: 'angular2-template-loader', exclude: /node_modules/},
-  { test: /\.html$/, loader: 'raw-loader', exclude: /node_modules/ },,
-  { test: /\.css/, loader: ExtractTextPlugin.extract('style-loader',  'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader')}
-];
-
-export const prodPostCss = function (webpack) {
-  return [
-    require("postcss-import")({ addDependencyTo: webpack }),
-    require('postcss-modules-extract-imports'),
-    require("postcss-url")(),
-    require("postcss-cssnext")(),
-    require('cssnano')({autoprefixer: false}),
-    require("postcss-reporter")()
-  ];
-};
-*/
+export const plugins = [
+  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"development"'}}),
+  new webpack.HotModuleReplacementPlugin(),
+  new AssetsPlugin({
+      path: common.buildPath,
+      filename: 'webpack-assets.json',
+      prettyPrint: true
+  }),
+  new webpack.ContextReplacementPlugin(
+    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+    common.mainPath,
+    resolveNgRoute(common.mainPath)
+  ),
+  new webpack.DllReferencePlugin({
+    context: context,
+    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
+  }),
+  new webpack.DllReferencePlugin({
+    context: context,
+    manifest: require(`${common.dllPath}/vendor-manifest.json`)
+  }),
+  common.compileError
+]
+.concat(common.plugins);
