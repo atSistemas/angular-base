@@ -1,23 +1,24 @@
 import environment, { constants as envConstants} from '../environment';
 
 export default function renderIndex() {
-  const common = (environment.ENV === envConstants.DEVELOPMENT) ? '<script src="/common.js"></script>' : '';
+
+  const common =  '<script src="dlls/polyfills.js"></script>\n<script src="dlls/vendor.js"></script>';
   const style = (environment.ENV === envConstants.PRODUCTION) ? '<link rel="stylesheet" href="bundle.css">' : '';
+
   return `
   <!doctype html>
 	<html lang="utf-8">
     <head>
       <title>Angular2 Base</title>
       <base href="/">
-      <script src="dll/polyfills.js"></script>
-      <script src="dll/vendor.js"></script>
       ${ style}
+      ${ common }
     </head>
     <body>
     <base-app>
     Loading....
     </base-app>
-    <script src="/application.bundle.js"></script>
+    <script src="/application.js"></script>
     </body>
   </html>
   `;

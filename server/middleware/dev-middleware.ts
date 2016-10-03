@@ -1,5 +1,5 @@
 ///<reference path="../../node_modules/@types/node/index.d.ts"/>
-import { ExternalsMiddleware } from '../../webpack/dll';
+//import { ExternalsMiddleware } from '../../webpack/dll';
 import { RequestHandler } from 'express';
 import timedCompiler from './helpers';
 
@@ -8,7 +8,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 export default function():RequestHandler[] {
 
-    const config = require('../../webpack').default;  
+    const config = require('../../webpack').default;
     const compiler = timedCompiler(config);
 
     const serverOptions = {
@@ -27,9 +27,9 @@ export default function():RequestHandler[] {
     const hotMiddleware = webpackHotMiddleware(compiler, {
       log: false, path: '/__webpack_hmr', heartbeat: 10 * 1000
     });
-    const externalsMiddleware = new ExternalsMiddleware('\/dll\/*');
+  //  const externalsMiddleware = new ExternalsMiddleware('\/dll\/*');
     const middlewares: RequestHandler[] = [
-      externalsMiddleware,
+      //externalsMiddleware,
       devMiddleware,
       hotMiddleware,
 

@@ -4,7 +4,7 @@ import statics, { iStaticRoute } from './statics';
 import renderIndex from './templates';
 import environment from './environment';
 import configureMiddlewares from './middleware';
-import buildExternals from '../webpack/dll';
+//import buildExternals from '../webpack/dll';
 import { RequestHandler } from 'express';
 import * as base from '../.base';
 
@@ -36,7 +36,7 @@ export class Server {
   }
 
   private configure() {
-    buildExternals().then(() => {
+    //buildExternals().then(() => {
       this.initializeMiddlewares().then(() => {
         this.initializeStaticPaths();
         this.initializeIndex();
@@ -48,7 +48,7 @@ export class Server {
           base.console.success(`Server up on http://localhost:${environment.port}`);
         });
       });
-    });
+    //});
   }
 
   private initializeIndex() {
