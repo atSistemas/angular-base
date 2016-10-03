@@ -1,53 +1,60 @@
 import * as path from 'path';
 import * as base from '../.base';
-import environment, { isTesting } from '../server/environment';
-import { getPolyfills, getManifest, root } from './dll';
 
+import environment, { isTesting } from '../server/environment';
+
+const chalk = require('chalk');
+const webpack = require('webpack');
+const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
-const resolveNgRoute = require('@angularclass/resolve-angular-routes');
-
-export const devtool = 'source-map';
-export const entry = {
-    application: getPolyfills().concat(
-        './src/app'
-    )
-};
-
 
 export const context = path.resolve(__dirname, '../');
+export const mainPath = path.resolve(__dirname, '../src');
+export const appPath = path.resolve(__dirname, '../src/app');
+export const buildPath = path.resolve(__dirname, '../dist');
+export const basePath = path.resolve(__dirname, '../src/base');
+export const polyfillsPath = require('../package.json')._packages.polyfills;
+export const vendorModules = Object.keys(require('../../package.json').dependencies)
+export const manifestPath = path.resolve(__dirname, '../build/dll/');
+
+export const entry = {
+    application: [
+      appPath
+    ].concat(polyfillsPath)
+};
+
+export const output =  {
+    path: buildPath,
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
+    chunkFilename: '[id].chunk.js',
+    publicPath: '/'
+};
 
 export const plugins = [
-    new base.webpack.ProgressBarPlugin(),
+    new ProgressBarPlugin({
+      format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
+      clear: true,
+      summary: false,
+    }),
     new AssetsPlugin({
-        path: root('build'),
+        path: buildPath,
         filename: 'webpack-assets.json',
         prettyPrint: true
     }),
     new DefinePlugin({
         'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
     }),
-    new DllReferencePlugin({
-        context: context,
-        manifest: getManifest('vendor'),
-    }),
-    new DllReferencePlugin({
-        context: context,
-        manifest: getManifest('polyfills'),
-    }),
-    new TsConfigPathsPlugin(/* { tsconfig, compiler } */),
+    new TsConfigPathsPlugin(),
     new ForkCheckerPlugin(),
-    new base.webpack.CompileErrorsPlugin()
+    //new base.webpack.CompileErrorsPlugin()
 ];
-
-
 
 export const module = {
   rules : [
-    // UNCOMMENT THIS TO ENABLE LINTING RULES CHECKING
-    //{ enforce: 'right', test: /\.ts$/, loader: 'tslint' },
     {
         enforce: 'pre',
         test: /\.ts$/,
@@ -57,7 +64,7 @@ export const module = {
             replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
             flags: 'g'
         },
-        include: [root('src')]
+        include: [mainPath]
     },
     {
         test: /\.ts$/,
@@ -65,22 +72,13 @@ export const module = {
             'awesome-typescript-loader',
             'angular2-template-loader'
         ],
-        exclude: isTesting ? [] : [/\.(spec|e2e|d)\.ts$/],
-        include: [root('./src')]
+        //exclude: isTesting ? [] : [/\.(spec|e2e|d)\.ts$/],
+        include: [mainPath]
     },
-    { test: /\.json$/, loader: 'json-loader', include: [root('./src')] },
-    { test: /\.html/, loader: 'raw-loader', include: [root('./src')] },
-    { test: /\.css$/, loader: 'raw-loader', include: [root('./src')] }
-    //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
+    { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
+    { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
+    { test: /\.css$/, loader: 'raw-loader', include: [mainPath] }
 ]
-};
-
-export const output =  {
-    path: root('build'),
-    filename: '[name].bundle.js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js',
-    publicPath: '/'
 };
 
 export const resolve = {
@@ -89,17 +87,3 @@ export const resolve = {
     'base': path.resolve(__dirname, '../src/base')
   }
 }
-
-
-/*
-if (isTesting) {
-    // instrument only testing sources with Istanbul, covers ts files
-    rules.push({
-        enforce: 'post',
-        test: /\.ts$/,
-        include: [root('src')],
-        loader: 'istanbul-instrumenter-loader',
-        exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
-    });
-
-}*/
