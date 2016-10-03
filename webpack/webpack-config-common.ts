@@ -18,17 +18,40 @@ export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
 export const polyfillsPath = require('../package.json')._packages.polyfills;
 export const vendorModules = Object.keys(require('../../package.json').dependencies)
-export const manifestPath = path.resolve(__dirname, '../build/dll/');
+export const dllPath = path.resolve(__dirname, '../dist/dll');
 
+export const devtool = 'cheap-module-source-map';
 export const entry = {
-    application: [
-      appPath
-    ].concat(polyfillsPath)
+
+    polyfills: [
+      'zone.js/dist/zone',
+      'zone.js/dist/long-stack-trace-zone',
+      'ts-helpers'
+    ],
+    vendor:[
+      '@angular/common',
+      '@angular/compiler',
+      '@angular/core',
+      '@angular/http',
+      '@angular/platform-browser',
+      '@angular/platform-browser-dynamic',
+      '@angular/router',
+      'angular2-template-loader',
+      'immutable',
+      'ng2-redux',
+      'ng2-redux-router',
+      'redux',
+      'redux-observable',
+      'reflect-metadata',
+      'rxjs',
+      'typed-immutable-record',
+    ]
+
 };
 
 export const output =  {
     path: buildPath,
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',
     publicPath: '/'
@@ -50,6 +73,8 @@ export const plugins = [
     }),
     new TsConfigPathsPlugin(),
     new ForkCheckerPlugin(),
+    //new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
     //new base.webpack.CompileErrorsPlugin()
 ];
 

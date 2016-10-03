@@ -8,10 +8,11 @@ const AssetsPlugin = require('assets-webpack-plugin');
 export const devtool = 'cheap-source-map';
 
 export const entry = {
-  application: common.entry.application.concat(
+  application: [
+    common.appPath,
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
-  )
+  ]
 };
 
 export const context = common.context;
@@ -25,11 +26,11 @@ export const plugins = [
   }),
   new webpack.DllReferencePlugin({
     context: context,
-    manifest: require(`${common.manifestPath}/vendor-manifest.json`)
+    manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),
   new webpack.DllReferencePlugin({
     context: context,
-    manifest: require(`${common.manifestPath}/polyfills-manifest.json`)
+    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
   }),
 ].concat(common.plugins);
 

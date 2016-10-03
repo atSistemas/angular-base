@@ -147,15 +147,16 @@ import environment, { isTesting } from '../server/environment';
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const resolveNgRoute = require('@angularclass/resolve-angular-routes');
+const CompressionPlugin = require('compression-webpack-plugin');
 
-export const devtool = 'eval';
+export const devtool = 'cheap-module-source-map';
 export const entry = common.entry;
 
 export const context = common.context;
 export const plugins = [
   new webpack.DllPlugin({
     name: '[name]',
-    path: path.join(common.buildPath, "/[name]-manifest.json"),
+    path: path.join(common.dllPath, "[name]-manifest.json"),
   }),
 
   // fix angular2
@@ -168,7 +169,9 @@ export const plugins = [
     minimize: true,
     debug: false
   }),
-  /*new webpack.UglifyJsPlugin({
+  new webpack.optimize.UglifyJsPlugin({compressor: { warnings: false }, output: {comments: false}}),
+  /*
+  new UglifyJsPlugin({
   compress: {
     warnings: false
   },
