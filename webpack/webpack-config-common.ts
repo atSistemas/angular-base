@@ -10,12 +10,14 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 
 export const devtool = 'source-map';
-export const context = __dirname;
 export const entry = {
     application: getPolyfills().concat(
         './src/app'
     )
 };
+
+
+export const context = path.resolve(__dirname, '../');
 
 export const plugins = [
     new base.webpack.ProgressBarPlugin(),
@@ -40,11 +42,14 @@ export const plugins = [
     new base.webpack.CompileErrorsPlugin()
 ];
 
-export const rules = [
+
+
+export const module = {
+  rules : [
     // UNCOMMENT THIS TO ENABLE LINTING RULES CHECKING
     //{ enforce: 'right', test: /\.ts$/, loader: 'tslint' },
     {
-        enforce: 'right',
+        enforce: 'pre',
         test: /\.ts$/,
         loader: 'string-replace-loader',
         query: {
@@ -67,26 +72,34 @@ export const rules = [
     { test: /\.html/, loader: 'raw-loader', include: [root('./src')] },
     { test: /\.css$/, loader: 'raw-loader', include: [root('./src')] }
     //{ test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss-loader'}
-];
+]
+};
 
+export const output =  {
+    path: root('build'),
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
+    chunkFilename: '[id].chunk.js',
+    publicPath: '/'
+};
+
+export const resolve = {
+  extensions: ['.js', '.ts', '.tsx', '.css'],
+  alias: {
+    'base': path.resolve(__dirname, '../src/base')
+  }
+}
+
+
+/*
 if (isTesting) {
     // instrument only testing sources with Istanbul, covers ts files
     rules.push({
-        enforce: 'left',
+        enforce: 'post',
         test: /\.ts$/,
         include: [root('src')],
         loader: 'istanbul-instrumenter-loader',
         exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
     });
 
-}
-
-export const postCss = function (webpack) {
-    return [
-        /*require("postcss-import")({ addDependencyTo: webpack }),
-        require('postcss-modules-extract-imports')(),
-        require("postcss-url")(),
-        require("postcss-cssnext")(),
-        require("postcss-reporter")()*/
-    ];
-}
+}*/
