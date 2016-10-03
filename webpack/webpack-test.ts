@@ -1,7 +1,7 @@
 /**
  * @fileoverview Webpack configuration file for testing bundle
  * @author Rafa Bernad [rbernad@atsistiemas.com]
- */
+
 import * as path from 'path';
 import * as base from '../.base';
 import { getPolyfills, getManifest, root } from './dll';
@@ -40,4 +40,4 @@ module.exports = {
             'base': path.resolve(__dirname, '../src/base')
         }
     }
-}
+}*/

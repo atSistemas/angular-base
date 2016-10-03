@@ -1,5 +1,5 @@
 import environment, { isTesting } from '../server/environment';
-import { getPolyfills } from './dll';
+//import { getPolyfills } from './dll';
 import * as common from './webpack-config-common';
 
 const { ForkCheckerPlugin } = require('awesome-typescript-loader');
@@ -9,8 +9,8 @@ export const debug = !isTesting;
 export const context = common.context;
 export const entry = common.entry;
 export const plugins = common.plugins;
-export const rules = common.rules;
-export const postCss = common.postCss;
+export const module = common.module;
+//export const postCss = common.postCss;
 
 
 /*import * as path from 'path';

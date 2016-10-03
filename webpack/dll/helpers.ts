@@ -31,4 +31,3 @@ export function getAssets(chunk: string): string {
     // {"vendor":{"js":"vendor.js"},"polyfills":{"js":"polyfills.js"}}
     return assets[chunk]['js']
 }
-
