@@ -1,11 +1,10 @@
-/**
+/*
  * @fileoverview Defines webpack configuration for project's third party dependencies
  * @author Rafa Bernad [rbernad@atsistemas.com]
- */
+
 
 import * as path from 'path';
 import * as base from '../.base';
-import { root, externalsPath, getPolyfills, getVendorModules } from './dll';
 import environment, { constants as envConstants } from '../server/environment';
 
 const {
@@ -137,8 +136,51 @@ function webpackConfig(options: any = {}): any {
       setTimeout: true
     }
   };
-}
+}*/
 
+import * as path from 'path';
+import * as base from '../.base';
+import env from '../src/base/shared/Env';
+import * as common from './webpack-config-common';
+import environment, { isTesting } from '../server/environment';
 
+const webpack = require('webpack');
+const AssetsPlugin = require('assets-webpack-plugin');
+const resolveNgRoute = require('@angularclass/resolve-angular-routes');
+
+export const devtool = 'eval';
+export const entry = common.entry;
+
+export const context = common.context;
+export const plugins = [
+  new webpack.DllPlugin({
+    name: '[name]',
+    path: path.join(common.buildPath, "/[name]-manifest.json"),
+  }),
+
+  // fix angular2
+  new webpack.ContextReplacementPlugin(
+    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+    common.mainPath,
+    resolveNgRoute(common.mainPath)
+  ),
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
+  }),
+  /*new webpack.UglifyJsPlugin({
+  compress: {
+    warnings: false
+  },
+  output: {
+    comments: false
+  },
+  sourceMap: env === 'development'
+}),*/
+].concat(common.plugins);
+
+export const module = common.module;
+export const output = common.output;
+export const resolve = common.resolve;
 // Export
-module.exports = webpackConfig;
+//module.exports = webpackConfig;
