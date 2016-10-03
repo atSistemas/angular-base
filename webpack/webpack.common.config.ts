@@ -16,18 +16,19 @@ export const mainPath = path.resolve(__dirname, '../src');
 export const appPath = path.resolve(__dirname, '../src/app');
 export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
-export const polyfillsPath = require('../package.json')._packages.polyfills;
-export const vendorModules = Object.keys(require('../../package.json').dependencies)
-export const dllPath = path.resolve(__dirname, '../dist/dll');
+export const dllPath = path.resolve(__dirname, '../dist/');
 
-export const devtool = 'cheap-module-source-map';
+export const cache = true;
+export const devtool = 'source-map';
 export const entry = {
 
     polyfills: [
       'zone.js/dist/zone',
       'zone.js/dist/long-stack-trace-zone',
+      'reflect-metadata',
       'ts-helpers'
     ],
+
     vendor:[
       '@angular/common',
       '@angular/compiler',
@@ -42,68 +43,81 @@ export const entry = {
       'ng2-redux-router',
       'redux',
       'redux-observable',
-      'reflect-metadata',
       'rxjs',
       'typed-immutable-record',
     ]
-
 };
 
 export const output =  {
-    path: buildPath,
-    filename: '[name].js',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js',
-    publicPath: '/'
+  path: buildPath,
+  publicPath: '/',
+  library: '[name]',
+  filename: '[name].js',
+  sourceMapFilename: '[name].map',
+  chunkFilename: '[id].chunk.js',
 };
 
 export const plugins = [
-    new ProgressBarPlugin({
-      format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
-      clear: true,
-      summary: false,
-    }),
-    new AssetsPlugin({
-        path: buildPath,
-        filename: 'webpack-assets.json',
-        prettyPrint: true
-    }),
-    new DefinePlugin({
-        'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
-    }),
-    new TsConfigPathsPlugin(),
-    new ForkCheckerPlugin(),
-    //new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(true),
-    //new base.webpack.CompileErrorsPlugin()
+  new webpack.optimize.OccurrenceOrderPlugin(true),
+  new ProgressBarPlugin({
+    format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
+    clear: true,
+    summary: false,
+  }),
+  new AssetsPlugin({
+      path: buildPath,
+      filename: 'webpack-assets.json',
+      prettyPrint: true
+  }),
+  new DefinePlugin({
+      'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
+  }),
+  new webpack.optimize.OccurrenceOrderPlugin(true),
+  new webpack.optimize.CommonsChunkPlugin({
+     name: ['vendor', 'polyfills'],
+     minChunks: Infinity
+   }),
+  new TsConfigPathsPlugin(),
+  new ForkCheckerPlugin(),
 ];
 
 export const module = {
   rules : [
     {
-        enforce: 'pre',
-        test: /\.ts$/,
-        loader: 'string-replace-loader',
-        query: {
-            search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-            replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-            flags: 'g'
-        },
-        include: [mainPath]
+      enforce: 'pre',
+      test: /\.ts$/,
+      loader: 'string-replace-loader',
+      query: {
+          search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
+          replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
+          flags: 'g'
+      },
+      include: [mainPath]
     },
     {
-        test: /\.ts$/,
-        loaders: [
-            'awesome-typescript-loader',
-            'angular2-template-loader'
-        ],
-        //exclude: isTesting ? [] : [/\.(spec|e2e|d)\.ts$/],
-        include: [mainPath]
+      test: /\.ts$/,
+      loaders: [
+          'awesome-typescript-loader',
+          'angular2-template-loader'
+      ],
+      include: [mainPath]
     },
     { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
     { test: /\.css$/, loader: 'raw-loader', include: [mainPath] }
-]
+  ]
+};
+
+export const node = {
+  global: true,
+  process: true,
+  Buffer: false,
+  crypto: 'empty',
+  module: false,
+  clearImmediate: false,
+  setImmediate: false,
+  clearTimeout: true,
+  setTimeout: true
 };
 
 export const resolve = {
@@ -111,4 +125,12 @@ export const resolve = {
   alias: {
     'base': path.resolve(__dirname, '../src/base')
   }
-}
+};
+
+export const compileError = function() {
+  this.plugin('done', function(stats) {
+    if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
+      base.console.error(stats.compilation.errors);
+    }
+  })
+};
