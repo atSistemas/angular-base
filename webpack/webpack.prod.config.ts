@@ -14,7 +14,7 @@ export const context = common.context;
 export const devtool = 'cheap-module-source-map';
 export const entry = {
   app: [
-    common.appPath,
+    common.aotPath,
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
   ]
