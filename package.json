@@ -25,7 +25,7 @@
     "regenerate:reducerIndex": "node ./src/base/shared/Regenerate.js --reducer",
     "regenerate": "npm run logo && node ./src/base/shared/Regenerate.js --all",
     "build": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/index.ts",
-    "build:aot": "ngc -p tsconfig.aot.json",
+    "build:aot": "ngc -p tsconfig.aot.json && webpack --config webpack/webpack.prod.config.ts",
     "generate:dll": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/webpack.dll.config.ts",
     "lint": "npm run logo && tslint -s node_modules/custom-tslint-formatters/formatters -t grouped \"src/**/*.ts\"",
     "lint:css": "npm run logo && stylelint \"src/**/*.css\" --config .stylelintrc",
