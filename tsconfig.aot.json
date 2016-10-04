@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": false,
+    "noEmitHelpers": false,
+    "pretty": true,
+    "sourceMap": true,
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    "paths": {
+      "base": ["./base"]
+    },
+    "types": [
+      "core-js",
+      "node",
+      "systemjs"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "forkChecker": true,
+    "useCache": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "files": [
+  "src/app/application.ts",
+  "src/app/index.ts"
+],
+
+"angularCompilerOptions": {
+ "genDir": "dist/aot",
+ "skipMetadataEmit" : true
+}
+}
