@@ -17,7 +17,7 @@ export const entry = {
     common.appPath,
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
-  ].concat(common.entry.vendor)
+  ].concat(common.entry.polyfills)
 };
 
 export const plugins = [
@@ -26,6 +26,10 @@ export const plugins = [
   new webpack.DllReferencePlugin({
     context: context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
+  }),
+  new webpack.DllReferencePlugin({
+    context: context,
+    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
   }),
   new AssetsPlugin({
       path: common.buildPath,

@@ -14,7 +14,6 @@ const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllR
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
 export const appPath = path.resolve(__dirname, '../src/app');
-export const aotPath = path.resolve(__dirname, '../src/app/index.aot.ts');
 export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
 export const dllPath = path.resolve(__dirname, '../dist/');
@@ -23,9 +22,12 @@ export const cache = true;
 export const devtool = 'source-map';
 export const entry = {
 
-    vendor:[
+    polyfills: [
       'zone.js/dist/zone',
       'ts-helpers',
+    ],
+    
+    vendor:[
       '@angular/common',
       '@angular/compiler',
       '@angular/core',
