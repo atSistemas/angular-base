@@ -1,17 +1,21 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
     "noEmitHelpers": false,
     "pretty": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
     "sourceMap": true,
+    "strictNullChecks": false,
+    "rootDir": "./src/",
     "lib": [
       "es5",
       "dom"
     ],
-    "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
       "base": ["./base"]
@@ -23,7 +27,8 @@
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
@@ -36,12 +41,12 @@
     "rewriteTsconfig": false
   },
   "files": [
-  "src/app/app.module",
-  "src/app/index"
+  "src/app/app.module.ts"
 ],
 
 "angularCompilerOptions": {
- "genDir": "aot",
+  "genDir": "./dist/aot",
+  "debug": true,
  "skipMetadataEmit" : true
 }
 }
