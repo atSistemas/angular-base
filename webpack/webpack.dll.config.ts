@@ -18,19 +18,20 @@ export const devtool = 'cheap-module-source-map';
 
 export const plugins = [
   new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
+  new AssetsPlugin({
+      path: common.buildPath,
+      filename: 'webpack-assets.json',
+      prettyPrint: true
+  }),
   new webpack.DllPlugin({
     path: path.join(common.dllPath, "[name]-manifest.json"),
     name: '[name]',
   }),
-  new webpack.ContextReplacementPlugin(
-    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-    common.mainPath
-  ),
   new webpack.LoaderOptionsPlugin({
-    minimize: true,
-    debug: false
-  }),
-  new webpack.optimize.UglifyJsPlugin({compressor: { warnings: false }, output: {comments: false}}),
+       minimize: true,
+       debug: false
+     }),
+  new webpack.optimize.UglifyJsPlugin({compressor: { warnings: false, screw_ie8 : true }, output: {comments: false}, mangle: { screw_ie8 : true }}),
   common.compileError
 ]
 .concat(common.plugins);

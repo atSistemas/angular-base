@@ -33,14 +33,6 @@ export const plugins = [
     common.mainPath,
     resolveNgRoute(common.mainPath)
   ),
-  new webpack.DllReferencePlugin({
-    context: context,
-    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
-  }),
-  new webpack.DllReferencePlugin({
-    context: context,
-    manifest: require(`${common.dllPath}/vendor-manifest.json`)
-  }),
   common.compileError
 ]
 .concat(common.plugins);

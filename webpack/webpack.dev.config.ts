@@ -17,29 +17,20 @@ export const entry = {
     common.appPath,
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
-  ]
+  ].concat(common.entry.vendor)
 };
 
 export const plugins = [
   new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"development"'}}),
   new webpack.HotModuleReplacementPlugin(),
+  new webpack.DllReferencePlugin({
+    context: context,
+    manifest: require(`${common.dllPath}/vendor-manifest.json`)
+  }),
   new AssetsPlugin({
       path: common.buildPath,
       filename: 'webpack-assets.json',
       prettyPrint: true
-  }),
-  new webpack.ContextReplacementPlugin(
-    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-    common.mainPath,
-    resolveNgRoute(common.mainPath)
-  ),
-  new webpack.DllReferencePlugin({
-    context: context,
-    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
-  }),
-  new webpack.DllReferencePlugin({
-    context: context,
-    manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),
   common.compileError
 ]
