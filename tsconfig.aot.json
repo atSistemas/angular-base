@@ -36,8 +36,8 @@
     "rewriteTsconfig": false
   },
   "files": [
-  "src/app/application.ts",
-  "src/app/index.ts"
+  "src/app/app.module",
+  "src/app/index"
 ],
 
 "angularCompilerOptions": {
