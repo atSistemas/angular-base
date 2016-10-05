@@ -13,7 +13,7 @@ export const context = common.context;
 export const devtool = 'cheap-module-source-map';
 export const entry = {
   app: [
-    common.appPath,
+    common.aotPath,
   ]
 };
 
