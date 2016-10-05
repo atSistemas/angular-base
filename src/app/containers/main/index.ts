@@ -19,8 +19,8 @@ export class MainContainer implements OnInit{
 
 
   constructor(
-    private actions: MainActions,
-    private service: MainService
+    public actions: MainActions,
+    public service: MainService
   ) {}
 
   ngOnInit(): void {

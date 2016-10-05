@@ -24,7 +24,7 @@ import { MainReducer } from './containers/main/reducers';
 })
 export class Application {
   constructor(
-    private store: Store,
-    private mainService: MainService
+    public store: Store,
+    public mainService: MainService
   ) { }
 }
