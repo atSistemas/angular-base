@@ -1,6 +1,5 @@
 import * as base from '../.base';
 import * as common from './webpack.common.config';
-import environment, { isTesting } from '../server/environment';
 
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');

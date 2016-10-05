@@ -1,8 +1,6 @@
 import * as path from 'path';
 import * as base from '../.base';
 
-import environment, { isTesting } from '../server/environment';
-
 const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -20,13 +18,14 @@ export const dllPath = path.resolve(__dirname, '../dist/');
 
 export const cache = true;
 export const devtool = 'source-map';
+
+export const polyfills = [
+  'zone.js/dist/zone',
+  'ts-helpers',
+];
+
 export const entry = {
 
-    polyfills: [
-      'zone.js/dist/zone',
-      'ts-helpers',
-    ],
-    
     vendor:[
       '@angular/common',
       '@angular/compiler',

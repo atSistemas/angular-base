@@ -1,6 +1,5 @@
 import * as base from '../.base';
 import * as common from './webpack.common.config';
-import environment, { isTesting } from '../server/environment';
 
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -16,8 +15,8 @@ export const entry = {
   app: [
     common.appPath,
     'webpack/hot/dev-server',
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=false'
-  ].concat(common.entry.polyfills)
+    'webpack-hot-middleware/client'
+  ].concat(common.polyfills)
 };
 
 export const plugins = [
@@ -26,10 +25,6 @@ export const plugins = [
   new webpack.DllReferencePlugin({
     context: context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
-  }),
-  new webpack.DllReferencePlugin({
-    context: context,
-    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
   }),
   new AssetsPlugin({
       path: common.buildPath,
