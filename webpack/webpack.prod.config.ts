@@ -26,11 +26,6 @@ export const plugins = [
       filename: 'webpack-assets.json',
       prettyPrint: true
   }),
-  new webpack.ContextReplacementPlugin(
-    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-    common.mainPath,
-    resolveNgRoute(common.mainPath)
-  ),
   common.compileError
 ]
 .concat(common.plugins);
