@@ -22,14 +22,9 @@ export const cache = true;
 export const devtool = 'source-map';
 export const entry = {
 
-    polyfills: [
-      'zone.js/dist/zone',
-      'zone.js/dist/long-stack-trace-zone',
-      'reflect-metadata',
-      'ts-helpers'
-    ],
-
     vendor:[
+      'zone.js/dist/zone',
+      'ts-helpers',
       '@angular/common',
       '@angular/compiler',
       '@angular/core',
@@ -58,7 +53,11 @@ export const output =  {
 };
 
 export const plugins = [
-  new webpack.optimize.OccurrenceOrderPlugin(true),
+  new webpack.ContextReplacementPlugin(
+    /.*/,
+    mainPath
+  ),
+  new ForkCheckerPlugin(),
   new ProgressBarPlugin({
     format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
     clear: true,
@@ -72,13 +71,7 @@ export const plugins = [
   new DefinePlugin({
       'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
   }),
-  new webpack.optimize.OccurrenceOrderPlugin(true),
-  new webpack.optimize.CommonsChunkPlugin({
-     name: ['vendor', 'polyfills'],
-     minChunks: Infinity
-   }),
   new TsConfigPathsPlugin(),
-  new ForkCheckerPlugin(),
 ];
 
 export const module = {
