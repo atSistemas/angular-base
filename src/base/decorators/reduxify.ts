@@ -1,6 +1,6 @@
 import { Action, ReducersMapObject } from 'redux';
 import { ReflectiveInjector } from '@angular/core';
-import { Store } from 'base';
+import { Store } from '../store';
 import { NgRedux } from 'ng2-redux';
 
 export interface reduxifyOptions {
@@ -9,7 +9,7 @@ export interface reduxifyOptions {
     store?: string
 }
 
-function BaseReduxify(options: reduxifyOptions) {
+export function BaseReduxify(options: reduxifyOptions) {
     return function (target: Function) {
 
         let BaseReduxify = function () {
@@ -21,11 +21,11 @@ function BaseReduxify(options: reduxifyOptions) {
         BaseReduxify.prototype.constructor = target;
 
         BaseReduxify.prototype.epics = [];
-        
+
         BaseReduxify.prototype.reduxify = {};
-        
+
         BaseReduxify.prototype.reduxify_init = function () {
-            
+
             if (!this.reduxify_checks()) return;
             this.reduxify_mapEpics();
             this.reduxify_mapReducers();
@@ -78,5 +78,3 @@ function BaseReduxify(options: reduxifyOptions) {
 
     }
 }
-
-export default BaseReduxify;
