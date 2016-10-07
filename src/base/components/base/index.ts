@@ -15,10 +15,10 @@ import { AppState, Store } from '../../store';
 export class BaseApp{
 
   constructor(
-    private devTools: DevToolsExtension,
-    private ngRedux: NgRedux<AppState>,
-    private store: Store,
-    private ngReduxRouter: NgReduxRouter){
+    public devTools: DevToolsExtension,
+    public ngRedux: NgRedux<AppState>,
+    public store: Store,
+    public ngReduxRouter: NgReduxRouter){
     ngReduxRouter.initialize();
   }
 };
