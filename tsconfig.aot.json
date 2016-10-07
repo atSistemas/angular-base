@@ -2,16 +2,18 @@
   "compilerOptions": {
     "target": "es5",
     "removeComments": true,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
+    "suppressImplicitAnyIndexErrors": true,
     "noEmitHelpers": false,
+    "experimentalDecorators": true,
     "pretty": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "sourceMap": true,
     "strictNullChecks": false,
-    "rootDir": "./src/",
     "lib": [
       "es5",
       "dom"
@@ -40,13 +42,12 @@
   "atom": {
     "rewriteTsconfig": false
   },
-  "files": [
-  "src/app/app.module.ts"
-],
+  "rootDir": ".",
+  "skipLibCheck": true,
+  "sourceRoot": ".",
 
 "angularCompilerOptions": {
-  "genDir": "./dist/aot",
-  "debug": true,
+  "genDir": "dist/aot",
  "skipMetadataEmit" : true
 }
 }
