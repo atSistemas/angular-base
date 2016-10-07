@@ -29,7 +29,7 @@ import { LazyActions } from './actions';
     lazyService: ['getData']
   }
 })
-export default class LazyContainerModule {
+export class LazyContainerModule {
   public epics: Observable<Action>[] = [];
   constructor(
     private store: Store,
