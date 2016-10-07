@@ -14,3 +14,4 @@ jspm_packages/
 .awcache/
 *.sublime-project
 *.sublime-workspace
+**/*.ngfactory.ts
