@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { BaseApp, Routing, RoutingProviders, Store, BaseReduxify } from 'base';
+import { BaseApp } from '../base/components/base';
+import { Store } from '../base/store';
+import { Routing, RoutingProviders } from '../base/routes';
+import { BaseReduxify } from '../base/decorators';
+
 import { enableProdMode } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { DevToolsExtension, NgRedux } from 'ng2-redux';
@@ -13,7 +17,7 @@ import { MainReducer } from './containers/main/reducers';
 @NgModule({
   imports: [BrowserModule, HttpModule, Routing],
   declarations: [BaseApp, MainContainer, MainDisplay],
-  providers: [RoutingProviders, Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService],
+  providers: [RoutingProviders(), Store, NgRedux, NgReduxRouter, DevToolsExtension, MainService],
   bootstrap: [BaseApp]
 })
 @BaseReduxify({
