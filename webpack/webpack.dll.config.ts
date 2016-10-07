@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as base from '../.base';
-import env from '../src/base/shared/Env';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
