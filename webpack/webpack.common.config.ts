@@ -5,7 +5,6 @@ const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 
@@ -21,7 +20,10 @@ export const cache = true;
 export const devtool = 'source-map';
 
 export const polyfills = [
+  'core-js/es6',
+  'core-js/es7/reflect',
   'zone.js/dist/zone',
+  'zone.js/dist/long-stack-trace-zone',
   'ts-helpers',
 ];
 
@@ -37,12 +39,12 @@ export const entry = {
       '@angular/router',
       'angular2-template-loader',
       'immutable',
+      'typed-immutable-record',
       'ng2-redux',
       'ng2-redux-router',
       'redux',
       'redux-observable',
       'rxjs',
-      'typed-immutable-record',
     ]
 };
 
@@ -52,13 +54,13 @@ export const output =  {
   library: '[name]',
   filename: '[name].js',
   sourceMapFilename: '[name].map',
-  chunkFilename: '[id].chunk.js',
+  chunkFilename: '[name].chunk.js',
 };
 
 export const plugins = [
   new webpack.ContextReplacementPlugin(
     /.*/,
-    mainPath
+    mainPath,
   ),
   new ForkCheckerPlugin(),
   new ProgressBarPlugin({
@@ -94,7 +96,8 @@ export const module = {
       test: /\.ts$/,
       loaders: [
           'awesome-typescript-loader',
-          'angular2-template-loader'
+          'angular2-template-loader',
+          'angular2-router-loader'
       ],
       include: [mainPath]
     },

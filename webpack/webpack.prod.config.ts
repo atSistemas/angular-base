@@ -25,6 +25,5 @@ export const plugins = [
       filename: 'webpack-assets.json',
       prettyPrint: true
   }),
-  common.compileError
 ]
 .concat(common.plugins);
