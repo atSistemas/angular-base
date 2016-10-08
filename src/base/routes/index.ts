@@ -6,7 +6,7 @@ export const RoutingProviders: any[] = [
 ].concat(getAppRoutingProviders());
 */
 
-export function RoutingProviders():any[]{
+export function getRoutingProviders():any[]{
   return getAppRoutingProviders();
 }
 

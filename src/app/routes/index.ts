@@ -10,13 +10,13 @@ export const AppRoutingProviders: any[] = [
 ];*/
 
 export const routes: Routes = [
+  { path: '', pathMatch: 'full', component: MainContainer},
+  { path: 'container2', pathMatch: 'full', loadChildren: '../containers/+lazy#LazyContainerModule' },/*
   {
-    path: '',
-    pathMatch: 'full',
-    component: MainContainer
-  }, {
-    path: 'container2',
-    pathMatch: 'full',
-    loadChildren: '../containers/+lazy'//() => System.import('../containers/+lazy'),
-  }
+  path: 'container2',
+  loadChildren: () => new Promise(function (resolve) {
+    (require as any).ensure([], function (require: any) {
+      resolve(require('./containers/+lazy/lazy..ngfactory')['LazyModuleNgFactory']);
+    });
+  })*/
 ];
