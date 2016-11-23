@@ -10,6 +10,8 @@ export interface reduxifyOptions {
 }
 
 export function BaseReduxify(options: reduxifyOptions) {
+
+    console.log(22222, options);
     return function (target: Function) {
 
         let BaseReduxify = function () {
@@ -33,6 +35,7 @@ export function BaseReduxify(options: reduxifyOptions) {
         }
 
         BaseReduxify.prototype.reduxify_checks = function () {
+          console.log(55555, this.store, this[options.store]);
             if (!this.store && !this[options.store]) {
                 console.error("You must inject a Redux store to use reduxify decorator");
                 return false;

@@ -45,10 +45,10 @@ export class Store {
 
     this.configureStore();
   }
-  getRootReducer() {
+  get RootReducer() {
     return combineReducers<AppState>(this._defaultReducers);
   }
-  getReducers(): ReducersMapObject {
+  get reducers(): ReducersMapObject {
     return this._reducers || this._defaultReducers;
   }
   private configureStore() {
@@ -70,10 +70,10 @@ export class Store {
 
     middleware.push(createEpicMiddleware(rootEpic));
 
-    this.ngRedux.configureStore(this.getRootReducer, {}, middleware);
+    this.ngRedux.configureStore(this.RootReducer, {}, middleware);
   }
   protected attachReducers(reducers: ReducersMapObject) {
-    return Object.assign(this.getReducers, reducers);
+    return Object.assign(this.reducers, reducers);
   }
   public replaceReducer(combinedReducers: Reducer<{}>) {
     return this.ngRedux.replaceReducer(combinedReducers);
@@ -82,7 +82,7 @@ export class Store {
     if (reducers) {
       return this.replaceReducer(combineReducers(this.attachReducers(reducers)));
     } else {
-      //return this.replaceReducer(combineReducers(this.getReducers));
+      return this.replaceReducer(combineReducers(this.reducers));
     }
   }
 }

@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 
 import {platformBrowser} from '@angular/platform-browser';
-import { AppModuleNgFactory } from './app.module.ngfactory';
+import { ApplicationNgFactory } from './app.module.ngfactory';
 
 platformBrowser()
-  .bootstrapModuleFactory(AppModuleNgFactory)
+  .bootstrapModuleFactory(ApplicationNgFactory)
   .catch(err => console.error(err));
