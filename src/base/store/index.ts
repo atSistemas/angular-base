@@ -41,7 +41,7 @@ export class Store {
   constructor(
     public ngRedux: NgRedux<AppState>,
   ) {
-    console.log("configuring store");
+    console.log("STORE CONFIGURATION");
 
     this.configureStore();
   }
