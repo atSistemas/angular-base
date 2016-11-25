@@ -20,8 +20,9 @@ export const cache = true;
 export const devtool = 'source-map';
 
 export const polyfills = [
-  'core-js/es6',
+  'core-js/es6/reflect',
   'core-js/es7/reflect',
+  'core-js/client/shim',
   'zone.js/dist/zone',
   'zone.js/dist/long-stack-trace-zone',
   'ts-helpers',
