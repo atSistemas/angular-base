@@ -1,36 +1,28 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "removeComments": true,
-    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": false,
-    "suppressImplicitAnyIndexErrors": true,
-    "noEmitHelpers": false,
-    "experimentalDecorators": true,
-    "pretty": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
+    "noEmitHelpers": true,
+    "pretty": false,
     "sourceMap": true,
+    "lib": ["es5", "dom"],
+    "noEmit": true,
     "strictNullChecks": false,
-    "lib": [
-      "es5",
-      "dom"
-    ],
-    "baseUrl": "./src",
-    "paths": {
-      "base": ["./base"]
-    },
-    "types": [
-      "core-js",
-      "node",
-      "systemjs"
+    "skipDefaultLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
     ]
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    ".base",
+    "src/compiled",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.ts",
+    "server/",
+    "src/app/index.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
@@ -39,15 +31,9 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": {
-    "rewriteTsconfig": false
-  },
-  "rootDir": ".",
-  "skipLibCheck": true,
-  "sourceRoot": ".",
-
-"angularCompilerOptions": {
-  "genDir": "dist/aot",
- "skipMetadataEmit" : true
-}
+  "atom": { "rewriteTsconfig": false },
+  "angularCompilerOptions": {
+   "genDir": "src/compiled",
+   "skipMetadataEmit" : true
+ }
 }
