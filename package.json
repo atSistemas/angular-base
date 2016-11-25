@@ -59,6 +59,12 @@
     "@angularclass/hmr": "1.2.2",
     "@angularclass/hmr-loader": "3.0.2",
     "@angularclass/resolve-angular-routes": "^1.0.9",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^2.0.0",
+    "@ngrx/router-store": "^1.2.5",
+    "@ngrx/store": "^2.2.1",
+    "@ngrx/store-devtools": "^3.2.2",
+    "@ngrx/store-log-monitor": "^3.0.2",
     "@types/core-js": "^0.9.34",
     "@types/es6-promise": "0.0.32",
     "@types/es6-shim": "^0.31.32",
@@ -100,6 +106,8 @@
     "karma-webpack": "^1.8.0",
     "ng2-redux": "^4.1.0",
     "ng2-redux-router": "^2.0.0",
+    "ngrx-store-freeze": "^0.1.4",
+    "ngrx-store-logger": "^0.1.7",
     "path-to-regexp": "^1.7.0",
     "perfy": "^1.1.2",
     "progress-bar-webpack-plugin": "^1.9.0",
@@ -127,6 +135,6 @@
     "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^2.1.0-beta.0",
     "webpack-hot-middleware": "^2.13.2",
-    "zone.js": "zone.js@^0.6.21"
+    "zone.js": "0.7.2"
   }
 }
