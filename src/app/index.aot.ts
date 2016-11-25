@@ -1,8 +1,9 @@
-import 'reflect-metadata';
+import '../base/polyfills';
 
-import {platformBrowser} from '@angular/platform-browser';
-import { ApplicationNgFactory } from './app.module.ngfactory';
+import { enableProdMode } from '@angular/core';
+import { platformBrowser } from '@angular/platform-browser';
+import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
 
 platformBrowser()
-  .bootstrapModuleFactory(ApplicationNgFactory)
+  .bootstrapModuleFactory(AppModuleNgFactory)
   .catch(err => console.error(err));
