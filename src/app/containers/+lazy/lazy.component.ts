@@ -14,7 +14,7 @@ export class LazyContainer {
 
   public people: Object[];
   @select() lazy$:Observable<any[]>
-  constructor(private actions:LazyActions ) {
-    this.actions.lazyRequest();
+  constructor() {
+    //this.actions.lazyRequest();
   }
 }

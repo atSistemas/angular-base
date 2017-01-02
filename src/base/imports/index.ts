@@ -1,5 +1,5 @@
 
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
@@ -12,7 +12,7 @@ import { routes } from '../../app/routes';
 
 export const BaseImports = [
   //EffectsModule.run(UserEffects),
-  RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  RouterModule.forRoot(routes, { preloadingStrategy: false}),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
   //StoreDevToolsModule
