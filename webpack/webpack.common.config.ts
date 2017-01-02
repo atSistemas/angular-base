@@ -63,7 +63,7 @@ export const plugins = [
     /.*/,
     mainPath,
   ),
-  new ForkCheckerPlugin(),
+ //new ForkCheckerPlugin(),
   new ProgressBarPlugin({
     format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
     clear: true,

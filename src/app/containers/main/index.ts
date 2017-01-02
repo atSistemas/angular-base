@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MainContainer } from './main.component';
 
-export const mainRoutes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: MainContainer
@@ -14,7 +14,7 @@ export const mainRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(mainRoutes)
+    RouterModule.forChild(routes)
   ],
   declarations: [
     MainContainer

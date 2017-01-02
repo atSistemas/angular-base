@@ -2,15 +2,16 @@ import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
+import { BaseImports } from '../base/imports/';
+import { AppComponents } from './app.components';
+import { BaseProviders } from '../base/providers/';
 import { BaseComponent } from '../base/components/base';
 import { MainContainer } from './containers/main/main.component';
-import { BaseImports } from '../base/imports/';
-import { BaseProviders } from '../base/providers/';
 
 @NgModule({
   declarations: [
     BaseComponent,
-    MainContainer
+    AppComponents
   ],
   imports: [
     BaseImports,
