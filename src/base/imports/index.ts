@@ -11,9 +11,7 @@ import { rootReducer } from '../reducers';
 import { routes } from '../../app/routes';
 
 export const BaseImports = [
-  //EffectsModule.run(UserEffects),
   RouterModule.forRoot(routes, { preloadingStrategy: false}),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
-  //StoreDevToolsModule
 ];

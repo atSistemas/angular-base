@@ -81,27 +81,17 @@ export const plugins = [
 ];
 
 export const module = {
-  rules : [
-    {
-      enforce: 'pre',
-      test: /\.ts$/,
-      loader: 'string-replace-loader',
-      query: {
-          search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-          replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-          flags: 'g'
-      },
-      include: [mainPath]
-    },
-    {
-      test: /\.ts$/,
-      loaders: [
-          'awesome-typescript-loader',
+    rules: [
+      {
+        test: /\.ts$/,
+        loaders: [
+          '@angularclass/hmr-loader',
+          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
           'angular2-template-loader',
-          'angular2-router-loader'
-      ],
-      include: [mainPath]
-    },
+          'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=false'
+        ],
+        exclude: [/\.(spec|e2e|d)\.ts$/]
+      },
     { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
     { test: /\.css$/, loader: 'raw-loader', include: [mainPath] }

@@ -12,6 +12,7 @@ jspm_packages/
 .vscode/
 .nyc_output/
 .awcache/
+src/compiled/
 *.sublime-project
 *.sublime-workspace
 **/*.ngfactory.ts

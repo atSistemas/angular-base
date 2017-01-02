@@ -15,9 +15,10 @@
     ]
   },
   "exclude": [
-    "node_modules",
     "dist",
     ".base",
+    "webpack",
+    "node_modules",
     "src/compiled",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
