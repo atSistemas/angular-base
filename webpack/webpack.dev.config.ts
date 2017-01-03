@@ -12,11 +12,12 @@ export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-source-map';
 export const entry = {
-   app: common.polyfills.concat(
-     common.appPath,
-     'webpack/hot/dev-server',
-     'webpack-hot-middleware/client'
-   )
+  app: [
+    common.appPath,
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client'
+  ],
+  polyfills: common.polyfills
 };
 
 export const plugins = [

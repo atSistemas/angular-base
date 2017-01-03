@@ -3,7 +3,6 @@ import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 export const cache = common.cache;
 export const output = common.output;
@@ -11,17 +10,17 @@ export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-module-source-map';
 export const entry = {
-  app: common.polyfills.concat(
+  app: [
     common.aotPath,
-  )
-};
+  ],
+  polyfills: common.polyfills
+};;
 
 export const module = {
   rules: [
     {
       test: /\.ts$/,
       loaders: [
-        '@angularclass/hmr-loader',
         'awesome-typescript-loader',
         'angular2-template-loader',
         'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=true'
@@ -35,16 +34,20 @@ export const module = {
 };
 
 export const plugins = [
-  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"development"'}}),
-  new webpack.HotModuleReplacementPlugin(),
-  new UglifyJsPlugin({
-   beautify: false,
-   comments: false
- }),
+  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
+  new webpack.LoaderOptionsPlugin({
+     minimize: true,
+     debug: false
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compressor: { warnings: false, screw_ie8 : true },
+    output: {comments: false, beautify: false},
+    mangle: { screw_ie8 : true }
+  }),
   new AssetsPlugin({
-      path: common.buildPath,
-      filename: 'webpack-assets.json',
-      prettyPrint: true
+    path: common.buildPath,
+    filename: 'webpack-assets.json',
+    prettyPrint: true
   }),
 ]
 .concat(common.plugins);

@@ -15,10 +15,7 @@ export const aotPath = path.resolve(__dirname, '../src/app/index.aot.ts');
 export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
 export const dllPath = path.resolve(__dirname, '../dist/');
-
 export const cache = true;
-export const devtool = 'source-map';
-
 export const polyfills = [
   'core-js/es6/reflect',
   'core-js/es7/reflect',
@@ -29,7 +26,6 @@ export const polyfills = [
 ];
 
 export const entry = {
-
     vendor:[
       '@angular/common',
       '@angular/compiler',
@@ -46,7 +42,8 @@ export const entry = {
       'redux',
       'redux-observable',
       'rxjs',
-    ]
+    ],
+    polyfills: polyfills
 };
 
 export const output =  {
@@ -63,8 +60,12 @@ export const plugins = [
     /.*/,
     mainPath,
   ),
- //new ForkCheckerPlugin(),
-  new ProgressBarPlugin({
+  new webpack.optimize.UglifyJsPlugin({
+    compressor: { warnings: false, screw_ie8 : true },
+    output: {comments: false, beautify: false},
+    mangle: { screw_ie8 : true }
+  }),
+ new ProgressBarPlugin({
     format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
     clear: true,
     summary: false,
@@ -81,17 +82,17 @@ export const plugins = [
 ];
 
 export const module = {
-    rules: [
-      {
-        test: /\.ts$/,
-        loaders: [
+  rules : [
+    {
+      test: /\.ts$/,
+      loaders: [
           '@angularclass/hmr-loader',
-          'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
+          'awesome-typescript-loader',
           'angular2-template-loader',
-          'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=false'
-        ],
-        exclude: [/\.(spec|e2e|d)\.ts$/]
-      },
+          'angular-router-loader'
+      ],
+      exclude: [/\.(spec|e2e|d)\.ts$/]
+    },
     { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
     { test: /\.css$/, loader: 'raw-loader', include: [mainPath] }
