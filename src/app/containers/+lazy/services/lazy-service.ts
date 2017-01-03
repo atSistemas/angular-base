@@ -10,7 +10,8 @@ import { Action } from 'redux';
 import { Observable } from 'rxjs/Observable';
 
 import { actionTypes } from '../action-types';
-import { AppState, PayloadAction } from 'base';
+import { AppState } from '../../../../base/store';
+import { PayloadAction } from '../../../../base/';
 
 
 @Injectable()

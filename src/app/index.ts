@@ -1,9 +1,8 @@
-import 'reflect-metadata';
-import 'ts-helpers';
-
-import {platformBrowser} from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootloader } from '@angularclass/hmr';
 
-import { Application } from './application';
+import { AppModule } from './app.module';
 
-platformBrowserDynamic().bootstrapModule(Application);
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.error(err));

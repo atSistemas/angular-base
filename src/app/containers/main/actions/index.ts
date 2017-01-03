@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
-import { AppState } from 'base';
+import { AppState } from '../../../../base/store';
 import { actionTypes } from '../action-types';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class MainActions {
   load() {
     this.ngRedux.dispatch({ type: actionTypes.MAIN_CONTAINER });
   }
-  
+
   lazy() {
     this.ngRedux.dispatch({ type: actionTypes.LAZY_CONTAINER });
   }
