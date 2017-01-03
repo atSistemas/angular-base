@@ -3,6 +3,7 @@ import environment, { constants as envConstants} from '../environment';
 export default function renderIndex() {
 
   const vendor =  '<script src="dlls/vendor.js"></script>';
+  const polyfills = '<script src="/polyfills.js"></script>';
   const app = '<script src="/app.js"></script>';
   const style = (environment.ENV === envConstants.PRODUCTION) ? '<link rel="stylesheet" href="bundle.css">' : '';
 
@@ -14,6 +15,7 @@ export default function renderIndex() {
       <base href="/">
       ${ style}
       ${ vendor }
+      ${ polyfills }
     </head>
     <body>
     <base-app>
