@@ -1,6 +1,6 @@
 import environment, { constants as envConstants} from '../environment';
 
-export default function renderIndex() {
+export default function renderPage() {
 
   const vendor =  '<script src="dlls/vendor.js"></script>';
   const polyfills = '<script src="/polyfills.js"></script>';
