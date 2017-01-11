@@ -3,7 +3,6 @@ import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
-const resolveNgRoute = require('@angularclass/resolve-angular-routes');
 
 export const cache = common.cache;
 export const module = common.module;
