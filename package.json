@@ -35,15 +35,17 @@
     "test:coverage": "nyc npm test && nyc report --reporter=lcov",
     "start": "npm run logo && cross-env NODE_ENV=development node server/",
     "start:prod": "npm run build:aot && cross-env NODE_ENV=production node server/",
+    "start:universal": "cross-env NODE_ENV=development MODE=universal node server/",
     "postYeomanGenerator": "npm run regenerate && npm run start",
     "yo": "npm link src/conf/.react-base/templates/generator-react-base",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "postinstall": "npm run generate:dll"
   },
   "dependencies": {
-    "express": "^4.14.0",
+    "@angularclass/idle-preload": "^1.0.4",
     "body-parser": "1.15.2",
-    "compression": "1.6.2"
+    "compression": "1.6.2",
+    "express": "^4.14.0"
   },
   "devDependencies": {
     "@angular/common": "^2.4.1",
@@ -76,6 +78,7 @@
     "assets-webpack-plugin": "^3.5.0",
     "awesome-typescript-loader": "2.2.4",
     "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
     "babel-preset-es2015": "^6.18.0",
     "chalk": "^1.1.3",
     "clean-css": "^3.4.21",

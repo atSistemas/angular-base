@@ -1,38 +1,29 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": false,
-    "noEmitHelpers": false,
+    "lib": ["es5", "dom"],
+    "noEmitHelpers": true,
+    "skipDefaultLibCheck": true,
     "pretty": true,
     "sourceMap": true,
-    "lib": [
-      "es5",
-      "dom"
-    ],
     "strictNullChecks": false,
-    "baseUrl": "./src",
-    "paths": {
-      "base": ["./base"]
-    },
-    "types": [
-      "core-js",
-      "node",
-      "systemjs"
+    "typeRoots": [
+      "node_modules/@types"
     ]
   },
   "exclude": [
     "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "forkChecker": false,
-    "useCache": true
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": {
-    "rewriteTsconfig": false
-  }
-}
+     "useWebpackText": true,
+     "forkChecker": true,
+     "useCache": true
+   },
+   "compileOnSave": false,
+   "buildOnSave": false,
+   "atom": { "rewriteTsconfig": false }
+ }

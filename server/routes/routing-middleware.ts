@@ -9,5 +9,6 @@ export function applyServerRouting(app): void {
     app.get(`/${route}`, renderPage);
     app.get(`/${route}/*`, renderPage);
   });
+
   base.console.success(`Routing up`);
 }

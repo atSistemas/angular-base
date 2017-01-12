@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'base-app',
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: './index.html'
+  templateUrl: './base.html'
 })
 export class BaseComponent{
 

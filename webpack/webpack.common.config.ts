@@ -12,6 +12,7 @@ export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
 export const appPath = path.resolve(__dirname, '../src/app');
 export const aotPath = path.resolve(__dirname, '../src/app/index.aot.ts');
+export const universalPath = path.resolve(__dirname, '../src/app/index.universal.ts');
 export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
 export const dllPath = path.resolve(__dirname, '../dist/');
@@ -97,18 +98,6 @@ export const module = {
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
     { test: /\.css$/, loader: 'raw-loader', include: [mainPath] }
   ]
-};
-
-export const node = {
-  global: true,
-  process: true,
-  Buffer: false,
-  crypto: 'empty',
-  module: false,
-  clearImmediate: false,
-  setImmediate: false,
-  clearTimeout: true,
-  setTimeout: true
 };
 
 export const resolve = {

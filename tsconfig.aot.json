@@ -23,7 +23,9 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",
-    "src/app/index.aot.ts"
+    "src/app/index.aot.ts",
+    "src/app/index.universal.ts",
+    "src/app/universal.module.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
