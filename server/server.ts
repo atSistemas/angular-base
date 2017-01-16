@@ -1,9 +1,10 @@
+import 'angular2-universal-polyfills';
 import 'ts-helpers';
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
+import './__workaround.node';
 import * as path from 'path';
 import * as express from 'express';
-import 'angular2-universal-polyfills';
 
 import * as base from '../.base';
 import { routes } from './routes';
