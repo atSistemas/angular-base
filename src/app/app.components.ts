@@ -1,4 +1,4 @@
-import { WelcomeComponent } from '../base/components/welcome';
+import { WelcomeComponent } from './welcome.component';
 
 export const AppComponents = [
   WelcomeComponent
