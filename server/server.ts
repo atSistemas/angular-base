@@ -1,3 +1,5 @@
+import './__workaround.node';
+
 import * as express from 'express';
 import * as path from 'path';
 import statics, { iStaticRoute } from './statics';
