@@ -1,12 +1,11 @@
 import { compose } from '@ngrx/core/compose';
+import { routerReducer, RouterState } from '@ngrx/router-store';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
-import { routerReducer, RouterState } from '@ngrx/router-store';
-
-import { MainModelInterface } from '../models';
 
 import { MainReducer } from '../../app/containers/main/reducers';
+import { MainModelInterface } from '../models';
 
 export interface AppState {
   router: RouterState;
@@ -14,8 +13,8 @@ export interface AppState {
 }
 
 export const reducers = {
+  main: MainReducer,
   router: routerReducer,
-  main: MainReducer
 };
 
 const combined = combineReducers(reducers);

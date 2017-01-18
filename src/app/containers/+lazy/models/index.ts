@@ -10,7 +10,7 @@ export interface LazyModel extends TypedRecord<LazyModel>,
 };
 
 const LazyModelFactory = makeTypedFactory<LazyModelInterface, LazyModel>({
-  lazy: 'Lazy view!'
+  lazy: 'Lazy view!',
 });
 
 export const InitialState = LazyModelFactory();

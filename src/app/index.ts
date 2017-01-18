@@ -7,4 +7,4 @@ import { AppModule } from './app.module';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));

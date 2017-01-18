@@ -1,30 +1,30 @@
 import { ApplicationRef, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-
-import { BaseImports } from '../base/imports/';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponents } from './app.components';
-import { BaseProviders } from '../base/providers/';
+
 import { BaseComponent } from '../base/components/base';
+import { BaseImports } from '../base/imports/';
+import { BaseProviders } from '../base/providers/';
 import { MainContainer } from './containers/main/main.component';
 
 @NgModule({
+  bootstrap: [ BaseComponent ],
   declarations: [
     BaseComponent,
-    AppComponents
+    AppComponents,
   ],
   imports: [
     BaseImports,
     BrowserModule,
     HttpModule,
   ],
-  bootstrap: [ BaseComponent ],
-  providers: [ BaseProviders ]
+  providers: [ BaseProviders ],
 })
 export class AppModule {
   constructor(
-    //private store: Store,
-    //public mainService: MainService
+    // private store: Store,
+    // public mainService: MainService
   ) {
     console.log('APP MODULE CONSTRUCTOR');
   }

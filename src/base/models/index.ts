@@ -1,3 +1,3 @@
-import { MainModelInterface, MainModel, InitialState } from '../../app/containers/main/models';
+import { InitialState, MainModel, MainModelInterface } from '../../app/containers/main/models';
 
-export { MainModelInterface, MainModel, InitialState }
+export { InitialState, MainModel, MainModelInterface }

@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Action, ReducersMapObject } from 'redux';
 import { ReflectiveInjector } from '@angular/core';
 import { Store } from '../store';

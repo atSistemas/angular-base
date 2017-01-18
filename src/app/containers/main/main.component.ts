@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'main-container',
-  templateUrl: './main.html'
+  templateUrl: './main.html',
 })
 
-export class MainContainer{}
+export class MainContainer {}

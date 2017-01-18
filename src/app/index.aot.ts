@@ -8,4 +8,4 @@ enableProdMode();
 console.log('AOT MODE');
 platformBrowser()
   .bootstrapModuleFactory(AppModuleNgFactory)
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
