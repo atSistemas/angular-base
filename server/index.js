@@ -1,13 +1,10 @@
-/**
- * @fileoverview bootstraps development server
- * @author Rafa Bernad [rbernad@atsistemas.com]
- */
 require('ts-node/register');
-
 const base = require('../.base');
 const Server = require('./server').default;
+const baseEnv = require('../src/base/shared/Env');
 
-process.env['NODE_ENV'] = process.env.NODE_ENV || 'development';
+const EnvName = (baseEnv.ENV == 'development') ?
+              ? 'Development': 'Production';
+base.console.info(`Starting ${EnvName} enviroment...`);
 
-base.console.info(`Starting ${(process.env.NODE_ENV).toUpperCase()} enviroment...`);
 const server = new Server();
