@@ -56,20 +56,12 @@ export const output =  {
 };
 
 export const plugins = [
-  new webpack.ContextReplacementPlugin(
-    /.*/,
-    mainPath,
-  ),
-  new webpack.optimize.UglifyJsPlugin({
-    compressor: { warnings: false, screw_ie8 : true },
-    output: {comments: false, beautify: false},
-    mangle: { screw_ie8 : true }
-  }),
- new ProgressBarPlugin({
-    format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
-    clear: true,
-    summary: false,
-  }),
+  new ProgressBarPlugin({
+     format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
+     clear: true,
+     summary: false,
+   }),
+  new webpack.optimize.OccurrenceOrderPlugin(true),
   new AssetsPlugin({
       path: buildPath,
       filename: 'webpack-assets.json',
@@ -78,7 +70,6 @@ export const plugins = [
   new DefinePlugin({
       'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
   }),
-  new TsConfigPathsPlugin(),
 ];
 
 export const module = {

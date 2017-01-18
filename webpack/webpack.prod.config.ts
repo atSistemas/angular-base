@@ -44,10 +44,6 @@ export const plugins = [
     output: {comments: false, beautify: false},
     mangle: { screw_ie8 : true }
   }),
-  new AssetsPlugin({
-    path: common.buildPath,
-    filename: 'webpack-assets.json',
-    prettyPrint: true
-  }),
+  new webpack.NoErrorsPlugin()
 ]
 .concat(common.plugins);

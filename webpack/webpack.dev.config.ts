@@ -26,11 +26,5 @@ export const plugins = [
     context: context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),
-  new AssetsPlugin({
-      path: common.buildPath,
-      filename: 'webpack-assets.json',
-      prettyPrint: true
-  }),
-  common.compileError
 ]
 .concat(common.plugins);
