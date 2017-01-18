@@ -24,12 +24,12 @@ export default function():RequestHandler[] {
     };
 
     const devMiddleware = webpackDevMiddleware(compiler, serverOptions);
+
     const hotMiddleware = webpackHotMiddleware(compiler, {
       log: false, path: '/__webpack_hmr', heartbeat: 10 * 1000
     });
-  //  const externalsMiddleware = new ExternalsMiddleware('\/dll\/*');
+
     const middlewares: RequestHandler[] = [
-      //externalsMiddleware,
       devMiddleware,
       hotMiddleware,
 
