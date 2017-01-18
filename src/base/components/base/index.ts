@@ -2,14 +2,13 @@ import { AfterContentInit, Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'base-app',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './index.html'
+  selector: 'base-app',
+  templateUrl: './index.html',
 })
-export class BaseComponent{
-
+export class BaseComponent {
   constructor(
     public route: ActivatedRoute,
-    public router: Router
+    public router: Router,
   ) { }
 };

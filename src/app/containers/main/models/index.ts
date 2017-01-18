@@ -10,7 +10,7 @@ export interface MainModel extends TypedRecord<MainModel>,
 };
 
 const MainModelFactory = makeTypedFactory<MainModelInterface, MainModel>({
-  main: []
+  main: [],
 });
 
 export const InitialState = MainModelFactory();
