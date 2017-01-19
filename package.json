@@ -35,7 +35,7 @@
     "lint": "npm run tslint \"src/**/*.ts\"",
     "lint:css": "npm run logo && stylelint \"src/**/*.css\" --config .stylelintrc",
     "lint:all": "npm run lint && npm run lint:css",
-    "test": "rimraf .tmp && mocha-webpack",
+    "test": "npm run logo && rimraf .tmp && mocha-webpack",
     "test:watch": "rimraf .tmp && mocha-webpack --watch",
     "test:coverage": "nyc npm test && nyc report --reporter=lcov",
     "start": "npm run logo && cross-env NODE_ENV=development node server/",
@@ -135,5 +135,28 @@
     "webpack-dev-server": "^2.1.0-beta.0",
     "webpack-hot-middleware": "^2.13.2",
     "webpack-node-externals": "^1.5.4"
-  }
+  },
+  "nyc": {
+   "include": [
+     "src/**/*.spec.ts",
+     "src/**/*.spec.tsx"
+   ],
+   "exclude": [
+     "node_modules/",
+     "dist/"
+   ],
+   "extension": [
+     ".ts",
+     ".tsx"
+   ],
+   "require": [
+     "ts-node/register"
+   ],
+   "reporter": [
+     "text-summary",
+     "html"
+   ],
+   "sourceMap": true,
+   "instrument": true
+ }
 }
