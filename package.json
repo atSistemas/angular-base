@@ -137,10 +137,6 @@
     "webpack-node-externals": "^1.5.4"
   },
   "nyc": {
-   "include": [
-     "src/**/*.spec.ts",
-     "src/**/*.spec.tsx"
-   ],
    "exclude": [
      "node_modules/",
      "dist/"
