@@ -35,7 +35,7 @@
     "lint": "npm run tslint \"src/**/*.ts\"",
     "lint:css": "npm run logo && stylelint \"src/**/*.css\" --config .stylelintrc",
     "lint:all": "npm run lint && npm run lint:css",
-    "test": "npm run logo && rimraf .tmp && mocha-webpack",
+    "test": "npm run logo && rimraf .tmp && mocha-webpack --webpack-config webpack/webpack.test.config.ts --require ./src/base/conf/jsDomSetup.js src/**/*.spec.ts",
     "test:watch": "rimraf .tmp && mocha-webpack --watch",
     "test:coverage": "nyc npm test && nyc report --reporter=lcov",
     "start": "npm run logo && cross-env NODE_ENV=development node server/",
