@@ -1,3 +1,5 @@
 --webpack-config webpack/webpack.test.config.ts
---require ./mocha-shim.js
+--require ./src/base/conf/jsDomSetup.js
+--full-trace
+--bail
 src/**/*.spec.ts
