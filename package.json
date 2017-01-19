@@ -143,8 +143,8 @@
      "src/**/*.tsx"
     ],
     "exclude": [
-      "**/*.js",
       "node_modules/",
+      "src/compiled",
       "dist/",
       "webpack/**",
       "**/*.spec.js",
