@@ -1,10 +1,8 @@
+Main container!!!!!
 <div>
-    <a routerLink="/container2">container2</a>
+    <a routerLink="/lazy">lazy</a>
+    <a routerLink="/main">main</a>
     <h1>Main Container</h1>
-    <main-display [main]="main$ | async"></main-display>
     <br>
-    <span (click)="actions.click()">Click on me to dispatch an action!</span>
-
-    <div *ngFor="let friend of friends">Friend: {{ friend.name }}</div>
-    <div *ngFor="let tag of tags">Tag: {{ tag }}</div>
+    <span>Click on me to dispatch an action!</span>
 </div>

@@ -16,4 +16,4 @@ global.navigator = {
 };
 
 
-export default global;
+export global;

@@ -1,39 +1,26 @@
-import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { LazyContainer } from './lazy';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppState, Store, BaseReduxify } from 'base';
-import { Observable } from 'rxjs/Observable';
-import { Action } from 'redux';
-import { NgRedux } from 'ng2-redux';
-import { LazyReducer } from './reducers';
-import { LazyService } from './services/lazy-service';
 import { LazyActions } from './actions';
+import { LazyContainer } from './lazy.component';
+
+export const routes: Routes = [
+  {
+    component: LazyContainer,
+    path: '',
+  },
+];
 
 @NgModule({
-  declarations: [LazyContainer],
-  providers: [LazyActions, LazyService],
+  declarations: [
+    LazyContainer,
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      { path: '', component: LazyContainer }
-    ])
-  ]
+    RouterModule.forChild(routes),
+  ],
+  providers: [LazyActions],
 })
-@BaseReduxify({
-  reducers: {
-    lazy: LazyReducer
-  },
-  epics: {
-    lazyService: ['getData']
-  }
-})
-export default class LazyContainerModule {
-  public epics: Observable<Action>[] = [];
-  constructor(
-    private store: Store,
-    private actions: LazyActions,
-    private lazyService: LazyService
-  ) { }
-}
+
+export class LazyModule {}
