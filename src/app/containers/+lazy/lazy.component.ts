@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { DevToolsExtension, NgRedux, select } from 'ng2-redux';
 import { NgReduxRouter } from 'ng2-redux-router';
+import { Observable } from 'rxjs/Observable';
 import { LazyActions } from './actions';
 
 @Component({
   selector: 'lazy-container',
-  templateUrl: './lazy.html'
+  templateUrl: './lazy.html',
 })
 export class LazyContainer {
+
+  @select() public lazy$: Observable<any[]>;
+  public people: Object[];
+
   private devTools: DevToolsExtension;
   private ngReduxRouter: NgReduxRouter;
 
-  public people: Object[];
-  @select() lazy$:Observable<any[]>
-  constructor(private actions:LazyActions ) { 
-    this.actions.lazyRequest();
+  constructor() {
+    // this.actions.lazyRequest();
   }
 }

@@ -1,29 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { select } from 'ng2-redux';
-import { MainActions } from './actions';
-import { MainService } from './services';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-export { MainDisplay } from './components';
+import { MainContainer } from './main.component';
 
-@Component({
-  selector: 'main-container',
-  providers: [MainActions, MainService],
-  templateUrl: './main.html'
+export const routes: Routes = [
+  {
+    component: MainContainer,
+    path: '',
+  },
+];
+
+@NgModule({
+  declarations: [
+    MainContainer,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+  ],
 })
 
-export class MainContainer implements OnInit{
-  @select() main$:Observable<any[]>
-  //@select(state=>state.main) main:Observable<any>
-  //@select(['main','main']) main$;
-
-
-  constructor(
-    private actions: MainActions,
-    private service: MainService
-  ) {}
-
-  ngOnInit(): void {
-    this.actions.mainRequest();
-  }
-}
+export class MainModule {}

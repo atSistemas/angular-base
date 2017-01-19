@@ -1,16 +1,21 @@
+/* tslint:disable */
 import { Action, ReducersMapObject } from 'redux';
 import { ReflectiveInjector } from '@angular/core';
-import { Store } from 'base';
+import { Store } from '../store';
 import { NgRedux } from 'ng2-redux';
 
 export interface reduxifyOptions {
     reducers: ReducersMapObject,
     epics: { [index: string]: string[] },
-    store?: string
+    store?: any
 }
 
-function BaseReduxify(options: reduxifyOptions) {
+export function BaseReduxify(options: reduxifyOptions) {
+
+  console.log('REDUXIFY');
+
     return function (target: Function) {
+    console.log('REDUXIFY TARGET');
 
         let BaseReduxify = function () {
             target.apply(this, arguments);
@@ -21,11 +26,11 @@ function BaseReduxify(options: reduxifyOptions) {
         BaseReduxify.prototype.constructor = target;
 
         BaseReduxify.prototype.epics = [];
-        
+
         BaseReduxify.prototype.reduxify = {};
-        
+
         BaseReduxify.prototype.reduxify_init = function () {
-            
+
             if (!this.reduxify_checks()) return;
             this.reduxify_mapEpics();
             this.reduxify_mapReducers();
@@ -33,6 +38,7 @@ function BaseReduxify(options: reduxifyOptions) {
         }
 
         BaseReduxify.prototype.reduxify_checks = function () {
+          console.log(55555, this.store, this.options);
             if (!this.store && !this[options.store]) {
                 console.error("You must inject a Redux store to use reduxify decorator");
                 return false;
@@ -77,6 +83,10 @@ function BaseReduxify(options: reduxifyOptions) {
         return <any>BaseReduxify;
 
     }
+    /*
+    return function (target: Function) {
+      const parentTarget = Object.getPrototypeOf(target.prototype).constructor;
+      const parentAnnotations = Reflect.getMetadata('BaseReduxify', parentTarget);
+      console.log(parentAnnotations);
+    };*/
 }
-
-export default BaseReduxify;

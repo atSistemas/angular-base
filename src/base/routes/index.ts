@@ -1,8 +1,13 @@
-import { Routes, RouterModule } from '@angular/router';
-import { routes, AppRoutingProviders } from '../../app/routes';
+import { RouterModule, Routes } from '@angular/router';
+/*import { routes, getAppRoutingProviders } from '../../app/routes';
 
 export const RoutingProviders: any[] = [
 
-].concat(AppRoutingProviders);
+].concat(getAppRoutingProviders());
+
+export function getRoutingProviders():any[]{
+  return getAppRoutingProviders();
+}
 
 export const Routing = RouterModule.forRoot(routes);
+*/

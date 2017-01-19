@@ -27,7 +27,7 @@
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
-    "forkChecker": true,
+    "forkChecker": false,
     "useCache": true
   },
   "compileOnSave": false,

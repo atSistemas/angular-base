@@ -1,26 +1,20 @@
-import * as express from 'express';
+import 'ts-helpers';
+import 'core-js/es6/reflect';
+import 'core-js/es7/reflect';
 import * as path from 'path';
-import statics, { iStaticRoute } from './statics';
-import renderIndex from './templates';
-import environment from './environment';
-import configureMiddlewares from './middleware';
-import buildExternals from '../webpack/dll';
-import { RequestHandler } from 'express';
+import * as express from 'express';
+//import 'angular2-universal-polyfills';
+
 import * as base from '../.base';
+import { routes } from './routes';
+import environment from './environment';
+import { applyViewEngine } from './lib/viewEngine';
+import { applyEnvMiddleWare } from './middleware';
+import { applyStaticsPaths, StaticRoute } from './statics';
+import { applyServerRouting } from './routes/routing-middleware';
 
-const context = 'server';
-
-/**
- * @class Server
- * @description Generates development server instances, with configurable environment setups
- * @author Rafa Bernad [rbernad@atsistemas.com]
- */
 export class Server {
 
-  /**
-   * @public app
-   * @desc The express application instance
-   */
   public app: express.Application;
 
   public static bootstrap(): Server {
@@ -28,72 +22,36 @@ export class Server {
   }
 
   constructor() {
-
     this.app = express();
-
-    this.configure();
-
+    this.configureServer();
   }
 
-  private configure() {
-    buildExternals().then(() => {
-      this.initializeMiddlewares().then(() => {
-        this.initializeStaticPaths();
-        this.initializeIndex();
-        this.app.listen(environment.port, function (err: any) {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          base.console.success(`Server up on http://localhost:${environment.port}`);
-        });
+  private configureServer() {
+    applyEnvMiddleWare(this.app)
+      .then(() => {
+        base.console.info(`Checking view engine...`);
+        applyViewEngine(this.app);
+      })
+      .then(() => {
+        base.console.info(`Checking static paths...`);
+        applyStaticsPaths(this.app);
+      })
+      .then(() => {
+        base.console.info(`Checking server routing...`);
+        applyServerRouting(this.app);
+      })
+      .then(() => {
+        base.console.info(`Setting up server...`);
+        this.launch();
       });
-    });
   }
 
-  private initializeIndex() {
-
-    this.app.use((req: express.Request, res: express.Response, next: any) => {
-      let page = renderIndex();
-      res.status(200).send(page);
-      return;
+  private launch(): void {
+    this.app.listen(environment.port, function (err: any) {
+      if (err) return base.console.error(`${err}`);
+      base.console.success(`Server up on http://localhost:${environment.port}`);
     });
-  }
-
-  private initializeMiddlewares(): PromiseLike<boolean> {
-
-    const middlewares: RequestHandler[] = configureMiddlewares();
-
-    return new Promise((resolve, reject) => {
-
-      let wait = false;
-
-      middlewares.forEach((middleware: RequestHandler) => {
-        this.app.use(middleware);
-        if (middleware['waitUntilValid']) {
-          wait = true;
-          middleware['waitUntilValid'](() => {
-            base.console.success(`Applied ${middleware.name} middleware`);
-            resolve(true);
-          });
-        } else {
-          base.console.success(`Applied ${middleware.name || ''} middleware`);
-        }
-      });
-
-      if (!wait) {
-        resolve(true);
-      }
-    });
-
-  }
-
-  private initializeStaticPaths() {
-    statics.map((staticRoute: iStaticRoute) => {
-      this.app.use(staticRoute.route, express.static(staticRoute.path));
-      base.console.success(`Applied static path "${staticRoute.route}"`);
-    });
-  }
+  };
 };
 
 export default Server;
