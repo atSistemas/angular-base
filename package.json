@@ -109,6 +109,7 @@
     "ng2-redux-router": "^2.0.0",
     "ngrx-store-freeze": "^0.1.4",
     "ngrx-store-logger": "^0.1.7",
+    "nyc": "^10.1.2",
     "path-to-regexp": "^1.7.0",
     "perfy": "^1.1.2",
     "progress-bar-webpack-plugin": "^1.9.0",
@@ -137,22 +138,22 @@
     "webpack-node-externals": "^1.5.4"
   },
   "nyc": {
-   "exclude": [
-     "node_modules/",
-     "dist/"
-   ],
-   "extension": [
-     ".ts",
-     ".tsx"
-   ],
-   "require": [
-     "ts-node/register"
-   ],
-   "reporter": [
-     "text-summary",
-     "html"
-   ],
-   "sourceMap": true,
-   "instrument": true
- }
+    "exclude": [
+      "node_modules/",
+      "dist/"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  }
 }
