@@ -16,10 +16,17 @@
     "paths": {
       "base": ["./base"]
     },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "types": [
+      "chai",
       "core-js",
+      "mocha",
       "node",
-      "systemjs"
+      "sinon",
+      "systemjs",
+      "webpack"
     ]
   },
   "exclude": [
