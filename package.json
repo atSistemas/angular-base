@@ -138,13 +138,20 @@
     "webpack-node-externals": "^1.5.4"
   },
   "nyc": {
+    "include": [
+     "src/**/*.ts",
+     "src/**/*.tsx"
+    ],
     "exclude": [
+      "**/*.js",
       "node_modules/",
-      "dist/"
+      "dist/",
+      "webpack/**",
+      "**/*.spec.js",
+      "src/base/wp-plugins/**"
     ],
     "extension": [
-      ".ts",
-      ".tsx"
+      ".ts"
     ],
     "require": [
       "ts-node/register"
@@ -153,6 +160,7 @@
       "text-summary",
       "html"
     ],
+    "all": true,
     "sourceMap": true,
     "instrument": true
   }
