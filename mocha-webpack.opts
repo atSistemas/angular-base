@@ -1,0 +1,3 @@
+--webpack-config webpack/webpack.test.config.ts
+--require ./mocha-shim.js
+src/**/*.spec.ts

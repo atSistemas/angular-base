@@ -16,3 +16,4 @@ src/compiled/
 *.sublime-project
 *.sublime-workspace
 **/*.ngfactory.ts
+.tmp/
