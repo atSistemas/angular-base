@@ -1,9 +1,8 @@
 require('ts-node/register');
-const base = require('../.base');
+const base = require('../src/base');
 const Server = require('./server').default;
-const baseEnv = require('../src/base/shared/Env');
 
-const EnvName = (baseEnv.ENV == 'development') ? (baseEnv.MODE == 'universal')
+const EnvName = (base.ENV == 'development') ? (base.MODE == 'universal')
               ? 'Universal Development': 'Development'
               : 'Production AOT';
 base.console.info(`Starting ${EnvName} enviroment...`);

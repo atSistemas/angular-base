@@ -1,7 +1,7 @@
 import * as express from 'express';
 
 import { routes } from './';
-import * as base from '../../.base';
+import * as base from '../../src/base';
 import renderPage from '../templates/';
 
 export function applyServerRouting(app) {

@@ -1,7 +1,7 @@
 ///<reference path="../../../node_modules/@types/node/index.d.ts"/>
 ///<reference path="../../../node_modules/@types/webpack/index.d.ts"/>
 
-import * as base from '../../../.base';
+import * as base from '../../../src/base';
 const perfy = require('perfy');
 const webpack = require('webpack');
 

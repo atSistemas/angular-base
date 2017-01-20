@@ -18,7 +18,7 @@
     }
   ],
   "scripts": {
-    "logo": "node ./.base/logo.js",
+    "logo": "node ./src/base/conf/.angular2-base/logo.ts",
     "webpack": "node_modules/webpack/bin/webpack.js",
     "typings": "node_modules/typings/dist/bin.js",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json",

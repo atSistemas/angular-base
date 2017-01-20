@@ -1,4 +1,4 @@
-import * as base from '../.base';
+import * as base from '../src/base';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');

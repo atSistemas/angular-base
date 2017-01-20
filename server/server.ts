@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as express from 'express';
 //import 'angular2-universal-polyfills';
 
-import * as base from '../.base';
+import * as base from '../src/base';
 import { routes } from './routes';
 import environment from './environment';
 import { applyViewEngine } from './lib/viewEngine';

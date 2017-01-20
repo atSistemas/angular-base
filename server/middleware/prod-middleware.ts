@@ -1,6 +1,6 @@
 ///<reference path="../../node_modules/@types/node/index.d.ts"/>
 import { RequestHandler } from 'express';
-import * as base from '../../.base';
+import * as base from '../../src/base';
 const compression = require('compression');
 
 const webpack = require('webpack');
