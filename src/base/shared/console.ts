@@ -1,33 +1,27 @@
-const useColors = require('supports-color');
-
 const colors = {
-  success: 32,
-  error: 31,
   default: 32,
+  error: 31,
   info: 34,
+  success: 32,
 };
 
 const symbols = {
-  success: '✓',
+  CR: '\u000A',
+  dot: '․',
   error: '✖',
   info: 'i',
-  dot: '․',
-  CR: '\u000A',
+  success: '✓',
 };
 
 if (process.platform === 'win32') {
-  symbols.success = '\u221A';
+  symbols.CR = '\u000D\u000A';
+  symbols.dot = '.';
   symbols.error = '\u00D7';
   symbols.info = 'i';
-  symbols.dot = '.';
-  symbols.CR = '\u000D\u000A';
+  symbols.success = '\u221A';
 }
 
 const color = (type, str) => {
-  if (!useColors) {
-    return String(str);
-  }
-
   if (!colors[type]) {
     type = 'default';
   }
@@ -47,6 +41,7 @@ function printLog(type, args) {
   return console.log.apply(console, args);
 }
 
+/* tslint:disable:only-arrow-functions */
 export const line = function (str) {
   const args = Array.prototype.slice.call(arguments);
   return console.log.apply(console, [symbols.CR].concat(args).concat(symbols.CR));
