@@ -1,8 +1,7 @@
 import * as path from 'path';
 //import { createEngine } from 'angular2-express-engine';
 
-import * as base from '../../.base';
-import { ENV } from '../../src/base/shared/Env';
+import * as base from '../../src/base';
 import { AppModule } from '../../src/app/app.module';
 
 const viewPath = path.resolve(__dirname, '../templates');

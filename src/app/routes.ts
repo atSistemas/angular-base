@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { WelcomeComponent } from '../base/components/welcome';
-import { ENV } from '../base/shared/Env';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full'},

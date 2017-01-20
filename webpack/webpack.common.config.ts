@@ -1,5 +1,5 @@
 import * as path from 'path';
-import * as base from '../.base';
+import * as base from '../src/base';
 
 const chalk = require('chalk');
 const webpack = require('webpack');

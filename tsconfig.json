@@ -14,7 +14,7 @@
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
-      "base": ["./base"]
+      "base": ["./src/base"]
     },
     "typeRoots": [
       "node_modules/@types"

@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as base from '../../.base';
+import * as base from '../../src/base';
 
 import environment, { constants as envConstants } from '../environment';
 import devMiddleware from './dev-middleware';
