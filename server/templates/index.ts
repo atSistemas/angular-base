@@ -1,10 +1,11 @@
 import environment, { constants as envConstants} from '../environment';
+import getScripts from '../lib/GetScripts';
 
 export default function renderPage():String {
 
-  const vendor =  '<script src="dlls/vendor.js"></script>';
-  const polyfills = '<script src="/polyfills.js"></script>';
-  const app = '<script src="/app.js"></script>';
+  const app = getScripts('app');
+  const vendor = getScripts('vendor');
+  const polyfills = getScripts('polyfills');
   const style = (environment.ENV === envConstants.PRODUCTION) ? '<link rel="stylesheet" href="bundle.css">' : '';
 
   return `
