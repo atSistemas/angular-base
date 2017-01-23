@@ -44,6 +44,6 @@ export const plugins = [
     output: {comments: false, beautify: false},
     mangle: { screw_ie8 : true }
   }),
-  new webpack.NoErrorsPlugin()
+  new webpack.NoEmitOnErrorsPlugin()
 ]
 .concat(common.plugins);

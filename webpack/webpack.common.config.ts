@@ -69,7 +69,7 @@ export const plugins = [
   }),
   new DefinePlugin({
       'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
-  }),
+  })
 ];
 
 export const module = {
