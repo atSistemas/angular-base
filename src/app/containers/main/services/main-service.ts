@@ -15,23 +15,7 @@ export class MainService extends BaseService {
   }
 
   public getData(): Observable<string> {
-    return this.http.get('mocks/main.json', this.optionsNoPre)
-      .map(res => res.text());
-}
-  /*
-  public getData = (action$: ActionsObservable<Action>): Observable<Action> => {
-
-    return action$.ofType(actionTypes.MAIN_REQUEST)
-      .flatMap(({payload}) => {
-        return this.http.get('mocks/main.json')
-          .map((result) => ({
-            payload: result.json(),
-            type: actionTypes.MAIN_SUCCESS,
-          }))
-          .catch((error) => Observable.of({
-            type: actionTypes.MAIN_ERROR,
-          }));
-      });
-  }*/
-
+    return this.http.get('mocks/basic.json', this.optionsNoPre)
+      .map(res => res.json());
+  }
 }

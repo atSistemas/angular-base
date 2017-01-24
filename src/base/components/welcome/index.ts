@@ -21,4 +21,5 @@ export class WelcomeComponent {
     this.main$.takeUntil(this.destroyed$)
     .subscribe(main => { this.main = main; });
   }
+
 }

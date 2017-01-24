@@ -23,8 +23,9 @@ const login = (state, data) => {
 
 const success = (state, action) => {
   console.log('sucesssssss!', action.payload);
-  const data = action.payload;
-  return state.update('main', (value) => action.payload);
+  return Object.assign({}, state, {
+       main: action.payload
+     });
 };
 
 const actionHandlers = {

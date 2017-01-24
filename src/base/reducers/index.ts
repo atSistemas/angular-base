@@ -6,6 +6,7 @@ import { routerReducer, RouterState } from '@ngrx/router-store';
 
 import { MainReducer } from '../../app/containers/main/reducers';
 import { MainState } from '../models';
+import { RequestMiddleware } from '../middleware/requestMiddleware';
 
 export interface AppState {
   router: RouterState;
@@ -17,7 +18,7 @@ export const reducers = {
   router: routerReducer,
 };
 
-const enhancer = compose(storeLogger(), combineReducers)(reducers);
+const enhancer = compose(RequestMiddleware, storeLogger(), combineReducers)(reducers);
 
 export function rootReducer(state: any, action: any) {
     return enhancer(state, action);
