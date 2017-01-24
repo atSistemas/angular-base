@@ -7,8 +7,10 @@ import { useLogMonitor } from '@ngrx/store-log-monitor';
 
 import { routes } from '../../app/routes';
 import { rootReducer } from '../reducers';
+import { MainEffects } from '../../app/containers/main/services/main.effects';
 
 export const BaseImports = [
+  EffectsModule.run(MainEffects),
   RouterModule.forRoot(routes, { preloadingStrategy: false}),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(rootReducer),
