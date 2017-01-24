@@ -1,3 +1,9 @@
+import { MainModelInterface } from '../models';
+
+export interface AppState {
+  main?: MainModelInterface;
+};
+/*
 declare var BASE_ENVIRONMENT: any;
 
 import { Injectable } from '@angular/core';
@@ -95,4 +101,4 @@ export class Store {
     this.ngRedux.configureStore(this.RootReducer, {}, middleware);
   }
 
-}
+}*/

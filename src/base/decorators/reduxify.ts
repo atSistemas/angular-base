@@ -1,8 +1,7 @@
 /* tslint:disable */
 import { Action, ReducersMapObject } from 'redux';
 import { ReflectiveInjector } from '@angular/core';
-import { Store } from '../store';
-import { NgRedux } from 'ng2-redux';
+//import { createReducer } from '../../../../basshared/CreateReducer';
 
 export interface reduxifyOptions {
     reducers: ReducersMapObject,
