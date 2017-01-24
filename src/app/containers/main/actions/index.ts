@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
-import { Action } from 'redux';
-
-import { AppState } from '../../../../base/store';
-import { actionTypes } from '../action-types';
+import { Response } from '@angular/http';
+import { Action } from '@ngrx/store';
+import { ActionTypes } from '../action-types';
 
 @Injectable()
 export class MainActions {
 
+  public login(res: Response): Action {
+    return {
+      type: ActionTypes.LOGIN,
+      payload: res
+    };
+  }
+};
+  /*
   constructor(private ngRedux: NgRedux<AppState>) {}
 
   public load() {
@@ -25,4 +31,4 @@ export class MainActions {
   public mainRequest() {
     this.ngRedux.dispatch({ type: actionTypes.MAIN_REQUEST });
   }
-}
+}*/
