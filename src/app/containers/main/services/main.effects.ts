@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ActionTypes } from '../action-types';
 import { MainActions } from '../actions';
-import { AppState } from '../../../../base/reducers';
+import { AppState } from '../../../../base/store';
 import { MainService } from './main-service';
 
 @Injectable()

@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 
-import { AppState } from '../base/reducers/';
+import { AppState } from '../base/store/';
 import { AppComponents } from './app.components';
 import { BaseComponent } from '../base/components/base';
 import { BaseImports } from '../base/imports/';

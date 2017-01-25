@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { AppState } from '../../../base/reducers/';
+import { AppState } from '../../../base/store/';
 import { MainModelInterface } from '../../models';
 
 @Component({
@@ -12,6 +12,7 @@ import { MainModelInterface } from '../../models';
 })
 
 export class WelcomeComponent {
+
   public destroyed$: Subject<any> = new Subject<any>();
   public main: MainModelInterface;
   public main$: Observable<MainModelInterface>;

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-import { AppState } from '../../../base/reducers/';
+import { AppState } from '../../../base/store/';
 import { MainModelInterface } from './models';
 import { MainActions } from './actions';
 
