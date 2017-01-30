@@ -22,7 +22,7 @@ export const polyfills = [
   'core-js/client/shim',
   'zone.js/dist/zone',
   'zone.js/dist/long-stack-trace-zone',
-  'ts-helpers',
+  'ts-helpers'
 ];
 
 export const entry = {
@@ -35,13 +35,6 @@ export const entry = {
       '@angular/platform-browser-dynamic',
       '@angular/router',
       'angular2-template-loader',
-      'immutable',
-      'typed-immutable-record',
-      'ng2-redux',
-      'ng2-redux-router',
-      'redux',
-      'redux-observable',
-      'rxjs',
     ],
     polyfills: polyfills
 };
@@ -69,7 +62,7 @@ export const plugins = [
   }),
   new DefinePlugin({
       'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
-  }),
+  })
 ];
 
 export const module = {

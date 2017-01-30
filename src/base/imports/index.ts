@@ -6,10 +6,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { useLogMonitor } from '@ngrx/store-log-monitor';
 
 import { routes } from '../../app/routes';
-import { rootReducer } from '../reducers';
+import { RootReducer } from '../reducers';
+import { RequestEffect } from '../effects/request.effect';
 
 export const BaseImports = [
+  EffectsModule.run(RequestEffect),
   RouterModule.forRoot(routes, { preloadingStrategy: false}),
   RouterStoreModule.connectRouter(),
-  StoreModule.provideStore(rootReducer),
+  StoreModule.provideStore(RootReducer),
 ];

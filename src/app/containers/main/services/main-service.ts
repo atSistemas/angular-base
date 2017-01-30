@@ -1,34 +1,21 @@
-import 'rxjs';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
 
-import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Action } from 'redux';
-import { ActionsObservable } from 'redux-observable';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { PayloadAction } from '../../../../base/';
 import { AppState } from '../../../../base/store';
-import { actionTypes } from '../action-types';
+import { ActionTypes } from '../action-types';
+import { BaseService } from '../../../../base/shared/BaseService';
+import { PayloadAction } from '../../../../base/';
 
 @Injectable()
-export class MainService {
-  constructor(private http: Http) { }
+export class MainService extends BaseService {
+  constructor(public http: Http) {
+    super(http);
+  }
 
-  public getData = (action$: ActionsObservable<Action>): Observable<Action> => {
-    return action$.ofType(actionTypes.MAIN_REQUEST)
-      .flatMap((/*{payload}*/) => {
-        return this.http.get('mocks/main.json')
-          .map((result) => ({
-            payload: result.json(),
-            type: actionTypes.MAIN_SUCCESS,
-          }))
-          .catch((error) => Observable.of({
-            type: actionTypes.MAIN_ERROR,
-          }));
-      });
+  public getData(): Observable<string> {
+    return this.http.get('mocks/basic.json', this.optionsNoPre)
+      .map(res => res.json());
   }
 }

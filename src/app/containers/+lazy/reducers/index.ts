@@ -1,5 +1,4 @@
-import { Action } from 'redux';
-import { Store } from '../../../../base/store';
+import { createReducer } from '../../../../base/shared/CreateReducer';
 import { actionTypes } from '../action-types';
 import { InitialState, LazyModel, LazyModelInterface } from '../models';
 
@@ -19,5 +18,5 @@ const actionHandlers = {
   [actionTypes.LAZY_SUCCESS]: success,
 };
 
-const LazyReducer = Store.createReducer<LazyModelInterface>(actionHandlers, InitialState);
+const LazyReducer = createReducer<LazyModelInterface>(actionHandlers, InitialState);
 export { LazyReducer }

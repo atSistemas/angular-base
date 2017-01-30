@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
-import { Action } from 'redux';
-
-import { AppState } from '../../../../base/store';
-import { actionTypes } from '../action-types';
+import { Response } from '@angular/http';
+import { Action } from '../../../../base/interfaces/action';
+import { ActionTypes } from '../action-types';
+import { MainService } from '../services/main-service';
 
 @Injectable()
 export class MainActions {
 
-  constructor(private ngRedux: NgRedux<AppState>) {}
+  constructor(
+    private mainService: MainService,
+  ) { }
 
-  public load() {
-    this.ngRedux.dispatch({ type: actionTypes.MAIN_CONTAINER });
+  public mainRequest(): Action {
+    return {
+      type: ActionTypes.MAIN_REQUEST,
+      payload: {
+        request: this.mainService.getData(),
+      }
+    };
   }
 
-  public lazy() {
-    this.ngRedux.dispatch({ type: actionTypes.LAZY_CONTAINER });
-  }
-
-  public click() {
-    this.ngRedux.dispatch({ type: actionTypes.CLICK });
-  }
-
-  public mainRequest() {
-    this.ngRedux.dispatch({ type: actionTypes.MAIN_REQUEST });
-  }
-}
+};
