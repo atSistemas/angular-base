@@ -11,7 +11,7 @@ export class RequestEffect {
     private actions$: Actions,
   ) { }
 
-  //FIXME
+  // FIXME
   private getRequestActions(): string {
     const obj = ActionTypes;
     const arr = [];

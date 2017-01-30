@@ -18,7 +18,7 @@ export class MainContainer {
       public store: Store<AppState>,
       public mainActions: MainActions
   ) {
-    this.data$ = this.store.select(state => state.main.main)
+    this.data$ = this.store.select(state => state.main.main);
     this.store.dispatch(this.mainActions.mainRequest());
   }
 
