@@ -14,21 +14,9 @@ export class MainActions {
   public mainRequest(): Action {
     return {
       type: ActionTypes.MAIN_REQUEST,
-      request: this.mainService.getData()
-    };
-  }
-
-  public mainSucess(res: Response): Action {
-    return {
-      type: ActionTypes.MAIN_SUCCESS,
-      payload: res
-    };
-  }
-
-  public mainError(err: Error): Action {
-    return {
-      type: ActionTypes.MAIN_ERROR,
-      payload: err
+      payload: {
+        request: this.mainService.getData(),
+      }
     };
   }
 

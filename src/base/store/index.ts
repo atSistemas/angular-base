@@ -14,7 +14,7 @@ export interface AppState {
 
 export function configureStore(rootReducer) {
   if (base.ENV === 'development') {
-    return compose(RequestMiddleware, storeLogger())(rootReducer);
+    return compose(RequestMiddleware, storeFreeze, storeLogger())(rootReducer);
   } else {
     return compose(RequestMiddleware)(rootReducer);
   }

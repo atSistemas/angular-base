@@ -1,8 +1,8 @@
 <div>
     <h1>Welcome Component</h1>
     <b>State</b><br>
-    id: {{main.id}}
-    name: {{main.name}}<br><br>
+    id: {{(data$ | async)?.id}}
+    name: {{(data$ | async)?.name}}<br><br>
     <a routerLink="/lazy">Go to Lazy Container</a><br>
     <a routerLink="/main">Go to Main Container</a>
 </div>

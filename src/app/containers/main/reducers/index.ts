@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { ActionTypes } from '../action-types';
 import { createReducer } from '../../../../base/shared/CreateReducer';
-import { InitialState, MainState, MainModelInterface } from '../models';
+import { InitialState, MainModelInterface } from '../models';
 
 const click = (state) => {
   console.log('cliiiik');

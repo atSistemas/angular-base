@@ -2,30 +2,44 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
-import { ActionTypes } from '../action-types';
-import { MainActions } from '../actions';
-import { AppState } from '../../../../base/store';
-import { MainService } from './main-service';
+import { ActionTypes } from '../actions';
 
 @Injectable()
-export class MainEffects {
+export class RequestEffect {
 
   constructor(
     private actions$: Actions,
-    private mainService: MainService,
-    private mainActions: MainActions
   ) { }
+
+  //FIXME
+  private getRequestActions(): string {
+    const obj = ActionTypes;
+    const arr = [];
+    for (let key in obj) {
+      if (key.includes('REQUEST')) {
+        arr.push(key);
+      }
+    }
+    return arr.toString();
+  }
+
+  private getActionPrefix(action): string {
+    return action.substr(0, action.indexOf('_'));
+  }
+
   @Effect()
     private main$ = this.actions$
-    .ofType(ActionTypes.MAIN_REQUEST)
-    .map(action => action.payload)
-    .switchMap(() => this.mainService.getData()
-      .mergeMap((res: any) => Observable.of(
-        this.mainActions.mainSucess(res)
-        )
+    .ofType(this.getRequestActions())
+    .switchMap(action => action.payload.request
+      .mergeMap((res: any) => Observable.of({
+          type: `${this.getActionPrefix(action.type)}_SUCCESS`,
+          payload: res
+        })
       )
-      .catch((err) => Observable.of(
-        this.mainActions.mainError(err)
+      .catch((err) => Observable.of({
+          type: `${this.getActionPrefix(action.type)}_ERROR`,
+          payload: err
+        }
       ))
     );
 }

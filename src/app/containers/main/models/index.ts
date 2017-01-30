@@ -1,12 +1,12 @@
 export interface MainModelInterface {
-  readonly id?: number | string;
-  readonly name?: string;
+  id?: number | string;
+  name?: string;
 };
 
 export interface MainState {
   main: MainModelInterface;
 }
 
-export const InitialState: MainState = {
-  main: { id: 22, name: 'Initial Name' },
+export const InitialState = <MainModelInterface> {
+  main: {id: 22, name: 'Initial Name'}
 };
