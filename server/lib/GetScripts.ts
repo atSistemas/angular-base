@@ -20,6 +20,5 @@ export default function getScripts(file) {
     }*/
 
     if(ENV === 'development' && file === 'vendor') return `<script src="/dlls/${file}.js"></script>`;
-    else if(ENV === 'production' && file === 'vendor') return '';
     else return `<script src="/${file}.js"></script>`;
 }

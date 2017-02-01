@@ -1,12 +1,15 @@
 import * as path from 'path';
 import * as base from '../src/base';
+import {ENV} from "../src/base/shared/Env";
 
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
@@ -24,19 +27,20 @@ export const polyfills = [
   'zone.js/dist/long-stack-trace-zone',
   'ts-helpers'
 ];
+export const vendor = [
+  '@angular/platform-browser',
+  '@angular/platform-browser-dynamic',
+  '@angular/core',
+  '@angular/common',
+  '@angular/http',
+  '@angular/router',
+  'angular2-template-loader',
+  './src/base/imports/rx'
+];
 
 export const entry = {
-    vendor:[
-      '@angular/common',
-      '@angular/compiler',
-      '@angular/core',
-      '@angular/http',
-      '@angular/platform-browser',
-      '@angular/platform-browser-dynamic',
-      '@angular/router',
-      'angular2-template-loader',
-    ],
-    polyfills: polyfills
+  polyfills: polyfills,
+  vendor: vendor
 };
 
 export const output =  {
@@ -49,6 +53,7 @@ export const output =  {
 };
 
 export const plugins = [
+
   new ProgressBarPlugin({
      format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
      clear: true,
@@ -59,6 +64,20 @@ export const plugins = [
       path: buildPath,
       filename: 'webpack-assets.json',
       prettyPrint: true
+  }),
+  new CommonsChunkPlugin({
+    name: 'polyfills',
+    chunks: ['polyfills']
+  }),
+  // This enables tree shaking of the vendor modules
+  new CommonsChunkPlugin({
+    name: 'vendor',
+    chunks: ['app'],
+    minChunks: module => /node_modules/.test(module.resource)
+  }),
+  // Specify the correct order the scripts will be injected in
+  new CommonsChunkPlugin({
+    name: ['polyfills','vendor'].reverse()
   }),
   new DefinePlugin({
       'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)

@@ -14,9 +14,9 @@ export default function renderPage():String {
     <head>
       <title>Angular2 Base</title>
       <base href="/">
-      ${ style}
-      ${ vendor }
+      ${ style }
       ${ polyfills }
+      ${ vendor }
     </head>
     <body>
     <base-app>

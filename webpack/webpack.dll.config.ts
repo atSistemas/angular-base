@@ -25,11 +25,6 @@ export const plugins = [
       filename: 'webpack-assets.json',
       prettyPrint: true
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compressor: { warnings: false, screw_ie8 : true },
-    output: {comments: false, beautify: false},
-    mangle: { screw_ie8 : true }
-  }),
   new webpack.LoaderOptionsPlugin({
      minimize: true,
      debug: false
