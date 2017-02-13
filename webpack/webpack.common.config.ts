@@ -1,8 +1,6 @@
 import * as path from 'path';
 import * as base from '../src/base';
-import {ENV} from "../src/base/shared/Env";
 
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -53,7 +51,6 @@ export const output =  {
 };
 
 export const plugins = [
-
   new ProgressBarPlugin({
      format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
      clear: true,
@@ -64,20 +61,6 @@ export const plugins = [
       path: buildPath,
       filename: 'webpack-assets.json',
       prettyPrint: true
-  }),
-  new CommonsChunkPlugin({
-    name: 'polyfills',
-    chunks: ['polyfills']
-  }),
-  // This enables tree shaking of the vendor modules
-  new CommonsChunkPlugin({
-    name: 'vendor',
-    chunks: ['app'],
-    minChunks: module => /node_modules/.test(module.resource)
-  }),
-  // Specify the correct order the scripts will be injected in
-  new CommonsChunkPlugin({
-    name: ['polyfills','vendor'].reverse()
   }),
   new DefinePlugin({
       'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)

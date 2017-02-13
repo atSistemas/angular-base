@@ -19,6 +19,6 @@ export default function getScripts(file) {
       console.error(e);
     }*/
 
-    if(ENV === 'development' && file === 'vendor') return `<script src="/dlls/${file}.js"></script>`;
+    if(ENV === 'development' && file === 'vendor') return `<script src="/dlls/${file}.dll.js"></script>`;
     else return `<script src="/${file}.js"></script>`;
 }

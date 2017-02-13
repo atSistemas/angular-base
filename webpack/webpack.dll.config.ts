@@ -9,10 +9,16 @@ const CompressionPlugin = require('compression-webpack-plugin');
 export const cache = common.cache;
 export const entry = common.entry;
 export const module = common.module;
-export const output = common.output;
 export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-module-source-map';
+
+export const output =  {
+  path: common.buildPath,
+  publicPath: '/',
+  library: '[name]',
+  filename: '[name].dll.js',
+};
 
 export const plugins = [
   new webpack.DllPlugin({
@@ -24,6 +30,11 @@ export const plugins = [
       path: common.buildPath,
       filename: 'webpack-assets.json',
       prettyPrint: true
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compressor: { warnings: false, screw_ie8 : true },
+    output: {comments: false, beautify: false},
+    mangle: { screw_ie8 : true }
   }),
   new webpack.LoaderOptionsPlugin({
      minimize: true,
