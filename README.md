@@ -18,15 +18,15 @@ there must be some changes needed by the structure to fit your needs correctly
 **Angular2-Base** makes use of the latest tools to improve your workflow, and enables you to create future ready applications:
 
 - [Angular 4](http://angular.io/) supported
+- Isomorphic / Universal Javascript Apps for server side rendering
 - [AOT](http://angular.io/) mode supported
 - Lazy Loading routing
 - [Redux](http://redux.js.org/) based architecture using [@ngrx/Store](https://github.com/ngrx/store) for a reactive state managment.
 - [@ngrx/SideEffects](https://github.com/ngrx/effects) to handle Rx Side Effects
 - [Typescript2](https://www.typescriptlang.org/) and ES6 transpilation using [Typescript2](https://www.typescriptlang.org/)
 - [Webpack2](https://webpack.github.io/) for the development/production build toolchain
-- [Webpack DLL](https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin) thats increases build times.
-- Isomorphic / Universal Javascript Apps for a
 - Separate build configurations depending on target environment
+- [Webpack DLL](https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin) that speed development builds.
 - Development & Production server using [express](https://github.com/expressjs/express) and [webpack-dev-server](https://webpack.github.io/)
 - Hot Reload/Live Reload support for Js & Css using  [Webpack2 HMR](https://webpack.github.io/docs/hot-module-replacement.html)
 - Container and component generators using [Yeoman](https://github.com/yeoman/yo)
@@ -36,7 +36,6 @@ there must be some changes needed by the structure to fit your needs correctly
 - [Nyc](https://github.com/bcoe/nyc) for code coverage
 - [CssModules](https://github.com/css-modules/css-modules) based
 - [PostCSS](http://postcss.org/) processing with isomorphic support.
-- CSS Vars using [Cssnext](http://cssnext.io/)
 - Code Linting using [TsLint](https://palantir.github.io/tslint/)
 - Css Linting using [CssLint](https://github.com/stylelint/stylelint)
 - Baked in best-practices of [Google Angular2 Style Guide](https://angular.io/styleguide)
