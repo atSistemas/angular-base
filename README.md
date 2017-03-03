@@ -17,13 +17,13 @@ there must be some changes needed by the structure to fit your needs correctly
 
 **Angular2-Base** makes use of the latest tools to improve your workflow, and enables you to create future ready applications:
 
-- [Angular 4.*](http://angular.io/) supported
+- [Angular 4](http://angular.io/) supported
 - [AOT](http://angular.io/) mode supported
 - Lazy Loading routing
-- [Redux](http://redux.js.org/) based architecture using [@ngrx/Store](https://github.com/ngrx/store) for a Reactive State Managment.
+- [Redux](http://redux.js.org/) based architecture using [@ngrx/Store](https://github.com/ngrx/store) for a reactive state managment.
 - [@ngrx/SideEffects](https://github.com/ngrx/effects) to handle Rx Side Effects
 - [Typescript2](https://www.typescriptlang.org/) and ES6 transpilation using [Typescript2](https://www.typescriptlang.org/)
-- [Webpack2](https://webpack.github.io/) for the build toolchain
+- [Webpack2](https://webpack.github.io/) for the development/production build toolchain
 - Isomorphic / Universal Javascript Apps for a
 - Separate build configurations depending on target environment
 - Development & Production server using [express](https://github.com/expressjs/express) and [webpack-dev-server](https://webpack.github.io/)
@@ -288,7 +288,7 @@ Same as before, you will be asked for a component name, and after that Angular2-
 
 ## Distribution
 
-You can generate a complete distribution source ready for production enviroments.
+You can generate a complete distribution source ready for production enviroment. It uses Three shaking and AOT mode wichs improves rendering and reduce build sizes.
 
 ### Building your application
 
