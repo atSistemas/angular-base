@@ -24,6 +24,7 @@ there must be some changes needed by the structure to fit your needs correctly
 - [@ngrx/SideEffects](https://github.com/ngrx/effects) to handle Rx Side Effects
 - [Typescript2](https://www.typescriptlang.org/) and ES6 transpilation using [Typescript2](https://www.typescriptlang.org/)
 - [Webpack2](https://webpack.github.io/) for the development/production build toolchain
+- [Webpack DLL](https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin) thats increases build times.
 - Isomorphic / Universal Javascript Apps for a
 - Separate build configurations depending on target environment
 - Development & Production server using [express](https://github.com/expressjs/express) and [webpack-dev-server](https://webpack.github.io/)
@@ -80,7 +81,7 @@ Please note that `npm install` is only required on your first start, or in case 
 
 Angular2-Base is based on [Redux](http://redux.js.org/)  paradigm so you can find all the typical entities of an Redux project like [reducers](http://redux.js.org/docs/basics/Reducers.html) , [store](http://redux.js.org/docs/basics/Store.html), [actions](http://redux.js.org/docs/basics/Actions.html) , etc.
 
-There are three main folders:
+There are four main folders:
 
 * `server` contains Angular2-Base development & production server based in express with Universal/Isomorphic support and custom middlewares like Gzip.
 
@@ -93,6 +94,17 @@ server
   statics/ //definition of  statics path
   templates/ //universal templates
     server  //Server
+```
+
+* `webpack` contains Angular2-Base Webpack2 configuration separated by enviroment that allows to use different plugins and loaders in each target enviroment.
+
+```javascript
+webpack
+  webpack.common.config/ //Common config
+  webpack.dev.config/ //Development config
+  webpack.prod.config/ //Production config
+  webpack.test.config/ //Testing config
+  webpack.dll.config/ //Dll config
 ```
 
 * `src/base/` contains Angular2-Base platform bootstrapping code.
