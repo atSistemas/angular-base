@@ -39,22 +39,18 @@ export const module = {
 
 export const plugins = [
   new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
-  new webpack.LoaderOptionsPlugin({
-     minimize: true,
-     debug: false
-  }),
   new AddAssetHtmlPlugin([
-  { filepath: require('../dist/polyfills-manifest.json')},
-  { filepath: require('../dist/vendor-manifest.json')}
-]),
-new webpack.DllReferencePlugin({
-  context: path.join(__dirname),
-  manifest: require('../dist/vendor-manifest.json')
-}),
-new webpack.DllReferencePlugin({
-  context: path.join(__dirname),
-  manifest: require('../dist/polyfills-manifest.json')
-}),
+    { filepath: require('../dist/polyfills-manifest.json')},
+    { filepath: require('../dist/vendor-manifest.json')}
+  ]),
+  new webpack.DllReferencePlugin({
+    context: path.join(__dirname),
+    manifest: require('../dist/vendor-manifest.json')
+  }),
+  new webpack.DllReferencePlugin({
+    context: path.join(__dirname),
+    manifest: require('../dist/polyfills-manifest.json')
+  }),
   new CommonsChunkPlugin({
     name: 'polyfills',
     chunks: ['polyfills']

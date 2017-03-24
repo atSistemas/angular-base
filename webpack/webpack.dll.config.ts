@@ -4,7 +4,7 @@ import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+const BabiliPlugin = require("babili-webpack-plugin");
 
 export const cache = common.cache;
 export const entry = common.entry;
@@ -31,16 +31,6 @@ export const plugins = [
       filename: 'webpack-assets.json',
       prettyPrint: true
   }),
-  new webpack.optimize.UglifyJsPlugin({
-    compressor: { warnings: false, screw_ie8 : true },
-    output: {comments: false, beautify: false},
-    mangle: { screw_ie8 : true }
-  }),
-  new webpack.LoaderOptionsPlugin({
-     minimize: true,
-     debug: false
-  }),
-  new webpack.optimize.UglifyJsPlugin({compressor: { warnings: false, screw_ie8 : true }, output: {comments: false, beautify: false}, mangle: { screw_ie8 : true }}),
   common.compileError
 ]
 .concat(common.plugins);
