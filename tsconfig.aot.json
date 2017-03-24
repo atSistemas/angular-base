@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es6","dom"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitHelpers": true,
     "pretty": false,
     "sourceMap": true,
-    "lib": ["es5", "dom"],
     "noEmit": true,
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@base": ["./src/base"]
+    },
     "typeRoots": [
       "node_modules/@types"
     ]

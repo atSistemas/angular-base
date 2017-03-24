@@ -9,12 +9,12 @@
       "email": "rbernad@atsistemas.com"
     },
     {
-      "name": "Jose Carlos Lama",
-      "email": "jclama@atsistemas.com"
-    },
-    {
       "name": "David del Prado Martinez",
       "email": "ddelprado@atsistemas.com"
+    },
+    {
+      "name": "Jose Carlos Lama",
+      "email": "jclama@atsistemas.com"
     }
   ],
   "scripts": {
@@ -81,14 +81,14 @@
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
-    "@types/core-js": "~0.9.35",
+    "@types/core-js": "^0.9.38",
     "@types/express": "^4.0.34",
     "@types/mocha": "^2.2.38",
     "@types/node": "6.0.50",
     "@types/redux-logger": "^2.6.32",
     "@types/sinon": "^1.16.34",
     "@types/systemjs": "^0.19.31",
-    "@types/webpack": "2.2.4",
+    "@types/webpack": "^2.2.4",
     "add-asset-html-webpack-plugin": "^1.0.2",
     "assets-webpack-plugin": "^3.5.0",
     "awesome-typescript-loader": "2.2.4",
@@ -131,7 +131,7 @@
     "typed-immutable-record": "^0.0.6",
     "typescript": "2.1.1",
     "typings": "^2.0.0",
-    "webpack": "2.2.0",
+    "webpack": "2.3.1",
     "webpack-dashboard": "0.3.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-dev-server": "^2.2.0",

@@ -26,7 +26,7 @@ export const module = {
       loaders: [
         'awesome-typescript-loader',
         'angular2-template-loader',
-        'angular-router-loader?loader=system&genDir=src/compiled/src/app&aot=true'
+        'angular-router-loader?loader=system&genDir=src/compiled&aot=true'
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
     },
@@ -41,12 +41,12 @@ export const plugins = [
   new webpack.LoaderOptionsPlugin({
      minimize: true,
      debug: false
-  }),
+  }),/*
   new webpack.optimize.UglifyJsPlugin({
     compressor: { warnings: false, screw_ie8 : true },
     output: {comments: false, beautify: false},
     mangle: { screw_ie8 : true }
-  }),
+  }),*/
   new AddAssetHtmlPlugin([
   { filepath: require('../dist/polyfills-manifest.json')},
   { filepath: require('../dist/vendor-manifest.json')}
