@@ -11,7 +11,8 @@ export interface StaticRoute {
 };
 
 const common:StaticRoute[] = [
-  { route: '/mocks', path: path.join(__dirname, '../api/mocks') }
+  { route: '/mocks', path: path.join(__dirname, '../api/mocks') },
+  { route: '/images', path: path.join(__dirname, '../../src/app/assets/images') },
 ];
 
 const development:StaticRoute[] = [
