@@ -1,12 +1,16 @@
 import { appPath } from './webpack.common.config';
+import * as path from 'path';
 
 const nodeExternals = require('webpack-node-externals');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-
   resolve: {
     extensions: ['.ts', '.js'],
+      alias: {
+        'base': path.resolve(__dirname, '../src/base')
+      }
   },
 
   module: {
@@ -36,6 +40,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+   new TsConfigPathsPlugin(/* { tsconfig, compiler } */)
+  ],
   externals: [
     nodeExternals(),
   ],
