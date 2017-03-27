@@ -12,7 +12,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@base": ["./src/base"]
+      "base/*": [
+        "./base/*"
+      ],
+      "base": [
+        "./base"
+      ]
     },
     "typeRoots": [
       "node_modules/@types"

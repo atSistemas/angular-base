@@ -1,13 +1,13 @@
-import { ApplicationRef, NgModule } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { Store } from '@ngrx/store';
+import { ApplicationRef, NgModule } from '@angular/core';
 
-import { AppState } from '../base/store/';
+import { AppState } from 'base/store/';
+import { BaseImports } from 'base/imports/';
+import { BaseProviders } from 'base/providers/';
 import { AppComponents } from './app.components';
-import { BaseComponent } from '../base/components/base';
-import { BaseImports } from '../base/imports/';
-import { BaseProviders } from '../base/providers/';
+import { BaseComponent } from 'base/components/base';
 import { MainContainer } from './containers/main/main.component';
 
 @NgModule({

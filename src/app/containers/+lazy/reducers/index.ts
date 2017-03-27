@@ -1,4 +1,4 @@
-import { createReducer } from '../../../../base/shared/CreateReducer';
+import { createReducer } from 'base';
 import { actionTypes } from '../action-types';
 import { InitialState, LazyModel, LazyModelInterface } from '../models';
 

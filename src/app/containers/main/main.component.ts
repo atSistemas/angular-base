@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { AppState } from '../../../base/store/';
-import { MainModelInterface } from './models';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { AppState } from 'base/store/';
 import { MainActions } from './actions';
+import { MainModelInterface } from './models';
 
 @Component({
   selector: 'main-container',

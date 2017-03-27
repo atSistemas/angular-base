@@ -1,12 +1,11 @@
-
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { AppState } from '../../../../base/store';
+import { PayloadAction } from 'base';
+import { AppState } from 'base/store';
 import { ActionTypes } from '../action-types';
-import { BaseService } from '../../../../base/shared/BaseService';
-import { PayloadAction } from '../../../../base/';
+import { BaseService } from 'base/shared/BaseService';
 
 @Injectable()
 export class MainService extends BaseService {
