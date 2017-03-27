@@ -11,17 +11,17 @@ export interface StaticRoute {
 };
 
 const common:StaticRoute[] = [
-  { route: '/mocks', path: path.join(__dirname, '..', '..', 'src/app/api/mocks') }
+  { route: '/mocks', path: path.join(__dirname, '../api/mocks') }
 ];
 
 const development:StaticRoute[] = [
-  { route: '/dlls', path: path.join(__dirname, '..', '..', 'dist') },
+  { route: '/dlls', path: path.join(__dirname, '../../dist') },
   { route: '/', path: path.join(__dirname, '../../src/app') },
 ];
 
 const production:StaticRoute[] = [
-  { route: '/', path: path.join(__dirname, '..', '..', 'dist') },
-  { route: '/assets', path: path.join(__dirname, '..', '..', 'dist', 'assets') },
+  { route: '/', path: path.join(__dirname, '../../dist') },
+  { route: '/assets', path: path.join(__dirname, '../../dist/assets') },
 ];
 
 const envStatics = (environment.ENV === envConstants.DEVELOPMENT) ? common.concat(development) : common.concat(production);
