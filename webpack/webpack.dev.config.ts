@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 
 export const cache = common.cache;
-export const module = common.module;
 export const output = common.output;
 export const resolve = common.resolve;
 export const context = common.context;
@@ -19,12 +18,24 @@ export const entry = {
   polyfills: common.polyfills
 };
 
+export const module = {
+  rules: common.module.rules.concat([
+    {
+      test: /\.ts$/,
+      loaders: [
+        '@angularclass/hmr-loader',
+        'angular-router-loader'
+      ],
+      exclude: [/\.(spec|e2e|d)\.ts$/]
+    }
+  ])
+};
+
 export const plugins = [
-  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"development"'}}),
+  new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': '"development"' } }),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.DllReferencePlugin({
     context: context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),
-]
-.concat(common.plugins);
+].concat(common.plugins);

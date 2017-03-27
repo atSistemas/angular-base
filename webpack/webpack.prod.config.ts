@@ -21,21 +21,16 @@ export const entry = {
 };
 
 export const module = {
-  rules: [
+  rules: common.module.rules.concat([
     {
       test: /\.ts$/,
       loaders: [
-        'awesome-typescript-loader',
-        'angular2-template-loader',
         'angular-router-loader?loader=system&genDir=src/compiled&aot=true'
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
-    },
-    { test: /\.json$/, loader: 'json-loader', include: [common.mainPath] },
-    { test: /\.html/, loader: 'raw-loader', include: [common.mainPath] },
-    { test: /\.css$/, loader: 'raw-loader', include: [common.mainPath] }
-  ]
-};
+    }
+  ])
+}
 
 export const plugins = [
   new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
