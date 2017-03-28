@@ -16,18 +16,18 @@ export class RequestEffect {
   }
 
   @Effect()
-    private main$ = this.actions$
+  private main$ = this.actions$
     .filter(action => action.payload && action.payload.request)
     .switchMap(action => action.payload.request
       .mergeMap((res: any) => Observable.of({
-          type: `${this.getActionPrefix(action.type)}_SUCCESS`,
-          payload: res
-        })
+        type: `${this.getActionPrefix(action.type)}_SUCCESS`,
+        payload: res
+      })
       )
-      .catch((err) => Observable.of({
-          type: `${this.getActionPrefix(action.type)}_ERROR`,
-          payload: err
-        }
+      .catch(err => Observable.of({
+        type: `${this.getActionPrefix(action.type)}_ERROR`,
+        payload: err
+      }
       ))
     );
 }

@@ -1,3 +1,5 @@
+import './styles/styles.css';
+
 import { Store } from '@ngrx/store';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';

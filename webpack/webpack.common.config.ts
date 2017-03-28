@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
+const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
@@ -37,11 +37,11 @@ export const vendor = [
 ];
 
 export const entry = {
-  polyfills: polyfills,
-  vendor: vendor
+  polyfills,
+  vendor
 };
 
-export const output =  {
+export const output = {
   path: buildPath,
   publicPath: '/',
   library: '[name]',
@@ -51,39 +51,45 @@ export const output =  {
 };
 
 export const plugins = [
-    new webpack.LoaderOptionsPlugin({
-     minimize: true,
-     debug: false
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
   }),
   new ProgressBarPlugin({
-     format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
-     clear: true,
-     summary: false,
-   }),
+    format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
+    clear: true,
+    summary: false,
+  }),
   new webpack.optimize.OccurrenceOrderPlugin(true),
   new AssetsPlugin({
-      path: buildPath,
-      filename: 'webpack-assets.json',
-      prettyPrint: true
+    path: buildPath,
+    filename: 'webpack-assets.json',
+    prettyPrint: true
   }),
   new DefinePlugin({
-      'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
+    BASE_ENVIRONMENT: JSON.stringify(process.env.NODE_ENV)
   })
 ];
 
 export const module = {
-  rules : [
+  rules: [
     {
       test: /\.ts$/,
       loaders: [
-          'awesome-typescript-loader',
-          'angular2-template-loader',
+        'awesome-typescript-loader',
+        'angular2-template-loader',
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
     },
     { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
-    { test: /\.css$/, loader: 'raw-loader', include: [mainPath] }
+    // { test: /\.css$/, loader: 'raw-loader', include: [mainPath] },
+    { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000', include: [mainPath] },
+    {
+      test: /\.css$/,
+      use: ['to-string-loader', 'style-loader', 'css-loader'],
+      include: [mainPath]
+    },
   ]
 };
 
@@ -102,14 +108,14 @@ export const node = {
 export const resolve = {
   extensions: ['.js', '.ts', '.tsx', '.css'],
   alias: {
-    'base': path.resolve(__dirname, '../src/base')
+    base: path.resolve(__dirname, '../src/base')
   }
 };
 
-export const compileError = function() {
-  this.plugin('done', function(stats) {
-    if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
+export const compileError = function () {
+  this.plugin('done', function (stats) {
+    if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') === -1) {
       base.console.error(stats.compilation.errors);
     }
-  })
+  });
 };
