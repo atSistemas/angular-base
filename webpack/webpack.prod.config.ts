@@ -4,9 +4,9 @@ import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
+const BabiliPlugin = require("babili-webpack-plugin");
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const BabiliPlugin = require("babili-webpack-plugin");
 
 export const cache = common.cache;
 export const output = common.output;
