@@ -3,8 +3,6 @@ import * as base from '../src/base';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
-const BabiliPlugin = require("babili-webpack-plugin");
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
@@ -60,7 +58,11 @@ export const plugins = [
     chunks: ['app'],
     minChunks: module => /node_modules/.test(module.resource)
   }),
-  new BabiliPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    compressor: { warnings: false, screw_ie8 : true },
+    output: {comments: false, beautify: false},
+    mangle: { screw_ie8 : true }
+  }),
   new webpack.NoEmitOnErrorsPlugin()
 ]
 .concat(common.plugins);
