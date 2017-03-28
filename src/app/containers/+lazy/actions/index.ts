@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { actionTypes } from '../action-types';
-
 @Injectable()
 export class LazyActions {
 

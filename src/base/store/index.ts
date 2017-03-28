@@ -1,7 +1,7 @@
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
-import { routerReducer, RouterState } from '@ngrx/router-store';
+import { RouterState } from '@ngrx/router-store';
 
 import * as base from '../';
 import { MainState } from '../models';

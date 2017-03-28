@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
-import { ActionTypes } from '../actions';
-
 @Injectable()
 export class RequestEffect {
 
@@ -16,6 +14,7 @@ export class RequestEffect {
   }
 
   @Effect()
+    // tslint:disable-next-line:no-unused-variable
     private main$ = this.actions$
     .filter(action => action.payload && action.payload.request)
     .switchMap(action => action.payload.request

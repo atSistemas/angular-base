@@ -103,7 +103,7 @@ export const node = {
 export const resolve = {
   extensions: ['.js', '.ts', '.tsx', '.css'],
   alias: {
-    'base': path.resolve(__dirname, '../src/base')
+    base: path.resolve(__dirname, '../src/base')
   }
 };
 
@@ -112,5 +112,12 @@ export const compileError = function() {
     if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
       base.console.error(stats.compilation.errors);
     }
-  })
+  });
 };
+
+//ssdss
+
+
+
+
+
