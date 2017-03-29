@@ -1,7 +1,7 @@
 import { BaseService } from '../../../shared/services/base.service';
 import { Injectable } from '@angular/core';
 
-import { BillingCode, User } from '../shared/models';
+import { User } from '../models/user.model';
 
 
 @Injectable()
@@ -19,13 +19,14 @@ export class AccountService {
     }
 
     getCurrentUser() {
-        return this.http.get('account/currentuser').map(userResponse => new User(userResponse));
+        return this.http.get('account/currentuser');
+        // .map(userResponse => new User(userResponse));
     }
 
 
-    getBillingCodeList(userId: number) {
+    /*getBillingCodeList(userId: number) {
         return this.http.get('estimate/billingcodelist', { userId }).map(
             (billingCodeList: BillingCode[]) => billingCodeList.map(item => new BillingCode(item))
         );
-    }
+    }*/
 }

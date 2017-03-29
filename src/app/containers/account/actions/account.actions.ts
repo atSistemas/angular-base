@@ -45,13 +45,13 @@ export class AccountActions {
     }
 
 
-    getBillingCodeList(userId: number): Action {
+    /*getBillingCodeList(userId: number): Action {
         return {
             type: BillingCodeListActiontypes.GET_BILLINGCODELIST_REQUEST,
             payload: {
                 request: this.accountService.getBillingCodeList(userId)
             }
         };
-    }
+    }*/
 
 };

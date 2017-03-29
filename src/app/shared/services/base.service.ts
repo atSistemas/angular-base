@@ -19,7 +19,7 @@ export class BaseService {
 
     constructor(
         private http: Http,
-        private messageService: MessagesService,
+        // private messageService: MessagesService,
         private injector: Injector) { }
 
     public get router(): Router { //this creates router property on your service.
@@ -57,27 +57,27 @@ export class BaseService {
     }
 
     login(url: string, body: any, contentType = null) {
-        return this.http.post(
+        /*return this.http.post(
             EnvData.serverUrl + url,
             body,
             this.configureRequestOptions({}, contentType)
-        ).map(this.getData).catch(this.dealErrors);
+        ).map(this.getData).catch(this.dealErrors);*/
     }
 
 
     post(url: string, body: any, contentType = null) {
-        return this.http.post(
-            EnvData.serverUrl + url,
-            body,
-            this.configureRequestOptions({}, contentType)
-        ).map(this.getData).catch(this.dealErrors);
+        // return this.http.post(
+        //     EnvData.serverUrl + url,
+        //     body,
+        //     this.configureRequestOptions({}, contentType)
+        // ).map(this.getData).catch(this.dealErrors);
     }
 
     get(url: string, params: Params = {}, contentType = null) {
-        return this.http.get(
-            EnvData.serverUrl + 'api/' + url,
-            this.configureRequestOptions(params, contentType)
-        ).catch(this.dealErrors).map(this.getData);
+        // return this.http.get(
+        //     EnvData.serverUrl + 'api/' + url,
+        //     this.configureRequestOptions(params, contentType)
+        // ).catch(this.dealErrors).map(this.getData);
     }
 
     /**
@@ -108,7 +108,8 @@ export class BaseService {
             throw Observable.throw(ServiceException.GENERAL_ERROR); // error._body FIX
         }*/
         if (jsonResponse && jsonResponse.success !== undefined && !jsonResponse.success) {
-            this.messageService.showAlert(jsonResponse.message.type, jsonResponse.message.text, '');
+            //this.messageService.
+            // showAlert(jsonResponse.message.type, jsonResponse.message.text, '');
             throw Observable.throw(ServiceException.GENERAL_ERROR); // error._body FIX
         }
 
