@@ -11,7 +11,9 @@ const login = (state, data) => {
 };
 
 const success = (state, action) => {
-  return state.update(state => action.payload);
+  return Object.assign({}, state, {
+    main: action.payload
+  });
 };
 
 const actionHandlers = {

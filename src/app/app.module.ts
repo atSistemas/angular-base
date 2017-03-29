@@ -3,7 +3,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApplicationRef, NgModule } from '@angular/core';
 
-import { AppState } from 'base/store/';
+import { State } from 'base';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 import { AppComponents } from './app.components';
@@ -25,7 +25,7 @@ import { BaseComponent } from 'base/components/base';
 export class AppModule {
   constructor(
     public appRef: ApplicationRef,
-    private store: Store<AppState>,
+    private store: Store<State>,
   ) {
     console.log('APP MODULE CONSTRUCTOR');
   }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { AppState } from '../../../base/store/';
+import { State } from 'base';
 import { MainModel } from '../../models';
 
 @Component({
@@ -14,8 +14,8 @@ export class WelcomeComponent {
 
   public data$: Observable<MainModel>;
 
-  constructor(public store: Store<AppState>) {
-    this.data$ = this.store.select(state => state.main);
+  constructor(public store: Store<State>) {
+    this.data$ = this.store.select(state => state.main.main);
   }
 
 }
