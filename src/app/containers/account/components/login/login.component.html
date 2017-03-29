@@ -1,0 +1,82 @@
+<div class="login-page d-flex">
+
+    <div class="login-page-content">
+
+        <md-card class="login-page-content-card">
+
+            <div class="login-image flex-container" fxLayout="row" fxLayoutAlign="center center">
+                <img src="/images/GT-motive-logo-login.svg" />
+            </div>
+
+            <md-card-content class="login-form">
+
+                <form [formGroup]="formularioLogin" class="flex-container" fxLayout="column" fxLayoutAlign="start start">
+
+                    <div class="form-field flex-item" fxFlex="100%" fxFlex.xs="100%">
+                        <md-input-container id="client" class="md-secondary">
+                            <input mdInput type="text" placeholder="{{'CustNumber' | translate}}" [(ngModel)]="user.client" formControlName="client"
+                                required>
+                        </md-input-container>
+                        <!-- <gt-control-messages [control]="formularioLogin.get('client')" class="validate-message-error"></gt-control-messages> -->
+                    </div>
+
+                    <div class="form-field flex-item" fxFlex="100%" fxFlex.xs="100%">
+                        <md-input-container id="user" class="md-secondary">
+                            <input mdInput type="text" placeholder="{{'UserId' | translate}}" [(ngModel)]="user.username" formControlName="user" required
+                                required>
+                        </md-input-container>
+                        <!--  <gt-control-messages [control]="formularioLogin.get('user')" class="validate-message-error"></gt-control-messages>-->
+
+                    </div>
+
+                    <div class="form-field flex-item" fxFlex="100%" fxFlex.xs="100%">
+                        <md-input-container id="password" class="md-secondary">
+                            <input mdInput type="password" placeholder="{{'Passwd' | translate}}" [(ngModel)]="user.password" formControlName="password"
+                                required>
+                        </md-input-container>
+                        <!-- <gt-control-messages [control]="formularioLogin.get('password')" class="validate-message-error"></gt-control-messages>-->
+                    </div>
+
+                    <!--<div class="form-field">
+                        <input type="text" [(ngModel)]="user.client" formControlName="client" required/>
+                        <span class="input-label"></span>
+                        <span class="input-border"></span>
+                        <gt-control-messages [control]="formularioLogin.controls.client"class="validate-message-error"></gt-control-messages>
+                        <label>{{'CustNumber' | translate}}</label>
+                    </div>
+
+                    <div class="form-field">
+                        <input type="text" [(ngModel)]="user.username" formControlName="user" required/>
+                        <span class="input-label"></span>
+                        <span class="input-border"></span>
+                        <gt-control-messages [control]="formularioLogin.controls.user"  class="validate-message-error"></gt-control-messages>
+                        <label>{{'UserId' | translate}}</label>
+                    </div>
+
+                    <div class="form-field">
+                        <input type="password" [(ngModel)]="user.password" formControlName="password" required />
+                        <span class="input-label"></span>
+                        <span class="input-border"></span>
+                        <gt-control-messages [control]="formularioLogin.controls.password"  class="validate-message-error"></gt-control-messages>
+                        <label>{{'Passwd' | translate}}</label>
+                    </div>-->
+                    <a href="·">{{'ForgottenPass' | translate}}</a>
+                    <!--<button md-button>{{'ForgottenPass' | translate}}</button>-->
+                    <!--<p class="message-login">{{'ForgottenPass' | translate}}</p>-->
+
+                    <button md-raised-button id="btnLogin" class="flex-item md-primary" [class.disabled]="!formularioLogin.valid" (click)="doLogin()">{{'LoginPortal' | translate}}</button>
+                    <!--<button id="btnLogin" class="btn btn-primary btn-gtestimate" [disabled]="!formularioLogin.valid" (click)="doLogin()">{{'LoginPortal' | translate}}</button>             -->
+
+                </form>
+            </md-card-content>
+
+        </md-card>
+
+    </div>
+
+    <footer class="login-page-footer">
+        <p>We (m)power better outcomes
+            <small>GTMOTIVE | a Mitchell Partner Company</small></p>
+    </footer>
+
+</div>

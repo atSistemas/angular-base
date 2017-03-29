@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+/* import { Routes } from '@angular/router';
 import { WelcomeComponent } from '../components/welcome';
 
 export const routes: Routes = [
@@ -6,3 +6,4 @@ export const routes: Routes = [
   { path: 'main', loadChildren: './containers/main/index#MainModule?sync=true' },
   { path: 'lazy', loadChildren: './containers/+lazy/index#LazyModule' },
 ];
+*/

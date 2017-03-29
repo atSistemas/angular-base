@@ -11,6 +11,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
+export const stylesPath = path.resolve(__dirname, '../src/app/styles');
 export const appPath = path.resolve(__dirname, '../src/app');
 export const aotPath = path.resolve(__dirname, '../src/app/index.aot.ts');
 export const buildPath = path.resolve(__dirname, '../dist');
@@ -69,6 +70,7 @@ export const plugins = [
   new DefinePlugin({
     BASE_ENVIRONMENT: JSON.stringify(process.env.NODE_ENV)
   })
+
 ];
 
 export const module = {
@@ -84,12 +86,7 @@ export const module = {
     { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
     // { test: /\.css$/, loader: 'raw-loader', include: [mainPath] },
-    { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000', include: [mainPath] },
-    {
-      test: /\.css$/,
-      use: ['to-string-loader', 'style-loader', 'css-loader'],
-      include: [mainPath]
-    },
+    { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
   ]
 };
 

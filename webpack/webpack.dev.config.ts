@@ -27,15 +27,20 @@ export const module = {
         'angular-router-loader'
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
-    }
-  ])
+    },
+    {
+      test: /\.css$/,
+      use: ['to-string-loader', 'style-loader', 'css-loader'],
+      include: [common.mainPath]
+    },
+  ] as any[])
 };
 
 export const plugins = [
-  new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': '"development"' } }),
+  new webpack.DefinePlugin({ 'process.env': { NODE_ENV: '"development"' } }),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.DllReferencePlugin({
-    context: context,
+    context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),
 ].concat(common.plugins);

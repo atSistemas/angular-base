@@ -1,7 +1,7 @@
 import environment, { constants as envConstants} from '../environment';
 import getScripts from '../lib/GetScripts';
 
-export default function renderPage():String {
+export default function renderPage(): String {
 
   const app = getScripts('app');
   const vendor = getScripts('vendor');
@@ -19,9 +19,9 @@ export default function renderPage():String {
       ${ polyfills }
     </head>
     <body>
-    <base-app>
+    <app>
     Loading....
-    </base-app>
+    </app>
     ${ app }
     </body>
   </html>

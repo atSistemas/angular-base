@@ -1,12 +1,13 @@
-/*@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import '../../../node_modules/bootstrap/dist/css/bootstrap-theme.min.css';
 
-/*@import '../../../node_modules/font-awesome/css/font-awesome.min.css';
-@import '../../../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css';*/
+@import '../../../node_modules/font-awesome/css/font-awesome.min.css';
+/*@import '../../../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css';*/
 
-/*@import '../../../node_modules/ng2-toasty/style-default.css';
+@import '../../../node_modules/ng2-toasty/style-default.css';
 @import '../../../node_modules/ng2-toasty/style-bootstrap.css';
-@import '../../../node_modules/ng2-toasty/style-material.css';*/
+@import '../../../node_modules/ng2-toasty/style-material.css';
 
 @import './main.css';
 /*@import './menubar.css';*/
+
