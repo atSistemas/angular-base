@@ -144,7 +144,7 @@
     "webpack-dev-server": "2.2.0",
     "webpack-dll-bundles-plugin": "1.0.0-beta.5",
     "webpack-hot-middleware": "2.16.0",
-    "webpack-node-externals": "1.5.4",
+    "webpack-node-externals": "1.5.4"
   },
   "nyc": {
     "include": [
