@@ -1,12 +1,12 @@
 import { Action } from 'redux';
-import { createReducer } from './shared/CreateReducer';
-import * as console from './shared/console';
+
+import { State } from './state';
 import { ENV } from './shared/Env';
-import { State } from 'base/state';
-import { BaseService } from './services/BaseService';
+import * as console from './shared/console';
+import { createReducer } from './shared/CreateReducer';
 
 export interface PayloadAction extends Action {
   payload?: any;
 }
 
-export { State, BaseService, createReducer, console, ENV };
+export { State, createReducer, console, ENV };
