@@ -9,8 +9,11 @@
     "ordered-imports": false,
     "import-spacing": true,
     "new-parens": true,
+    "max-depth": 4,
     "no-consecutive-blank-lines": [true, 2],
     "curly": false,
+    "object-curly-spacing": [true, "always"],
+    "ter-arrow-spacing": true,
     "ter-indent": [true, 2],
     "member-ordering": false,
     "eofline": true,
@@ -64,7 +67,6 @@
       true,
       "ban-keywords",
       "check-format",
-      "allow-leading-underscore",
       "allow-pascal-case"
     ],
     "whitespace": [
