@@ -48,7 +48,7 @@ export function translateLoaderFactory(http: Http) {
 export class AppModule {
   constructor(
     public appRef: ApplicationRef,
-    private _store: Store<AppState>,
+    private store: Store<AppState>,
   ) {
     console.log('APP MODULE CONSTRUCTOR');
   }

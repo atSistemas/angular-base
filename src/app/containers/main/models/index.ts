@@ -8,5 +8,5 @@ export interface MainState {
 }
 
 export const InitialState = <MainModelInterface> {
-  main: {id: 22, name: 'Initial Name'}
+  main: { id: 22, name: 'Initial Name' }
 };

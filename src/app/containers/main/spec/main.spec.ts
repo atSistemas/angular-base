@@ -1,7 +1,7 @@
 import '../../../../base/imports/rx';
 
 import { StoreModule } from '@ngrx/store';
-import { getTestBed, TestBed } from '@angular/core/testing';
+import { getTestBed, TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { expect } from 'chai';
 import { spy } from 'sinon';
@@ -15,6 +15,10 @@ import { BaseProviders } from '../../../../base/providers/';
 
 
 describe('MainContainer', () => {
+
+  let comp: MainContainer;
+  let fixture: ComponentFixture<MainContainer>;
+  let server : any;
 
   beforeEach(() => {
 
@@ -36,11 +40,10 @@ describe('MainContainer', () => {
 
   it('should display "Main Container"', () => {
     /*const fixture = TestBed.createComponent(MainContainer);
-    fixture.detectChanges();
-
     const h1 = fixture.debugElement.query(By.css('h1'));
+    expect(h1.nativeElement.textContent).to.equal('Main Container');
 
-    expect(fixture.nativeElement).to.equal('Main Container');*/
-  });
+    fixture.detectChanges();*/
+});
 
 });
