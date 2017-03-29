@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LazyActions } from './actions';
 
 @Component({
   selector: 'lazy-container',

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import BaseError from '../Errors';
+import { ReactBaseError } from '../Errors';
 
 describe('shared / Errors', () => {
 

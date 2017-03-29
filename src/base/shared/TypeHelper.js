@@ -1,4 +1,4 @@
-import BaseError from './Errors';
+import { BaseError } from './Errors';
 import fetchTypes from '../types/FetchTypes';
 
 export function typeBuilder(types){

@@ -1,5 +1,3 @@
-import { Action, ActionReducer } from '@ngrx/store';
-
 import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
 import { InitialState, MainModelInterface } from '../models';

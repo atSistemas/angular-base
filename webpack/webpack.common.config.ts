@@ -5,9 +5,9 @@ const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
-const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
+const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
@@ -23,7 +23,6 @@ export const polyfills = [
   'core-js/client/shim',
   'zone.js/dist/zone',
   'zone.js/dist/long-stack-trace-zone',
-  'ts-helpers'
 ];
 export const vendor = [
   '@angular/platform-browser',
@@ -119,3 +118,10 @@ export const compileError = function () {
     }
   });
 };
+
+//ssdss
+
+
+
+
+

@@ -10,7 +10,6 @@ import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 import { AppComponents } from './app.components';
 import { BaseComponent } from 'base/components/base';
-import { MainContainer } from './containers/main/main.component';
 
 @NgModule({
   bootstrap: [ BaseComponent ],

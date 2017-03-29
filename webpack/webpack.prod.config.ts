@@ -3,10 +3,9 @@ import * as base from '../src/base';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
+const BabiliPlugin = require("babili-webpack-plugin");
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const BabiliPlugin = require("babili-webpack-plugin");
 
 export const cache = common.cache;
 export const output = common.output;
@@ -55,7 +54,9 @@ export const plugins = [
     chunks: ['app'],
     minChunks: module => /node_modules/.test(module.resource)
   }),
-  new BabiliPlugin(),
+  new BabiliPlugin({}, {
+    comments: false
+  }),
   new webpack.NoEmitOnErrorsPlugin()
 ]
 .concat(common.plugins);

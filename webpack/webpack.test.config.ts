@@ -1,5 +1,5 @@
-import { appPath } from './webpack.common.config';
 import * as path from 'path';
+import { appPath } from './webpack.common.config';
 
 const nodeExternals = require('webpack-node-externals');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
