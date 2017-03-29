@@ -150,7 +150,8 @@
     "webpack-hot-middleware": "2.16.0",
     "webpack-node-externals": "1.5.4",
     "file-loader": "0.10.1",
-    "extract-text-webpack-plugin": "2.1.0"
+    "extract-text-webpack-plugin": "2.1.0",
+    "html-webpack-externals-plugin": "2.2.1"
   },
   "nyc": {
     "include": [

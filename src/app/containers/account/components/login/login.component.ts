@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -10,7 +11,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class LoginComponent {
 
   formularioLogin: FormGroup;
-  user = { client: '', username: '', password: '' };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,7 +23,7 @@ export class LoginComponent {
   ngOnInit() {
     this.formularioLogin = this.formBuilder.group({
       client: [''],
-      user: [''],
+      username: [''],
       password: ['']
     });
   }

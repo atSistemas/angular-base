@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
-
-import {
-    TranslateModule,
-} from 'ng2-translate/ng2-translate';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
 
 @NgModule({
     imports: [

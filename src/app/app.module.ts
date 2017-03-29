@@ -6,12 +6,16 @@ import { Store } from '@ngrx/store';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ApplicationRef, NgModule } from '@angular/core';
-import { MaterialModule } from '@angular/material';
 import { AppState } from 'base/store/';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 import { AppComponents } from './app.components';
 import { AppComponent } from './app.component';
+import {
+  TranslateLoader,
+  TranslateModule,
+  TranslateStaticLoader
+} from 'ng2-translate/ng2-translate';
 
 import { ToastyModule } from 'ng2-toasty';
 
@@ -19,11 +23,6 @@ export function translateLoaderFactory(http: Http) {
   return new TranslateStaticLoader(http, 'https://dev-estimate.einsanet.es/api/i18n', '.json');
 }
 
-import {
-  TranslateLoader,
-  TranslateModule,
-  TranslateStaticLoader
-} from 'ng2-translate/ng2-translate';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -36,7 +35,6 @@ import {
     BrowserModule,
     HttpModule,
     AccountModule,
-    MaterialModule,
     ToastyModule.forRoot(),
     TranslateModule.forRoot(
       {
