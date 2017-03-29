@@ -1,4 +1,4 @@
-var jsdom = require('jsdom')
+var jsdom = require('jsdom');
 var document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 var window = document.defaultView;
 
