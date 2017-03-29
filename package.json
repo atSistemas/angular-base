@@ -132,6 +132,7 @@
     "ts-helpers": "github:gdi2290/ts-helpers",
     "ts-node": "3.0.2",
     "tslint": "4.5.1",
+    "tslint-eslint-rules": "3.5.1",
     "typed-immutable-record": "0.0.6",
     "typescript": "2.1.1",
     "typings": "2.0.0",
