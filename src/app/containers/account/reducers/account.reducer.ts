@@ -1,10 +1,10 @@
-import { User } from '../models/user.model';
+
 import { Action } from '@ngrx/store';
 import { AccountActionTypes } from '../action-types/account.actiontypes';
 
 
 export const LoggedUserReducer =
-  (state = {}, action: Action): Partial<User> => {
+  (state = {}, action: Action): any => {
 
     switch (action.type) {
       case AccountActionTypes.LOGIN_REQUEST:
