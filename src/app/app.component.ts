@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from 'ng2-translate';
 
@@ -14,7 +14,10 @@ export class AppComponent {
         private translate: TranslateService
     ) {
         translate.setDefaultLang('EN');
-        let browserLang = translate.getBrowserLang();
-        translate.use(browserLang.match(/ca|cs|de|el|en|es|fi|fr|it|nl|no|pt|ro|sk|sv|tr/) ? browserLang.toUpperCase() : 'EN');
+        const browserLang = translate.getBrowserLang();
+        translate.use(browserLang.match(/ca|cs|de|el|en|es|fi|fr|it|nl|no|pt|ro|sk|sv|tr/) ?
+            browserLang.toUpperCase()
+            :
+            'EN');
     }
 };

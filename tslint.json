@@ -12,6 +12,7 @@
     "curly": false,
     //"ciclomatic-complexity": [true, 20],
     "member-ordering": false,
+    "member-access": false,
     "eofline": true,
     "no-default-export": true,
     "max-classes-per-file": [true, 1],
