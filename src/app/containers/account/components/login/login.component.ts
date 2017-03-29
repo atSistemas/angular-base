@@ -1,6 +1,5 @@
-
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'account-login',
@@ -10,25 +9,25 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
 
-  formularioLogin: FormGroup;
+  loginform: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    // private globalValidator: GlobalValidator,
+    private formBuilder: FormBuilder
     // private accountConcatActions: AccountConcatActions,
     // private store: Store<AppState>
   ) {
   }
 
   ngOnInit() {
-    this.formularioLogin = this.formBuilder.group({
-      client: [''],
-      username: [''],
-      password: ['']
+    this.loginform = this.formBuilder.group({
+      client: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
   doLogin() {
+    console.log(this.loginform.value);
     // this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.user));
   }
 
