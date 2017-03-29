@@ -16,8 +16,7 @@ export class AppComponent {
     translate.setDefaultLang('EN');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/ca|cs|de|el|en|es|fi|fr|it|nl|no|pt|ro|sk|sv|tr/) ?
-      browserLang.toUpperCase()
-      :
+      browserLang.toUpperCase() :
       'EN');
   }
 };

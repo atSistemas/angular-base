@@ -29,8 +29,7 @@ export class BaseService {
   configureRequest(contentType: string) {
     const headers = { Authorization: `Bearer ${this.token}` };
     Object.assign(headers, contentType ?
-      { 'Content-Type': contentType }
-      :
+      { 'Content-Type': contentType } :
       { 'Content-Type': 'application/json', 'responseType': 'arraybuffer' });
     return new Headers(headers);
   }

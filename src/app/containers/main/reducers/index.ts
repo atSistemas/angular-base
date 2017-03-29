@@ -16,8 +16,8 @@ const login = (state, data) => {
 
 const success = (state, action) => {
   return Object.assign({}, state, {
-       main: action.payload
-     });
+    main: action.payload
+  });
 };
 
 const actionHandlers = {
