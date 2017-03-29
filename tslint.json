@@ -16,6 +16,7 @@
     "ter-arrow-spacing": true,
     "ter-indent": [true, 2],
     "member-ordering": false,
+    "no-shadowed-variable": false,
     "eofline": true,
     "no-default-export": true,
     "max-classes-per-file": [true, 1],

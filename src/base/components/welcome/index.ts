@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import { AppState } from '../../../base/store/';
-import { MainModelInterface } from '../../models';
+import { MainModel } from '../../models';
 
 @Component({
   selector: 'wel-come',
@@ -12,10 +12,10 @@ import { MainModelInterface } from '../../models';
 
 export class WelcomeComponent {
 
-  public data$: Observable<MainModelInterface>;
+  public data$: Observable<MainModel>;
 
   constructor(public store: Store<AppState>) {
-    this.data$ = this.store.select(state => state.main.main);
+    this.data$ = this.store.select(state => state.main);
   }
 
 }
