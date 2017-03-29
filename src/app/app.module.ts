@@ -12,7 +12,6 @@ import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 import { AppComponents } from './app.components';
 import { AppComponent } from './app.component';
-import { MainContainer } from './containers/main/main.component';
 
 import { ToastyModule } from 'ng2-toasty';
 

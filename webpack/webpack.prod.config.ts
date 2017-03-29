@@ -1,13 +1,15 @@
 import * as path from 'path';
-import * as base from '../src/base';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+<<<<<<< HEAD
 const BabiliPlugin = require('babili-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+=======
+>>>>>>> 29d2987e60f9ce2e7ad308bbcf9af370bf038a53
 
 export const cache = common.cache;
 export const output = common.output;
@@ -63,8 +65,11 @@ export const plugins = [
     chunks: ['app'],
     minChunks: module => /node_modules/.test(module.resource)
   }),
-  new BabiliPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
+
   new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
+  new BabiliPlugin({}, {
+    comments: false
+  }),
+  new webpack.NoEmitOnErrorsPlugin()
 ]
   .concat(common.plugins);

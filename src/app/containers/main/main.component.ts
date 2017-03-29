@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AppState } from 'base/store/';
 import { MainActions } from './actions';

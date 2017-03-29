@@ -31,7 +31,7 @@ const color = (type, str) => {
 
 function printLog(type, args) {
 
-  let decorators = [' ', '[BASE]', color(type, symbols[type])].join(' ');
+  const decorators = [' ', '[BASE]', color(type, symbols[type])].join(' ');
 
   if (typeof args[0] !== 'object') {
     args[0] = decorators + ' ' + args[0];
