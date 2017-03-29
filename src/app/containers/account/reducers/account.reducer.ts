@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { AccountActionTypes } from '../actiontypes/account.actiontypes';
+import { AccountActionTypes } from '../action-types/account.actiontypes';
 // import { User } from './../models/account.model';
 // import { User } from './../shared/models';
 
