@@ -10,7 +10,7 @@ const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-l
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 
-import { EnvData } from './envData';
+import { EnvData } from '../src/conf/envData';
 
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
