@@ -1,6 +1,6 @@
 
 import { Action } from '@ngrx/store';
-import { AccountActionTypes } from '../action-types/account.actiontypes';
+import { AccountActionTypes } from '../action-types';
 
 
 export const LoggedUserReducer =
