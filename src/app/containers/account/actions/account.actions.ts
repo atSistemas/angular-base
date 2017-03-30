@@ -1,4 +1,4 @@
-import { User } from '../models/user.model';
+import { UserModel } from '../models/user.model';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { AccountService } from '../services/account.service';
@@ -10,7 +10,7 @@ export class AccountActions {
 
   constructor(private accountService: AccountService) { }
 
-  loginRequest(user: User): Action {
+  loginRequest(user: UserModel): Action {
     return {
       type: AccountActionTypes.LOGIN_REQUEST,
       payload: {

@@ -1,33 +1,20 @@
-export interface BillingCodeModel {
-  billingCodeId: string;
-  codeDescription: string;
-  default: boolean;
-}
-
-export interface UserDataModel {
-  id: number;
-  clientDescription: string;
-  userDescription: string;
-  cultureCode: string;
-  cultureShortDate: string;
-  cultureDecimalSeparator: string;
-}
+import { BillingCodeModel } from './billingcode.model';
+import { UserModel } from './user.model';
 
 
-export interface AccountModel {
-  userData?: UserDataModel;
+export interface AccountState {
+  user?: UserModel;
   billingCodeList?: BillingCodeModel[];
 };
 
-export const InitialState = <AccountModel>{
-  // userData: {
-  //   id: -1,
-  //   clientDescription: '',
-  //   userDescription: '',
-  //   cultureCode: '',
-  //   cultureShortDate: '',
-  //   cultureDecimalSeparator: '',
-  // },
-  userData: null,
+export const InitialState = <AccountState>{
+  user: {
+    id: -1,
+    clientDescription: '',
+    userDescription: '',
+    cultureCode: '',
+    cultureShortDate: '',
+    cultureDecimalSeparator: '',
+  },
   billingCodeList: [],
 };

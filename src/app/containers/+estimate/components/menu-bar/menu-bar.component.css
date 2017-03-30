@@ -1,0 +1,43 @@
+.vertical-menu {
+    padding-top: 20px;
+}
+
+.vertical-menu-item {
+    padding: 0;
+    height: 65px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-style: initial;
+    color: #dfdede;
+    /*color: #dfdede;*/
+}
+
+.vertical-menu-item.active {
+    background-color: #09728e;
+}
+
+.vertical-menu-item.active:hover {
+    background-color: #3a8ea5;
+}
+
+.vertical-menu-item.active:disabled,
+.vertical-menu-item:disabled {
+    background: none !important;
+    opacity: 0.5;
+}
+
+.vertical-menu-item .md-list-item-content:hover {
+    background: rgba(0,0,0,.06);
+}
+
+.menubar-logo {
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+
+

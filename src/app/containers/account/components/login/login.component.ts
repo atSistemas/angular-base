@@ -1,12 +1,12 @@
+import { AppState } from '../../../../../base/store';
 import { Store } from '@ngrx/store';
 import { AccountConcatActions } from '../../actions/account.concat.actions';
-import { User } from '../../models/user.model';
+import { UserModel } from '../../models/user.model';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'account-login',
-  providers: [FormBuilder],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -30,7 +30,7 @@ export class LoginComponent {
   }
 
   doLogin() {
-    this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.loginform.value as User));
+    this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.loginform.value as UserModel));
   }
 
 }

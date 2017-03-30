@@ -1,0 +1,68 @@
+<div class="menubar-logo" id="logo">
+    <img src="/images/estimate-logo.svg" />
+</div>
+
+<md-nav-list class="vertical-menu">
+
+    <md-list-item id="btnEstimateList" class="vertical-menu-item" routerLink='/estimatelist' routerLinkActive="active" (click)="closeSideNav()">
+        <img mat-list-avatar class="img-36" src="/images/Icons/menu/main-menu/estimatelist.svg" alt="{{'EstList' | translate}}" />
+        <span mat-line>{{'EstList' | translate}}</span>
+    </md-list-item>
+
+    <md-list-item id="btnNewEstimate" class="vertical-menu-item" (click)="doNewEstimate()">
+        <img mat-list-avatar class="img-36" src="/images/Icons/menu/main-menu/newestimate.svg" alt="{{'NewEst' | translate}}" />
+        <span mat-line>{{'NewEst' | translate}}</span>
+    </md-list-item>
+
+    <md-list-item id="btnMyOperations" class="vertical-menu-item" (click)="closeSideNav()">
+        <img mat-list-avatar class="img-36" src="/images/Icons/menu/main-menu/myoperations.svg" alt="{{'MyOperations' | translate}}"
+        />
+        <span mat-line>{{'MyOperations' | translate}}</span>
+    </md-list-item>
+
+    <md-list-item id="btnReferenceQuery" class="vertical-menu-item" (click)="closeSideNav()">
+        <img mat-list-avatar class="img-36" src="/images/Icons/menu/main-menu/referencequery.svg" alt="{{'ReferenceQuery' | translate}}"
+        />
+        <span mat-line>{{'ReferenceQuery' | translate}}</span>
+    </md-list-item>
+
+    <md-list-item id="btnWorkEnvironment" class="vertical-menu-item" (click)="closeSideNav()">
+        <img mat-list-avatar class="img-36" src="/images/Icons/menu/main-menu/workenvironment.svg" alt="{{'WorkEnvironment' | translate}}"
+        />
+        <span mat-line>{{'WorkEnvironment' | translate}}</span>
+    </md-list-item>
+
+    <md-list-item id="btnNotificatons" class="vertical-menu-item" (click)="closeSideNav()">
+        <img mat-list-avatar class="img-36" src="/images/Icons/menu/main-menu/notifications.svg" alt="{{'NotificationsMenu' | translate}}"
+        />
+        <span mat-line>{{'NotificationsMenu' | translate}}</span>
+    </md-list-item>
+
+</md-nav-list>
+<md-nav-list class="vertical-menu bottom">
+
+
+    <md-list-item id="btnClient" class="vertical-menu-item btnClient">
+        <div class="userIcon d-flex img-20">
+           <!-- {{loggedUser.firstLetter}}-->
+        </div>
+        <span mat-line id="clientId">
+                {{loggedUser.clientDescription}}
+            </span>
+        <br />
+        <span mat-line id="userId">
+                {{loggedUser.userDescription}}
+            </span>
+    </md-list-item>
+
+    <md-list-item id="btnHelp" class="vertical-menu-item">
+        <img mat-list-avatar class="img-20" src="/images/Icons/menu/main-menu/help.svg" alt="{{'Help' | translate}}" />
+        <span mat-line>{{'Help' | translate}}</span>
+    </md-list-item>
+
+    <md-list-item id="btnLogOut" class="vertical-menu-item" (click)="doLogout()">
+        <img mat-list-avatar class="img-20" src="/images/Icons/menu/main-menu/logout.svg" alt="{{'Logout' | translate}}" />
+        <span mat-line>{{'Logout' | translate}}</span>
+    </md-list-item>
+
+</md-nav-list>

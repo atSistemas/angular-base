@@ -1,3 +1,4 @@
+import { BaseService } from './shared/services/base.service';
 import './styles/styles.css';
 
 import { AccountModule } from './containers/account/account.module';
@@ -43,7 +44,10 @@ export function translateLoaderFactory(http: Http) {
         deps: [Http]
       })
   ],
-  providers: [BaseProviders],
+  providers: [
+    BaseProviders,
+    BaseService
+  ],
 })
 export class AppModule {
   constructor(

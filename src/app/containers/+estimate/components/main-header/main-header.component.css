@@ -1,0 +1,37 @@
+/********** file: WebGti.Angular\src\app\+estimate\components\mainheadercomponent.css **********/
+.title-menu {
+    position:relative;
+    width: 100%;
+    height: 40px;
+    background-color: #5F5C58;
+    font-size: 16px;
+}
+
+.title-menu button {
+    background: none;
+    min-width: 60px;
+    height: 40px;
+    padding: 0;
+}
+
+.title-menu button:hover {
+    background-color: #9F9D9B;
+}
+
+.title-menu label.description {
+    color: #fff;
+    line-height: 40px;
+    vertical-align: middle;
+    margin-bottom: 0;
+    margin-left: 30px
+}
+
+#lblBillingCode:empty {
+    display: none;
+}
+
+#lblBillingCode::before{
+    content: "";
+    border-left: 1px solid #fff;
+    margin: 0 11px;
+}

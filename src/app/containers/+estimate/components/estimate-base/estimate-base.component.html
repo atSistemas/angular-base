@@ -1,0 +1,12 @@
+<md-sidenav-container>
+    <md-sidenav #sidenav class="sidebar">
+        <gt-menu-bar [loggedUser] =  "loggedUser$ | async" (menuItemClicked)="sidenav.close()" (newEstimate)="newEstimate()" (logout)="logout()"></gt-menu-bar>
+    </md-sidenav>
+
+    <gt-main-header [title]="title | translate" (clicked)="sidenav.toggle()" ></gt-main-header>
+
+    <gt-header class="main-header" [estimate] = "estimate$ | async"></gt-header>
+
+    <router-outlet></router-outlet>
+
+</md-sidenav-container>

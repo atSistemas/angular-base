@@ -17,7 +17,7 @@
     "ter-indent": [true, 2, { "SwitchCase": 1 }],
     "member-ordering": false,
     "member-access": false,
-    "eofline": true,
+    "eofline": false,
     "no-default-export": true,
     "max-classes-per-file": [true, 1],
     "max-file-line-count": [true, 250],

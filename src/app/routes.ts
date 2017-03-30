@@ -3,6 +3,13 @@ import { LoginComponent } from './containers/account/components/login/login.comp
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
-  { path: 'main', loadChildren: './containers/main/index#MainModule?sync=true' },
-  { path: 'lazy', loadChildren: './containers/+lazy/index#LazyModule' },
+  { path: 'estimates', loadChildren: './containers/+estimate/estimate.module#EstimateModule' },
 ];
+
+
+//  { path: '/estimates', loadChildren: './containers/+lazy/index#LazyModule' },
+
+/*
+ { path: '', loadChildren: './containers/+lazy/index#LazyModule' },
+{ path: 'create', loadChildren: './containers/+lazy/index#LazyModule' },
+*/
