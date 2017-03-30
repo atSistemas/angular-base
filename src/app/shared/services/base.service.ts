@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable, Injector } from '@angular/core';
 import { Headers, Http, RequestOptions, Response, URLSearchParams } from '@angular/http';
-// import * as EnvData from './../config/envdata';
+import { EnvData } from 'base';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -55,28 +55,19 @@ export class BaseService {
     });
   }
 
-  login(url: string, body: any, contentType = null) {
-    /*return this.http.post(
-        EnvData.serverUrl + url,
-        body,
-        this.configureRequestOptions({}, contentType)
-    ).map(this.getData).catch(this.dealErrors);*/
-  }
-
-
   post(url: string, body: any, contentType = null) {
-    // return this.http.post(
-    //     EnvData.serverUrl + url,
-    //     body,
-    //     this.configureRequestOptions({}, contentType)
-    // ).map(this.getData).catch(this.dealErrors);
+    return this.http.post(
+      EnvData.serverUrl + url,
+      body,
+      this.configureRequestOptions({}, contentType)
+    ).map(this.getData).catch(this.dealErrors);
   }
 
   get(url: string, params: Params = {}, contentType = null) {
-    // return this.http.get(
-    //     EnvData.serverUrl + 'api/' + url,
-    //     this.configureRequestOptions(params, contentType)
-    // ).catch(this.dealErrors).map(this.getData);
+    return this.http.get(
+      EnvData.serverUrl + 'api/' + url,
+      this.configureRequestOptions(params, contentType)
+    ).catch(this.dealErrors).map(this.getData);
   }
 
   /**

@@ -1,1 +1,1 @@
-export const EnvData = process.env.ENV_DATA;
+export const EnvData: { serverUrl: string } = process.env.ENV_DATA;

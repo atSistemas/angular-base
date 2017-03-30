@@ -5,13 +5,6 @@ import { AccountService } from '../services/account.service';
 import { AccountActionTypes } from '../action-types';
 
 
-export const BillingCodeListActiontypes = {
-  GET_BILLINGCODELIST_REQUEST: 'GET_BILLINGCODELIST_REQUEST',
-  GET_BILLINGCODELIST_SUCCESS: 'GET_BILLINGCODELIST_SUCCESS',
-  GET_BILLINGCODELIST_ERROR: 'GET_BILLINGCODELIST_ERROR',
-};
-
-
 @Injectable()
 export class AccountActions {
 

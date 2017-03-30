@@ -1,3 +1,6 @@
+import { Store } from '@ngrx/store';
+import { AccountConcatActions } from '../../actions/account.concat.actions';
+import { User } from '../../models/user.model';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,9 +15,9 @@ export class LoginComponent {
   loginform: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
-    // private accountConcatActions: AccountConcatActions,
-    // private store: Store<AppState>
+    private formBuilder: FormBuilder,
+    private accountConcatActions: AccountConcatActions,
+    private store: Store<AppState>
   ) {
   }
 
@@ -27,8 +30,7 @@ export class LoginComponent {
   }
 
   doLogin() {
-    console.log(this.loginform.value);
-    // this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.user));
+    this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.loginform.value as User));
   }
 
 }
