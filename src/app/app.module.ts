@@ -1,9 +1,8 @@
-import { Store } from '@ngrx/store';
 import { HttpModule } from '@angular/http';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { State } from 'base';
+import { Store, State } from 'base';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 import { AppComponents } from './app.components';

@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+import { Store } from '@ngrx/store';
 
 import { State } from './state';
 import { ENV } from './shared/Env';
@@ -9,4 +10,4 @@ export interface PayloadAction extends Action {
   payload?: any;
 }
 
-export { State, createReducer, console, ENV };
+export { Store, State, createReducer, console, ENV };

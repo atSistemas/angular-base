@@ -10,7 +10,7 @@ export class RequestEffect {
   ) { }
 
   private getActionPrefix(action): string {
-    return action.substr(0, action.indexOf('_'));
+    return action.substr(0, action.lastIndexOf('_'));
   }
 
   @Effect()
