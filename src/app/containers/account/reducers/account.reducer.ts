@@ -1,11 +1,10 @@
+
 import { Action } from '@ngrx/store';
 import { AccountActionTypes } from '../action-types/account.actiontypes';
-// import { User } from './../models/account.model';
-// import { User } from './../shared/models';
 
-// = new User() User
+
 export const LoggedUserReducer =
-  (state, action: Action) => {
+  (state = {}, action: Action): any => {
 
     switch (action.type) {
       case AccountActionTypes.LOGIN_REQUEST:
@@ -28,7 +27,7 @@ export const LoggedUserReducer =
 
       case AccountActionTypes.LOGOUT_SUCCESS:
         localStorage.removeItem('access_token');
-        return {};
+        return state;
 
       default:
         return state;
