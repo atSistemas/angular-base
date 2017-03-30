@@ -14,7 +14,7 @@ export class WelcomeComponent {
   public data$: Observable<MainModel>;
 
   constructor(public store: Store<State>) {
-    this.data$ = this.store.select(state => state.main.main);
+    this.data$ = this.store.select(state => state.main);
   }
 
 }
