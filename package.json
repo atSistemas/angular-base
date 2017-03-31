@@ -116,7 +116,7 @@
     "html-webpack-externals-plugin": "2.2.1",
     "html-webpack-plugin": "2.28.0",
     "ignore-loader": "0.1.2",
-    "immutable": "3.8.1",
+    "immutable": "^3.8.1",
     "istanbul-instrumenter-loader": "2.0.0",
     "jsdom": "9.9.1",
     "json-loader": "0.5.4",

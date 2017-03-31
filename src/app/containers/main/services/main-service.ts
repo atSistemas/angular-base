@@ -2,7 +2,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { BaseService } from 'base/shared/BaseService';
+import { BaseService } from 'base/services/BaseService';
 
 @Injectable()
 export class MainService extends BaseService {

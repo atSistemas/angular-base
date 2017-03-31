@@ -1,12 +1,12 @@
-export interface MainModelInterface {
+
+export interface MainModel {
   id?: number | string;
   name?: string;
 };
 
 export interface MainState {
-  main: MainModelInterface;
+  main: MainModel;
 }
 
-export const InitialState = <MainModelInterface> {
-  main: { id: 22, name: 'Initial Name' }
-};
+export const InitialState = <MainModel>
+  { id: 22, name: 'Initial Name' };
