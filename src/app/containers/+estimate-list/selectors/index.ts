@@ -1,8 +1,8 @@
-import { AppState } from '../../../../../base/store';
+import { State } from 'base';
 import { createSelector } from 'reselect';
 
 
-const stateEstimateList = (state: AppState) => state.estimateList.estimateList;
+const stateEstimateList = (state: State) => state.estimateList.estimateList;
 
 export const getIsSelected = createSelector(
   stateEstimateList,

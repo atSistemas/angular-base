@@ -1,10 +1,9 @@
 import { getEstimateList, getIsSelected } from '../../selectors';
-import { Estimate } from '../../../models/estimate.model';
+import { Estimate } from '../../../+estimate/models/estimate.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, State } from 'base';
 import { Observable } from 'rxjs/Observable';
-import { AppState } from 'base/store';
 
 
 @Component({
@@ -26,7 +25,7 @@ export class EstimateListComponent {
 
   constructor(
     private router: Router,
-    private store: Store<AppState>,
+    private store: Store<State>,
     // private estimateListActions: EstimateListActions,
     // private estimateProcessConcatenatedActions: EstimateProcessConcatenatedActions
   ) { }

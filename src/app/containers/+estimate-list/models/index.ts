@@ -1,4 +1,4 @@
-import { Estimate } from '../../models/estimate.model';
+import { Estimate } from '../../+estimate/models/estimate.model';
 export interface EstimateListState {
   estimateList: Estimate[];
   error: any;

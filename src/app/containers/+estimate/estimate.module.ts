@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 export const routes: Routes = [
   {
     path: '', component: EstimateBaseComponent, children: [
-      { path: '', loadChildren: './+estimate-list/estimate-list.module#EstimateListModule' },
+      { path: '', loadChildren: '../+estimate-list/estimate-list.module#EstimateListModule' },
       /*{ path: 'create', loadChildren: './+estimate-process/estimate-process.module#EstimateProcessModule' },
       { path: 'info/:id', loadChildren: './+estimate-process/estimate-process.module#EstimateProcessModule' },*/
     ]

@@ -1,10 +1,9 @@
 import { Estimate } from '../../models/estimate.model';
-import { AppState } from '../../../../../base/store';
+import { Store, State } from 'base';
 import { UserModel } from '../../../account/models/user.model';
 import { Observable } from 'rxjs/Rx';
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'estimate-base',
@@ -28,7 +27,7 @@ export class EstimateBaseComponent {
 
   constructor(
     router: Router,
-    private store: Store<AppState>,
+    private store: Store<State>,
     // private estimateProcessConcatActions: EstimateProcessConcatenatedActions,
     //private accountConcatActions: AccountConcatActions
   ) {

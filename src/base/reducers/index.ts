@@ -1,4 +1,4 @@
-import { EstimateListReducer } from '../../app/containers/+estimate/+estimate-list/reducers';
+import { EstimateListReducer } from '../../app/containers/+estimate-list/reducers';
 import { AccountReducer } from '../../app/containers/account/reducers';
 import { combineReducers } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';

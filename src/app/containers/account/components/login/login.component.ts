@@ -1,5 +1,4 @@
-import { AppState } from '../../../../../base/store';
-import { Store } from '@ngrx/store';
+import { Store, State } from 'base';
 import { AccountConcatActions } from '../../actions/account.concat.actions';
 import { UserModel } from '../../models/user.model';
 import { Component } from '@angular/core';
@@ -17,7 +16,7 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private accountConcatActions: AccountConcatActions,
-    private store: Store<AppState>
+    private store: Store<State>
   ) {
   }
 
