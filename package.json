@@ -87,7 +87,7 @@
     "bootstrap": "3.3.7",
     "font-awesome": "^4.7.0",
     "ng2-toasty": "2.3.1",
-    "ng2-translate": "5.0.0",
+    "ng2-translate": "5.0.0"
   },
   "devDependencies": {
     "@types/chai": "3.4.34",
