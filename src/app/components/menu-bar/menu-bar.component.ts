@@ -1,4 +1,4 @@
-import { UserModel } from '../../../account/models/user.model';
+import { UserModel } from '../../containers/account/models/user.model';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({

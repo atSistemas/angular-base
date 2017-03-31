@@ -1,4 +1,4 @@
-import { Estimate } from '../../models/estimate.model';
+import { Estimate } from '../../containers/+estimate/models/estimate.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

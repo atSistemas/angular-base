@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es2015","dom"],
+    "lib": [
+      "es2015",
+      "dom"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noEmitHelpers": true,
@@ -17,6 +20,12 @@
       ],
       "base": [
         "./base"
+      ],
+      "app": [
+        "./app"
+      ],
+      "app/*": [
+        "./app/*"
       ]
     },
     "typeRoots": [
@@ -42,9 +51,11 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false },
+  "atom": {
+    "rewriteTsconfig": false
+  },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
-   "skipMetadataEmit" : true
- }
+    "genDir": "src/compiled",
+    "skipMetadataEmit": true
+  }
 }

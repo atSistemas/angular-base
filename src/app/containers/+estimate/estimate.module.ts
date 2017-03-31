@@ -1,10 +1,9 @@
-import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MainHeaderComponent } from './components/main-header/main-header.component';
-import { EstimateBaseComponent } from './components/estimate-base/estimate-base.component';
-import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { MainHeaderComponent, HeaderComponent, MenuBarComponent } from '../../components';
+import { EstimateBaseComponent } from './components/estimate-base/estimate-base.component';
+import { SharedModule } from '../../shared/shared.module';
 
 export const routes: Routes = [
   {
