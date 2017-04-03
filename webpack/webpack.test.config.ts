@@ -6,19 +6,20 @@ const nodeExternals = require('webpack-node-externals');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
+  target: 'node',
   devtool: 'cheap-module-source-map',
   resolve: {
     extensions: ['.ts', '.js'],
-      alias: {
-        'base': path.resolve(__dirname, '../src/base')
-      }
+    alias: {
+      base: path.resolve(__dirname, '../src/base')
+    }
   },
 
   module: {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+        loaders: ['istanbul-instrumenter-loader', 'awesome-typescript-loader', 'angular2-template-loader'],
       },
       {
         test: /\.html$/,
@@ -43,11 +44,14 @@ module.exports = {
   },
   plugins: [
     new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)@angular/,
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/, 
       path.resolve(__dirname, '../src')
     )
   ],
   externals: [
     nodeExternals()
-  ]
-}
+  ],
+  performance: {
+    hints: false
+  }
+};

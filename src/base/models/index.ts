@@ -1,3 +1,3 @@
-import { InitialState, MainModel, MainState } from '../../app/containers/main/models';
+import { AccountState, InitialState } from '../../app/containers/account/models';
 
-export { InitialState, MainModel, MainState }
+export { InitialState, AccountState }

@@ -1,3 +1,3 @@
-import { ActionTypes } from '../../app/containers/main/action-types';
+import { AccountActionTypes } from '../../app/containers/account/action-types';
 
-export { ActionTypes }
+export { AccountActionTypes }

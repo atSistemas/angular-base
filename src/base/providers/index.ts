@@ -1,7 +1,5 @@
-import { MainService } from '../../app/containers/main/services/';
-import { MainActions } from '../../app/containers/main/actions/';
+import { AccountService } from '../../app/containers/account/services/account.service';
 
 export const BaseProviders = [
-  MainActions,
-  MainService,
+  AccountService,
 ];

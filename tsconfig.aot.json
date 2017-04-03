@@ -21,11 +21,11 @@
       "base": [
         "./base"
       ],
-      "app": [
-        "./app"
-      ],
       "app/*": [
         "./app/*"
+      ],
+      "app": [
+        "./app"
       ]
     },
     "typeRoots": [
@@ -47,7 +47,8 @@
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
     "forkChecker": true,
-    "useCache": true
+    "useCache": true,
+    "silent": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
