@@ -12,13 +12,9 @@
     "max-depth": 4,
     "no-consecutive-blank-lines": [true, 2],
     "curly": false,
-<<<<<<< HEAD
     "ter-indent": [true, 2],
-=======
     "object-curly-spacing": [true, "always"],
     "ter-arrow-spacing": true,
-    "ter-indent": [true, 2, { "SwitchCase": 1 }],
->>>>>>> e6a1acf7340f0b88a4cb10e69de4cadba9db5d1d
     "member-ordering": false,
     "member-access": false,
     "eofline": false,
