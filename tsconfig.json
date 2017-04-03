@@ -42,7 +42,8 @@
   },
   "exclude": [
     "node_modules",
-    "compiled"
+    "compiled",
+    "src/app/index.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
