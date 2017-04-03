@@ -4,16 +4,24 @@
     "tslint:recommended"
   ],
   "rules": {
-    "class-name": true,
+    "class-name": true, 
     "comment-format": [false],
     "ordered-imports": false,
     "import-spacing": true,
     "new-parens": true,
+    "max-depth": 4,
     "no-consecutive-blank-lines": [true, 2],
     "curly": false,
+<<<<<<< HEAD
     "ter-indent": [true, 2],
+=======
+    "object-curly-spacing": [true, "always"],
+    "ter-arrow-spacing": true,
+    "ter-indent": [true, 2, { "SwitchCase": 1 }],
+>>>>>>> e6a1acf7340f0b88a4cb10e69de4cadba9db5d1d
     "member-ordering": false,
-    "eofline": true,
+    "member-access": false,
+    "eofline": false,
     "no-default-export": true,
     "max-classes-per-file": [true, 1],
     "max-file-line-count": [true, 250],
@@ -27,7 +35,6 @@
     "no-bitwise": true,
     "trailing-comma": [false, {"multiline": "always", "singleline": "never"}],
     "no-console": [false],
-    "indent": [true, "spaces"],
     "no-invalid-this": true,
     "no-duplicate-variable": true,
     "no-eval": true,
@@ -64,7 +71,6 @@
       true,
       "ban-keywords",
       "check-format",
-      "allow-leading-underscore",
       "allow-pascal-case"
     ],
     "whitespace": [

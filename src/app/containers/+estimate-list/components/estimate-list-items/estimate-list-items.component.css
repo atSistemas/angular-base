@@ -1,0 +1,130 @@
+/***********SMALL, MEDIUM AND LARGE SCREENS***************/
+@media (max-width: 1599px) {
+
+    .main-table thead tr th > a, .main-table thead tr th > span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        .main-table thead tr th > a.break-line {
+            max-width: 70px;
+        }
+
+        .main-table thead tr th > a.no-break {
+            line-height: 40px;
+        }
+}
+
+/***********EXTRA LARGE SCREENS***************/
+@media (min-width: 1600px) {
+
+    .main-table thead tr th {
+        line-height: 40px;
+    }
+}
+
+.scrolling-table {
+    display: block;
+    position: absolute;
+    left:0;
+    top:55px;
+    bottom: 0;
+    right: 60px;
+    border-top: 3px solid #5F5C58;
+}
+
+.main-table thead tr th > a, .main-table thead tr th > span {
+    top: 89px;
+}
+
+.expanded + .content {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
+
+.main-table {
+    font-size: 12px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: -63px;
+}
+
+    .main-table td, .main-table th {
+        border: 0;
+        font-weight: normal;
+        line-height: 18px;
+        color: #191919;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .main-table thead {
+        background-color: white;
+        width: 100%;
+    }
+
+        .main-table thead tr {
+            border-bottom: 3px solid #5F5C58;
+        }
+
+            .main-table thead tr th {
+                line-height: 20px;
+                height: 60px;
+            }
+
+                .main-table thead tr th > a, .main-table thead tr th > span {
+                    position: fixed;
+                    padding: 10px 5px;
+                    color: #191919;
+                    overflow: hidden;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+
+                    .main-table thead tr th > a.ordered, .main-table thead tr th > span.ordered {
+                        padding-left: 25px;
+                        background-repeat: no-repeat;
+                        background-position: 10px center;
+                    }
+
+                        .main-table thead tr th > a.ordered.asc, .main-table thead tr th > span.ordered.asc {
+                           /* background-image: url("../img/main/asc.png"); */
+                        }
+
+                        .main-table thead tr th > a.ordered.desc, .main-table thead tr th > span.ordered.desc {
+                            /* background-image: url("../img/main/desc.png"); */
+                        }
+
+                .main-table thead tr th.checkbox {
+                    width: 60px;
+                }
+
+                    .main-table thead tr th.checkbox > span {
+                        width: 60px;
+                        height: 60px;
+                        padding: 20px;
+                        background-color: #eaebc1;
+                    }
+
+    .main-table tbody tr {
+        font-size: 11px;
+    }
+
+        .main-table tbody tr.selected {
+            background-color: #e0e0e1;
+        }
+
+        .main-table tbody tr td {
+            border-bottom: 1px solid #5F5C58;
+            padding: 10px 5px;
+            text-align: left;
+        }
+
+            .main-table tbody tr td.checkbox {
+                background-color: white;
+                width: 60px;
+                padding: 20px;
+            }
+

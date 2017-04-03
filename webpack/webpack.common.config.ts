@@ -6,8 +6,11 @@ const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
+const { ForkCheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+
+import { EnvData } from '../src/conf/envData';
 
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
@@ -68,8 +71,19 @@ export const plugins = [
   }),
   new DefinePlugin({
     BASE_ENVIRONMENT: JSON.stringify(process.env.NODE_ENV)
-  })
-
+  }),
+  new HtmlWebpackExternalsPlugin([
+    {
+      name: 'gtApiVehicleRepresentation',
+      url: 'https://gtapi.einsanet.es/api/vehiclerepresentation/js?ApiKey=4EB72EDB-0949-420E-8F16-5FA09862A4C9'
+    }
+  ]),
+  new DefinePlugin({
+    'process.env': {
+      ENV_DATA: JSON.stringify(EnvData || { })
+    }
+  }),
+ 
 ];
 
 export const module = {
@@ -117,8 +131,4 @@ export const compileError = function () {
 };
 
 //ssdss
-
-
-
-
 

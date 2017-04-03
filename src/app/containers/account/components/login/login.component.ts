@@ -1,36 +1,35 @@
+import { Store, State } from 'base';
+import { AccountConcatActions } from '../../actions/account.concat.actions';
+import { UserModel } from '../../models/user.model';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { Store } from '@ngrx/store';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-	selector: 'account-login',
-	providers: [FormBuilder],
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css']
+  selector: 'account-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-	formularioLogin: FormGroup;
-	user = { client: '', username: '', password: '' };
+  loginform: FormGroup;
 
-	constructor(
-		private formBuilder: FormBuilder,
-		// private globalValidator: GlobalValidator,
-		// private accountConcatActions: AccountConcatActions,
-		// private store: Store<AppState>
-	) {
-	}
+  constructor(
+    private formBuilder: FormBuilder,
+    private accountConcatActions: AccountConcatActions,
+    private store: Store<State>
+  ) {
+  }
 
-	ngOnInit() {
-		this.formularioLogin = this.formBuilder.group({
-			client: [''],
-			user: [''],
-			password: ['']
-		});
-	}
+  ngOnInit() {
+    this.loginform = this.formBuilder.group({
+      client: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+  }
 
-	doLogin() {
-		// this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.user));
-	}
+  doLogin() {
+    this.store.dispatch(this.accountConcatActions.loginRequestAndNavigate(this.loginform.value as UserModel));
+  }
+
 }

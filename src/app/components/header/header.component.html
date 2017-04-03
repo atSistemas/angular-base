@@ -1,0 +1,4 @@
+<div id="estimateData" class="d-flex" *ngIf="!estimate?.isNewEstimate">
+    <label id="lblEstimateCode">{{estimate?.estimateCode}}</label>
+    <label *ngIf="estimate?.hasModelData" id="lblVehicleInfo" class="text-uppercase">{{estimate?.make?.makeName}} | {{estimate?.model?.modelName}} | {{estimate?.plate}}</label>
+</div>

@@ -1,0 +1,28 @@
+<table class="main-table scroll">
+    <thead>
+        <tr>
+            <th><a class="no-break">{{'EstNumbrShort' | translate}}</a></th>
+            <th><a class="break-line">{{'BillCode' | translate}}</a></th>
+            <th><a class="no-break">{{'RegisterNumberShort' | translate}}</a></th>
+            <th><a class="no-break">{{'Make_' | translate}}</a></th>
+            <th><a class="no-break">{{'Mod' | translate}}</a></th>
+            <th><a class="break-line">{{'StartDate' | translate}}</a></th>
+            <th><a class="no-break">{{'State' | translate}}</a></th>
+            <th><a class="no-break">{{'Situation' | translate}}</a></th>
+            <th><a class="break-line">{{'ModifDate' | translate}}</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let estimate of estimateList" [class.selected]="estimate.isSelected" (click)="onselectrow(estimate)">
+            <td>{{estimate.estimateCode}}</td>
+            <td>{{estimate.billingCode.codeDescription}}</td>
+            <td>{{estimate.plate}}</td>
+            <td>{{estimate.makeName}}</td>
+            <td>{{estimate.modelName}}</td>
+            <td>{{estimate.dateCreated}}</td>
+            <td>{{estimate.stateName}}</td>
+            <td>{{estimate.situation.situationName}}</td>
+            <td>{{estimate.dateModification}}</td>
+        </tr>
+    </tbody>
+</table>

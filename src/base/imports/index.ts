@@ -9,7 +9,7 @@ import { RequestEffect } from '../effects/request.effect';
 
 export const BaseImports = [
   EffectsModule.run(RequestEffect),
-  RouterModule.forRoot(routes, { preloadingStrategy: false}),
+  RouterModule.forRoot(routes, { preloadingStrategy: false }),
   RouterStoreModule.connectRouter(),
   StoreModule.provideStore(RootReducer),
 ];

@@ -1,10 +1,6 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
-import { InitialState, MainModelInterface } from '../models';
-
-const click = (state) => {
-  return state.update('main', (value) => 'eooo');
-};
+import { MainModel, InitialState } from '../models';
 
 const request = (state, data) => {
   return state;
@@ -15,18 +11,16 @@ const login = (state, data) => {
 };
 
 const success = (state, action) => {
-  return Object.assign({}, state, {
-       main: action.payload
-     });
+  return Object.assign({}, state, action.payload
+  );
 };
 
 const actionHandlers = {
-  [ActionTypes.CLICK]: click,
   [ActionTypes.LOGIN]: login,
   [ActionTypes.MAIN_REQUEST]: request,
   [ActionTypes.MAIN_SUCCESS]: success,
 };
 
-const MainReducer = createReducer<MainModelInterface>(actionHandlers, InitialState);
+const MainReducer = createReducer<MainModel>(actionHandlers, InitialState);
 
 export { MainReducer }

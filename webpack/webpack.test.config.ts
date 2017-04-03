@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { appPath } from './webpack.common.config';
 
+const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
@@ -41,9 +42,12 @@ module.exports = {
     ],
   },
   plugins: [
-   new TsConfigPathsPlugin(/* { tsconfig, compiler } */)
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)@angular/,
+      path.resolve(__dirname, '../src')
+    )
   ],
   externals: [
-    nodeExternals(),
-  ],
+    nodeExternals()
+  ]
 }

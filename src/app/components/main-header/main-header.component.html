@@ -1,0 +1,9 @@
+<div class="d-flex title-menu">
+    <button md-button (click)="toggle()">
+        <img src="/images/Icons/menu/collapsed-menu.svg" />
+    </button>
+    <label class="d-flex description"> 
+        <div id="mainHeader-title">{{title}}</div>
+        <div id="lblBillingCode">{{estimate?.billingCode?.codeDescription}}</div>
+    </label>
+</div>

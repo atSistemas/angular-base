@@ -1,8 +1,7 @@
-import * as base from '../src/base';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
+
 
 export const cache = common.cache;
 export const output = common.output;

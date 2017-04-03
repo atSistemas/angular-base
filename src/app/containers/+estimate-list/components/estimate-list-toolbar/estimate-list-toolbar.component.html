@@ -1,0 +1,28 @@
+<div class="menu-bar">
+    <md-nav-list class="menu secondary-menu">
+        <md-list-item id="removeList">
+            <img class="img-36" src="/images/Icons/menu/Right/remove.svg" title="" />
+        </md-list-item>
+        <md-list-item id="editList" [class.disabled]="!selectedEstimate">
+            <img class="img-36" src="/images/Icons/menu/Right/edit.svg" title="" (click)="loadEstimate()" />
+        </md-list-item>
+        <md-list-item id="copyList" class="disabled">
+            <img class="img-36" src="/images/Icons/menu/Right/copy.svg" title="" />
+        </md-list-item>
+        <md-list-item id="mailList" class="disabled">
+            <img class="img-36" src="/images/Icons/menu/Right/mail.svg" title="" />
+        </md-list-item>
+        <md-list-item id="reportList" class="disabled">
+            <img class="img-36" src="/images/Icons/menu/Right/report.svg" title="" />
+        </md-list-item>
+    </md-nav-list>
+
+    <md-nav-list class="menu view-menu">
+        <md-list-item id="columnsList">
+            <img class="img-36" src="/images/Icons/menu/Right/columns.svg" title="" />
+        </md-list-item>
+        <md-list-item id="filterList">
+            <img class="img-36" src="/images/Icons/menu/Right/filter.svg" />
+        </md-list-item>
+    </md-nav-list>
+</div>

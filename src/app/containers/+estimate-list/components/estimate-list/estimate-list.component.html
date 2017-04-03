@@ -1,0 +1,13 @@
+<div class="content">
+    <div class="verticalbar-right">
+        <gt-estimate-list-toolbar [selectedEstimate]="isEstimateSelected$ | async" (loadSelectedEstimate)="loadSelectedEstimate()"></gt-estimate-list-toolbar>
+    </div>
+    <div class="scrolling-table scrollable" id="container" >
+        <gt-estimate-list-items [estimateList]="estimateList$ | async" [step]="step" (onSelectRow)="onSelectEstimate($event)"></gt-estimate-list-items>
+    </div>
+</div>
+
+
+<!--infinite-scroll [infiniteScrollThrottle]="10" [scrollWindow]="false"
+        [infiniteScrollUpDistance]="1" (scrolled)="onScrollDown()" [infiniteScrollDistance]="1"-->
+
