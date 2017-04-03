@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Action } from 'base';
 import { ActionTypes } from '../action-types';
-import { Action } from 'base/interfaces/action';
 import { MainService } from '../services/main-service';
 
 @Injectable()

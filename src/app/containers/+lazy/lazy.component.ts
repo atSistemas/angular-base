@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
 })
 export class LazyContainer {
 
-  public people: Object[];
-
   constructor() {
     // this.actions.lazyRequest();
   }
