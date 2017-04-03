@@ -55,11 +55,13 @@
     "@angular/common": "4.0.1",
     "@angular/compiler": "4.0.1",
     "@angular/compiler-cli": "4.0.1",
+    "@angular/forms": "4.0.1",
     "@angular/core": "4.0.1",
     "@angular/http": "4.0.1",
     "@angular/platform-browser": "4.0.1",
     "@angular/platform-browser-dynamic": "4.0.1",
     "@angular/platform-server": "4.0.1",
+    "@angular/material": "2.0.0-beta.2",
     "@angular/router": "4.0.1",
     "@angular/tsc-wrapped": "4.0.1",
     "@angularclass/hmr": "1.2.2",
@@ -81,7 +83,11 @@
     "compression": "1.6.2",
     "core-js": "2.4.1",
     "express": "4.15.2",
-    "zone.js": "0.8.5"
+    "zone.js": "0.8.5",
+    "bootstrap": "3.3.7",
+    "font-awesome": "^4.7.0",
+    "ng2-toasty": "2.5.0",
+    "ng2-translate": "5.0.0"
   },
   "devDependencies": {
     "@types/chai": "3.4.35",
