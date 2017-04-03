@@ -4,7 +4,7 @@
     "tslint:recommended"
   ],
   "rules": {
-    "class-name": true,
+    "class-name": true, 
     "comment-format": [false],
     "ordered-imports": false,
     "import-spacing": true,
