@@ -50,9 +50,9 @@ export const output =  {
 };
 
 export const plugins = [
-    new webpack.LoaderOptionsPlugin({
-     minimize: true,
-     debug: false
+  new webpack.LoaderOptionsPlugin({
+    minimize: true,
+    debug: false
   }),
   new ProgressBarPlugin({
      format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
