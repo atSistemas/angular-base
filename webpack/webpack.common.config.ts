@@ -5,9 +5,6 @@ const chalk = require('chalk');
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const { ForkCheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
-const { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin, DllReferencePlugin, } = require('webpack');
 
 export const context = path.resolve(__dirname, '../');
 export const mainPath = path.resolve(__dirname, '../src');
@@ -50,23 +47,23 @@ export const output =  {
 };
 
 export const plugins = [
+  new webpack.DefinePlugin({
+    'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
+  }),
   new webpack.LoaderOptionsPlugin({
     minimize: true,
     debug: false
   }),
   new ProgressBarPlugin({
-     format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
-     clear: true,
-     summary: false,
-   }),
+    format: `  [BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
+    clear: true,
+    summary: false,
+  }),
   new webpack.optimize.OccurrenceOrderPlugin(true),
   new AssetsPlugin({
-      path: buildPath,
-      filename: 'webpack-assets.json',
-      prettyPrint: true
-  }),
-  new DefinePlugin({
-      'BASE_ENVIRONMENT': JSON.stringify(process.env.NODE_ENV)
+    path: buildPath,
+    filename: 'webpack-assets.json',
+    prettyPrint: true
   })
 ];
 
@@ -75,10 +72,10 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-          '@angularclass/hmr-loader',
-          'awesome-typescript-loader',
-          'angular2-template-loader',
-          'angular-router-loader'
+        '@angularclass/hmr-loader',
+        'awesome-typescript-loader',
+        'angular2-template-loader',
+        'angular-router-loader'
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
     },
@@ -114,10 +111,3 @@ export const compileError = function() {
     }
   });
 };
-
-//ssdss
-
-
-
-
-

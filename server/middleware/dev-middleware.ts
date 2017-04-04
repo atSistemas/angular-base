@@ -1,5 +1,3 @@
-///<reference path="../../node_modules/@types/node/index.d.ts"/>
-//import { ExternalsMiddleware } from '../../webpack/dll';
 import { RequestHandler } from 'express';
 import timedCompiler from './helpers';
 

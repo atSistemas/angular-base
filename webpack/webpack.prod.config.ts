@@ -1,11 +1,10 @@
-import * as path from 'path';
-import * as base from '../src/base';
-import * as common from './webpack.common.config';
-
 const webpack = require('webpack');
 const BabiliPlugin = require("babili-webpack-plugin");
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+
+import * as path from 'path';
+import * as common from './webpack.common.config';
 
 export const cache = common.cache;
 export const output = common.output;

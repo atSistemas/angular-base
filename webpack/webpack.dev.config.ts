@@ -1,8 +1,6 @@
-import * as base from '../src/base';
-import * as common from './webpack.common.config';
-
 const webpack = require('webpack');
-const AssetsPlugin = require('assets-webpack-plugin');
+
+import * as common from './webpack.common.config';
 
 export const cache = common.cache;
 export const module = common.module;
@@ -23,7 +21,7 @@ export const plugins = [
   new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"development"'}}),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.DllReferencePlugin({
-    context: context,
+    context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),
 ]

@@ -6,17 +6,6 @@ import renderPage from '../templates/';
 
 export function applyServerRouting(app) {
 
-  /*
-  app.get(`/`, renderPage);
-  routes.forEach(route => {
-    base.console.info(`Setting up ${route} route...`);
-    app.get(`/${route}`, renderPage);
-    app.get(`/${route}/*`, renderPage);
-  });*/
-
-  //const page = renderPage();
-
-
   const page = renderPage();
   app.use((req, res, next) => {
     res.status(200).send(page);

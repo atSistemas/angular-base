@@ -5,14 +5,14 @@ const ENV = process.env.NODE_ENV || 'development';
 const NPM_ENV = process.env.npm_lifecycle_event;
 
 export const constants = {
-    DEVELOPMENT: 'development',
-    PRODUCTION: 'production'
+  DEVELOPMENT: 'development',
+  PRODUCTION: 'production'
 };
 
 
 export interface environmentInterface {
-    port: number,
-    ENV: string
+  port: number;
+  ENV: string;
 }
 
 export const isTesting: boolean = NPM_ENV === 'test' || NPM_ENV === 'test-watch' || process.env.NODE_ENV === 'test';

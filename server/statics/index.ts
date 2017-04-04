@@ -5,9 +5,9 @@ import * as base from '../../src/base';
 import environment, {constants as envConstants} from '../environment';
 
 export interface StaticRoute {
-  route: string,
-  path: string,
-  source?: boolean
+  route: string;
+  path: string;
+  source?: boolean;
 };
 
 const common:StaticRoute[] = [
@@ -33,4 +33,3 @@ export function applyStaticsPaths(app) {
     base.console.success(`Applied static path "${staticRoute.route}"`);
   });
 }
-//export default statics;
