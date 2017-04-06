@@ -338,3 +338,4 @@ Anyone and everyone is welcome to contribute, however, if you decide to get invo
 ## License
 
 **Angular2-Base** is available under the [MIT license](LICENSE).
+
