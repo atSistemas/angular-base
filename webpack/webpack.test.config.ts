@@ -13,6 +13,9 @@ module.exports = {
       base: path.resolve(__dirname, '../src/base')
     }
   },
+  resolveLoader: {
+    moduleExtensions: ['-loader'] 
+  },
 
   module: {
     rules: [
@@ -22,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        include: path.resolve('./src/**/*.spec.ts'),
+        include: path.resolve('../src/**/*.spec.ts'),
         loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
       {
@@ -36,20 +39,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: path.resolve('./src/app'),
+        exclude: path.resolve('../src/app'),
         loader: 'null-loader'
       },
       {
         test: /\.css$/,
-        include: path.resolve('./src/app'),
+        include: path.resolve('../src/app'),
         loader: 'raw-loader'
       }
     ]
   },
   plugins: [
     new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/, 
-      path.resolve(__dirname, '../src')
+       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
     )
   ],
   externals: [

@@ -2,13 +2,12 @@ var jsdom = require('jsdom');
 var document = jsdom.jsdom('<!doctype html><html><body></body></html>');
 var window = document.defaultView;
 
-global.window = document.defaultView;
 global.document = document;
 global.HTMLElement = window.HTMLElement;
 global.XMLHttpRequest = window.XMLHttpRequest;
 global.Node = window.Node;
 
-
+require('../imports/rx');
 require('core-js/es6');
 require('core-js/es7/reflect');
 

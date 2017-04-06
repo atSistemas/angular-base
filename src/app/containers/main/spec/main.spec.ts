@@ -24,7 +24,6 @@ describe('MainContainer', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        BaseImports,
         StoreModule.provideStore({}),
         HttpModule,
         BrowserModule
@@ -39,16 +38,10 @@ describe('MainContainer', () => {
   });
 
   it('should display "Main Container"', () => {
-
-    fixture = TestBed.createComponent(MainContainer);
-    let title : any;
-
-    title = fixture.debugElement.query(By.css('h2'));
-    expect(title.nativeElement.textContent).to.equal('');
-
+    const fixture = TestBed.createComponent(MainContainer);
+    const h1 = fixture.debugElement.query(By.css('h1'));
+    expect(h1.nativeElement.textContent).to.equal('Main Container');
     fixture.detectChanges();
-
-    title = fixture.debugElement.query(By.css('h2'));
 });
 
 });
