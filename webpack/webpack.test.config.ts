@@ -3,9 +3,11 @@ const nodeExternals = require('webpack-node-externals');
 
 import * as path from 'path';
 import { appPath } from './webpack.common.config';
+import * as common from './webpack.common.config';
 
 module.exports = {
   target: 'node',
+  node: common.node,
   devtool: 'cheap-module-source-map',
   resolve: {
     extensions: ['.ts', '.js'],
