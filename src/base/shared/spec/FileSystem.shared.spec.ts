@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 import { expect } from 'chai';
 import { fileExists, readDir, writeFile } from '../FileSystem';
 
@@ -7,11 +7,10 @@ describe('shared / FileSystem', () => {
 
   describe('fileExists', () => {
 
-    it('Sould check if fileExist', () => {
+    it('Sould check if file exist', () => {
 
-      const realPath = path.resolve(__dirname, '..', 'FileSystem.js');
-      const fakePath = path.resolve(__dirname, '..', 'fake.js');
-
+      const realPath = path.resolve(__dirname, '../../../src/base/shared/Env.ts');
+      const fakePath = path.resolve(__dirname, 'fake');
       expect(fileExists(realPath)).to.equal(true);
       expect(fileExists(fakePath)).to.equal(false);
 
@@ -22,7 +21,7 @@ describe('shared / FileSystem', () => {
 
     it('Sould read a directory', () => {
 
-      const dir = path.resolve(__dirname, '..', '..', 'client');
+      const dir = path.resolve(__dirname, '../../../src/base/routes');
       const files = readDir(dir);
       expect(files.length).to.equal(1);
 
