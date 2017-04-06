@@ -45,7 +45,7 @@
     "lint:all": "npm run lint && npm run lint:css",
     "test": "npm run logo && rimraf .tmp && mocha-webpack --opts src/base/conf/mocha.opts",
     "test:watch": "rimraf .tmp && mocha-webpack --watch",
-    "test:coverage": "nyc npm test && nyc report --reporter=lcov",
+    "test:coverage": "nyc npm test && cross-env NODE_ENV=development nyc report --reporter=lcov",
     "postYeomanGenerator": "npm run regenerate && npm run start",
     "yo": "npm link src/conf/.react-base/templates/generator-react-base",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
@@ -156,6 +156,7 @@
     "exclude": [
       "node_modules/",
       "src/compiled",
+      "src/app/index.aot.ts",
       "dist/",
       "webpack/**",
       "**/*.spec.js",
