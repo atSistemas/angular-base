@@ -15,31 +15,36 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
-        loaders: ['istanbul-instrumenter-loader', 'awesome-typescript-loader', 'angular2-template-loader'],
+        loaders: ['istanbul-instrumenter-loader', 'awesome-typescript-loader', 'angular2-template-loader']
+      },
+      {
+        test: /\.ts$/,
+        include: path.resolve('./src/**/*.spec.ts'),
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader',
+        loader: 'html-loader'
 
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'null',
+        loader: 'null-loader'
       },
       {
         test: /\.css$/,
-        exclude: appPath,
-        loader: 'null',
+        exclude: path.resolve('./src/app'),
+        loader: 'null-loader'
       },
       {
         test: /\.css$/,
-        include: appPath,
-        loader: 'raw-loader',
-      },
-    ],
+        include: path.resolve('./src/app'),
+        loader: 'raw-loader'
+      }
+    ]
   },
   plugins: [
     new webpack.ContextReplacementPlugin(
