@@ -94,7 +94,9 @@ export const node = {
   clearImmediate: false,
   setImmediate: false,
   clearTimeout: true,
-  setTimeout: true
+  setTimeout: true,
+  __dirname: false,
+  __filename: false,
 };
 
 export const resolve = {
