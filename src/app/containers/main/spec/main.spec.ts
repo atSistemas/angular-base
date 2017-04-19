@@ -1,4 +1,4 @@
-import '../../../../base/imports/rx';
+import 'base/imports/rx';
 
 import { StoreModule } from '@ngrx/store';
 import { HttpModule } from '@angular/http';
@@ -10,7 +10,6 @@ import { expect } from 'chai';
 
 import { MainContainer } from '../main.component';
 import { AppComponents } from '../../../app.components';
-import { BaseImports } from '../../../../base/imports/';
 import { BaseProviders } from '../../../../base/providers/';
 
 
@@ -18,13 +17,11 @@ describe('MainContainer', () => {
 
   let comp: MainContainer;
   let fixture: ComponentFixture<MainContainer>;
-  let server : any;
 
   beforeEach(() => {
 
     TestBed.configureTestingModule({
       imports: [
-        BaseImports,
         StoreModule.provideStore({}),
         HttpModule,
         BrowserModule
@@ -39,11 +36,10 @@ describe('MainContainer', () => {
   });
 
   it('should display "Main Container"', () => {
-    /*const fixture = TestBed.createComponent(MainContainer);
+    const fixture = TestBed.createComponent(MainContainer);
     const h1 = fixture.debugElement.query(By.css('h1'));
     expect(h1.nativeElement.textContent).to.equal('Main Container');
-
-    fixture.detectChanges();*/
+    fixture.detectChanges();
 });
 
 });
