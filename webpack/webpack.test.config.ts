@@ -1,11 +1,10 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
-
 import * as path from 'path';
 import { appPath } from './webpack.common.config';
 import * as common from './webpack.common.config';
-import  nodePathReplacePlugin from  './NodePathReplacePlugin';
+import  nodePathReplacePlugin from '../src/base/wp-plugins/nodePathReplacePlugin';
 
 module.exports = {
   target: 'node',

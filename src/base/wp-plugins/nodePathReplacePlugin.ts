@@ -1,4 +1,4 @@
-export default class NodePathReplacePlugin {
+export default class nodePathReplacePlugin {
     
     constructor() {}
 
