@@ -9,7 +9,7 @@ describe('shared / FileSystem', () => {
 
     it('Sould check if file exist', () => {
 
-      const realPath = path.resolve(__dirname, '../../../src/base/shared/Env.ts');
+      const realPath = path.resolve(__dirname, '../Env.ts');
       const fakePath = path.resolve(__dirname, 'fake');
       expect(fileExists(realPath)).to.equal(true);
       expect(fileExists(fakePath)).to.equal(false);
@@ -21,7 +21,7 @@ describe('shared / FileSystem', () => {
 
     it('Sould read a directory', () => {
 
-      const dir = path.resolve(__dirname, '../../../src/base/routes');
+      const dir = path.resolve(__dirname, '../../routes');
       const files = readDir(dir);
       expect(files.length).to.equal(1);
 
