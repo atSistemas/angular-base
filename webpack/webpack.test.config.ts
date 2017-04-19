@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
 import * as path from 'path';
-import { appPath } from './webpack.common.config';
 import * as common from './webpack.common.config';
-import  nodePathReplacePlugin from '../src/base/wp-plugins/nodePathReplacePlugin';
+import { nodePathReplacePlugin } from '../src/base/wp-plugins/nodePathReplacePlugin';
 
 module.exports = {
   target: 'node',
@@ -17,7 +16,7 @@ module.exports = {
     }
   },
   resolveLoader: {
-    moduleExtensions: ['-loader'] 
+    moduleExtensions: ['-loader']
   },
 
   module: {
