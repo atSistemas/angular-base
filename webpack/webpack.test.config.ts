@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loaders: ['istanbul-instrumenter-loader', 'awesome-typescript-loader', 'angular2-template-loader'],
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
       },
       {
         test: /\.ts$/,
