@@ -1,4 +1,3 @@
-// import { Action } from '@ngrx/store';
 import { Action } from '../interfaces/action';
 
 export function createReducer<Cr>(actionHandler: any, initialState: Cr) {
