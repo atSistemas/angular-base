@@ -17,8 +17,8 @@
       "email": "jclama@atsistemas.com"
     },
     {
-      "name": "David del Prado Martinez",
-      "email": "ddelprado@atsistemas.com"
+      "name": "Santiago Fernandez blanco",
+      "email": "sfernandez.blanco@atsistemas.com"
     }
   ],
   "scripts": {
@@ -45,7 +45,7 @@
     "lint:all": "npm run lint && npm run lint:css",
     "test": "npm run logo && rimraf .tmp && mocha-webpack --webpack-config webpack/webpack.test.config.ts --require ./src/base/conf/jsDomSetup.js src/**/*.spec.ts",
     "test:watch": "rimraf .tmp && mocha-webpack --watch",
-    "test:coverage": "nyc npm test && nyc report --reporter=lcov",
+    "test:coverage": "nyc npm test && cross-env NODE_ENV=development",
     "postYeomanGenerator": "npm run regenerate && npm run start",
     "yo": "npm link src/conf/.react-base/templates/generator-react-base",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
@@ -116,8 +116,8 @@
     "mocha": "3.2.0",
     "mocha-webpack": "0.7.0",
     "ngrx-store-freeze": "0.1.9",
+    "nyc": "7.1.0",
     "ngrx-store-logger": "github:btroncone/ngrx-store-logger#67330c5442619f22474755ca6d49047db6b94aca",
-    "nyc": "10.2.0",
     "path-to-regexp": "1.7.0",
     "perfy": "1.1.2",
     "postcss-cssnext": "^2.10.0",
@@ -169,6 +169,7 @@
       "ts-node/register"
     ],
     "reporter": [
+      "text",
       "text-summary",
       "html"
     ],
