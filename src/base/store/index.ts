@@ -1,7 +1,7 @@
 import { ActionReducer } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { storeLogger } from 'ngrx-store-logger';
+import { storeLogger } from 'ngrx-store-logger/src';
 
 import { State, ENV } from 'base';
 

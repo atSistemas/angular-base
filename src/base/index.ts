@@ -1,10 +1,11 @@
-import { Store } from '@ngrx/store';
-
-import { State } from './state';
-import { Action } from './interfaces';
-import { ENV } from './shared/Env';
 import * as console from './shared/console';
-import { createReducer } from './shared/CreateReducer';
-import { createActionType } from './shared/CreateActionType';
 
-export { Store, State, Action, createReducer, console, ENV, createActionType };
+export { console };
+export { State } from './state';
+export { ENV } from './shared/Env';
+export { Store } from '@ngrx/store';
+export { Action } from './interfaces';
+//FIXME
+export { createReducer } from './shared/CreateReducer';
+export { createActionType } from './shared/CreateActionType';
+export { resolveRequestAction } from './shared/ResolveRequestAction';

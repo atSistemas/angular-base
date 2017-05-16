@@ -25,8 +25,6 @@ export class AppModule {
   constructor(
     public appRef: ApplicationRef,
     private store: Store<State>,
-  ) {
-    console.log('APP MODULE CONSTRUCTOR');
-  }
+  ) {}
 
 }
