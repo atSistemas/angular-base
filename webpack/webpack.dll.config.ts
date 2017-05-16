@@ -1,8 +1,9 @@
+import * as path from 'path';
+import * as base from '../src/base';
+import * as common from './webpack.common.config';
+
 const webpack = require('webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
-
-import * as path from 'path';
-import * as common from './webpack.common.config';
 
 export const cache = common.cache;
 export const entry = common.entry;

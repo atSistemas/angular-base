@@ -1,10 +1,10 @@
-const webpack = require('webpack');
-const BabiliPlugin = require("babili-webpack-plugin");
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-
 import * as path from 'path';
 import * as common from './webpack.common.config';
+
+const webpack = require('webpack');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 export const cache = common.cache;
 export const output = common.output;
@@ -19,27 +19,34 @@ export const entry = {
 };
 
 export const module = {
-  rules: [
+  rules: common.module.rules.concat([
     {
       test: /\.ts$/,
       loaders: [
-        'awesome-typescript-loader',
-        'angular2-template-loader',
         'angular-router-loader?loader=system&genDir=src/compiled&aot=true'
       ],
-      exclude: [/\.(spec|e2e|d)\.ts$/]
+      exclude: [
+        /dist/,
+        /spec/,
+        /server/,
+        /webpack/,
+        /node_modules/
+      ]},
+    {
+      test: /\.css$/,
+      use: ExtractTextPlugin.extract({
+        fallback: ['style-loader'],
+        use: ['css-loader?-importLoaders=1&minimize=true&sourceMap=true']
+      }),
     },
-    { test: /\.json$/, loader: 'json-loader', include: [common.mainPath] },
-    { test: /\.html/, loader: 'raw-loader', include: [common.mainPath] },
-    { test: /\.css$/, loader: 'raw-loader', include: [common.mainPath] }
-  ]
+  ] as any[])
 };
 
 export const plugins = [
-  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
+  new webpack.DefinePlugin({ 'process.env': { NODE_ENV: '"production"' } }),
   new AddAssetHtmlPlugin([
-    { filepath: require('../dist/polyfills-manifest.json')},
-    { filepath: require('../dist/vendor-manifest.json')}
+    { filepath: require('../dist/polyfills-manifest.json') },
+    { filepath: require('../dist/vendor-manifest.json') }
   ]),
   new webpack.DllReferencePlugin({
     context: path.join(__dirname),
@@ -58,9 +65,13 @@ export const plugins = [
     chunks: ['app'],
     minChunks: module => /node_modules/.test(module.resource)
   }),
-  new BabiliPlugin({}, {
-    comments: false
+
+  new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
+  new webpack.optimize.UglifyJsPlugin(
+    {compressor: { warnings: false, screw_ie8 : true },
+    output: {comments: false, beautify: false},
+    mangle: { screw_ie8 : true }
   }),
   new webpack.NoEmitOnErrorsPlugin()
 ]
-.concat(common.plugins);
+  .concat(common.plugins);
