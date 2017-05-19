@@ -72,9 +72,12 @@ export const plugins = [
     minChunks: module => /node_modules/.test(module.resource)
   }),
   new HtmlWebpackPlugin({
+     inject: 'head',
      title: 'Base App',
      filename: 'index.html',
-     hash: true
+     template: 'server/templates/index.ejs',
+     chunks: ['polyfills', 'vendor', 'app'],
+     chunksSortMode: 'dependency'
    }),
   new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
   new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
