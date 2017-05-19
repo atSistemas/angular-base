@@ -17,11 +17,10 @@ export const basePath = path.resolve(__dirname, '../src/base');
 export const dllPath = path.resolve(__dirname, '../dist/');
 export const cache = true;
 export const polyfills = [
-  'reflect-metadata',
-  'zone.js/dist/zone',
-  'zone.js/dist/long-stack-trace-zone',
   'core-js/es6/reflect',
   'core-js/client/shim',
+  'zone.js/dist/zone',
+  'zone.js/dist/long-stack-trace-zone',
 
 ];
 export const vendor = [
