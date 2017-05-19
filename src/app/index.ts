@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import 'zone.js';
 import 'base/imports/rx';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

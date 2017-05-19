@@ -9,12 +9,14 @@ export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-source-map';
 export const entry = {
-  app: [
+
+  polyfills:  common.polyfills,
+  vendor: common.vendor,
+    app: [
     common.appPath,
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client'
-  ],
-  polyfills: common.polyfills
+  ]
 };
 
 export const module = {
@@ -52,7 +54,11 @@ export const module = {
 export const plugins = [
   new webpack.DefinePlugin({ 'process.env': { NODE_ENV: '"development"' } }),
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.DllReferencePlugin({
+    new webpack.DllReferencePlugin({
+    context,
+    manifest: require(`${common.dllPath}/polyfills-manifest.json`)
+  }),
+    new webpack.DllReferencePlugin({
     context,
     manifest: require(`${common.dllPath}/vendor-manifest.json`)
   }),

@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import 'base/imports/rx';
 
 import { enableProdMode } from '@angular/core';

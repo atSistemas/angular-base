@@ -12,10 +12,11 @@ export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-module-source-map';
 export const entry = {
-  app: [
+  polyfills: common.polyfills,
+  vendor: common.vendor,
+    app: [
     common.aotPath,
   ],
-  polyfills: common.polyfills
 };
 
 export const module = {
