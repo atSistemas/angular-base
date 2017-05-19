@@ -42,15 +42,6 @@ export const entry = {
   vendor
 };
 
-export const output = {
-  path: buildPath,
-  publicPath: '/',
-  library: '[name]',
-  filename: '[name].js',
-  sourceMapFilename: '[name].map',
-  chunkFilename: '[name].chunk.js',
-};
-
 export const plugins = [
   new DefinePlugin({
     BASE_ENVIRONMENT: JSON.stringify(process.env.NODE_ENV)

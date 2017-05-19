@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const path = require('path');
 
 export const cache = common.cache;
-export const output = common.output;
 export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-source-map';
@@ -12,11 +11,20 @@ export const entry = {
 
   polyfills:  common.polyfills,
   vendor: common.vendor,
-    app: [
+  app: [
     common.appPath,
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client'
   ]
+};
+
+export const output = {
+  path: common.buildPath,
+  publicPath: '/',
+  library: '[name]',
+  filename: '[name].js',
+  sourceMapFilename: '[name].map',
+  chunkFilename: '[name].chunk.js',
 };
 
 export const module = {

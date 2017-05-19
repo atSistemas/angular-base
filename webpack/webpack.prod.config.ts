@@ -5,9 +5,10 @@ const webpack = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin =  require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 export const cache = common.cache;
-export const output = common.output;
 export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-module-source-map';
@@ -16,6 +17,15 @@ export const entry = {
     common.aotPath,
   ],
   polyfills: common.polyfills
+};
+
+export const output = {
+  path: common.buildPath,
+  publicPath: '/',
+  library: '[name]',
+  filename: '[name].[hash].js',
+  sourceMapFilename: '[name].map',
+  chunkFilename: '[name].[hash].chunk.js',
 };
 
 export const module = {
@@ -44,10 +54,6 @@ export const module = {
 
 export const plugins = [
   new webpack.DefinePlugin({ 'process.env': { NODE_ENV: '"production"' } }),
-  new AddAssetHtmlPlugin([
-    { filepath: require('../dist/polyfills-manifest.json') },
-    { filepath: require('../dist/vendor-manifest.json') }
-  ]),
   new webpack.DllReferencePlugin({
     context: path.join(__dirname),
     manifest: require('../dist/vendor-manifest.json')
@@ -65,7 +71,12 @@ export const plugins = [
     chunks: ['app'],
     minChunks: module => /node_modules/.test(module.resource)
   }),
-
+  new HtmlWebpackPlugin({
+     title: 'Base App',
+     filename: 'index.html',
+     hash: true
+   }),
+  new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
   new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
   new webpack.optimize.UglifyJsPlugin(
     {compressor: { warnings: false, screw_ie8 : true },
