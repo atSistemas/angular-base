@@ -72,12 +72,23 @@ export const plugins = [
     minChunks: module => /node_modules/.test(module.resource)
   }),
   new HtmlWebpackPlugin({
-     inject: 'head',
+     inject: 'body',
      title: 'Base App',
-     filename: 'index.html',
+     filename: 'eo.html',
      template: 'server/templates/index.ejs',
      chunks: ['polyfills', 'vendor', 'app'],
-     chunksSortMode: 'dependency'
+     //FIXME
+     chunksSortMode: function (a, b) {
+      const order = ['polyfills', 'vendor', 'app'];
+        if (order.indexOf(a.names[0]) > order.indexOf(b.names[0])) {
+          return 1;
+        }
+        if (order.indexOf(a.names[0]) < order.indexOf(b.names[0])) {
+          return -1;
+        }
+
+      return 0;
+    }
    }),
   new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
   new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
