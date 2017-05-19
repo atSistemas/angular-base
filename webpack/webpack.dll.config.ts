@@ -27,7 +27,7 @@ export const plugins = [
   new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
   new AssetsPlugin({
       path: common.buildPath,
-      filename: 'webpack-assets.json',
+      filename: 'webpack-dll-assets.json',
       prettyPrint: true
   }),
   common.compileError

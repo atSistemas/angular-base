@@ -21,6 +21,7 @@ export const polyfills = [
   'core-js/client/shim',
   'zone.js/dist/zone',
   'zone.js/dist/long-stack-trace-zone',
+
 ];
 export const vendor = [
   '@angular/core',
@@ -39,15 +40,6 @@ export const vendor = [
 export const entry = {
   polyfills,
   vendor
-};
-
-export const output = {
-  path: buildPath,
-  publicPath: '/',
-  library: '[name]',
-  filename: '[name].js',
-  sourceMapFilename: '[name].map',
-  chunkFilename: '[name].chunk.js',
 };
 
 export const plugins = [
