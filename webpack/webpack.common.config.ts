@@ -91,6 +91,16 @@ export const node = {
   setTimeout: true
 };
 
+export const postcss = [
+  require('postcss-import')({ addDependencyTo: webpack }),
+  require('postcss-cssnext')(),
+  require('postcss-modules-extract-imports'),
+  require('postcss-nested')(),
+  require('postcss-reporter')(),
+  require('postcss-url')()
+];
+ 
+
 export const resolve = {
   extensions: ['.js', '.ts', '.tsx', '.css'],
   alias: {

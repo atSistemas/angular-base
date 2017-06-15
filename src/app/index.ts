@@ -6,11 +6,11 @@ import { bootloader, removeNgStyles, createNewHosts, createInputTransfer } from 
 
 import { Store, State } from 'base';
 import { AppModule } from './app.module';
-import { BaseComponent } from 'base/components/base';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  bootstrap: [ BaseComponent ],
-  imports: [AppModule],
+  bootstrap: [ AppComponent ],
+  imports: [AppModule]
 })
 export class DevelopmentModule {
   constructor(

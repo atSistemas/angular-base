@@ -3,7 +3,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 
-import { routes } from '../../app/routes';
+import { routes } from '../../app/app.routes';
 import { RootReducer } from '../reducers';
 import { RequestEffect } from '../effects/request.effect';
 

@@ -5,26 +5,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Store, State } from 'base';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
-import { AppComponents } from './app.components';
-import { BaseComponent } from 'base/components/base';
+import { AppComponent } from './app.component';
+import { MainModule } from './containers/main/main.module';
 
 @NgModule({
-  bootstrap: [ BaseComponent ],
+  bootstrap: [ AppComponent ],
   declarations: [
-    BaseComponent,
-    AppComponents,
+    AppComponent
   ],
   imports: [
     BaseImports,
     BrowserModule,
     HttpModule,
+    MainModule
   ],
   providers: [ BaseProviders ],
 })
 export class AppModule {
   constructor(
     public appRef: ApplicationRef,
-    private store: Store<State>,
+    private store: Store<State>
   ) {}
 
 }

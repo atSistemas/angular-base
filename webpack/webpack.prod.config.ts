@@ -46,7 +46,22 @@ export const module = {
       test: /\.css$/,
       use: ExtractTextPlugin.extract({
         fallback: ['style-loader'],
-        use: ['css-loader?-importLoaders=1&minimize=true&sourceMap=true']
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              minimize: true,
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => common.postcss
+            }
+          }
+        ]
       }),
     },
   ] as any[])

@@ -45,17 +45,30 @@ export const module = {
     },
       {
       test: /\.css$/,
+      exclude: /node_modules/,
       use: [
         { loader: 'to-string-loader' },
         { loader: 'style-loader' },
         { loader: 'css-loader',
           options: {
-            minimize: false,
-            sourceMap: false,
+            importLoaders: 1,
+            // minimize: false,
+            // sourceMap: false, 
+            // modules: true,
+            localIdentName: '[name]__[local]-[hash:base64:4]'
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            // config: {
+            //   path: 'postcss.config.js'
+            // }
+            plugins: (loader) => common.postcss
           }
         }
-      ],
-    },
+      ]
+    }
   ] as any[])
 };
 

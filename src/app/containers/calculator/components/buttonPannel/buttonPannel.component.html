@@ -1,0 +1,52 @@
+<div class="ButtonPanel">
+    <div class="Column">
+        <div class="Row" >
+            <base-button type="number" value="C"  ></base-button>
+            <base-button type="number" value="+/-" ></base-button>
+            <base-button type="number" value="%" ></base-button>
+            <base-button type="operator" value="÷" ></base-button>
+            <!--onClick="() => this.actions.inputOperation(ActionTypes.CLEAN)"-->
+            <!--<Button type="number" value="+/-" onClick={ () => this.actions.inputOperation(ActionTypes.CHANGE_SIGN) } />
+            <Button type="number" value="%" onClick={ () => this.actions.inputOperation(ActionTypes.PERCENT) } />
+            <Button type="operator" value="÷" onClick={ () => this.actions.inputOperator(ActionTypes.DIVIDE) }  />-->
+        </div>
+        <div class="Row" >
+            <base-button type="number" value="7" (click)="onclickNumber(7)" ></base-button>
+            <base-button type="number" value="8" ></base-button>
+            <base-button type="number" value="9" ></base-button>
+            <base-button type="operator" value="x" ></base-button>
+            <!--<Button type="number" value="7" onClick={ () => this.actions.inputNumber(7) } />
+            <Button type="number" value="8" onClick={ () => this.actions.inputNumber(8) } />
+            <Button type="number" value="9" onClick={ () => this.actions.inputNumber(9) } />
+            <Button type="operator" value="x" onClick={ () => this.actions.inputOperator(ActionTypes.MULTIPLY) }  />-->
+        </div>
+        <div class="Row" >
+            <base-button type="number" value="4" ></base-button>
+            <base-button type="number" value="5" ></base-button>
+            <base-button type="number" value="6" ></base-button>
+            <base-button type="operator" value="-" ></base-button>
+            <!--<Button type="number" value="4" onClick={ () => this.actions.inputNumber(4) } />
+            <Button type="number" value="5" onClick={ () => this.actions.inputNumber(5) } />
+            <Button type="number" value="6" onClick={ () => this.actions.inputNumber(6) } />
+            <Button type="operator" value="-" onClick={ () => this.actions.inputOperator(ActionTypes.SUBSTRACT) }  />-->
+        </div>
+        <div class="Row" >
+            <base-button type="number" value="1" ></base-button>
+            <base-button type="number" value="2" ></base-button>
+            <base-button type="number" value="3" ></base-button>
+            <base-button type="operator" value="+" ></base-button>
+            <!--<Button type="number" value="1" onClick={ () => this.actions.inputNumber(1) } />
+            <Button type="number" value="2" onClick={ () => this.actions.inputNumber(2) } />
+            <Button type="number" value="3" onClick={ () => this.actions.inputNumber(3) } />
+            <Button type="operator" value="+" onClick={ () => this.actions.inputOperator(ActionTypes.SUM) }  />-->
+        </div>
+        <div class="Row" >
+            <base-button type="zero" value="0" ></base-button>
+            <base-button type="number" value="." ></base-button>
+            <base-button type="operator" value="=" ></base-button>
+            <!--<Button type="zero" value="0" onClick={ () => this.actions.inputNumber(0) } />
+            <Button type="number" value="." onClick={ () => this.actions.inputDecimal() } />
+            <Button type="operator"  value="=" onClick={ () => this.actions.result() } />-->
+        </div>
+    </div>
+</div>
