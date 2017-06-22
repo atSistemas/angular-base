@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 import { createReducer } from '../CreateReducer';
 import { ActionTypes } from '../../actions';
-import { MainModel, InitialState } from '../../models';
+import { MainModel, MainInitialState } from '../../models';
+
 
 describe('shared / CreateReducer', () => {
 
@@ -9,7 +10,7 @@ describe('shared / CreateReducer', () => {
 
     it('should return type builder object', () => {
 
-      const login = (state, data) => {
+      const login = (state, data) => { 
         return state;
       };
 
@@ -23,10 +24,10 @@ describe('shared / CreateReducer', () => {
         [ActionTypes.MAIN_SUCCESS]: success
       };
             
-      const MainReducer = createReducer<MainModel>(actionHandlers, InitialState);
+      const MainReducer = createReducer<MainModel>(actionHandlers, MainInitialState);
       
       let expectMainReducer = MainReducer(undefined, undefined);
-      let result = InitialState;
+      let result = MainInitialState;
       expect(expectMainReducer).to.deep.equal(result);
 
       expectMainReducer = MainReducer(1, undefined);

@@ -6,6 +6,8 @@ import { CalculatorContainer } from './calculator.container';
 import { DisplayComponent } from './components/display/display.component'; 
 import { ButtonPannelComponent } from './components/buttonPannel/buttonPannel.component'; 
 import { ButtonComponent } from './components/button/button.component'; 
+
+import {CalculatorActions} from './actions';
 // export const routes: Routes = [
 //   {
 //     component: MainContainer,
@@ -24,7 +26,7 @@ import { ButtonComponent } from './components/button/button.component';
     CommonModule,
     // RouterModule.forChild(routes)
   ],
-  providers: [ ]
+  providers: [ CalculatorActions]
 })
 
 export class CalculatorModule {}

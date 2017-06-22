@@ -1,36 +1,36 @@
-import { expect } from 'chai';
-import { typeBuilder, generateFetchTypes } from '../TypeHelper';
+// import { expect } from 'chai';
+// import { typeBuilder, generateFetchTypes } from '../TypeHelper';
 
-describe('shared / type-helper', () => {
+// describe('shared / type-helper', () => {
 
-  describe('typeBuilder', () => {
+//   describe('typeBuilder', () => {
 
-    it('should return type builder object', () => {
+//     it('should return type builder object', () => {
 
-      let TypeExamples = ['typeExample', 'typeExample2'];
-      let types = typeBuilder(TypeExamples);
+//       let TypeExamples = ['typeExample', 'typeExample2'];
+//       let types = typeBuilder(TypeExamples);
 
-      expect(types.typeExample).to.equal('typeExample');
-      expect(types.typeExample2).to.equal('typeExample2');
+//       expect(types.typeExample).to.equal('typeExample');
+//       expect(types.typeExample2).to.equal('typeExample2');
 
-    });
-  });
+//     });
+//   });
 
-  describe('generateFetchTypes', () => {
+//   describe('generateFetchTypes', () => {
 
 
-    it('should return fetch tyspes', () => {
+//     it('should return fetch tyspes', () => {
 
-      let TypeExamples = 'TEST';
-      let types = generateFetchTypes(TypeExamples);
+//       let TypeExamples = 'TEST';
+//       let types = generateFetchTypes(TypeExamples);
 
-      expect(types.length).to.equal(3);
-      expect(types[0]).to.equal('TEST_REQUEST');
-      expect(types[1]).to.equal('TEST_SUCCESS');
-      expect(types[2]).to.equal('TEST_ERROR');
+//       expect(types.length).to.equal(3);
+//       expect(types[0]).to.equal('TEST_REQUEST');
+//       expect(types[1]).to.equal('TEST_SUCCESS');
+//       expect(types[2]).to.equal('TEST_ERROR');
 
-    });
+//     });
 
-  });
+//   });
 
-});
+// });

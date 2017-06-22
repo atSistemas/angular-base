@@ -1,92 +1,57 @@
+import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import {CalculatorActions} from '../../actions';
-import {ActionTypes} from '../../actionTypes';
-import { Action } from 'base';
+import { Observable } from 'rxjs/Observable';
+import { CalculatorActions } from '../../actions';
+import { ActionTypes } from '../../actionTypes';
+import { Store, State, Action } from 'base';
+import { CalculatorModel } from './../../models';
 
 @Component({
   selector: 'base-buttonPannel',
   templateUrl: 'buttonPannel.component.html',
   styleUrls: ['buttonPannel.component.css']
 })
-
 export class ButtonPannelComponent implements OnInit {
-  constructor() { }
+  
+  constructor(
+    public store: Store<State>,
+    public calculatorActions: CalculatorActions
+  ) { }
 
   ngOnInit() { }
 
+  onClickNumber(value: any) {
+    this.store.dispatch(this.calculatorActions.inputNumber(value));
+  }
 
-  onclickNumber(n){
-    var c= new CalculatorActions();
-    c.inputNumber(n);
+  onClickOperation(value: any) {
+    let actionType: any;
+    switch (value) {
+      case 'C':   actionType = ActionTypes.CLEAN; break;
+      case '+/-': actionType = ActionTypes.CHANGE_SIGN; break;
+      case '%': actionType = ActionTypes.PERCENT; break;
+      default: break;
+    }
+    this.store.dispatch(this.calculatorActions.inputOperation(actionType));
+  }
+
+  onClickOperator(operator: any) {
+    let actionType: any;
+    switch (operator) {
+      case '÷': actionType = ActionTypes.DIVIDE; break;
+      case 'x': actionType = ActionTypes.MULTIPLY; break;
+      case '-': actionType = ActionTypes.SUBSTRACT; break;
+      case '+': actionType = ActionTypes.SUM; break;
+      default: break;
+    }
+    this.store.dispatch(this.calculatorActions.inputOperator(actionType));
+  }
+
+  onClickDecimal(){
+    this.store.dispatch(this.calculatorActions.inputDecimal());
+  }
+
+  onClickResult(){
+    this.store.dispatch(this.calculatorActions.result());
   }
 }
-
-
-
-
-
-
-// import { connect } from 'react-redux';
-// import { PropTypes } from 'prop-types';
-// import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
-
-// import Button from '../Button';
-// import styles from './styles.css';
-// import * as Actions from '../../actions';
-// import ActionTypes from '../../actionTypes';
-
-
-// export class ButtonPannel extends Component {
-
-//   static propTypes = {
-//     dispatch: PropTypes.func.isRequired
-//   }
-
-//   constructor (props) {
-//     super(props);
-//     this.actions = bindActionCreators(Actions, props.dispatch);
-//   }
-
-//   render () {
-//     return (
-//       <div className={ styles.ButtonPanel }>
-//         <div className={ styles.Column }>
-//           <div className={ styles.Row }>
-//             <Button type="number" value="C" onClick={ () => this.actions.inputOperation(ActionTypes.CLEAN) } />
-//             <Button type="number" value="+/-" onClick={ () => this.actions.inputOperation(ActionTypes.CHANGE_SIGN) } />
-//             <Button type="number" value="%" onClick={ () => this.actions.inputOperation(ActionTypes.PERCENT) } />
-//             <Button type="operator" value="÷" onClick={ () => this.actions.inputOperator(ActionTypes.DIVIDE) }  />
-
-//           </div>
-//           <div className={ styles.Row }>
-//             <Button type="number" value="7" onClick={ () => this.actions.inputNumber(7) } />
-//             <Button type="number" value="8" onClick={ () => this.actions.inputNumber(8) } />
-//             <Button type="number" value="9" onClick={ () => this.actions.inputNumber(9) } />
-//             <Button type="operator" value="x" onClick={ () => this.actions.inputOperator(ActionTypes.MULTIPLY) }  />
-//           </div>
-//           <div className={ styles.Row }>
-//             <Button type="number" value="4" onClick={ () => this.actions.inputNumber(4) } />
-//             <Button type="number" value="5" onClick={ () => this.actions.inputNumber(5) } />
-//             <Button type="number" value="6" onClick={ () => this.actions.inputNumber(6) } />
-//             <Button type="operator" value="-" onClick={ () => this.actions.inputOperator(ActionTypes.SUBSTRACT) }  />
-//           </div>
-//           <div className={ styles.Row }>
-//             <Button type="number" value="1" onClick={ () => this.actions.inputNumber(1) } />
-//             <Button type="number" value="2" onClick={ () => this.actions.inputNumber(2) } />
-//             <Button type="number" value="3" onClick={ () => this.actions.inputNumber(3) } />
-//             <Button type="operator" value="+" onClick={ () => this.actions.inputOperator(ActionTypes.SUM) }  />
-//           </div>
-//           <div className={ styles.Row }>
-//             <Button type="zero" value="0" onClick={ () => this.actions.inputNumber(0) } />
-//             <Button type="number" value="." onClick={ () => this.actions.inputDecimal() } />
-//             <Button type="operator"  value="=" onClick={ () => this.actions.result() } />
-//           </div>
-//         </div>
-
-//       </div>
-//     );
-//   }
-// }
-
-// export default connect(null)(ButtonPannel);

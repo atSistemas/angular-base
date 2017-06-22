@@ -8,5 +8,5 @@ export interface MainState {
   main: MainModel;
 }
 
-export const InitialState = <MainModel>
+export const MainInitialState = <MainModel>
   { id: 22, name: 'Initial Name' };

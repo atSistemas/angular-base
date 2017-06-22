@@ -1,9 +1,9 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
-import { MainModel, InitialState } from '../models';
+import { MainModel, MainInitialState } from '../models';
 
 const request = (state, data) => {
-  return state;
+   return state;
 };
 
 const login = (state, data) => {
@@ -21,6 +21,6 @@ const actionHandlers = {
   [ActionTypes.MAIN_SUCCESS]: success,
 };
 
-const MainReducer = createReducer<MainModel>(actionHandlers, InitialState);
+const MainReducer = createReducer<MainModel>(actionHandlers, MainInitialState);
 
 export { MainReducer }

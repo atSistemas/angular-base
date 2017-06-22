@@ -1,9 +1,9 @@
-// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
 
-// import { Store, State } from 'base';
-// import { MainActions } from './actions';
-// import { MainModel } from './models';
+import { Store, State } from 'base';
+import { MainActions } from './actions';
+import { MainModel } from './models';
 
 @Component({
   selector: 'main-container',
@@ -13,14 +13,14 @@ import { Component } from '@angular/core';
 
 export class MainContainer {
 
-  // public data$: Observable<MainModel>;
+  public data$: Observable<MainModel>;
 
-  // constructor(
-  //     // public store: Store<State>,
-  //     // public mainActions: MainActions
-  // ) {
-  //   // this.data$ = this.store.select(state => state.main);
-  //   // this.store.dispatch(this.mainActions.mainRequest());
-  // }
+  constructor(
+      public store: Store<State>,
+      public mainActions: MainActions
+  ) {
+    this.data$ = this.store.select(state => state.main);
+    this.store.dispatch(this.mainActions.mainRequest());
+  }
 
 }

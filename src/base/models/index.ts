@@ -1,3 +1,5 @@
-import { InitialState, MainModel, MainState } from '../../app/containers/main/models';
+import { MainInitialState, MainModel, MainState } from '../../app/containers/main/models';
+import { CalculatorInitialState, CalculatorModel, CalculatorState } from '../../app/containers/calculator/models';
 
-export { InitialState, MainModel, MainState }
+export { MainInitialState, MainModel, MainState }
+export { CalculatorInitialState, CalculatorModel, CalculatorState }

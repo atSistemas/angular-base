@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Action } from 'base';
 import { ActionTypes } from '../actionTypes';
@@ -53,12 +52,9 @@ export class CalculatorActions {
     };
   }
 
-  public result(operator): Action {
+  public result(operator?): Action {
     return {
-      type: ActionTypes.RESULT,
-      payload:{
-        operator
-      }
+      type: ActionTypes.RESULT
     };
   }
 

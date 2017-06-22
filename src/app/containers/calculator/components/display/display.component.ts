@@ -1,15 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { Store, State, Action } from 'base';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { CalculatorModel } from './../../models';
 
 @Component({
-    selector: 'base-display',
-    templateUrl: './display.component.html',
-    styleUrls: ['./display.component.css']
+  selector: 'base-display',
+  templateUrl: './display.component.html',
+  styleUrls: ['./display.component.css']
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class DisplayComponent implements OnInit {
-    constructor() { }
+export class DisplayComponent implements OnInit,  OnDestroy{ //, OnChanges {
 
-    ngOnInit() { }
+  data$: Observable<CalculatorModel>;
+    
+  constructor(public store: Store<State> ) { 
+    this.data$ = this.store.select(state => state.calculator);
+  }
+
+  ngOnInit() {
+      
+    //  this.data$.subscribe(data=>{
+    
+    //    this.display = data.display;  
+    //  });
+
+  }
+
+  // ngOnChanges(){
+   //   this.display=this.store.select('display');
+
+  // }
+
+  ngOnDestroy(){
+      //  this.subscription.unsubscribe();  
+  }
+
+  // private subscribe = (data) => {
+  //   this.display = data.display;
+  //   console.log(data.display);
+  // }
 }
 
 // import { Record } from 'immutable';

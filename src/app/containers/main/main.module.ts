@@ -7,6 +7,7 @@ import { LogoComponent } from '../../components/logo/logo.component';
 import { LinkButtonComponent } from '../../components/linkButton/linkButton.component';
 
 import { CalculatorModule } from '../calculator/calculator.module';
+import { WeatherStationModule } from '../weatherStations/weatherStation.module';
 
 // export const routes: Routes = [
 //   {
@@ -24,6 +25,7 @@ import { CalculatorModule } from '../calculator/calculator.module';
   imports: [
     CommonModule,
     CalculatorModule,
+    WeatherStationModule
     // RouterModule.forChild(routes)
   ],
   providers: [ ]

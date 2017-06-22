@@ -1,5 +1,5 @@
-import fetch from 'isomorphic-fetch';
-import * as helpers from '../helpers';
+// import fetch from 'isomorphic-fetch';
+// import * as helpers from '../helpers';
 import  config  from '../config';
 
 export default {
@@ -12,7 +12,7 @@ export default {
 
     return fetch(urlApi)
     .then(req => req.json())
-    .then(data => helpers.parseWeatherStations(data));
+    // .then(data => helpers.parseWeatherStations(data));
   },
 
   fetchWeatherStation(id) {
@@ -22,7 +22,7 @@ export default {
 
     return fetch(urlApi)
     .then(req => req.json())
-    .then(data => helpers.parseWeatherStation(data) );
+    // .then(data => helpers.parseWeatherStation(data) );
   },
 
   fetchWeather(lat, lng) {
@@ -35,7 +35,7 @@ export default {
 
     return fetch(urlCall)
     .then(req => req.json())
-    .then(data => helpers.parseWeather(data) );
+    // .then(data => helpers.parseWeather(data) );
 
   }
 

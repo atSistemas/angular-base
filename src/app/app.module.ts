@@ -1,5 +1,5 @@
 import { HttpModule } from '@angular/http';
-import { ApplicationRef, NgModule } from '@angular/core';
+import { ApplicationRef, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { Store, State } from 'base';
@@ -19,7 +19,8 @@ import { MainModule } from './containers/main/main.module';
     HttpModule,
     MainModule
   ],
-  providers: [ BaseProviders ],
+  providers: [ BaseProviders ]
+  // schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {
   constructor(
