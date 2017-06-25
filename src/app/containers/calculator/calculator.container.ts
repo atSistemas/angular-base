@@ -7,7 +7,7 @@ import { CalculatorActions } from './actions';
 import { CalculatorModel } from './models';
 
 @Component({
-  selector: 'calculator-container',
+  selector: 'base-calculator-container',
   templateUrl: './calculator.container.html',
   styleUrls: ['./calculator.container.css']
 })

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, OnDestroy, OnChanges } from
 import { Store, State, Action } from 'base';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { CalculatorModel } from './../../models';
+import { Calculator } from 'app/containers/calculator/models';
 
 @Component({
   selector: 'base-display',
@@ -13,7 +13,7 @@ import { CalculatorModel } from './../../models';
 
 export class DisplayComponent implements OnInit,  OnDestroy{ //, OnChanges {
 
-  data$: Observable<CalculatorModel>;
+  data$: Observable<Calculator>;
     
   constructor(public store: Store<State> ) { 
     this.data$ = this.store.select(state => state.calculator);

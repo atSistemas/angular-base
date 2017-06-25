@@ -1,6 +1,6 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../actionTypes';
-import { CalculatorModel, CalculatorInitialState } from '../models';
+import { Calculator, CalculatorModel } from '../models';
 
 // const request = (state, data) => {
 //   return state;
@@ -123,6 +123,5 @@ const actionHandlers = {
   [ActionTypes.INPUT_OPERATION]: inputOperation
 };
 
-const CalculatorReducer = createReducer<CalculatorModel>(actionHandlers, CalculatorInitialState);
+export const CalculatorReducer = createReducer<Calculator>(actionHandlers, new CalculatorModel());
 
-export { CalculatorReducer }

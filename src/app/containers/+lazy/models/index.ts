@@ -1,16 +1,32 @@
-import { TypedRecord } from 'typed-immutable-record';
-import { makeTypedFactory } from 'typed-immutable-record';
+import { Record } from 'immutable';
 
-export interface LazyModelInterface {
-  lazy: String;
+export interface LazyModel{
+  lazy?: String;
 };
 
-export interface LazyModel extends TypedRecord<LazyModel>,
-  LazyModelInterface {
-};
+export interface LazyState {
+  Lazy: LazyModel;
+}
 
-const LazyModelFactory = makeTypedFactory<LazyModelInterface, LazyModel>({
-  lazy: 'Lazy view!',
+export const LazyInitialState =  Record<LazyModel>({
+  lazy: 'Lazy view!'
 });
 
-export const InitialState = LazyModelFactory();
+
+
+// import { TypedRecord } from 'typed-immutable-record';
+// import { makeTypedFactory } from 'typed-immutable-record';
+
+// export interface LazyModel {
+//   lazy: String;
+// };
+
+// export interface LazyState extends TypedRecord<LazyState>,
+//   LazyModel {
+// };
+
+// const LazyModelFactory = makeTypedFactory<LazyModel, LazyState>({
+//   lazy: 'Lazy view!',
+// });
+
+// export const LazyInitialState = LazyModelFactory();

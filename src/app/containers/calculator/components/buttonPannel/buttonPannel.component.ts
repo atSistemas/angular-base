@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { CalculatorActions } from '../../actions';
 import { ActionTypes } from '../../actionTypes';
 import { Store, State, Action } from 'base';
-import { CalculatorModel } from './../../models';
+// import { CalculatorModel } from './../../models';
 
 @Component({
   selector: 'base-buttonPannel',

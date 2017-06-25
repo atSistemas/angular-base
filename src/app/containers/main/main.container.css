@@ -26,7 +26,7 @@
 
   a {
       display: block;
-      margin-top: 90px;
+      margin-top: 40px;
     }
   }
 
@@ -38,4 +38,7 @@
   a {
     width: 46%;
   }
+}
+.button {
+   margin-right: 30px;  
 }

@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+import config from './config'
 // import { RouterModule, Routes } from '@angular/router';
 
 import { WeatherStationContainer } from './weatherStation.container';
+import * as components from './components';
 // import { LogoComponent } from '../../components/logo/logo.component';
 // import { LinkButtonComponent } from '../../components/linkButton/linkButton.component';
 
@@ -19,12 +22,16 @@ import { WeatherStationContainer } from './weatherStation.container';
 
 @NgModule({
   declarations: [
-   WeatherStationContainer
+   WeatherStationContainer,
+   components.MapBoxComponent
   //  LogoComponent,
   //  LinkButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: config.GOOGLE_MAPS_API_KEY
+    })
     // CalculatorModule,
     // RouterModule.forChild(routes)
   ]//,

@@ -13,13 +13,15 @@ import { Component } from '@angular/core';
 export class WeatherStationContainer {
 
   // public data$: Observable<MainModel>;
- 
+  name: string;
+
   constructor(
       // public store: Store<State>,
       // public mainActions: MainActions
   ) {
     // this.data$ = this.store.select(state => state.main);
     // this.store.dispatch(this.mainActions.mainRequest());
+    this.name = "WeatherStations";
   }
 
 }

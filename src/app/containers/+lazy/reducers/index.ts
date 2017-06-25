@@ -1,6 +1,6 @@
 import { createReducer } from 'base';
 import { actionTypes } from '../action-types';
-import { InitialState, LazyModelInterface } from '../models';
+import { LazyInitialState, LazyModel } from '../models';
 
 const request = (state, data) => {
   return state;
@@ -15,5 +15,5 @@ const actionHandlers = {
   [actionTypes.LAZY_SUCCESS]: success,
 };
 
-const LazyReducer = createReducer<LazyModelInterface>(actionHandlers, InitialState);
+const LazyReducer = createReducer<LazyModel>(actionHandlers, LazyInitialState);
 export { LazyReducer }
