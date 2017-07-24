@@ -11,8 +11,8 @@ export class RequestEffect {
   // tslint:disable:no-unused-variable
   @Effect()
     private main$ = this.actions$
-    .filter((action: Action) => action.payload && action.payload.request)
-    .switchMap(action => action.payload.request
+    .filter((action: Action) => action.request)
+    .concatMap(action => action.request
       .mergeMap(res => resolveRequestAction(action, res, 'SUCCESS'))
       .catch(err => resolveRequestAction(action, err, 'ERROR'))
     );

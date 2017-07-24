@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Action } from 'base';
 import { ActionTypes } from '../actionTypes';
-import api from '../api';
-// import { MainService } from '../services/main-service';
+import { WeatherStationService } from '../services';
 
 @Injectable()
 export class WeatherStationActions {
 
   constructor(
-    // private mainService: MainService,
+    private service: WeatherStationService,
   ) { }
 
-  
-  getWeatherStations(params) {
+  mainRequest(): Action {
+    return {
+      type: ActionTypes.MAINB_REQUEST,
+      request: this.service.getData()
+    };
+  }
+
+  weatherStations(): Action {
     return {
       type: ActionTypes.WEATHERSTATIONS_REQUEST,
-      request: api.fetchWeatherStations()
-      //request: api.fetchWeatherStations(params)
+      request: this.service.weatherStations()
     };
   }
 
@@ -27,53 +31,18 @@ export class WeatherStationActions {
     };
   }
 
-  getWeatherStation(id) {
+  weatherStation(id): Action {
     return {
       type: ActionTypes.WEATHERSTATION_REQUEST,
-      request: api.fetchWeatherStation(id)
+      request: this.service.weatherStation(id)
     };
   }
 
-  getWeather(lat, lng) {
+  weather(lat, lng): Action {
     return {
       type: ActionTypes.FORECAST_REQUEST,
-      request: api.fetchWeather(lat, lng)
+      request: this.service.weather(lat, lng)
     };
   }
-  
+
 };
-
-
-// import { generateFetchTypes } from 'base';
-// import api from '../api';
-// import ActionTypes from '../actionTypes';
-
-// export function getWeatherStations( { params } ) {
-//   return {
-//     types: generateFetchTypes(ActionTypes.WEATHERSTATIONS_REQUEST),
-//     request: api.fetchWeatherStations(params)
-//   };
-// }
-
-// export function weatherStationSelected( id ) {
-//   return {
-//     type: ActionTypes.WEATHERSTATION_SELECTED,
-//     id: id
-//   };
-// }
-
-// export function getWeatherStation( id ) {
-//   return {
-//     types: generateFetchTypes(ActionTypes.WEATHERSTATION_REQUEST),
-//     request: api.fetchWeatherStation( id )
-//   };
-// }
-
-
-// export function getWeather( lat, lng ) {
-//   return {
-//     types: generateFetchTypes(ActionTypes.FORECAST_REQUEST),
-//     request: api.fetchWeather(lat, lng)
-//   };
-// }
-

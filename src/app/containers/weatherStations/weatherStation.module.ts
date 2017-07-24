@@ -5,13 +5,18 @@ import config from './config'
 // import { RouterModule, Routes } from '@angular/router';
 
 import { WeatherStationContainer } from './weatherStation.container';
+
 import * as components from './components';
+import {  } from './components/weatherStationDetails/weatherStationDetails.component';
+// import * as components from './components';
 // import { LogoComponent } from '../../components/logo/logo.component';
 // import { LinkButtonComponent } from '../../components/linkButton/linkButton.component';
 
 // import { CalculatorModule } from '../calculator/calculator.module';
 
-// import {WeatherStationActions} from './actions';
+import {WeatherStationActions} from './actions';
+import {WeatherStationService} from './services';
+
 
 // export const routes: Routes = [
 //   {
@@ -23,7 +28,11 @@ import * as components from './components';
 @NgModule({
   declarations: [
    WeatherStationContainer,
-   components.MapBoxComponent
+   components.MapBoxComponent,
+   components.WeatherStationDetailsComponent,
+   components.ForecastDetailComponent,
+   components.ForecastDetailItemComponent
+   
   //  LogoComponent,
   //  LinkButtonComponent
   ],
@@ -34,8 +43,11 @@ import * as components from './components';
     })
     // CalculatorModule,
     // RouterModule.forChild(routes)
-  ]//,
-  // providers: [WeatherStationActions]
+  ],
+  providers: [
+    WeatherStationService,
+    WeatherStationActions
+  ]
 })
 
 export class WeatherStationModule {}

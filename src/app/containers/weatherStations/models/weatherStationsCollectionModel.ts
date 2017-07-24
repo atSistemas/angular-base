@@ -1,17 +1,26 @@
-import { Record, Map } from 'immutable';
+import { Record, Map, List } from 'immutable';
+//import {MainB, MainBModelInitialState, MainBModel} from '../models/mainBModel';
+// import {MainB, MainBModel} from './mainBModel';
+import {MainB, MainBModel} from './mainBModel';
+import {WeatherStationDetails, WeatherStationDetailsModel} from './weatherStationDetailsModel';
+import {WeatherStations, WeatherStationsModel} from './weatherStationsModel';
 
 export interface WeatherStationsCollection {
-  data?: any;
+  data?: List<WeatherStations>;
+  mainB?:MainB;
   stationSelected?: number;
   forecast?: any;
-  weatherStationDetails?: any;
+  weatherStationDetails?:WeatherStationDetails;
 };
 
+
+
 export const WeatherStationsCollectionModel = Record<WeatherStationsCollection>({
-  data: Map(),
+  data: List(),
+  mainB: MainBModel(),
   stationSelected: -1,
   forecast: Map(),
-  weatherStationDetails: Map()
+  weatherStationDetails: WeatherStationDetailsModel()
 });
 
 // import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';

@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-interface Forecast{
+export interface Forecast{
   clouds?: number;
   deg?: number;
   dt?: number;

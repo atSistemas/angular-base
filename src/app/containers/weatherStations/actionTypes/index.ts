@@ -10,20 +10,10 @@ export const ActionTypes = createActionType([
   'WEATHERSTATION_SELECTED',
   'FORECAST_REQUEST',
   'FORECAST_SUCCESS',
-  'FORECAST_ERROR'
+  'FORECAST_ERROR',
+
+  'MAINB_REQUEST',
+  'MAINB_SUCCESS',
+  'MAINB_ERROR',
 ]);
 
-// import { typeBuilder } from 'base';
-
-// export default typeBuilder([
-//   'WEATHERSTATIONS_REQUEST',
-//   'WEATHERSTATIONS_SUCCESS',
-//   'WEATHERSTATIONS_ERROR',  
-//   'WEATHERSTATION_REQUEST',
-//   'WEATHERSTATION_SUCCESS',
-//   'WEATHERSTATION_ERROR',
-//   'WEATHERSTATION_SELECTED',
-//   'FORECAST_REQUEST',
-//   'FORECAST_SUCCESS',
-//   'FORECAST_ERROR'
-// ]);

@@ -1,12 +1,18 @@
-
-import { WeatherStationModel } from './weatherStationModel';
-import { ForecastModel } from './forecastModel';
-import { WeatherStationDetailsModel } from './weatherStationDetailsModel';
-import { WeatherStationsCollectionModel } from './weatherStationsCollectionModel';
-
-export { WeatherStationModel, ForecastModel, WeatherStationDetailsModel, WeatherStationsCollectionModel};
+import { WeatherStations, WeatherStationsModel } from './weatherStationsModel';
+export { WeatherStationDetails, WeatherStationDetailsModel } from './weatherStationDetailsModel';
+export { Forecast, ForecastModel } from './forecastModel';
+export { MainB, MainBModel }  from './mainBModel';
+export { WeatherStationsCollection, WeatherStationsCollectionModel  } from './weatherStationsCollectionModel';
 
 
+// import * as modelMainB from './mainBModel';
+export { WeatherStations, WeatherStationsModel};
+// export { WeatherStation, WeatherStationModel};
+// export { WeatherStationsCollectionModel, WeatherStationsCollection};
+// export { ForecastModel };
+// export { MainB, MainBModel, MainBModelInitialState };
+
+//export {modelMainB};
 
 
 

@@ -1,5 +1,4 @@
-import { MainInitialState, MainModel, MainState } from '../../app/containers/main/models';
-import { Calculator, CalculatorModel } from '../../app/containers/calculator/models';
-
-export { MainInitialState, MainModel, MainState }
-export { Calculator, CalculatorModel }
+// export { MainInitialState, MainModel, MainState } from '../../app/containers/main/models';
+export { Main, MainModel } from '../../app/containers/main/models';
+export { Calculator, CalculatorModel } from '../../app/containers/calculator/models';
+export { WeatherStationsCollection, WeatherStationsCollectionModel } from '../../app/containers/weatherStations/models';

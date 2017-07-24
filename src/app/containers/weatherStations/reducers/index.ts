@@ -1,15 +1,15 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../actionTypes';
-import { WeatherStationsCollectionModel } from '../models';
+import { WeatherStationsCollectionModel, WeatherStationsCollection } from '../models';
 
-function weatherStationsRequest(state) { return state; }
+const weatherStationsRequest = state => state;
 
-function weatherStationsError(state) { return state; }
+const weatherStationsError = state => state;
 
-function weatherStationsSuccess(state, action) {
+const weatherStationsSuccess =(state, action) => {
   return state
-    .update('data', () => action.result)
-    .set('stationSelected', -1);
+  .update('data', () => action.payload)
+  .set('stationSelected', -1);
 }
 
 function weatherStationSelected(state, action) {
@@ -21,15 +21,44 @@ function weatherStationRequest(state) { return state; }
 function weatherStationError(state) { return state; }
 
 function weatherStationSuccess(state, action) {
-  return state.update('weatherStationDetails', () => action.result);
+  return state.update('weatherStationDetails', () => action.payload);
 }
 
 function forecastRequest(state) { return state; }
 
 function forecastError(state) { return state; }
 
-function forecastSuccess(state, action) {
-  return state.update('forecast', () => action.result);
+const forecastSuccess = (state, action) => {
+  return state
+    .update('forecast', () => {
+     
+      return action.payload
+    });
+}
+
+const request = state => {
+  return state;
+}
+
+const error = state => {
+  return state;
+}
+
+// const success = (state, action) => {
+//   return Object.assign({}, state, action.payload);
+// };
+
+function  success (state, action) {
+  const res = action.payload;
+  return state
+    // .update('main', function (value) {
+   
+    //   return action.payload;
+    // });
+    // .set('id', res.id)
+    // .set('name', res.name);
+    .setIn(['mainB', 'id'], res.id)
+    .setIn(['mainB', 'name'], res.name);
 }
 
 const actionHandlers = {
@@ -43,6 +72,9 @@ const actionHandlers = {
   [ActionTypes.FORECAST_REQUEST]: forecastRequest,
   [ActionTypes.FORECAST_SUCCESS]: forecastSuccess,
   [ActionTypes.FORECAST_ERROR]: forecastError,
+  [ActionTypes.MAINB_REQUEST]: request,
+  [ActionTypes.MAINB_SUCCESS]: success,
+  [ActionTypes.MAINB_ERROR]: error
 };
 
-export default createReducer(actionHandlers, new WeatherStationsCollectionModel());
+export const WeatherStationsReducer = createReducer<WeatherStationsCollection>(actionHandlers, WeatherStationsCollectionModel());

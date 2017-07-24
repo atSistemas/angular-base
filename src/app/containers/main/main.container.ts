@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 
 import { Store, State } from 'base';
 import { MainActions } from './actions';
-import { MainModel } from './models';
+import { Main } from './models';
+// import { MainModel } from './models';
 
 @Component({
   selector: 'main-container',
@@ -13,8 +14,8 @@ import { MainModel } from './models';
 
 export class MainContainer {
 
-  public data$: Observable<MainModel>;
-
+  public data$: Observable<any>;
+ 
   constructor(
       public store: Store<State>,
       public mainActions: MainActions

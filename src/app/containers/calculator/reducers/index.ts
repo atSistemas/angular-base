@@ -2,18 +2,6 @@ import { createReducer } from 'base';
 import { ActionTypes } from '../actionTypes';
 import { Calculator, CalculatorModel } from '../models';
 
-// const request = (state, data) => {
-//   return state;
-// };
-
-// const login = (state, data) => {
-//   return state;
-// };
-
-// const success = (state, action) => {
-//   return Object.assign({}, state, action.payload
-//   );
-// };
 const calculate = (operator, prevValue, nextValue) => {
   const result = {
     [ActionTypes.SUM]: () => prevValue + nextValue,
@@ -113,9 +101,6 @@ function inputOperator(state, action) {
 }
 
 const actionHandlers = {
-  //   [ActionTypes.LOGIN]: login,
-  //   [ActionTypes.MAIN_REQUEST]: request,
-  //   [ActionTypes.MAIN_SUCCESS]: success,
   [ActionTypes.RESULT]: result,
   [ActionTypes.INPUT_NUMBER]: inputNumber,
   [ActionTypes.INPUT_DECIMAL]: inputDecimal,

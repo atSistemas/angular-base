@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-interface WeatherStationDetails {
+export interface WeatherStationDetails {
   id: number;
   temp: number;
   pressure: number;
@@ -13,7 +13,7 @@ interface WeatherStationDetails {
 
 export const WeatherStationDetailsModel = Record<WeatherStationDetails>({
   id:-1,
-  temp: 14,
+  temp: 0,
   pressure: 0,
   humidity: 0,
   wind: null,

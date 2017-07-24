@@ -1,4 +1,4 @@
-.weatherDetailRow{
+ .forecastDetailRow{
   border: 3px solid #FAB10A;
   border-radius: 15px;
   float: left;
@@ -16,4 +16,4 @@
 .rowItem{
   display: block;
   float: none;
-}
+} 

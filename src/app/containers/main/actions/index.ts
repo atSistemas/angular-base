@@ -14,9 +14,10 @@ export class MainActions {
   public mainRequest(): Action {
     return {
       type: ActionTypes.MAIN_REQUEST,
-      payload: {
-        request: this.mainService.getData(),
-      }
+      request: this.mainService.getData()
+      // payload: {
+       
+      // }
     };
   }
 

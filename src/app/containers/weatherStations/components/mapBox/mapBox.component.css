@@ -8,3 +8,15 @@ agm-map {
   height: 650px;
   width: 800px;
 }
+
+.infoWindowBox {
+  background-color: white;
+  width: 120px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.infoWindowRow{
+  display: block;
+  height: 20px;
+}

@@ -1,20 +1,27 @@
 import { Record } from 'immutable';
 
-export interface WeatherStation {
+export interface WeatherStations {
   id?: number;
   stationId?: number;
-  distance?: number;
-  last?: any;
-  station?: any;
+  // distance?: number;
+  // last?: any;
+  // station?: any;
+  name?: string;
+  coord?: any;
+
+  
 };
 
-export const WeatherStationModel = Record<WeatherStation>({
-  id: 0,
-  stationId: 0,
-  distance: 0,
-  last: null,
-  station: null  
-});
+export const WeatherStationsModel = Record<WeatherStations>({
+  id: -1,
+  stationId: -1,
+  // distance: 0,
+  // last: null,
+  // station: null,
+  name: null,
+  coord: null,
+  
+}); 
 
 
 

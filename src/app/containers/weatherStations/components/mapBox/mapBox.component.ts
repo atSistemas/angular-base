@@ -1,4 +1,9 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store, State } from 'base';
+import { WeatherStationActions } from '../../actions';
+import { WeatherStationsModel, WeatherStations } from '../../models/';
+import { AgmInfoWindow } from '@agm/core';
 
 @Component({
   selector: 'base-map-box',
@@ -7,28 +12,39 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 
 export class MapBoxComponent implements OnInit {
+  @ViewChildren(AgmInfoWindow) queryList: QueryList<AgmInfoWindow>;
+  infoWindow: AgmInfoWindow;
+  data$: Observable<any>;
+ 
   lat: number = 39.938043;
   lng: number = -4.337157;
-  zoom:number = 6;
-  style: string= 'Button';
-  
-  // @Input() value: string;
-  // @Input() type: string;
-  // @Output() clickButton = new EventEmitter();
+  zoom: number = 6;
 
-  
- 
-  constructor(){ }
+  constructor(
+    public store: Store<State>,
+    public weatherStationActions: WeatherStationActions
+  ) {}
 
   ngOnInit() {
-    // if (this.type === 'operator') this.style = "ButtonOperate";
-    // else if (this.type === 'zero') this.style = "ButtonZero";
+    this.data$ = this.store.select(state => state.weatherStation.data);
   }
 
-  onClick(event) {
-    // this.clickButton.emit(this.value);
+  mouseOverMarker(item) {
+    this.select(item);
+    this.store.dispatch(this.weatherStationActions.weatherStationSelected(item.stationId));
+    this.store.dispatch(this.weatherStationActions.weatherStation(item.stationId)); 
+    this.infoWindow.open();
   }
 
+  mouseOutMarker(item) {
+    this.store.dispatch(this.weatherStationActions.weatherStationSelected(-1));
+    this.infoWindow.close();
+  }
+
+  private select(item) {
+    this.infoWindow = this.queryList.find(res => res.latitude == item.coord.Lat && 
+                                                 res.longitude == item.coord.Lon);
+  }
 }
 
 

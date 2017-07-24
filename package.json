@@ -118,6 +118,7 @@
     "mocha-webpack": "0.7.0",
     "ngrx-store-freeze": "0.1.9",
     "ngrx-store-logger": "github:btroncone/ngrx-store-logger#67330c5442619f22474755ca6d49047db6b94aca",
+    "null-loader": "^0.1.1",
     "nyc": "7.1.0",
     "path-to-regexp": "1.7.0",
     "perfy": "1.1.2",

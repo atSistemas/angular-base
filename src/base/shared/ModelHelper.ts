@@ -1,7 +1,9 @@
 import { Map } from 'immutable';
 
 export function generateMap( data, model ){
+  // debugger;
   return data.reduce((acc, item) => {
+    //debugger;
     return acc.set(item.id, new model(item));
   }, Map()
   );
