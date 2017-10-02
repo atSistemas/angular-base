@@ -12,6 +12,7 @@ const weatherStationsSuccess =(state, action) => {
   .set('stationSelected', -1);
 }
 
+
 function weatherStationSelected(state, action) {
   return state.set('stationSelected', action.id);
 }
@@ -23,6 +24,8 @@ function weatherStationError(state) { return state; }
 function weatherStationSuccess(state, action) {
   return state.update('weatherStationDetails', () => action.payload);
 }
+
+
 
 function forecastRequest(state) { return state; }
 
@@ -65,13 +68,16 @@ const actionHandlers = {
   [ActionTypes.WEATHERSTATIONS_REQUEST]: weatherStationsRequest,
   [ActionTypes.WEATHERSTATIONS_SUCCESS]: weatherStationsSuccess,
   [ActionTypes.WEATHERSTATIONS_ERROR]: weatherStationsError,
+
   [ActionTypes.WEATHERSTATION_REQUEST]: weatherStationRequest,
   [ActionTypes.WEATHERSTATION_SUCCESS]: weatherStationSuccess,
   [ActionTypes.WEATHERSTATION_ERROR]: weatherStationError,
   [ActionTypes.WEATHERSTATION_SELECTED]: weatherStationSelected,
+  
   [ActionTypes.FORECAST_REQUEST]: forecastRequest,
   [ActionTypes.FORECAST_SUCCESS]: forecastSuccess,
   [ActionTypes.FORECAST_ERROR]: forecastError,
+  
   [ActionTypes.MAINB_REQUEST]: request,
   [ActionTypes.MAINB_SUCCESS]: success,
   [ActionTypes.MAINB_ERROR]: error

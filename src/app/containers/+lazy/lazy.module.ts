@@ -1,26 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { LazyActions } from './actions';
-import { LazyContainer } from './lazy.component';
+import { LazyContainer } from './lazy.container';
 
 export const routes: Routes = [
-  {
-    component: LazyContainer,
-    path: '',
-  },
+  { path: '', component: LazyContainer }
 ];
 
 @NgModule({
   declarations: [
-    LazyContainer,
+    LazyContainer
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ],
-  providers: [LazyActions],
+  providers: [LazyActions]
 })
 
-export class LazyModule {}
+export class LazyModule { }

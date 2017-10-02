@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { WeatherStationActions } from '../../actions';
-import { WeatherStationsCollection } from '../../models';
-import { Store, State } from 'base';
+// import { Component, OnInit } from '@angular/core';
+// import { Observable } from 'rxjs/Observable';
+// import { WeatherStationActions } from '../../actions';
+// import { WeatherStationsCollection } from '../../models';
+// import { Store, State } from 'base';
 
-@Component({
-  selector: 'base-forecast-detail',
-  templateUrl: './forecastDetail.component.html',
-  styleUrls:['./forecastDetail.component.css']
-})
+// @Component({
+//   selector: 'base-forecast-detail',
+//   templateUrl: './forecastDetail.component.html',
+//   styleUrls:['./forecastDetail.component.css']
+// })
 
-export class ForecastDetailComponent implements OnInit {
-  public data$: Observable<WeatherStationsCollection>;
-  constructor(
-     public store: Store<State>,
-      public weatherStationActions: WeatherStationActions
-  ){ 
-  this.data$ = this.store.select(state => state.weatherStation);
-  this.store.dispatch(this.weatherStationActions.weather(40.4165000, -3.7025600));  
-  }
+// export class ForecastDetailComponent implements OnInit {
+//   public data$: Observable<WeatherStationsCollection>;
+//   constructor(
+//      public store: Store<State>,
+//       public weatherStationActions: WeatherStationActions
+//   ){ 
+//   this.data$ = this.store.select(state => state.weatherStation);
+//   this.store.dispatch(this.weatherStationActions.weather(40.4165000, -3.7025600));  
+//   }
 
-  ngOnInit() { }
-}
+//   ngOnInit() { }
+// }
 
 
 

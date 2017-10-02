@@ -1,15 +1,9 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
 import { Main, MainModel } from '../models';
-// import { MainModel, MainInitialState } from '../models';
 
 const request = state => state;
-
 const error = state => state;
-
-// const success = (state, action) => {
-//   return Object.assign({}, state, action.payload);
-// };
 
 const  success = (state, action) => {
   const res = action.payload;

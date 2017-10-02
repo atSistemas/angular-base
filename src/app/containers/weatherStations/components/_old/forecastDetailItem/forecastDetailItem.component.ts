@@ -1,22 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
-import dateformat from 'dateformat';
+// import { Component, Input, OnInit } from '@angular/core';
+// import dateformat from 'dateformat';
 
-@Component({
-  selector: 'base-forecast-detail-item',
-  templateUrl: './forecastDetailItem.component.html',
-  styleUrls: ['./forecastDetailItem.component.css']
-})
+// @Component({
+//   selector: 'base-forecast-detail-item',
+//   templateUrl: './forecastDetailItem.component.html',
+//   styleUrls: ['./forecastDetailItem.component.css']
+// })
 
-export class ForecastDetailItemComponent implements OnInit {
-  @Input() item;
-  public d ;
-  constructor( ) {
-     var a = this.item;
-    //this.d =new Date(this.item.dt*1000);
-  }
+// export class ForecastDetailItemComponent implements OnInit {
+//   @Input() item;
+//   public d ;
+//   constructor( ) {
+//      var a = this.item;
+//     //this.d =new Date(this.item.dt*1000);
+//   }
 
-  ngOnInit() { }
-}
+//   ngOnInit() { }
+// }
 
 
 

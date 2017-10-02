@@ -10,31 +10,27 @@ import { Calculator } from 'app/containers/calculator/models';
   styleUrls: ['./display.component.css']
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-
-export class DisplayComponent implements OnInit,  OnDestroy{ //, OnChanges {
-
+export class DisplayComponent implements OnInit, OnDestroy { //, OnChanges {
   data$: Observable<Calculator>;
-    
-  constructor(public store: Store<State> ) { 
-    this.data$ = this.store.select(state => state.calculator);
-  }
+
+  constructor(public store: Store<State>) { }
 
   ngOnInit() {
-      
+    this.data$ = this.store.select(state => state.calculator);
     //  this.data$.subscribe(data=>{
-    
+
     //    this.display = data.display;  
     //  });
 
   }
 
   // ngOnChanges(){
-   //   this.display=this.store.select('display');
+  //   this.display=this.store.select('display');
 
   // }
 
-  ngOnDestroy(){
-      //  this.subscription.unsubscribe();  
+  ngOnDestroy() {
+    //  this.subscription.unsubscribe();  
   }
 
   // private subscribe = (data) => {

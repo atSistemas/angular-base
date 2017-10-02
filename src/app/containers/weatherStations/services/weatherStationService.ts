@@ -50,7 +50,6 @@ export class WeatherStationService extends BaseService {
   // }
 
   public weatherStation(id) { //: Observable<string>  {
-  
     let method: string = `/group?id=${id}&units=metric&appid=`;
     let urlApi = `${this.api}${method}${this.key}`;
 

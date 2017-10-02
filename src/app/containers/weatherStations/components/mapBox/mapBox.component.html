@@ -3,6 +3,7 @@
           <agm-marker *ngFor="let item of data" 
                 (mouseOver)="mouseOverMarker(item)"
                 (mouseOut)= "mouseOutMarker(item)"
+                (markerClick)= "markerClick(item)"
                 iconUrl='../../../assets/images/weatherStation32___red.png'
                 [latitude]="item.coord.Lat" 
                 [longitude]="item.coord.Lon" >
@@ -18,17 +19,3 @@
           </agm-marker>  
     </agm-map>
 </div>
-
-
-
-
-<!--<GoogleMap
-    id="map"
-    bootstrapURLKeys="key:this.props.key"x
-    efaultCenter="this.props.center" 
-    onChildClick="this.onChildClick"
-    defaultZoom="this.props.zoom"
-  >-->
-    <!--{ mapMarkerList }-->
-  <!--</GoogleMap>-->
-

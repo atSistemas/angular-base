@@ -1,7 +1,5 @@
 <div class = "weatherDetailBox"  >
-  <!-- *ngIf="details.id!=-1" -->
    <p><b>Actual Data of Weather Station</b></p>
-  
    <div class = "weatherDetailRow" >
      Temperature: {{ details.main?.temp }} ºC 
   </div> 
@@ -19,7 +17,5 @@
    </div>  
   <div class = "weatherDetailRow" >
     Last Date Updated:  {{ calculateDate(details?.dt)| date: 'dd/MM/yyyy' }} 
-    <!--{ dateformat(d, 'HH:MM:ss dd/mm/yyyy') }-->
-   
   </div> 
 </div>

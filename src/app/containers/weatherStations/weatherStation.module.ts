@@ -29,9 +29,9 @@ import {WeatherStationService} from './services';
   declarations: [
    WeatherStationContainer,
    components.MapBoxComponent,
-   components.WeatherStationDetailsComponent,
-   components.ForecastDetailComponent,
-   components.ForecastDetailItemComponent
+   components.WeatherStationDetailsComponent //,
+  //  components.ForecastDetailComponent,
+  //  components.ForecastDetailItemComponent
    
   //  LogoComponent,
   //  LinkButtonComponent
@@ -41,8 +41,6 @@ import {WeatherStationService} from './services';
     AgmCoreModule.forRoot({
       apiKey: config.GOOGLE_MAPS_API_KEY
     })
-    // CalculatorModule,
-    // RouterModule.forChild(routes)
   ],
   providers: [
     WeatherStationService,
