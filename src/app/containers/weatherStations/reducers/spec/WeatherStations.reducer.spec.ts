@@ -2,14 +2,8 @@ import { expect } from 'chai';
 import {WeatherStationsReducer} from '../';
 import {ActionTypes} from '../../actionTypes';
 import { WeatherStationService } from '../../services/weatherStationService';
-//import {weatherStationsMock} from 'mocks/basic.json'
-// import weatherStationsMock from 'mocks/weatherStations.json';
-// import weatherStationMock from 'mocks/weatherStation.json';
-// import ForecastMock from 'mocks/forecast.json';
-
 import * as helpers from '../../helpers';
-
-import { WeatherStationsCollection, WeatherStationsCollectionModel, WeatherStationsModel, ForecastModel } from '../../models';
+import { WeatherStationsCollection, WeatherStationsCollectionModel, WeatherStationsModel } from '../../models';
 import { generateMap } from 'base/shared/ModelHelper';
 
 describe('Reducers', () => {

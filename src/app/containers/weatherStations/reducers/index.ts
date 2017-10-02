@@ -12,7 +12,6 @@ const weatherStationsSuccess =(state, action) => {
   .set('stationSelected', -1);
 }
 
-
 function weatherStationSelected(state, action) {
   return state.set('stationSelected', action.id);
 }
@@ -25,45 +24,6 @@ function weatherStationSuccess(state, action) {
   return state.update('weatherStationDetails', () => action.payload);
 }
 
-
-
-function forecastRequest(state) { return state; }
-
-function forecastError(state) { return state; }
-
-const forecastSuccess = (state, action) => {
-  return state
-    .update('forecast', () => {
-     
-      return action.payload
-    });
-}
-
-const request = state => {
-  return state;
-}
-
-const error = state => {
-  return state;
-}
-
-// const success = (state, action) => {
-//   return Object.assign({}, state, action.payload);
-// };
-
-function  success (state, action) {
-  const res = action.payload;
-  return state
-    // .update('main', function (value) {
-   
-    //   return action.payload;
-    // });
-    // .set('id', res.id)
-    // .set('name', res.name);
-    .setIn(['mainB', 'id'], res.id)
-    .setIn(['mainB', 'name'], res.name);
-}
-
 const actionHandlers = {
   [ActionTypes.WEATHERSTATIONS_REQUEST]: weatherStationsRequest,
   [ActionTypes.WEATHERSTATIONS_SUCCESS]: weatherStationsSuccess,
@@ -74,13 +34,6 @@ const actionHandlers = {
   [ActionTypes.WEATHERSTATION_ERROR]: weatherStationError,
   [ActionTypes.WEATHERSTATION_SELECTED]: weatherStationSelected,
   
-  [ActionTypes.FORECAST_REQUEST]: forecastRequest,
-  [ActionTypes.FORECAST_SUCCESS]: forecastSuccess,
-  [ActionTypes.FORECAST_ERROR]: forecastError,
-  
-  [ActionTypes.MAINB_REQUEST]: request,
-  [ActionTypes.MAINB_SUCCESS]: success,
-  [ActionTypes.MAINB_ERROR]: error
 };
 
 export const WeatherStationsReducer = createReducer<WeatherStationsCollection>(actionHandlers, WeatherStationsCollectionModel());

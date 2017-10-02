@@ -6,7 +6,6 @@ import { WeatherStationsModel, setInitialState } from '../models';
 import { WeatherStations } from '..';
 import weatherStationsMock from 'mocks/weatherStations.json';
 import weatherStationMock from 'mocks/weatherStation.json';
-import forecastMock from 'mocks/forecast.json';
 
 import * as helpers from '../helpers';
 
@@ -16,7 +15,6 @@ function setup() {
   let initialState = {
     WeatherStations: {
       data: weatherStationsMock,
-      forecast: forecastMock.list,
       weatherStationDetails: helpers.getDataWeatherStation(weatherStationMock),
       StationSelected: 15
     }

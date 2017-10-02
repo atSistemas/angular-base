@@ -31,26 +31,20 @@ export class MapBoxComponent implements OnInit {
 
   mouseOverMarker(item) {
     this.select(item);
-    //this.store.dispatch(this.weatherStationActions.weatherStationSelected(item.stationId));
     this.store.dispatch(this.weatherStationActions.weatherStation(item.stationId)); 
     this.infoWindow.open();
   }
 
   mouseOutMarker(item) {
-    //this.store.dispatch(this.weatherStationActions.weatherStationSelected(-1));
     this.infoWindow.close();
   }
   
   markerClick(item) {
-    //debugger;
-    //this.select(item);
     this.store.dispatch(this.weatherStationActions.weatherStationSelected(item.stationId));
-    //this.store.dispatch(this.weatherStationActions.weatherStation(item.stationId)); 
-    
   }
 
   private select(item) {
     this.infoWindow = this.queryList.find(res => res.latitude == item.coord.Lat && 
-                                                 res.longitude == item.coord.Lon);
+                                                  res.longitude == item.coord.Lon);
   }
 }

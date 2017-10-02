@@ -1,5 +1,3 @@
-// import 'core-js/es7/reflect';
-// import 'mocha';
 import { expect } from 'chai';
 import { TestBed, async, inject } from '@angular/core/testing';
 import { HttpModule, Http, Response, ResponseOptions, XHRBackend } from '@angular/http';

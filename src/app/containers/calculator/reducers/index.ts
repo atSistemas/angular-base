@@ -109,4 +109,3 @@ const actionHandlers = {
 };
 
 export const CalculatorReducer = createReducer<Calculator>(actionHandlers, new CalculatorModel());
-

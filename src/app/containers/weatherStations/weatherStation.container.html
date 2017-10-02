@@ -1,9 +1,5 @@
 <div class="WeatherStations" *ngIf="(data$ | async) as data" >
     <base-map-box name="" > </base-map-box>
     <base-weather-station-details *ngIf="data.stationSelected!=-1"  [details] = "data.weatherStationDetails"></base-weather-station-details >
-    <!--  *ngFor="let name of names" [name]="name"  -->
     <div class="clear"></div>
-    <div>
-         <!-- <base-forecast-detail></base-forecast-detail>  -->
-    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                           ,
 </div>

@@ -10,13 +10,6 @@ export class WeatherStationActions {
     private service: WeatherStationService,
   ) { }
 
-  mainRequest(): Action {
-    return {
-      type: ActionTypes.MAINB_REQUEST,
-      request: this.service.getData()
-    };
-  }
-
   weatherStations(): Action {
     return {
       type: ActionTypes.WEATHERSTATIONS_REQUEST,
@@ -37,12 +30,4 @@ export class WeatherStationActions {
       request: this.service.weatherStation(id)
     };
   }
-
-  weather(lat, lng): Action {
-    return {
-      type: ActionTypes.FORECAST_REQUEST,
-      request: this.service.weather(lat, lng)
-    };
-  }
-
 };

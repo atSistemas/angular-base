@@ -14,7 +14,6 @@ function setup() {
     WeatherStations: {
       data: weatherStationsMock,
       StationSelected: 15,
-      forecast: {},
       weatherStationDetails: {}
     }
   };
