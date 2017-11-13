@@ -7,6 +7,7 @@ export interface WeatherStationDetails {
   humidity: number;
   wind: any;
   visibility: any;
+  main?: any;
   rain: any;
   dt: number;
 };
