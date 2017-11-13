@@ -1,11 +1,11 @@
-import { Record, Map, List } from 'immutable';
-import {WeatherStationDetails, WeatherStationDetailsModel} from './weatherStationDetailsModel';
-import {WeatherStations, WeatherStationsModel} from './weatherStationsModel';
+import { Record, List } from 'immutable';
+import { WeatherStationDetails, WeatherStationDetailsModel } from './weatherStationDetailsModel';
+import { WeatherStations } from './weatherStationsModel';
 
 export interface WeatherStationsCollection {
   data?: List<WeatherStations>;
   stationSelected?: number;
-  weatherStationDetails?:WeatherStationDetails;
+  weatherStationDetails?: WeatherStationDetails;
 };
 
 export const WeatherStationsCollectionModel = Record<WeatherStationsCollection>({
@@ -13,4 +13,3 @@ export const WeatherStationsCollectionModel = Record<WeatherStationsCollection>(
   stationSelected: -1,
   weatherStationDetails: WeatherStationDetailsModel()
 });
-

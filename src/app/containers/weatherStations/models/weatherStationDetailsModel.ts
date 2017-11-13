@@ -12,17 +12,15 @@ export interface WeatherStationDetails {
 };
 
 export const WeatherStationDetailsModel = Record<WeatherStationDetails>({
-  id:-1,
+  id: -1,
   temp: 0,
   pressure: 0,
   humidity: 0,
   wind: null,
   visibility: null,
-  rain:null,
+  rain: null,
   dt: 0
 });
-
-
 
 
 // import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
