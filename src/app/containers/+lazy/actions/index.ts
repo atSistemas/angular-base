@@ -5,11 +5,9 @@ import { ActionTypes } from '../action-types';
 @Injectable()
 export class LazyActions {
 
-  constructor() {}
-
   public lazyRequest(): Action {
     return {
-      type: ActionTypes.LAZY_REQUEST 
+      type: ActionTypes.LAZY_REQUEST
     };
   }
 }

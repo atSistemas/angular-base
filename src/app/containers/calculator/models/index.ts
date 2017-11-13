@@ -20,10 +20,6 @@ export const CalculatorModel =  Record<Calculator>({
   resetDisplay: false
 });
 
-
-
-
-
 // export interface MainModel {
 //   id?: number | string;
 //   name?: string;

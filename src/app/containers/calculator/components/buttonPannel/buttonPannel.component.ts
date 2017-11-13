@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component } from '@angular/core';
+// import { Observable } from 'rxjs/Observable';
 import { CalculatorActions } from '../../actions';
 import { ActionTypes } from '../../actionTypes';
-import { Store, State, Action } from 'base';
+import { Store, State } from 'base';
 // import { CalculatorModel } from './../../models';
 
 @Component({
@@ -11,14 +10,12 @@ import { Store, State, Action } from 'base';
   templateUrl: 'buttonPannel.component.html',
   styleUrls: ['buttonPannel.component.css']
 })
-export class ButtonPannelComponent implements OnInit {
-  
+export class ButtonPannelComponent {
+
   constructor(
     public store: Store<State>,
     public calculatorActions: CalculatorActions
   ) { }
-
-  ngOnInit() { }
 
   onClickNumber(value: any) {
     this.store.dispatch(this.calculatorActions.inputNumber(value));
@@ -47,11 +44,11 @@ export class ButtonPannelComponent implements OnInit {
     this.store.dispatch(this.calculatorActions.inputOperator(actionType));
   }
 
-  onClickDecimal(){
+  onClickDecimal() {
     this.store.dispatch(this.calculatorActions.inputDecimal());
   }
 
-  onClickResult(){
+  onClickResult() {
     this.store.dispatch(this.calculatorActions.result());
   }
 }

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { WeatherStationDetailsModel,  WeatherStationDetails } from './../../models';
+import { Component, Input } from '@angular/core';
+import { WeatherStationDetails } from './../../models';
 
 @Component({
   selector: 'base-weather-station-details',
@@ -7,24 +7,37 @@ import { WeatherStationDetailsModel,  WeatherStationDetails } from './../../mode
   styleUrls: ['weatherStationDetails.component.css']
 })
 
-export class WeatherStationDetailsComponent implements OnInit {
+export class WeatherStationDetailsComponent {
   @Input() details: WeatherStationDetails;
-    
-  constructor() {}
-
-  ngOnInit() {}
 
   public calculateWinDirection(wind: any): string {
-    if (!wind) return "";
+    if (!wind) return '';
 
-    const windDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-    const windDirectionDegrees = parseInt(((wind.deg / 22.5) + 0.5).toString());
+    const windDirections = [
+      'N',
+      'NNE',
+      'NE',
+      'ENE',
+      'E',
+      'ESE',
+      'SE',
+      'SSE',
+      'S',
+      'SSW',
+      'SW',
+      'WSW',
+      'W',
+      'WNW',
+      'NW',
+      'NNW'
+    ];
+    const windDirectionDegrees = (wind.deg / 22.5) + 0.5;
     const windDirection = windDirections[windDirectionDegrees % 16];
 
     return windDirection;
   }
 
-  public calculateDate(date){
-   return  new Date(date*1000);
+  public calculateDate(date) {
+    return  new Date(date * 1000);
   }
 }

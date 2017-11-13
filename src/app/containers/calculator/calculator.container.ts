@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store, State } from 'base';
-import { CalculatorActions } from './actions';
-import { CalculatorModel } from './models';
+// import { Observable } from 'rxjs/Observable';
+// import { Store, State } from 'base';
+// import { CalculatorActions } from './actions';
+// import { CalculatorModel } from './models';
 
 @Component({
   selector: 'base-calculator-container',
@@ -11,5 +11,5 @@ import { CalculatorModel } from './models';
 })
 
 export class CalculatorContainer {
-  constructor() {}
+
 }

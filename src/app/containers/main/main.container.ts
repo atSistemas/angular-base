@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 import { Store, State } from 'base';
 import { MainActions } from './actions';
-import { Main } from './models';
+// import { Main } from './models';
 
 @Component({
   selector: 'main-container',
@@ -12,12 +12,11 @@ import { Main } from './models';
 })
 export class MainContainer {
   public data$: Observable<any>;
- 
+
   constructor(
-      public store: Store<State>,
-      public mainActions: MainActions
-  ) 
-  {
+    public store: Store<State>,
+    public mainActions: MainActions
+  ) {
     this.data$ = this.store.select(state => state.main);
     this.store.dispatch(this.mainActions.mainRequest());
   }

@@ -1,13 +1,7 @@
-import {expect} from 'chai';
+//import { expect } from 'chai';
 
-describe('WeatherStations models', () =>{
-    it(' model', ()=>{
-        
+describe('WeatherStations models', () => {
+  it(' model', () => {} );
 
-    });
-
-    it('', ()=>{
-
-    });
-
+  it('', () => {} );
 });

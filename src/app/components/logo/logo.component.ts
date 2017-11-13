@@ -6,11 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./logo.component.css'],
 })
 export class LogoComponent {
- 
+
   @Input() src: string;
   @Input() location: string;
   @Input() width: number;
   @Input() alt: string;
-  
-  constructor() {}
+
 }

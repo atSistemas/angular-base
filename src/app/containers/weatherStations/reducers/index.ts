@@ -6,11 +6,11 @@ const weatherStationsRequest = state => state;
 
 const weatherStationsError = state => state;
 
-const weatherStationsSuccess =(state, action) => {
+const weatherStationsSuccess = (state, action) => {
   return state
   .update('data', () => action.payload)
   .set('stationSelected', -1);
-}
+};
 
 function weatherStationSelected(state, action) {
   return state.set('stationSelected', action.id);
@@ -33,7 +33,8 @@ const actionHandlers = {
   [ActionTypes.WEATHERSTATION_SUCCESS]: weatherStationSuccess,
   [ActionTypes.WEATHERSTATION_ERROR]: weatherStationError,
   [ActionTypes.WEATHERSTATION_SELECTED]: weatherStationSelected,
-  
+
 };
 
-export const WeatherStationsReducer = createReducer<WeatherStationsCollection>(actionHandlers, WeatherStationsCollectionModel());
+export const WeatherStationsReducer =
+  createReducer<WeatherStationsCollection>(actionHandlers, WeatherStationsCollectionModel());

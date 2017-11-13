@@ -20,7 +20,7 @@ export class WeatherStationActions {
   weatherStationSelected(id) {
     return {
       type: ActionTypes.WEATHERSTATION_SELECTED,
-      id: id
+      id
     };
   }
 

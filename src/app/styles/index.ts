@@ -1,3 +1,3 @@
-require('normalize.css');
-require('../containers/main/main.container');
-require('../components/logo/styles');
+import 'normalize.css';
+import '../containers/main/main.container';
+import '../components/logo/styles';

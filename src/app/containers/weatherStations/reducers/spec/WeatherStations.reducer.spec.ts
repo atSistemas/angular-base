@@ -1,18 +1,18 @@
 import { expect } from 'chai';
-import {WeatherStationsReducer} from '../';
-import {ActionTypes} from '../../actionTypes';
-import { WeatherStationService } from '../../services/weatherStationService';
-import * as helpers from '../../helpers';
-import { WeatherStationsCollection, WeatherStationsCollectionModel, WeatherStationsModel } from '../../models';
-import { generateMap } from 'base/shared/ModelHelper';
+import { WeatherStationsReducer } from '../';
+import { ActionTypes } from '../../actionTypes';
+//import { WeatherStationService } from '../../services/weatherStationService';
+//import * as helpers from '../../helpers';
+//import { WeatherStationsCollection, WeatherStationsCollectionModel, WeatherStationsModel } from '../../models';
+//import { generateMap } from 'base/shared/ModelHelper';
 
 describe('Reducers', () => {
   describe('WeatherStations reducer', () => {
-    
+
     beforeEach(() => {
         //service = new WeatherStationService();
     });
-    
+
     it('Should return the initial state', () => {
 
       const action = {
@@ -25,12 +25,12 @@ describe('Reducers', () => {
     it('Should return the state WeatherStations updated request successfull', () => {
 
       //const data = [weatherStationsMock[0], weatherStationsMock[1]]
-      const data = {id:1}; //weatherStationsMock;
+      // const data = { id: 1 }; //weatherStationsMock;
 
-      const action = {
-        type: ActionTypes.WEATHERSTATIONS_SUCCESS,
-        result: WeatherStationService
-      };
+      // const action = {
+      //   type: ActionTypes.WEATHERSTATIONS_SUCCESS,
+      //   result: WeatherStationService
+      // };
 
       // const model = new WeatherStationsCollectionModel();
 
@@ -44,7 +44,6 @@ describe('Reducers', () => {
       //expect(returnedData.get(element).id).to.deep.equal(data[0].id );
     });
 
-
     // it('should return the state of WeatherStations request fail', () => {
 
     //   const action = {
@@ -53,7 +52,6 @@ describe('Reducers', () => {
 
     //   expect(reducer([], action)).to.deep.equal([]);
     // });
-
 
     // it('Should return the initial state when request WeatherStation ', () => {
 
@@ -66,7 +64,6 @@ describe('Reducers', () => {
 
     // it('Should return the state WeatherStation updated request successfull', () => {
 
-
     //   const action = {
     //     type: ActionTypes.WEATHERSTATION_SUCCESS,
     //     result: helpers.getDataWeatherStation(weatherStationMock)
@@ -76,10 +73,8 @@ describe('Reducers', () => {
 
     //   const returnedData = reducer(model, action).get('weatherStationDetails');
 
-
     //   expect(returnedData[0].id).to.deep.equal(weatherStationMock.station.id );
     // });
-
 
     // it('should return the state of WeatherStation request fail', () => {
 
@@ -109,10 +104,9 @@ describe('Reducers', () => {
 
     //   const returnedData = reducer(model, action).get('forecast');
     //   let element = returnedData.keySeq().first();
-      
+
     //   expect(returnedData.get(element).dt).to.deep.equal(ForecastMock.list[0].dt);
     // });
-
 
     // it('should return the state of forecast request fail', () => {
 
@@ -136,8 +130,6 @@ describe('Reducers', () => {
 
     //   expect(returnedData).to.deep.equal(15);
     // });
-
-
 
   });
 });

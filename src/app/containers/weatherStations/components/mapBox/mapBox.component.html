@@ -1,21 +1,20 @@
-<div class="mapBox" *ngIf="(data$ | async) as data"  >
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-          <agm-marker *ngFor="let item of data" 
-                (mouseOver)="mouseOverMarker(item)"
-                (mouseOut)= "mouseOutMarker(item)"
-                (markerClick)= "markerClick(item)"
-                iconUrl='../../../assets/images/weatherStation32___red.png'
-                [latitude]="item.coord.Lat" 
-                [longitude]="item.coord.Lon" >
-                <agm-info-window 
-                    [latitude]="item.coord.Lat"
-                    [longitude]="item.coord.Lon">
-                         <div class="infoWindowBox" >
-                            <span class="infoWindowRow"> Temp: <b>{{ item.main.temp }} ºC </b></span>
-                            <span class="infoWindowRow"> Humidity: <b>{{ item.main.humidity }} % </b></span>
-                            <span class="infoWindowRow"> Pressure: <b>{{ item.main.pressure }} hpa </b></span> 
-                        </div> 
-                </agm-info-window>
-          </agm-marker>  
-    </agm-map>
+<div class="mapBox" *ngIf="(data$ | async) as data">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker *ngFor="let item of data" (mouseOver)="mouseOverMarker(item)" (mouseOut)="mouseOutMarker(item)" (markerClick)="markerClick(item)"
+      iconUrl='../../../assets/images/weatherStation32___red.png' [latitude]="item.coord.Lat" [longitude]="item.coord.Lon">
+      <agm-info-window [latitude]="item.coord.Lat" [longitude]="item.coord.Lon">
+        <div class="infoWindowBox">
+          <span class="infoWindowRow"> Temp:
+            <b>{{ item.main.temp }} ºC </b>
+          </span>
+          <span class="infoWindowRow"> Humidity:
+            <b>{{ item.main.humidity }} % </b>
+          </span>
+          <span class="infoWindowRow"> Pressure:
+            <b>{{ item.main.pressure }} hpa </b>
+          </span>
+        </div>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
 </div>

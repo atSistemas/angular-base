@@ -1,33 +1,33 @@
 <div class="ButtonPanel">
-    <div class="Column">
-        <div class="Row" >
-            <base-button type="number" value="C" (clickButton)="onClickOperation($event)"  ></base-button>
-            <base-button type="number" value="+/-" (clickButton)="onClickOperation($event)" ></base-button>
-            <base-button type="number" value="%" (clickButton)="onClickOperation($event)" ></base-button>
-            <base-button type="operator" value="÷" (clickButton)="onClickOperator($event)" ></base-button>
-        </div>
-        <div class="Row" >
-            <base-button type="number" value="7" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="8" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="9" (clickButton)="onClickNumber($event)"></base-button>
-            <base-button type="operator" value="x" (clickButton)="onClickOperator('x')" ></base-button>
-        </div>
-        <div class="Row" >
-            <base-button type="number" value="4" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="5" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="6" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="operator" value="-" (clickButton)="onClickOperator('-')" ></base-button>
-        </div>
-        <div class="Row" >
-            <base-button type="number" value="1" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="2" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="3" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="operator" value="+" (clickButton)="onClickOperator('+')" ></base-button>
-        </div>
-        <div class="Row" >
-            <base-button type="zero" value="0" (clickButton)="onClickNumber($event)" ></base-button>
-            <base-button type="number" value="." (clickButton)="onClickOperator('.')" ></base-button>
-            <base-button type="operator" value="=" (clickButton)="onClickOperator('=')" ></base-button>
-        </div>
+  <div class="Column">
+    <div class="Row">
+      <base-button type="number" value="C" (clickButton)="onClickOperation($event)"></base-button>
+      <base-button type="number" value="+/-" (clickButton)="onClickOperation($event)"></base-button>
+      <base-button type="number" value="%" (clickButton)="onClickOperation($event)"></base-button>
+      <base-button type="operator" value="÷" (clickButton)="onClickOperator($event)"></base-button>
     </div>
+    <div class="Row">
+      <base-button type="number" value="7" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="8" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="9" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="operator" value="x" (clickButton)="onClickOperator('x')"></base-button>
+    </div>
+    <div class="Row">
+      <base-button type="number" value="4" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="5" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="6" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="operator" value="-" (clickButton)="onClickOperator('-')"></base-button>
+    </div>
+    <div class="Row">
+      <base-button type="number" value="1" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="2" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="3" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="operator" value="+" (clickButton)="onClickOperator('+')"></base-button>
+    </div>
+    <div class="Row">
+      <base-button type="zero" value="0" (clickButton)="onClickNumber($event)"></base-button>
+      <base-button type="number" value="." (clickButton)="onClickOperator('.')"></base-button>
+      <base-button type="operator" value="=" (clickButton)="onClickOperator('=')"></base-button>
+    </div>
+  </div>
 </div>

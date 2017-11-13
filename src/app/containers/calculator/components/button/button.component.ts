@@ -7,16 +7,14 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 })
 
 export class ButtonComponent implements OnInit {
-  style: string= 'Button';
+  style = 'Button';
   @Input() value: string;
   @Input() type: string;
   @Output() clickButton = new EventEmitter();
- 
-  constructor(){ }
 
   ngOnInit() {
-    if (this.type === 'operator') this.style = "ButtonOperate";
-    else if (this.type === 'zero') this.style = "ButtonZero";
+    if (this.type === 'operator') this.style = 'ButtonOperate';
+    else if (this.type === 'zero') this.style = 'ButtonZero';
   }
 
   onClick(event) {

@@ -5,12 +5,10 @@ import { ActionTypes } from '../actionTypes';
 @Injectable()
 export class CalculatorActions {
 
-  constructor() { }
-  
   public inputNumber(value): Action {
     return {
       type: ActionTypes.INPUT_NUMBER,
-      payload:{
+      payload: {
         value
       }
     };
@@ -19,7 +17,7 @@ export class CalculatorActions {
   public inputOperation(value): Action {
     return {
       type: ActionTypes.INPUT_OPERATION,
-      payload:{
+      payload: {
         value
       }
     };
@@ -34,7 +32,7 @@ export class CalculatorActions {
   public inputOperator(operator): Action {
     return {
       type: ActionTypes.INPUT_OPERATOR,
-      payload:{
+      payload: {
         operator
       }
     };

@@ -1,4 +1,4 @@
-import { Record, Map } from 'immutable';
+import { Record } from 'immutable';
 
 export interface Main {
   id?: number | string;
@@ -6,6 +6,6 @@ export interface Main {
 };
 
 export const MainModel = Record<Main>({
-   id: 22, 
-   name: 'Initial Name'
+  id: 22,
+  name: 'Initial Name'
 });

@@ -12,8 +12,8 @@ import { WeatherStationsCollection } from './models';
 })
 
 export class WeatherStationContainer implements OnInit {
-  public data$: Observable<WeatherStationsCollection>; 
-  
+  public data$: Observable<WeatherStationsCollection>;
+
   constructor(
     public store: Store<State>,
     public weatherStationActions: WeatherStationActions
@@ -24,5 +24,3 @@ export class WeatherStationContainer implements OnInit {
     this.store.dispatch(this.weatherStationActions.weatherStations());
   }
 }
-
-

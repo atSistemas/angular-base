@@ -22,7 +22,6 @@ export const WeatherStationDetailsModel = Record<WeatherStationDetails>({
   dt: 0
 });
 
-
 // import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
 
 // interface WeatherStationDetailsModelBase {
@@ -42,7 +41,8 @@ export const WeatherStationDetailsModel = Record<WeatherStationDetails>({
 //   WeatherStationDetails: WeatherStationDetailsModel;
 // }
 
-// export const WeatherStationDetailsInitialState = makeTypedFactory<WeatherStationDetailsModel, WeatherStationDetailsState>({
+// export const WeatherStationDetailsInitialState =
+//  makeTypedFactory<WeatherStationDetailsModel, WeatherStationDetailsState>({
 //   id:-1,
 //   temp: 14,
 //   pressure: 0,
@@ -52,9 +52,6 @@ export const WeatherStationDetailsModel = Record<WeatherStationDetails>({
 //   rain:null,
 //   dt: 0
 // })();
-
-
-
 
 // // import { Record } from 'immutable';
 

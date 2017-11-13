@@ -5,13 +5,13 @@ import { Main, MainModel } from '../models';
 const request = state => state;
 const error = state => state;
 
-const  success = (state, action) => {
+const success = (state, action) => {
   const res = action.payload;
   return state
     .set('id', res.id)
     .set('name', res.name);
-}
-   
+};
+
 const login = (state, data) => {
   return state;
 };

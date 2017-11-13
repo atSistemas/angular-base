@@ -10,20 +10,20 @@ const calculate = (operator, prevValue, nextValue) => {
     [ActionTypes.SUBSTRACT]: () => prevValue - nextValue
   };
   return operator ? result[operator]() : prevValue;
-}
+};
 
 const result = (state) => {
   const operator = state.get('operator');
   const prevValue = state.get('prevValue');
   const nextValue = state.get('nextValue');
-  const result = calculate(operator, prevValue, nextValue);
+  const results = calculate(operator, prevValue, nextValue);
 
   return state
     .set('newValue', false)
-    .set('display', result)
-    .set('prevValue', result)
+    .set('display', results)
+    .set('prevValue', results)
     .set('resetDisplay', true);
-}
+};
 
 function inputNumber(state, action) {
   const selectedValue = action.payload.value;
@@ -78,6 +78,8 @@ function inputOperation(state, action) {
       return state
         .set('display', value)
         .set('prevValue', value);
+    default:
+      break;
   }
 }
 
@@ -88,14 +90,14 @@ function inputOperator(state, action) {
   const nextValue = state.get('nextValue');
   const newValue = state.get('newValue');
 
-  const result = (newValue) ?
+  const results = (newValue) ?
     calculate(prevOperator, prevValue, nextValue) : prevValue;
 
   return state
     .set('nextValue', 0)
     .set('newValue', true)
-    .set('display', result)
-    .set('prevValue', result)
+    .set('display', results)
+    .set('prevValue', results)
     .set('resetDisplay', true)
     .set('operator', currentOperator);
 }

@@ -14,4 +14,3 @@ export const ActionTypes = createActionType([
   'INPUT_OPERATOR',
   'INPUT_OPERATION'
 ]);
-

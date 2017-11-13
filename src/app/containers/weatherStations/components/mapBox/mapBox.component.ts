@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, Output, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, State } from 'base';
 import { WeatherStationActions } from '../../actions';
-import { WeatherStationsModel, WeatherStations } from '../../models/';
+// import { WeatherStationsModel, WeatherStations } from '../../models/';
 import { AgmInfoWindow } from '@agm/core';
 
 @Component({
@@ -11,14 +11,14 @@ import { AgmInfoWindow } from '@agm/core';
   styleUrls: ['./mapBox.component.css']
 })
 
-export class MapBoxComponent implements OnInit {
+export class MapBoxComponent {
   @ViewChildren(AgmInfoWindow) queryList: QueryList<AgmInfoWindow>;
   infoWindow: AgmInfoWindow;
   data$: Observable<any>;
- 
-  lat: number = 39.938043;
-  lng: number = -4.337157;
-  zoom: number = 6;
+
+  lat = 39.938043;
+  lng = -4.337157;
+  zoom = 6;
 
   constructor(
     public store: Store<State>,
@@ -31,20 +31,20 @@ export class MapBoxComponent implements OnInit {
 
   mouseOverMarker(item) {
     this.select(item);
-    this.store.dispatch(this.weatherStationActions.weatherStation(item.stationId)); 
+    this.store.dispatch(this.weatherStationActions.weatherStation(item.stationId));
     this.infoWindow.open();
   }
 
   mouseOutMarker(item) {
     this.infoWindow.close();
   }
-  
+
   markerClick(item) {
     this.store.dispatch(this.weatherStationActions.weatherStationSelected(item.stationId));
   }
 
   private select(item) {
-    this.infoWindow = this.queryList.find(res => res.latitude == item.coord.Lat && 
-                                                  res.longitude == item.coord.Lon);
+    this.infoWindow = this.queryList.find(res =>
+      res.latitude === item.coord.Lat && res.longitude === item.coord.Lon);
   }
 }

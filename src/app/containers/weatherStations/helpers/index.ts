@@ -1,6 +1,6 @@
-import {List, Map} from 'immutable';
-import { generateMap } from 'base/shared/ModelHelper';
-import { WeatherStationsModel, WeatherStationDetailsModel } from '../models';
+//import { List, Map } from 'immutable';
+//import { generateMap } from 'base/shared/ModelHelper';
+//import { WeatherStationsModel, WeatherStationDetailsModel } from '../models';
 
 export function parseWeatherStations(data) {
   for (let i = 0; i < data.length; i++) {
@@ -10,9 +10,8 @@ export function parseWeatherStations(data) {
   return data;
 }
 
-export function parseWeather(data) {     
-  for (let i=0; i<data.list.length; i++) {
+export function parseWeather(data) {
+  for (let i = 0; i < data.list.length; i++) {
     data.list[i].id = i + 1;
   }
 }
-

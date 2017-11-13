@@ -8,9 +8,9 @@ import { WeatherStationModule } from '../weatherStations/weatherStation.module';
 
 @NgModule({
   declarations: [
-   MainContainer,
-   LogoComponent,
-   LinkButtonComponent
+    MainContainer,
+    LogoComponent,
+    LinkButtonComponent
   ],
   imports: [
     CommonModule,

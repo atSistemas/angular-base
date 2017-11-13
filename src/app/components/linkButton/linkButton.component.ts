@@ -9,6 +9,4 @@ export class LinkButtonComponent {
   @Input() location: string;
   @Input() value: string;
 
-  constructor() {}
-
 }
