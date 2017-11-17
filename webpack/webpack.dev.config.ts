@@ -43,7 +43,7 @@ export const module = {
         /node_modules/
       ]
     },
-      {
+    {
       test: /\.css$/,
       exclude: /node_modules/,
       use: [
@@ -53,7 +53,7 @@ export const module = {
           options: {
             importLoaders: 1,
             // minimize: false,
-            // sourceMap: false, 
+            // sourceMap: false,
             // modules: true,
             localIdentName: '[name]__[local]-[hash:base64:4]'
           }

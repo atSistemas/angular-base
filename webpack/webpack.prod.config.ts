@@ -93,14 +93,14 @@ export const plugins = [
      template: 'server/templates/index.ejs',
      chunks: ['polyfills', 'vendor', 'app'],
      //FIXME
-     chunksSortMode: function (a, b) {
+     chunksSortMode: (a, b) => {
       const order = ['polyfills', 'vendor', 'app'];
-        if (order.indexOf(a.names[0]) > order.indexOf(b.names[0])) {
-          return 1;
-        }
-        if (order.indexOf(a.names[0]) < order.indexOf(b.names[0])) {
-          return -1;
-        }
+      if (order.indexOf(a.names[0]) > order.indexOf(b.names[0])) {
+        return 1;
+      }
+      if (order.indexOf(a.names[0]) < order.indexOf(b.names[0])) {
+        return -1;
+      }
 
       return 0;
     }

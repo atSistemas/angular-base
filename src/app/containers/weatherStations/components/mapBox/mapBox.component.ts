@@ -2,7 +2,6 @@ import { Component, ViewChildren, QueryList } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, State } from 'base';
 import { WeatherStationActions } from '../../actions';
-// import { WeatherStationsModel, WeatherStations } from '../../models/';
 import { AgmInfoWindow } from '@agm/core';
 
 @Component({
@@ -14,7 +13,7 @@ import { AgmInfoWindow } from '@agm/core';
 export class MapBoxComponent {
   @ViewChildren(AgmInfoWindow) queryList: QueryList<AgmInfoWindow>;
   infoWindow: AgmInfoWindow;
-  data$: Observable<any>;
+  data$: Observable<any> =  this.store.select(state => state.weatherStation.data);
 
   lat = 39.938043;
   lng = -4.337157;
@@ -24,10 +23,6 @@ export class MapBoxComponent {
     public store: Store<State>,
     public weatherStationActions: WeatherStationActions
   ) {}
-
-  ngOnInit() {
-    this.data$ = this.store.select(state => state.weatherStation.data);
-  }
 
   mouseOverMarker(item) {
     this.select(item);

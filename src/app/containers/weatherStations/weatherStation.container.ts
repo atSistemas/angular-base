@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+// import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 import { Store, State } from 'base';
 import { WeatherStationActions } from './actions';
@@ -11,16 +12,18 @@ import { WeatherStationsCollection } from './models';
   styleUrls: ['./weatherStation.container.css']
 })
 
-export class WeatherStationContainer implements OnInit {
-  public data$: Observable<WeatherStationsCollection>;
+export class WeatherStationContainer {
+  
+  public data$: Observable<WeatherStationsCollection> = this.store.select('weatherStation');
 
   constructor(
     public store: Store<State>,
     public weatherStationActions: WeatherStationActions
   ) { }
 
-  ngOnInit() {
-    this.data$ = this.store.select(state => state.weatherStation);
+  ngAfterViewInit() {
     this.store.dispatch(this.weatherStationActions.weatherStations());
+       // this.store.dispatch(this.weatherStationActions.weatherStations());
+
   }
 }

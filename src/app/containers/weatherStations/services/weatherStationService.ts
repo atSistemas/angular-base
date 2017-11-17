@@ -3,8 +3,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as helpers from '../helpers';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+
 import { BaseService } from 'base/services/BaseService';
 import { config } from '../config';
 
@@ -31,7 +30,7 @@ export class WeatherStationService extends BaseService {
       .map(res => List(helpers.parseWeatherStations(res.json().list)));
   }
 
-  public weatherStation(id) { //: Observable<string>  {
+  public weatherStation(id) {
     const method = `/group?id=${id}&units=metric&appid=`;
     const urlApi = `${this.api}${method}${this.key}`;
 

@@ -14,9 +14,9 @@ module.exports = {
     alias: {
       base: path.resolve(__dirname, '../src/base')
     },
-     modules: [
-      path.resolve(__dirname, "node_modules")
-   ]
+    modules: [
+      path.resolve(__dirname, 'node_modules')
+    ]
   },
   resolveLoader: {
     // root: path.join(__dirname, 'node_modules')//,

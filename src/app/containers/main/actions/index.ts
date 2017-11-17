@@ -14,7 +14,6 @@ export class MainActions {
     return {
       type: ActionTypes.MAIN_REQUEST,
       request: this.mainService.getData()
-      // payload: {}
     };
   }
 

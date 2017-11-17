@@ -1,16 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LazyActions } from './actions';
-import { LazyContainer } from './lazy.container';
+import { LazyComponent } from './lazy.component';
+import { routes } from './lazy.routes';
 
-export const routes: Routes = [
-  { path: '', component: LazyContainer }
-];
 
 @NgModule({
   declarations: [
-    LazyContainer
+    LazyComponent
   ],
   imports: [
     CommonModule,

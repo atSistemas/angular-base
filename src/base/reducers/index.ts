@@ -10,7 +10,7 @@ export const rootReducer = combineReducers({
   main: MainReducer,
   calculator: CalculatorReducer,
   weatherStation: WeatherStationsReducer,
-  router: routerReducer,
+  router: routerReducer
 });
 
 const store = configureStore(rootReducer);

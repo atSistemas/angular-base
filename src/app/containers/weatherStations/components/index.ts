@@ -1,3 +1,2 @@
-import { MapBoxComponent } from './mapBox/mapBox.component';
-import { WeatherStationDetailsComponent } from './weatherStationDetails/weatherStationDetails.component';
-export { MapBoxComponent, WeatherStationDetailsComponent };
+export { MapBoxComponent } from './mapBox/mapBox.component';
+export { WeatherStationDetailsComponent } from './weatherStationDetails/weatherStationDetails.component';

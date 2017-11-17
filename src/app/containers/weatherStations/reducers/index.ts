@@ -6,11 +6,11 @@ const weatherStationsRequest = state => state;
 
 const weatherStationsError = state => state;
 
-const weatherStationsSuccess = (state, action) => {
-  return state
+const weatherStationsSuccess = (state, action) => (
+ state
   .update('data', () => action.payload)
-  .set('stationSelected', -1);
-};
+  .set('stationSelected', -1)
+);
 
 function weatherStationSelected(state, action) {
   return state.set('stationSelected', action.id);

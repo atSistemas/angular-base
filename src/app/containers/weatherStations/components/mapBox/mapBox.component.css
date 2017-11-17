@@ -1,7 +1,7 @@
 .mapBox{
   float: left;
-  height: 650px;
-  width: 800px;
+  height: 100%;
+  width: 100%;
 }
 agm-map {
   height: 650px;
