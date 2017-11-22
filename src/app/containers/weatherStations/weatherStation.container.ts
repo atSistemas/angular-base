@@ -13,7 +13,6 @@ import { WeatherStationsCollection } from './models';
 })
 
 export class WeatherStationContainer {
-  
   public data$: Observable<WeatherStationsCollection> = this.store.select('weatherStation');
 
   constructor(

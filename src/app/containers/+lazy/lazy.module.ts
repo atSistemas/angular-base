@@ -5,7 +5,6 @@ import { LazyActions } from './actions';
 import { LazyComponent } from './lazy.component';
 import { routes } from './lazy.routes';
 
-
 @NgModule({
   declarations: [
     LazyComponent
