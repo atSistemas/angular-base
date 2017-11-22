@@ -33,7 +33,7 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'angular-router-loader?loader=system&genDir=src/compiled&aot=true'
+        'angular-router-loader?loader=system&genDir=compiled&aot=true'
       ],
       exclude: [
         /dist/,

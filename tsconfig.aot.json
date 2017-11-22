@@ -28,7 +28,7 @@
     ".base",
     "webpack",
     "node_modules",
-    "src/compiled",
+    "compiled",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",
@@ -44,7 +44,7 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
+   "genDir": "compiled",
    "skipMetadataEmit" : true
  }
 }
