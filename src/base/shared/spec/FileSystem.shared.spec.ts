@@ -36,8 +36,8 @@ describe('shared / FileSystem', () => {
       const content = 'Hello!';
       writeFile(file,content);
 
-      const wrote  = fs.readFileSync(file, "utf8");
-      fs.unlink(file);
+      const wrote  = fs.readFileSync(file, 'utf8');
+      fs.unlink(file, () => {});
 
       expect(wrote).to.equal(content);
 

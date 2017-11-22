@@ -7,7 +7,8 @@ import { State, ENV } from 'base';
 
 export function configureStore(rootReducer): ActionReducer<State> {
   if (ENV === 'development') {
-    return compose(storeFreeze, storeLogger())(rootReducer);
+    //return compose(storeFreeze, storeLogger())(rootReducer);
+    return rootReducer;
   } else {
     return rootReducer;
   }

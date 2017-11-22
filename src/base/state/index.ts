@@ -1,10 +1,10 @@
-import { RouterState } from '@ngrx/router-store';
+//import { RouterState } from '@ngrx/router-store';
 import { Main } from 'base/models';
 import { Calculator } from 'base/models';
 import { WeatherStationsCollection } from 'base/models';
 
 export interface State {
-  router: RouterState;
+//  router: RouterState;
   main: Main;
   calculator: Calculator;
   weatherStation: WeatherStationsCollection;

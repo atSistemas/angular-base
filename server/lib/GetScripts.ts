@@ -13,7 +13,7 @@ if ( ENV === 'development') {
   }
 } else {
   const assetsManifest = path.resolve( __dirname, '../../dist/webpack-assets.json');
-  JsFiles = JSON.parse(FileSystem.readFile(assetsManifest, 'utf8'));
+  JsFiles = JSON.parse(FileSystem.readFile(assetsManifest, 'utf8').toString());
 }
 
 export default function getScripts(file) {

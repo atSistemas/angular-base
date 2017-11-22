@@ -10,7 +10,7 @@ export class RequestEffect {
 
   @Effect() main$ = this.actions$
     .filter((action: Action) => action.request)
-    .concatMap(action => action.request
+    .concatMap((action: Action) => action.request
       .mergeMap(res => resolveRequestAction(action, res, 'SUCCESS'))
       .catch(err => resolveRequestAction(action, err, 'ERROR'))
     );
