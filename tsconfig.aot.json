@@ -23,6 +23,12 @@
       ],
       "base": [
         "./base"
+      ],
+      "app": [
+        "./app"
+      ],
+      "app/*": [
+        "./app/*"
       ]
     },
     "typeRoots": [

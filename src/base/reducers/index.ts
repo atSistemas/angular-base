@@ -1,20 +1,27 @@
 import { combineReducers } from '@ngrx/store';
 import { routerReducer } from '@ngrx/router-store';
+import { ActionReducer, ActionReducerMap } from '@ngrx/store';
+import { storeLogger } from 'ngrx-store-logger';
+import { storeFreeze } from 'ngrx-store-freeze';
+
 import { MainReducer } from '../../app/containers/main/reducers';
 import { CalculatorReducer } from '../../app/containers/calculator/reducers';
-import { WeatherStationsReducer } from '../../app/containers/weatherStations/reducers';
 
-import { configureStore } from '../store';
+import { ENV, State } from 'base';
 
-export const rootReducer = combineReducers({
+export const reducers: ActionReducerMap<State> = {
   main: MainReducer,
   calculator: CalculatorReducer,
-  weatherStation: WeatherStationsReducer,
   router: routerReducer
-});
+};
 
-const store = configureStore(rootReducer);
-
-export function RootReducer(state: any, action: any) {
-  return store(state, action);
+export function logger(reducer: ActionReducer<State>): any {
+  return storeLogger({
+    collapsed: true
+  })(reducer);
 }
+
+export const metaReducers = (ENV !== 'development') ? [] : [
+  logger,
+  storeFreeze
+];

@@ -2,25 +2,17 @@ import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
 import { Main, MainModel } from '../models';
 
-const request = state => state;
-const error = state => state;
+export function request(state, action) { return state; }
+export function error(state, action) { return state; }
+export function success(state, action) { return action.payload; }
 
-const success = (state, action) => {
-  const res = action.payload;
-  return state
-    .set('id', res.id)
-    .set('name', res.name);
-};
+export function login(state, data) { return state; }
 
-const login = (state, data) => {
-  return state;
-};
-
-const actionHandlers = {
-  [ActionTypes.LOGIN]: login,
-  [ActionTypes.MAIN_REQUEST]: request,
-  [ActionTypes.MAIN_ERROR]: error,
-  [ActionTypes.MAIN_SUCCESS]: success,
+export const actionHandlers = {
+  LOGIN: login,
+  MAIN_REQUEST: request,
+  MAIN_ERROR: error,
+  MAIN_SUCCESS: success,
 };
 
 export const MainReducer = createReducer(actionHandlers, new MainModel());

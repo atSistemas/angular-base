@@ -16,5 +16,4 @@ export class MainActions {
       request: this.mainService.getData()
     };
   }
-
-};
+}

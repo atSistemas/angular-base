@@ -1,4 +1,4 @@
-import { Action } from '../interfaces/action';
+import { Action } from '../models/action';
 
 export function createReducer<Cr>(actionHandler: any, initialState: Cr) {
 

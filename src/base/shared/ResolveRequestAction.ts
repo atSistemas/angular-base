@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 
-import { Action } from '../interfaces';
+import { Action } from '../models';
 import { getActionPrefix } from './Utils';
 import { createObservableAction } from './CreateObservableAction';
 

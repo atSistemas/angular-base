@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { RouterModule, Routes } from '@angular/router';
 
 import { CalculatorContainer } from './calculator.container';
 import { DisplayComponent } from './components/display/display.component';

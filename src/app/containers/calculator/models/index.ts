@@ -10,7 +10,7 @@ export interface Calculator {
   resetDisplay?: boolean;
 }
 
-export const CalculatorModel =  Record({
+export const CalculatorModel = Record({
   display: 0,
   operator: '',
   operation: '',

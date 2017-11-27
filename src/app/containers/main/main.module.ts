@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { MainContainer } from './main.container';
+
 import { LogoComponent } from '../../components/logo/logo.component';
 import { CalculatorModule } from '../calculator/calculator.module';
-import { WeatherStationModule } from '../weatherStations/weatherStation.module';
 import { TopBarComponent } from '../../components/topBar/topBar.component';
-import { RouterModule } from '@angular/router';
+
+import { MainActions } from './actions';
+import { MainService } from './services';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     CalculatorModule,
-    WeatherStationModule,
     RouterModule
   ],
-  providers: [ ],
+  providers: [
+    MainActions,
+    MainService
+  ],
   exports: [
     TopBarComponent,
     LogoComponent

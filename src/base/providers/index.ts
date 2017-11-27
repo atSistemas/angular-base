@@ -1,7 +1,5 @@
-import { MainService } from '../../app/containers/main/services/';
-import { MainActions } from '../../app/containers/main/actions/';
+import { StoreProviders } from 'base/imports';
 
 export const BaseProviders = [
-  MainActions,
-  MainService,
+  StoreProviders
 ];

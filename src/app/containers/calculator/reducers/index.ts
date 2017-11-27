@@ -102,7 +102,7 @@ function inputOperator(state, action) {
     .set('operator', currentOperator);
 }
 
-const actionHandlers = {
+export const actionHandlers = {
   [ActionTypes.RESULT]: result,
   [ActionTypes.INPUT_NUMBER]: inputNumber,
   [ActionTypes.INPUT_DECIMAL]: inputDecimal,

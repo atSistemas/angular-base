@@ -1,15 +1,17 @@
-import { ActionReducer } from '@ngrx/store';
-import { compose } from '@ngrx/core/compose';
-import { storeFreeze } from 'ngrx-store-freeze';
-import { storeLogger } from 'ngrx-store-logger/src';
+// import { ActionReducer } from '@ngrx/store';
+// import { compose } from '@ngrx/core/compose';
+// import { storeFreeze } from 'ngrx-store-freeze';
+// import { storeLogger } from 'ngrx-store-logger';
 
-import { State, ENV } from 'base';
+// import { State, ENV } from 'base';
 
-export function configureStore(rootReducer): ActionReducer<State> {
-  if (ENV === 'development') {
-    //return compose(storeFreeze, storeLogger())(rootReducer);
-    return rootReducer;
-  } else {
-    return rootReducer;
-  }
-}
+// export function configureStore(rootReducer): ActionReducer<State> {
+//   if (ENV === 'development') {
+//     return compose(storeFreeze, storeLogger(({
+//       collapsed: true
+//     }))(rootReducer));
+//     //return rootReducer;
+//   } else {
+//     return rootReducer;
+//   }
+// }

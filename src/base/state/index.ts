@@ -1,11 +1,15 @@
-//import { RouterState } from '@ngrx/router-store';
-import { Main } from 'base/models';
-import { Calculator } from 'base/models';
-import { WeatherStationsCollection } from 'base/models';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { Main } from '../../app/containers/main/models';
+import { Calculator, CalculatorModel } from '../../app/containers/calculator/models';
 
 export interface State {
-//  router: RouterState;
   main: Main;
   calculator: Calculator;
-  weatherStation: WeatherStationsCollection;
+  router: RouterReducerState<any>;
+}
+
+export const initialState = {
+  main: {},
+  calculator: new CalculatorModel(),
+  router: undefined
 };
