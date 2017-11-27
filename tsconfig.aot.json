@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es2015","dom"],
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": true,
-    "pretty": false,
-    "sourceMap": true,
-    "noEmit": true,
+    "noUnusedParameters": false,
     "strictNullChecks": false,
-    "skipDefaultLibCheck": true,
+    "lib": ["es6", "es2015", "dom"],
+    "skipLibCheck": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "outDir": "./compiled",
+    "sourceMap": true,
+    "target": "es5",
+    "stripInternal": false,
     "baseUrl": "./src",
     "paths": {
       "base/*": [
@@ -42,9 +48,7 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "compiled",
-   "skipMetadataEmit" : true
+   "skipMetadataEmit" : false
  }
 }

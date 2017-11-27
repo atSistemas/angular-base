@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, State } from 'base';
 import { Observable } from 'rxjs/Observable';
-import { Calculator } from 'app/containers/calculator/models';
+import { Calculator } from '../../models';
 
 @Component({
   selector: 'base-display',

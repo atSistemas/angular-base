@@ -2,17 +2,17 @@ import { Component, ViewChildren, QueryList } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store, State } from 'base';
 import { WeatherStationActions } from '../../actions';
-import { AgmInfoWindow } from '@agm/core';
+//import { AgmInfoWindow } from '@agm/core';
 
 @Component({
   selector: 'base-map-box',
-  templateUrl: './mapBox.component.html',
-  styleUrls: ['./mapBox.component.css']
+  template: '<div>FIXME</div>'
+  //templateUrl: './mapBox.component.html',
 })
 
 export class MapBoxComponent {
-  @ViewChildren(AgmInfoWindow) queryList: QueryList<AgmInfoWindow>;
-  infoWindow: AgmInfoWindow;
+  /*
+  //@ViewChildren(AgmInfoWindow) queryList: QueryList<AgmInfoWindow>;
   data$: Observable<any> =  this.store.select(state => state.weatherStation.data);
 
   lat = 39.938043;
@@ -41,5 +41,5 @@ export class MapBoxComponent {
   private select(item) {
     this.infoWindow = this.queryList.find(res =>
       res.latitude === item.coord.Lat && res.longitude === item.coord.Lon);
-  }
+  }*/
 }

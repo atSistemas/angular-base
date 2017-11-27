@@ -1,6 +1,6 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../actionTypes';
-import { Calculator, CalculatorModel } from '../models';
+import { CalculatorModel } from '../models';
 
 const calculate = (operator, prevValue, nextValue) => {
   const result = {
@@ -110,4 +110,4 @@ const actionHandlers = {
   [ActionTypes.INPUT_OPERATION]: inputOperation
 };
 
-export const CalculatorReducer = createReducer<Calculator>(actionHandlers, new CalculatorModel());
+export const CalculatorReducer = createReducer(actionHandlers, new CalculatorModel());

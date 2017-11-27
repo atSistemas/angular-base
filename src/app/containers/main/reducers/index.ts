@@ -23,4 +23,4 @@ const actionHandlers = {
   [ActionTypes.MAIN_SUCCESS]: success,
 };
 
-export const MainReducer = createReducer<Main>(actionHandlers, MainModel());
+export const MainReducer = createReducer(actionHandlers, new MainModel());

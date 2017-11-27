@@ -37,4 +37,4 @@ const actionHandlers = {
 };
 
 export const WeatherStationsReducer =
-  createReducer<WeatherStationsCollection>(actionHandlers, WeatherStationsCollectionModel());
+  createReducer(actionHandlers, new WeatherStationsCollectionModel());

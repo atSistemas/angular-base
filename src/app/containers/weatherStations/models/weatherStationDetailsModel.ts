@@ -10,9 +10,9 @@ export interface WeatherStationDetails {
   main?: any;
   rain: any;
   dt: number;
-};
+}
 
-export const WeatherStationDetailsModel = Record<WeatherStationDetails>({
+export const WeatherStationDetailsModel = Record({
   id: -1,
   temp: 0,
   pressure: 0,

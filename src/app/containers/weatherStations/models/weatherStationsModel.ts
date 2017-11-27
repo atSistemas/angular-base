@@ -5,9 +5,9 @@ export interface WeatherStations {
   stationId?: number;
   name?: string;
   coord?: any;
-};
+}
 
-export const WeatherStationsModel = Record<WeatherStations>({
+export const WeatherStationsModel = Record({
   id: -1,
   stationId: -1,
   name: null,

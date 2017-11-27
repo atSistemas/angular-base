@@ -1,1 +1,1 @@
-export { Lazy, LazyModel } from './lazy.model';
+export { LazyModel } from './lazy.model';
