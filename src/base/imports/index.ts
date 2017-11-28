@@ -18,7 +18,7 @@ export class CustomRouterSerializer implements RouterStateSerializer<any> {
   }
 }
 
-const baseImports = [
+export const baseImports = [
   RouterModule.forRoot(routes, {
     preloadingStrategy: false
   }),

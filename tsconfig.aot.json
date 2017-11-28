@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noUnusedParameters": false,
-    "strictNullChecks": false,
-    "lib": ["es6", "es2015", "dom"],
-    "skipLibCheck": false,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "noImplicitAny": false,
-    "outDir": "./compiled",
+    "allowSyntheticDefaultImports": false,
+    "noEmitHelpers": false,
+    "pretty": true,
     "sourceMap": true,
-    "target": "es5",
-    "stripInternal": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
+      "@angular/*": ["node_modules/@angular/*"],
       "base/*": [
         "./base/*"
       ],
@@ -33,7 +33,19 @@
     },
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "types": [
+      "chai",
+      "core-js",
+      "mocha",
+      "node",
+      "sinon",
+      "systemjs",
+      "webpack"
+    ],
+    "skipLibCheck": false,
+    "noEmitOnError": true,
+    "outDir": "./compiled"
   },
   "exclude": [
     "dist",
@@ -49,7 +61,7 @@
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
-    "forkChecker": true,
+    "forkChecker": false,
     "useCache": true
   },
   "compileOnSave": false,
