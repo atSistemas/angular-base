@@ -14,6 +14,6 @@ export class DisplayComponent {
   constructor(public store: Store<State>) { }
 
   ngOnInit() {
-    this.data$ = this.store.select('calculator');
+    //this.data$ = this.store.select('calculator');
   }
 }

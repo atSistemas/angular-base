@@ -1,6 +1,7 @@
 import { Action } from '../models/action';
+//import { Action } from '@ngrx/store';
 
-export function createReducer<Cr>(actionHandler: any, initialState: Cr) {
+export function createReducer<Cr>(actionHandler: any, initialState: any) {
 
   return (state: Cr, action: Action): Cr => {
 
@@ -12,4 +13,4 @@ export function createReducer<Cr>(actionHandler: any, initialState: Cr) {
 
     return state;
   };
-};
+}

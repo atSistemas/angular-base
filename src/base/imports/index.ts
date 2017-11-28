@@ -22,23 +22,20 @@ export const baseImports = [
   RouterModule.forRoot(routes, {
     preloadingStrategy: false
   }),
-  StoreModule.forRoot(reducers, {
-    initialState,
-    metaReducers
-  }),
+  StoreModule.forRoot(reducers),
   EffectsModule.forRoot([
     RequestEffect
   ]),
   StoreRouterConnectingModule
 ];
-
+/*
 if (ENV === 'development') {
   baseImports.push(...[
     StoreDevtoolsModule.instrument({
       maxAge: 10
     })
   ]);
-}
+}*/
 
 export const BaseImports = baseImports;
 
