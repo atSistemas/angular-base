@@ -12,7 +12,7 @@ import { ENV, State } from 'base';
 export const reducers: ActionReducerMap<State> = {
   main: MainReducer,
   calculator: CalculatorReducer,
-  //router: routerReducer
+  router: routerReducer
 };
 
 export function logger(reducer: ActionReducer<State>): any {

@@ -1,7 +1,7 @@
-import environment, { constants as envConstants} from '../environment';
+import environment, { constants as envConstants } from '../environment';
 import getScripts from '../lib/GetScripts';
 
-export default function renderPage():String {
+export default function renderPage(): string {
 
   const app = getScripts('app');
   const vendor = getScripts('vendor');

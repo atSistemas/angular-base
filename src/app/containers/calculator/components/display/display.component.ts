@@ -9,8 +9,10 @@ import * as CalculatorModel from '../../models';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent {
+
   data$: Observable<CalculatorModel.State>;
-  constructor(public store: Store<State>) { }
+
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
     this.data$ = this.store.select('calculator');

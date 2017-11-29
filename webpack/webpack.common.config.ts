@@ -104,14 +104,14 @@ export const postcss = [
 export const resolve = {
   extensions: ['.js', '.ts', '.tsx', '.css'],
   alias: {
-    'base': path.resolve(__dirname, '../src/base'),
-    'mocks': path.resolve(__dirname, '../server/api/mocks')
+    base: path.resolve(__dirname, '../src/base'),
+    mocks: path.resolve(__dirname, '../server/api/mocks')
 
   }
 };
 
-export const compileError = function () {
-  this.plugin('done', function (stats) {
+export const compileError = function() {
+  this.plugin('done', function(stats) {
     if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') === -1) {
       base.console.error(stats.compilation.errors);
     }

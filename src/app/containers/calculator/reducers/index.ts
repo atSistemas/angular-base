@@ -1,8 +1,9 @@
-import { createReducer } from 'base';
+import { ActionReducer, ActionReducerMap } from '@ngrx/store';
+//import { createReducer } from 'base';
 import { ActionTypes } from '../actionTypes';
 import * as CalculatorModel from '../models';
 import { Action, State } from 'base';
-import { ActionReducer, ActionReducerMap } from '@ngrx/store';
+
 const calculate = (operator, prevValue, nextValue) => {
   const result = {
     [ActionTypes.SUM]: () => prevValue + nextValue,
@@ -18,66 +19,80 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
     case ActionTypes.INPUT_NUMBER: {
 
       const selectedValue = action.payload.value;
-      const newValue = state.get('newValue');
-      const prevValue = (newValue) ? state.get('nextValue') : state.get('prevValue');
+      const newValue = state.newValue;
+      const prevValue = (newValue) ? state.nextValue : state.prevValue;
       const value = parseFloat(`${prevValue}${selectedValue}`);
+
       if (newValue) {
-        return state
-          .set('display', value)
-          .set('nextValue', value)
-          .set('resetDisplay', false);
+        return ({
+          ...state,
+          display: value,
+          nextValue: value,
+          resetDisplay: false
+        });
       } else {
-        return state
-          .set('display', value)
-          .set('prevValue', value)
-          .set('resetDisplay', false);
+        return ({
+          ...state,
+          display: value,
+          prevValue: value,
+          resetDisplay: false
+        });
       }
     }
     case ActionTypes.RESULT : {
-
-      const operator = state.get('operator');
-      const prevValue = state.get('prevValue');
-      const nextValue = state.get('nextValue');
+      const operator = state.operator;
+      const prevValue = state.prevValue;
+      const nextValue = state.nextValue;
       const results = calculate(operator, prevValue, nextValue);
-      return state
-        .set('newValue', false)
-        .set('display', results)
-        .set('prevValue', results)
-        .set('resetDisplay', true);
+      return ({
+        ...state,
+        newValue: false,
+        display: results,
+        prevValue: results,
+        resetDisplay: true
+      });
     }
     case ActionTypes.INPUT_DECIMAL: {
 
-      const value = `${state.get('prevValue')}.`;
-      return state
-        .set('display', value)
-        .set('newValue', false)
-        .set('prevValue', value);
+      const value = `${state.prevValue}.`;
+      return ({
+        ...state,
+        display: value,
+        newValue: false,
+        prevValue: value
+      });
     }
 
     case ActionTypes.INPUT_OPERATION: {
 
       let value = 0;
       const operation = action.payload.value;
-      const prevValue = state.get('prevValue');
+      const prevValue = state.prevValue;
       switch (operation) {
         case ActionTypes.PERCENT:
           value = prevValue / 100;
-          return state
-            .set('display', value)
-            .set('prevValue', value);
+          return ({
+            ...state,
+            display: value,
+            prevValue: value
+          });
         case ActionTypes.CLEAN:
           value = 0;
-          return state
-            .set('display', value)
-            .set('prevValue', value)
-            .set('nextValue', value)
-            .set('resetDisplay', true);
+          return ({
+            ...state,
+            display: value,
+            prevValue: value,
+            nextValue: value,
+            resetDisplay: true
+          });
         case ActionTypes.CHANGE_SIGN:
           value = (Math.sign(prevValue) === 1) ?
             -Math.abs(prevValue) : Math.abs(prevValue);
-          return state
-            .set('display', value)
-            .set('prevValue', value);
+          return ({
+            ...state,
+            display: value,
+            prevValue: value
+          });
         default:
           break;
       }
@@ -85,22 +100,24 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
     case ActionTypes.INPUT_OPERATOR: {
 
       const currentOperator = action.payload.operator;
-      const prevOperator = state.get('operator');
-      const prevValue = state.get('prevValue');
-      const nextValue = state.get('nextValue');
-      const newValue = state.get('newValue');
+      const prevOperator = state.operator;
+      const prevValue = state.prevValue;
+      const nextValue = state.nextValue;
+      const newValue = state.newValue;
 
       const results = (newValue) ?
         calculate(prevOperator, prevValue, nextValue) : prevValue;
-    
-      return state
-      .set('nextValue', 0)
-      .set('newValue', true)
-      .set('display', results)
-      .set('prevValue', results)
-      .set('resetDisplay', true)
-      .set('operator', currentOperator);
-  }
+
+      return ({
+        ...state,
+        nextValue: 0,
+        newValue: true,
+        display: results,
+        prevValue: results,
+        resetDisplay: true,
+        operator: currentOperator
+      });
+    }
     default: {
       return state;
     }

@@ -1,9 +1,9 @@
 {
   "parser": "babel-eslint",
   "globals": {
-    "__DEV__": true,
-    "describe"   : false,
-    "it"         : false,
+    "__DEV__"  : true,
+    "describe" : false,
+    "it"       : false
   },
   "env": {
     "browser": true,

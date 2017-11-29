@@ -5,19 +5,19 @@ import * as base from '../../../src/base';
 const perfy = require('perfy');
 const webpack = require('webpack');
 
-export default function timedCompiler(config: any):any {
+export default function timedCompiler(config: any): any {
 
-    const compiler = webpack(config);
+  const compiler = webpack(config);
 
-    compiler.plugin('compile', function () {
-        perfy.start('build');
-        base.console.info('Bundling project...');
-    });
+  compiler.plugin('compile', function () {
+    perfy.start('build');
+    base.console.info('Bundling project...');
+  });
 
-    compiler.plugin('done', function () {
-        const timing = perfy.end('build');
-        base.console.success(`Bundled project in ${timing.time} seconds`);
-    });
+  compiler.plugin('done', function () {
+    const timing = perfy.end('build');
+    base.console.success(`Bundled project in ${timing.time} seconds`);
+  });
 
-    return compiler;
+  return compiler;
 }

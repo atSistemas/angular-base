@@ -5,7 +5,7 @@ import { ActionTypes } from '../actionTypes';
 @Injectable()
 export class CalculatorActions {
 
-  public inputNumber(value): Action {
+  public inputNumber(value: any): Action {
     return {
       type: ActionTypes.INPUT_NUMBER,
       payload: {
@@ -14,7 +14,7 @@ export class CalculatorActions {
     };
   }
 
-  public inputOperation(value): Action {
+  public inputOperation(value: any): Action {
     return {
       type: ActionTypes.INPUT_OPERATION,
       payload: {
@@ -29,7 +29,7 @@ export class CalculatorActions {
     };
   }
 
-  public inputOperator(operator): Action {
+  public inputOperator(operator: any): Action {
     return {
       type: ActionTypes.INPUT_OPERATOR,
       payload: {
@@ -38,10 +38,9 @@ export class CalculatorActions {
     };
   }
 
-  public result(operator?): Action {
+  public result(operator?: any): Action {
     return {
       type: ActionTypes.RESULT
     };
   }
-
-};
+}

@@ -21,10 +21,11 @@ export const output =  {
 
 export const plugins = [
   new webpack.DllPlugin({
-    path: path.join(common.dllPath, "[name]-manifest.json"),
-    name: "[name]",
+    path: path.join(common.dllPath, '[name]-manifest.json'),
+    name: '[name]',
   }),
-  new webpack.DefinePlugin({'process.env': {'NODE_ENV': '"production"'}}),
+  new webpack.DefinePlugin({
+    'process.env': { NODE_ENV: '"production"' }}),
   new AssetsPlugin({
       path: common.buildPath,
       filename: 'webpack-dll-assets.json',

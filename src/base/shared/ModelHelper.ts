@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-export function generateMap( data, model ) {
+export function generateMap( data: any, model: any ) {
   // debugger;
   return data.reduce((acc, item) => {
     //debugger;
@@ -9,7 +9,7 @@ export function generateMap( data, model ) {
   );
 }
 
-export function generateImmutable( data, model ) {
+export function generateImmutable( data: any, model: any ) {
   return Object.keys(data).reduce( (acc, key) => {
     const item = data[key];
     return acc.set( item.id, new model(item) );

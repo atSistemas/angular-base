@@ -17,14 +17,3 @@ export class MainActions {
     };
   }
 }
-/*
-import { Action } from '@ngrx/store';
-import { ActionTypes } from '../action-types';
-
-export class MainRequest implements Action {
-  readonly type = ActionTypes.MAIN_REQUEST;
-  constructor(public payload: string) {}
-}
-
-export type MainActions =
-| MainRequest;*/

@@ -52,18 +52,15 @@ export const module = {
         { loader: 'css-loader',
           options: {
             importLoaders: 1,
-            // minimize: false,
-            // sourceMap: false,
-            // modules: true,
             localIdentName: '[name]__[local]-[hash:base64:4]'
           }
         },
         {
           loader: 'postcss-loader',
           options: {
-            // config: {
-            //   path: 'postcss.config.js'
-            // }
+            config: {
+              path: 'postcss.config.js'
+            },
             plugins: (loader) => common.postcss
           }
         }

@@ -2,14 +2,17 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
+      "es2015",
       "es2017",
       "dom"
     ],
     "sourceMap": true,
     "declaration": false,
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./src",
     "paths": {
       "@angular/*": ["node_modules/@angular/*"],

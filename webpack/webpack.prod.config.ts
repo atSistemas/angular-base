@@ -33,7 +33,7 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'angular-router-loader?loader=system&genDir=compiled&aot=true'
+        'angular-router-loader?loader=system&genDir=compiled&aot=true',
       ],
       exclude: [
         /dist/,
@@ -84,7 +84,7 @@ export const plugins = [
   new CommonsChunkPlugin({
     name: 'vendor',
     chunks: ['app'],
-    minChunks: module => /node_modules/.test(module.resource)
+    minChunks: minChunksModule => /node_modules/.test(minChunksModule.resource)
   }),
   new HtmlWebpackPlugin({
      inject: 'body',
@@ -108,8 +108,8 @@ export const plugins = [
   new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
   new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
   new webpack.optimize.UglifyJsPlugin(
-    {compressor: { warnings: false, screw_ie8 : true },
-    output: {comments: false, beautify: false},
+    { compressor: { warnings: false, screw_ie8 : true },
+    output: { comments: false, beautify: false },
     mangle: { screw_ie8 : true }
   }),
   new webpack.NoEmitOnErrorsPlugin()

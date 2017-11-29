@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import * as containers from './containers';
+import { MainContainer, CalculatorContainer } from './containers';
 
 export const routes: Routes = [
-   { path: '', component: containers.MainContainer },
-   { path: 'calculator', component: containers.CalculatorContainer },
+   { path: '', component: MainContainer },
+   { path: 'calculator', component: CalculatorContainer },
    { path: 'lazy', loadChildren: './containers/+lazy/lazy.module#LazyModule' }
 ];
