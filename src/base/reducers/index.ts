@@ -11,7 +11,7 @@ import { ENV, State } from 'base';
 
 export const reducers: ActionReducerMap<State> = {
   main: MainReducer,
-  //calculator: CalculatorReducer,
+  calculator: CalculatorReducer,
   //router: routerReducer
 };
 

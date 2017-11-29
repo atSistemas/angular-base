@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, State } from 'base';
 import { Observable } from 'rxjs/Observable';
-import { Calculator } from '../../models';
+import * as CalculatorModel from '../../models';
 
 @Component({
   selector: 'base-display',
@@ -9,11 +9,10 @@ import { Calculator } from '../../models';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent {
-  data$: Observable<Calculator>;
-
+  data$: Observable<CalculatorModel.State>;
   constructor(public store: Store<State>) { }
 
   ngOnInit() {
-    //this.data$ = this.store.select('calculator');
+    this.data$ = this.store.select('calculator');
   }
 }

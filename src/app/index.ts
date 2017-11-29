@@ -27,14 +27,14 @@ export class DevelopmentModule {
       );
     }
 
-    if ('restoreInputValues' in store) { store.restoreInputValues(); };
+    if ('restoreInputValues' in store) { store.restoreInputValues(); }
     this.appRef.tick();
     Object.keys(store).forEach(prop => delete store[prop]);
   }
 
   hmrOnDestroy(store) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    this.store.take(1).subscribe(s => store.rootState = s);
+    this.store.first().subscribe(s => store.rootState = s);
     store.disposeOldHosts = createNewHosts(cmpLocation);
     store.restoreInputValues  = createInputTransfer();
     removeNgStyles();

@@ -20,12 +20,12 @@ export class CustomRouterSerializer implements RouterStateSerializer<any> {
 
 export const baseImports = [
   RouterModule.forRoot(routes, {
+    useHash: true,
     preloadingStrategy: false
   }),
-  StoreModule.forRoot(reducers),
-  EffectsModule.forRoot([
-    RequestEffect
-  ]),
+  StoreModule.forRoot(reducers, {
+    initialState,
+  }),  EffectsModule.forRoot([]),
   StoreRouterConnectingModule
 ];
 /*

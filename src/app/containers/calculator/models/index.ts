@@ -1,7 +1,7 @@
 import { Record } from 'immutable';
 
-export interface Calculator {
-  display?: number;
+export interface State {
+  display: number;
   operator?: string;
   operation?: string;
   prevValue?: number;
@@ -10,7 +10,7 @@ export interface Calculator {
   resetDisplay?: boolean;
 }
 
-export const CalculatorModel = Record({
+export const initialState = <State>{
   display: 0,
   operator: '',
   operation: '',
@@ -18,4 +18,4 @@ export const CalculatorModel = Record({
   nextValue:  0,
   newValue: false,
   resetDisplay: false
-});
+};
