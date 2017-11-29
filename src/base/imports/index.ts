@@ -25,17 +25,19 @@ export const baseImports = [
   }),
   StoreModule.forRoot(reducers, {
     initialState,
-  }),  EffectsModule.forRoot([]),
+    metaReducers
+  }),
+  EffectsModule.forRoot([]),
   StoreRouterConnectingModule
 ];
-/*
+
 if (ENV === 'development') {
   baseImports.push(...[
     StoreDevtoolsModule.instrument({
       maxAge: 10
     })
   ]);
-}*/
+}
 
 export const BaseImports = baseImports;
 
