@@ -6,6 +6,7 @@ import { MainContainer } from './main.container';
 
 import { LogoComponent } from '../../components/logo/logo.component';
 import { CalculatorModule } from '../calculator/calculator.module';
+import { WeatherModule } from '../weather/weather.module';
 import { TopBarComponent } from '../../components/topBar/topBar.component';
 
 import { MainActions } from './actions';
@@ -20,6 +21,7 @@ import { MainService } from './services';
   imports: [
     CommonModule,
     CalculatorModule,
+    WeatherModule,
     RouterModule
   ],
   providers: [
