@@ -105,8 +105,9 @@ export const resolve = {
   extensions: ['.js', '.ts', '.tsx', '.css'],
   alias: {
     base: path.resolve(__dirname, '../src/base'),
-    mocks: path.resolve(__dirname, '../server/api/mocks')
-
+    mocks: path.resolve(__dirname, '../server/api/mocks'),
+    containers: path.resolve(__dirname, '../src/app/containers'),
+    components: path.resolve(__dirname, '../src/app/components')
   }
 };
 

@@ -9,13 +9,11 @@ export function generateMap( data: any, model: any ) {
   );
 }
 
-export function generateImmutable( data: any, model: any ) {
-  return Object.keys(data).reduce( (acc, key) => {
-    const item = data[key];
-    return acc.set( item.id, new model(item) );
-  }, Map()
-  );
-}
+export const generateImmutable = (data: any, Model: any) => (
+  Object.keys(data).reduce((acc: Map<any, any>, key: any) => (
+    acc.set(data[key].id, new Model(data[key]))
+  ), Map<any, any>())
+);
 
 // import { Map } from 'immutable';
 

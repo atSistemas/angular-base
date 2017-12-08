@@ -4,15 +4,16 @@ import { ActionReducer, ActionReducerMap } from '@ngrx/store';
 import { storeLogger } from 'ngrx-store-logger';
 import { storeFreeze } from 'ngrx-store-freeze';
 
+import { ENV, State } from 'base';
 import { MainReducer } from '../../app/containers/main/reducers';
 import { CalculatorReducer } from '../../app/containers/calculator/reducers';
-
-import { ENV, State } from 'base';
+import { WeatherReducer } from '../../app/containers/weather/reducers';
 
 export const reducers: ActionReducerMap<State> = {
   main: MainReducer,
   calculator: CalculatorReducer,
-  router: routerReducer
+  router: routerReducer,
+  weather: WeatherReducer
 };
 
 export function logger(reducer: ActionReducer<State>): any {

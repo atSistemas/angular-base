@@ -1,0 +1,37 @@
+import { Record } from 'immutable';
+
+
+class Coord {
+  Lat: number;
+  Lon: number;
+}
+
+class Main {
+  temp: number;
+  pressure: number;
+  humidity: number;
+}
+
+export class WeatherStation {
+  id: number;
+  coord: Record<Coord>;
+  main: Record<Main>;
+}
+
+const CoordModel = Record<Coord>({
+  Lat: 0,
+  Lon: 0
+});
+
+const MainModel = Record<Main>({
+  temp: 0,
+  humidity: 0,
+  pressure: 0
+})
+
+export const WeatherStationModel = Record<WeatherStation>({
+  id: -1,
+  coord: new CoordModel(),
+  main: new MainModel()
+})
+
