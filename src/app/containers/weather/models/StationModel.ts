@@ -1,6 +1,5 @@
 import { Record } from 'immutable';
 
-
 export interface Coord {
   Lat: number;
   Lon: number;
@@ -27,11 +26,10 @@ const MainModel = Record<Main>({
   temp: 0,
   humidity: 0,
   pressure: 0
-})
+});
 
 export const StationModel = Record<Station>({
   id: -1,
   coord: new CoordModel(),
   main: new MainModel()
-})
-
+});

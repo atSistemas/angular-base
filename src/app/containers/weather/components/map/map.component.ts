@@ -8,18 +8,16 @@ import { Station } from '../../models/StationModel';
   styleUrls: [ './map.component.css' ]
 })
 
-export class MapComponent{
+export class MapComponent {
   @Input() stations: Seq.Indexed<Record<Station>>;
   @Output() selectStation = new EventEmitter<Record<Station>>();
-  
-  zoom: number = 6;
-  private lat: number = 40.4047789;
-  private lng: number = -3.653974;
+  zoom = 6;
+  private lat = 40.4047789;
+  private lng = -3.653974;
 
-  
   get center() {
     const { lat, lng } = this;
-    return { lat , lng }
+    return { lat , lng };
   }
 
   onSelectStation(station: Record<Station>) {

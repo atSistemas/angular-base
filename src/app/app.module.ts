@@ -7,7 +7,7 @@ import { Store, State } from 'base';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 
-import { MainModule, CalculatorModule, WeatherModule }  from './containers';
+import { MainModule, CalculatorModule, WeatherModule } from './containers';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './components';

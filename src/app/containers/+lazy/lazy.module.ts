@@ -23,5 +23,5 @@ import { routes } from './lazy.routes';
 export class LazyModule { }
 
 export function WrapperLazyModule() {
-  return LazyModule
+  return LazyModule;
 }

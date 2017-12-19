@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { Store, State } from "base";
+import { Store, State } from 'base';
 import { Map, Record, Seq } from 'immutable';
 
-import { Forecast } from "../../models";
-import { selectForecasts } from "../../selectors";
+import { Forecast } from '../../models';
+import { selectForecasts } from '../../selectors';
 
 @Component({
   selector: 'weather-forecast',
@@ -13,7 +13,7 @@ import { selectForecasts } from "../../selectors";
   styleUrls: [ './forecast.component.css' ]
 })
 
-export class ForecastComponent implements OnInit{
+export class ForecastComponent implements OnInit {
   private forecasts$: Observable<Map<number, Record<Forecast>>> = this.store.select(selectForecasts);
   private forecastsSubscription: Subscription;
 

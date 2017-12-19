@@ -11,9 +11,8 @@ export interface Temp {
 
 export interface Forecast {
   dt: number;
-  temp: Record<Temp>
+  temp: Record<Temp>;
 }
-
 
 const TempModel = Record<Temp>({
   day: 0,
@@ -22,9 +21,9 @@ const TempModel = Record<Temp>({
   night: 0,
   eve: 0,
   morn: 0
-})
+});
 
 export const ForecastModel = Record<Forecast>({
   dt: 0,
   temp: new TempModel()
-})
+});

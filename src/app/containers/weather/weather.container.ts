@@ -13,21 +13,19 @@ import {
   selectForecasts
 } from './selectors';
 
-
 @Component({
   selector: 'base-weather-container',
   templateUrl: './weather.container.html',
   styleUrls: ['./weather.container.css']
 })
 
-export class WeatherContainer implements OnInit{
+export class WeatherContainer implements OnInit {
   private stations$: Observable<Map<number, Record<Station>>> = this.store.select(selectStations);
   private stationsSubscription: Subscription;
   private stations: Map<number, Record<Station>> = Map<number, Record<Station>>();
-  
   private stationSelected$: Observable<number> = this.store.select(selectStationSelected);
   private stationSelectedSubscription: Subscription;
-  private stationSelected: number = -1;
+  private stationSelected: number;
 
   constructor(
     private store: Store<State>,
@@ -41,8 +39,9 @@ export class WeatherContainer implements OnInit{
     this.stationsSubscription = this.stations$.subscribe(stations => (
       this.stations = stations
     ));
-    
-    !this.stations.count() && this.getStations();
+    if (!this.stations.count()) {
+      this.getStations();
+    }
   }
 
   ngOnDestroy() {
@@ -55,12 +54,12 @@ export class WeatherContainer implements OnInit{
   }
 
   get isStationSelected(): boolean {
-    return !!~this.stationSelected;
+    return this.stationSelected >= 0;
   }
 
   onSelectStation(station: Record<Station>) {
     const id = station.getIn(['id']);
-    if( id !== this.stationSelected) {
+    if (id !== this.stationSelected) {
       const lat = station.getIn(['coord', 'Lat']);
       const lon = station.getIn(['coord', 'Lon']);
       this.store.dispatch(

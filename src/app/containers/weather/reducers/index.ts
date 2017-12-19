@@ -4,7 +4,7 @@ import { Action, State } from 'base';
 import { Record } from 'immutable';
 
 import { Weather, WeatherModel } from '../models';
-import { ActionTypes } from "../actionTypes";
+import { ActionTypes } from '../actionTypes';
 import { WeatherActions } from '../actions';
 import { Station } from '../models/StationModel';
 
@@ -32,7 +32,7 @@ const forecastsError = (state: Record<Weather>, action: Action): Record<Weather>
   state
 );
 
-const actionHandler: Map<string,Function> = new Map<string, Function>([
+const actionHandler: Map<string, any> = new Map<string, any>([
   [ActionTypes.STATIONS_REQUEST, stationsRequest],
   [ActionTypes.STATIONS_SUCCESS, stationsSuccess],
   [ActionTypes.STATIONS_ERROR, stationsError],
@@ -43,6 +43,6 @@ const actionHandler: Map<string,Function> = new Map<string, Function>([
 ]);
 
 export function WeatherReducer(state: Record<Weather> = new WeatherModel(), action: Action) {
-  const handler = actionHandler.get(action.type)
-  return handler ? handler(state,action) : state;
+  const handler = actionHandler.get(action.type);
+  return handler ? handler(state, action) : state;
 }

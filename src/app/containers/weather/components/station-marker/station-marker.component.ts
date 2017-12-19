@@ -18,12 +18,11 @@ export class StationMarkerComponent {
 
   @Output() selectStation = new EventEmitter<Record<Station>>();
 
-
   get position() {
     return {
-      lat: this.station.getIn(['coord','Lat']),
-      lng: this.station.getIn(['coord','Lon'])
-    }
+      lat: this.station.getIn(['coord', 'Lat']),
+      lng: this.station.getIn(['coord', 'Lon'])
+    };
   }
 
   get infoWindowID() {
@@ -31,7 +30,7 @@ export class StationMarkerComponent {
   }
 
   get info() {
-    return this.station.getIn(['main'])
+    return this.station.getIn(['main']);
   }
 
   onSelectStation() {

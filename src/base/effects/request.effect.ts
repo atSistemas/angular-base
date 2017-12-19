@@ -13,8 +13,6 @@ export class RequestEffect {
   );
 
   constructor(
-    private actions$: Actions,
-  ) {}
-
-  
+    private actions$: Actions
+  ) { }
 }
