@@ -1,15 +1,15 @@
 import { Record } from 'immutable';
 
-class Temp {
+export interface Temp {
   day: number;
   min: number;
   max: number;
-  nigth: number;
-  even: number;
+  night: number;
+  eve: number;
   morn: number;
 }
 
-export class Forecast {
+export interface Forecast {
   dt: number;
   temp: Record<Temp>
 }
@@ -19,8 +19,8 @@ const TempModel = Record<Temp>({
   day: 0,
   min: 0,
   max: 0,
-  nigth: 0,
-  even: 0,
+  night: 0,
+  eve: 0,
   morn: 0
 })
 

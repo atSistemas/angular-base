@@ -26,7 +26,7 @@ export const baseImports = [
     initialState,
     metaReducers
   }),
-  EffectsModule.forRoot([]),
+  EffectsModule.forRoot([ RequestEffect ]),
   StoreRouterConnectingModule
 ];
 

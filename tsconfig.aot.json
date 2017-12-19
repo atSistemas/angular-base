@@ -15,6 +15,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./src",
     "paths": {
+      "@ngui/map": [ "node_modules/@ngui/map/*" ],
       "@angular/*": ["node_modules/@angular/*"],
       "base/*": [
         "./base/*"

@@ -1,0 +1,21 @@
+.forecast-detail {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 300px;
+  border: 3px solid #FAB10A;
+  border-radius: 15px;
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  align-self: center;
+}
+
+.forecast-temp {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}

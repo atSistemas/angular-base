@@ -24,6 +24,7 @@ export const polyfills = [
 
 ];
 export const vendor = [
+  '@ngui/map',
   '@angular/core',
   '@angular/http',
   '@angular/common',

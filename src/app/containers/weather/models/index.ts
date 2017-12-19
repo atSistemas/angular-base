@@ -1,24 +1,27 @@
 import { Record, Map } from 'immutable';
 import { State } from 'base/state';
-import { generateImmutable } from '../../../../base/shared/ModelHelper';
-import { WeatherStation } from './WeatherStationModel';
+import { generateMap } from '../../../../base/shared/ModelHelper';
+import { Station, StationModel } from './StationModel';
 import { ForecastModel, Forecast } from './ForecastModel';
 
-export class Weather {
-  forecast: Map<number, Forecast>;
-  stations: Map<number, WeatherStation>;
+export { Station, StationModel } from './StationModel';
+export { Temp, ForecastModel, Forecast } from './ForecastModel';
+
+export interface Weather {
+  forecasts: Map<number, Record<Forecast>>;
+  stations: Map<number, Record<Station>>;
   stationSelected: number;
 }
 
 export const WeatherModel = Record<Weather>({
-  forecast: Map<number, Forecast>(),
-  stations: Map<number, WeatherStation>(),
+  forecasts: Map<number, Record<Forecast>>(),
+  stations: Map<number, Record<Station>>(),
   stationSelected: -1
 })
 
-export const setInitialState = (initialState: State): Weather => (
+export const setInitialState = (initialState: State): Record<Weather> => (
   initialState.weather = new WeatherModel(initialState.weather).mergeDeep({
-    stations: generateImmutable(initialState.weather.stations, WeatherStation),
-    forecast: generateImmutable(initialState.weather.forecast, ForecastModel)
+    stations: generateMap(initialState.weather.get('stations', Map<number, Record<Station>>()), StationModel),
+    forecasts: generateMap(initialState.weather.get('forecasts', Map<number, Record<Forecast>>()), ForecastModel)
   })
 )

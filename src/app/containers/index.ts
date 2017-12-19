@@ -1,3 +1,3 @@
-export { MainContainer } from './main/main.container';
-export { CalculatorContainer } from './calculator/calculator.container';
-export { WeatherContainer } from './weather/weather.container';
+export { MainContainer, MainModule } from './main';
+export { CalculatorContainer, CalculatorModule } from './calculator';
+export { WeatherContainer, WeatherModule } from './weather';

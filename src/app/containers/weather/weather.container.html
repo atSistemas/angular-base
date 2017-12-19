@@ -1,5 +1,5 @@
-<div>
-  <p>
-    Empty Weather container {{ stationSelected$ | async }}
-  </p>
-</div>
+<weather-map
+  [stations]="stationList"
+  (selectStation)="onSelectStation($event)"
+></weather-map>
+<weather-forecast *ngIf="isStationSelected"></weather-forecast>

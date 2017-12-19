@@ -1,3 +1,4 @@
+import '@ngui/map';
 import '@angular/core';
 import '@angular/http';
 import '@angular/common';

@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { MainContainer } from './main.container';
 
-import { LogoComponent } from '../../components/logo/logo.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 import { MainActions } from './actions';
 import { MainService } from './services';

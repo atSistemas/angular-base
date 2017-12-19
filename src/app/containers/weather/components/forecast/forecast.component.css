@@ -1,0 +1,11 @@
+.forecast-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.forecast-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

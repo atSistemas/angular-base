@@ -9,6 +9,10 @@ import { routes } from './lazy.routes';
   declarations: [
     LazyComponent
   ],
+  exports: [
+    LazyComponent,
+    RouterModule
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
@@ -17,3 +21,7 @@ import { routes } from './lazy.routes';
 })
 
 export class LazyModule { }
+
+export function WrapperLazyModule() {
+  return LazyModule
+}

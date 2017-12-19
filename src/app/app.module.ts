@@ -7,12 +7,10 @@ import { Store, State } from 'base';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 
-import { MainModule } from './containers/main/main.module';
-import { CalculatorModule } from './containers/calculator/calculator.module';
-import { WeatherModule } from './containers/weather/weather.module';
+import { MainModule, CalculatorModule, WeatherModule }  from './containers';
 
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './components/topBar/topBar.component';
+import { TopBarComponent } from './components';
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -24,10 +22,10 @@ import { TopBarComponent } from './components/topBar/topBar.component';
     BaseImports,
     BrowserModule,
     HttpModule,
+    RouterModule,
     MainModule,
     CalculatorModule,
-    WeatherModule,
-    RouterModule
+    WeatherModule
   ],
   providers: [ BaseProviders ]
 })

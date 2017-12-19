@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@agm/core@^1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.2.tgz#da15c0a5e86fe9e1178f14c36a3e0ffc14f9ad77"
+
 "@angular/animations@5.1.0-beta.2":
   version "5.1.0-beta.2"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-5.1.0-beta.2.tgz#2ed05bfa0ed22d6d1550658785e965c1fbfec5a7"
@@ -107,6 +111,12 @@
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-4.1.1.tgz#680e34df2775e8852754ed777ffac95bd81b7de0"
 
+"@ngui/map@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@ngui/map/-/map-0.20.0.tgz#8919eea289e4f31c018118137cd10ef42205c6d2"
+  dependencies:
+    tslib "^1.7.1"
+
 "@std/esm@^0.16.0":
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.16.0.tgz#2a7a33ecb7f1701cebd4c87df6d0d945ed51f730"
@@ -139,6 +149,10 @@
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
+
+"@types/googlemaps@^3.30.2":
+  version "3.30.2"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.30.2.tgz#83ac73ea8a961d183e0379cfb48196c1c8e54491"
 
 "@types/mime@*":
   version "2.0.0"
@@ -1208,6 +1222,17 @@ copy-webpack-plugin@^4.0.1:
     lodash "^4.3.0"
     minimatch "^3.0.4"
     node-dir "^0.1.10"
+
+copy-webpack-plugin@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-4.2.3.tgz#4a3c61089f3b635777f0f0af346c338b39d63755"
+  dependencies:
+    bluebird "^3.5.1"
+    glob "^7.1.2"
+    is-glob "^4.0.0"
+    loader-utils "^0.2.15"
+    lodash "^4.3.0"
+    minimatch "^3.0.4"
 
 core-js@2.5.1, core-js@^2.4.0:
   version "2.5.1"
