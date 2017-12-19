@@ -25,10 +25,10 @@
   }
 
   a {
-      display: block;
-      margin-top: 40px;
-    }
+    display: block;
+    margin-top: 40px;
   }
+}
 
 .buttons {
   align-items: center;
@@ -40,5 +40,5 @@
   }
 }
 .button {
-   margin-right: 30px;  
+  margin-right: 30px;  
 }
