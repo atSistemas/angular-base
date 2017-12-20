@@ -53,7 +53,8 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",
-    "src/base/wp-plugins"
+    "src/base/wp-plugins",
+    "src/app/index.aot.ts"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,

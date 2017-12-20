@@ -46,34 +46,8 @@ export const module = {
     },
     {
       test: /\.(css)$/,
-      use: ['raw-loader','sass-loader'], // don't use css-loader for ng2 （unusual）
-    },
-    {
-      test: /\.css$/,
-      exclude: [/node_modules/, /src\/app/], 
-      use: ExtractTextPlugin.extract({
-        fallback: ['style-loader', ],
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[hash:base64:4]'
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => common.postcss.concat(
-                require('postcss-clean')(),
-                require('autoprefixer')()
-              )
-            }
-          }
-        ]
-      }),
-    },
+      use: ['raw-loader'],
+    }
   ] as any[])
 };
 
@@ -116,7 +90,9 @@ export const plugins = [
     }
    }),
   new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
+  /*
   new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
+  */
   new webpack.optimize.UglifyJsPlugin(
     { compressor: { warnings: false, screw_ie8 : true },
     output: { comments: false, beautify: false },
@@ -126,7 +102,6 @@ export const plugins = [
   new ngToolsWebpack.AngularCompilerPlugin({
     tsConfigPath: './tsconfig.aot.json',
     entryModule: path.join(__dirname, '../src/app/app.module#AppModule'),
-    mainPath: path.join(__dirname, '../src/app/index.aot'),
     sourceMap: true
   }),
 ]

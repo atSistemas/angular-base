@@ -6,15 +6,12 @@ export default function renderPage(): string {
   const app = getScripts('app');
   const vendor = getScripts('vendor');
   const polyfills = getScripts('polyfills');
-  const style = (environment.ENV === envConstants.PRODUCTION) ? '<link rel="stylesheet" href="bundle.css">' : '';
-
   return `
   <!doctype html>
 	<html lang="utf-8">
     <head>
       <title>Angular2 Base</title>
       <base href="/">
-      ${ style }
       ${ polyfills }
       ${ vendor }
     </head>
