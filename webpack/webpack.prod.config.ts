@@ -42,24 +42,33 @@ export const module = {
         /server/,
         /webpack/,
         /node_modules/
-      ]},
+      ]
+    },
+    {
+      test: /\.(css)$/,
+      use: ['raw-loader','sass-loader'], // don't use css-loader for ng2 （unusual）
+    },
     {
       test: /\.css$/,
+      exclude: [/node_modules/, /src\/app/], 
       use: ExtractTextPlugin.extract({
-        fallback: ['style-loader'],
+        fallback: ['style-loader', ],
         use: [
           {
             loader: 'css-loader',
             options: {
+              modules: true,
               importLoaders: 1,
-              minimize: true,
-              sourceMap: true
+              localIdentName: '[hash:base64:4]'
             }
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: (loader) => common.postcss
+              plugins: () => common.postcss.concat(
+                require('postcss-clean')(),
+                require('autoprefixer')()
+              )
             }
           }
         ]
@@ -116,7 +125,8 @@ export const plugins = [
   new webpack.NoEmitOnErrorsPlugin(),
   new ngToolsWebpack.AngularCompilerPlugin({
     tsConfigPath: './tsconfig.aot.json',
-    entryModule: '.src/app/app.module#AppModule',
+    entryModule: path.join(__dirname, '../src/app/app.module#AppModule'),
+    mainPath: path.join(__dirname, '../src/app/index.aot'),
     sourceMap: true
   }),
 ]

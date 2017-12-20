@@ -53,8 +53,7 @@
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",
-    "src/base/wp-plugins",
-    "src/app/index.aot.ts"
+    "src/base/wp-plugins"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
@@ -65,7 +64,6 @@
   "buildOnSave": false,
   "angularCompilerOptions": {
    "skipMetadataEmit" : false,
-   "genDir": "./compiled",
-   "entryModule": "./src/app/app.module#AppModule"
+   "genDir": "compiled/"
  }
 }

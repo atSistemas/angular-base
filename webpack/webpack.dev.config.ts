@@ -32,6 +32,7 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
+        'awesome-typescript-loader',
         '@angularclass/hmr-loader',
         'angular-router-loader'
       ],

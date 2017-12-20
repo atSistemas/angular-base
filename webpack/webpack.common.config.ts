@@ -69,7 +69,6 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'awesome-typescript-loader',
         'angular2-template-loader',
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
@@ -93,7 +92,7 @@ export const node = {
 };
 
 export const postcss = [
-  require('postcss-import')({ addDependencyTo: webpack }),
+  require('postcss-import')(),
   require('postcss-cssnext')(),
   require('postcss-modules-extract-imports'),
   require('postcss-nested')(),
