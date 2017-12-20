@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { MainContainer, CalculatorContainer, WeatherContainer } from './containers';
-import { WrapperLazyModule } from './containers/+lazy/lazy.module';
+//import { WrapperLazyModule } from './containers/+lazy/lazy.module';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import { WrapperLazyModule } from './containers/+lazy/lazy.module';
       { path: '', component: MainContainer },
       { path: 'calculator', component: CalculatorContainer },
       { path: 'weather', component: WeatherContainer },
-      { path: 'lazy', loadChildren: WrapperLazyModule },
+      { path: 'lazy', loadChildren: './containers/+lazy/lazy.module#LazyModule' },
       { path: '**', redirectTo: '' }
     ])
   ],

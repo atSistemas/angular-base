@@ -2,8 +2,8 @@ import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
 import { LazyModel } from '../models';
 
-const lazyRequest = Symbol(ActionTypes.LAZY_REQUEST);
-const lazySuccess = Symbol(ActionTypes.LAZY_SUCCESS);
+const lazyRequest = Symbol(ActionTypes.get('LAZY_REQUEST'));
+const lazySuccess = Symbol(ActionTypes.get('LAZY_SUCCESS'));
 
 const request = (state, data) => {
   return state;

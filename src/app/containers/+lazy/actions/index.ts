@@ -7,7 +7,7 @@ export class LazyActions {
 
   public lazyRequest(): Action {
     return {
-      type: ActionTypes.LAZY_REQUEST
+      type: ActionTypes.get('LAZY_REQUEST')
     };
   }
 }

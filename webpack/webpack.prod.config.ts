@@ -7,6 +7,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ngToolsWebpack = require('@ngtools/webpack');
 
 export const cache = common.cache;
 export const resolve = common.resolve;
@@ -33,7 +34,7 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'angular-router-loader?loader=system&genDir=compiled&aot=true',
+        '@ngtools/webpack',
       ],
       exclude: [
         /dist/,
@@ -112,6 +113,9 @@ export const plugins = [
     output: { comments: false, beautify: false },
     mangle: { screw_ie8 : true }
   }),
-  new webpack.NoEmitOnErrorsPlugin()
+  new webpack.NoEmitOnErrorsPlugin(),
+  new ngToolsWebpack.AotPlugin({
+    tsConfigPath: './tsconfig.aot.json'
+  }),
 ]
   .concat(common.plugins);

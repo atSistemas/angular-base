@@ -64,6 +64,8 @@
   "compileOnSave": false,
   "buildOnSave": false,
   "angularCompilerOptions": {
-   "skipMetadataEmit" : false
+   "skipMetadataEmit" : false,
+   "genDir": "./compiled",
+   "entryModule": "./src/app/app.module#AppModule"
  }
 }
