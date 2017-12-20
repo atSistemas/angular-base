@@ -17,4 +17,4 @@ import { WrapperLazyModule } from './containers/+lazy/lazy.module';
   exports: [ RouterModule ]
 })
 
-export class AppRoutingModule { };
+export class AppRoutingModule { }

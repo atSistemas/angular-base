@@ -22,7 +22,7 @@ describe('WeatherContainer', () => {
   let weatherMapServiceStub: {
     getStations(): Observable<Map<number, Record<Station>>>;
     getForecast(lat: number, lon: number): Observable<Map<number, Record<Forecast>>>;
-  }
+  };
 
   beforeEach(() => {
 
@@ -60,6 +60,6 @@ describe('WeatherContainer', () => {
   it('should render a empty map', () => {
     fixture.detectChanges();
     const content = el;
-  })
+  });
 
-})
+});
