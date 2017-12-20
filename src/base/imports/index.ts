@@ -4,7 +4,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer, routerReducer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { routes } from '../../app/app.routes';
 import { reducers, metaReducers } from '../reducers';
 import { initialState } from '../state';
 import { RequestEffect } from '../effects/request.effect';
@@ -19,9 +18,6 @@ export class CustomRouterSerializer implements RouterStateSerializer<any> {
 }
 
 export const baseImports = [
-  RouterModule.forRoot(routes, {
-    preloadingStrategy: false
-  }),
   StoreModule.forRoot(reducers, {
     initialState,
     metaReducers

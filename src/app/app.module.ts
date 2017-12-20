@@ -2,13 +2,12 @@ import { HttpModule } from '@angular/http';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
 import { Store, State } from 'base';
 import { BaseImports } from 'base/imports/';
 import { BaseProviders } from 'base/providers/';
 
+import { AppRoutingModule } from './app-routing.module';
 import { MainModule, CalculatorModule, WeatherModule } from './containers';
-
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './components';
 
@@ -22,10 +21,10 @@ import { TopBarComponent } from './components';
     BaseImports,
     BrowserModule,
     HttpModule,
-    RouterModule,
     MainModule,
     CalculatorModule,
-    WeatherModule
+    WeatherModule,
+    AppRoutingModule
   ],
   providers: [ BaseProviders ]
 })

@@ -13,15 +13,17 @@ export interface Weather {
   stationSelected: number;
 }
 
-export const WeatherModel = Record<Weather>({
+export const WeatherModel: Record.Factory<Weather> = Record<Weather>({
   forecasts: Map<number, Record<Forecast>>(),
   stations: Map<number, Record<Station>>(),
   stationSelected: -1
 });
 
+/* Waiting for server-side-rendering
 export const setInitialState = (initialState: State): Record<Weather> => (
   initialState.weather = new WeatherModel(initialState.weather).mergeDeep({
     stations: generateMap(initialState.weather.get('stations', Map<number, Record<Station>>()), StationModel),
     forecasts: generateMap(initialState.weather.get('forecasts', Map<number, Record<Forecast>>()), ForecastModel)
   })
 );
+*/
