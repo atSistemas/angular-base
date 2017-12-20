@@ -6,17 +6,17 @@ import { Action, State } from 'base';
 
 const calculate = (operator, prevValue, nextValue) => {
   const result = {
-    [ActionTypes.SUM]: () => prevValue + nextValue,
-    [ActionTypes.DIVIDE]: () => prevValue / nextValue,
-    [ActionTypes.MULTIPLY]: () => prevValue * nextValue,
-    [ActionTypes.SUBSTRACT]: () => prevValue - nextValue
+    [ActionTypes.get('SUM')]: () => prevValue + nextValue,
+    [ActionTypes.get('DIVIDE')]: () => prevValue / nextValue,
+    [ActionTypes.get('MULTIPLY')]: () => prevValue * nextValue,
+    [ActionTypes.get('SUBSTRACT')]: () => prevValue - nextValue
   };
   return operator ? result[operator]() : prevValue;
 };
 
 export function CalculatorReducer(state: any = CalculatorModel.initialState, action: Action): CalculatorModel.State {
   switch (action.type) {
-    case ActionTypes.INPUT_NUMBER: {
+    case ActionTypes.get('INPUT_NUMBER'): {
 
       const selectedValue = action.payload.value;
       const newValue = state.newValue;
@@ -39,7 +39,7 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
         });
       }
     }
-    case ActionTypes.RESULT : {
+    case ActionTypes.get('RESULT') : {
       const operator = state.operator;
       const prevValue = state.prevValue;
       const nextValue = state.nextValue;
@@ -52,7 +52,7 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
         resetDisplay: true
       });
     }
-    case ActionTypes.INPUT_DECIMAL: {
+    case ActionTypes.get('INPUT_DECIMAL'): {
 
       const value = `${state.prevValue}.`;
       return ({
@@ -63,20 +63,20 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
       });
     }
 
-    case ActionTypes.INPUT_OPERATION: {
+    case ActionTypes.get('INPUT_OPERATION'): {
 
       let value = 0;
       const operation = action.payload.value;
       const prevValue = state.prevValue;
       switch (operation) {
-        case ActionTypes.PERCENT:
+        case ActionTypes.get('PERCENT'):
           value = prevValue / 100;
           return ({
             ...state,
             display: value,
             prevValue: value
           });
-        case ActionTypes.CLEAN:
+        case ActionTypes.get('CLEAN'):
           value = 0;
           return ({
             ...state,
@@ -85,7 +85,7 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
             nextValue: value,
             resetDisplay: true
           });
-        case ActionTypes.CHANGE_SIGN:
+        case ActionTypes.get('CHANGE_SIGN'):
           value = (Math.sign(prevValue) === 1) ?
             -Math.abs(prevValue) : Math.abs(prevValue);
           return ({
@@ -97,7 +97,7 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
           break;
       }
     }
-    case ActionTypes.INPUT_OPERATOR: {
+    case ActionTypes.get('INPUT_OPERATOR'): {
 
       const currentOperator = action.payload.operator;
       const prevOperator = state.operator;
@@ -126,7 +126,7 @@ export function CalculatorReducer(state: any = CalculatorModel.initialState, act
 /*
 const actionHandlers = () => {
   return {
-    [ActionTypes.INPUT_NUMBER]: (state) => state,
+    [ActionTypes.get('INPUT_NUMBER')]: (state) => state,
   };
 };
 const leches = actionHandlers();

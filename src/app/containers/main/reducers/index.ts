@@ -23,7 +23,7 @@ export const actionHandlers = {
 
 export function MainReducer(state: any = new MainModel(), action: Action): Main {
   switch (action.type) {
-    case ActionTypes.LOGIN: {
+    case ActionTypes.get('LOGIN'): {
       return state;
     }
     default: {

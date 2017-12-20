@@ -114,8 +114,10 @@ export const plugins = [
     mangle: { screw_ie8 : true }
   }),
   new webpack.NoEmitOnErrorsPlugin(),
-  new ngToolsWebpack.AotPlugin({
-    tsConfigPath: './tsconfig.aot.json'
+  new ngToolsWebpack.AngularCompilerPlugin({
+    tsConfigPath: './tsconfig.aot.json',
+    entryModule: '.src/app/app.module#AppModule',
+    sourceMap: true
   }),
 ]
   .concat(common.plugins);

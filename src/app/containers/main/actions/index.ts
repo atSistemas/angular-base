@@ -12,7 +12,7 @@ export class MainActions {
 
   public mainRequest(): Action {
     return {
-      type: ActionTypes.MAIN_REQUEST,
+      type: ActionTypes.get('MAIN_REQUEST'),
       request: this.mainService.getData()
     };
   }

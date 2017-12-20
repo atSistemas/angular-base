@@ -1,6 +1,6 @@
-import { createActionType } from 'base';
+import { createActionTypes } from 'base/shared/CreateActionType';
 
-export const ActionTypes = createActionType([
+export const ActionTypes: Map<string, string> = createActionTypes([
   'SUM',
   'CLEAN',
   'RESULT',

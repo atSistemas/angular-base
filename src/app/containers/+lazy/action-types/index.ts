@@ -1,7 +1,7 @@
-import { createActionType } from 'base';
+import { createActionTypes } from 'base/shared/CreateActionType';
 
-export const ActionTypes = new Map<string, string>([
-  ['LAZY_ERROR', 'LAZY_ERROR'],
-  ['LAZY_REQUEST', 'LAZY_REQUEST'],
-  ['LAZY_SUCCESS', 'LAZY_SUCCESS']
+export const ActionTypes: Map<string, string> = createActionTypes([
+  'LAZY_ERROR',
+  'LAZY_REQUEST',
+  'LAZY_SUCCESS'
 ]);

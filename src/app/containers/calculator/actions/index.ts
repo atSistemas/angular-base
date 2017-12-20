@@ -7,7 +7,7 @@ export class CalculatorActions {
 
   public inputNumber(value: any): Action {
     return {
-      type: ActionTypes.INPUT_NUMBER,
+      type: ActionTypes.get('INPUT_NUMBER'),
       payload: {
         value
       }
@@ -16,7 +16,7 @@ export class CalculatorActions {
 
   public inputOperation(value: any): Action {
     return {
-      type: ActionTypes.INPUT_OPERATION,
+      type: ActionTypes.get('INPUT_OPERATION'),
       payload: {
         value
       }
@@ -25,13 +25,13 @@ export class CalculatorActions {
 
   public inputDecimal(): Action {
     return {
-      type: ActionTypes.INPUT_DECIMAL
+      type: ActionTypes.get('INPUT_DECIMAL')
     };
   }
 
   public inputOperator(operator: any): Action {
     return {
-      type: ActionTypes.INPUT_OPERATOR,
+      type: ActionTypes.get('INPUT_OPERATOR'),
       payload: {
         operator
       }
@@ -40,7 +40,7 @@ export class CalculatorActions {
 
   public result(operator?: any): Action {
     return {
-      type: ActionTypes.RESULT
+      type: ActionTypes.get('RESULT')
     };
   }
 }

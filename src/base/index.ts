@@ -8,5 +8,4 @@ export { State } from './state';
 export { Action } from './models';
 
 export { createReducer } from './shared/CreateReducer';
-export { createActionType } from './shared/CreateActionType';
 export { resolveRequestAction } from './shared/ResolveRequestAction';
