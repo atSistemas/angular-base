@@ -4,7 +4,6 @@ import * as common from './webpack.common.config';
 const webpack = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
@@ -47,7 +46,7 @@ export const module = {
     },
     {
       test: /\.(css)$/,
-      use: ['raw-loader'],
+      use: ['raw-loader']
     }
   ] as any[])
 };
@@ -75,10 +74,9 @@ export const plugins = [
   new HtmlWebpackPlugin({
      inject: 'body',
      title: 'Base App',
-     filename: 'eo.html',
+     filename: 'index.html',
      template: 'server/templates/index.ejs',
      chunks: ['polyfills', 'vendor', 'app'],
-     //FIXME
      chunksSortMode: (a, b) => {
       const order = ['polyfills', 'vendor', 'app'];
       if (order.indexOf(a.names[0]) > order.indexOf(b.names[0])) {
@@ -92,9 +90,6 @@ export const plugins = [
     }
    }),
   new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
-  /*
-  new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
-  */
   new webpack.optimize.UglifyJsPlugin(
     { compressor: { warnings: false, screw_ie8 : true },
     output: { comments: false, beautify: false },
