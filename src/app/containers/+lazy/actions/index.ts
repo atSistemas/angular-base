@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Action } from 'base';
+import { ActionTypes } from '../action-types';
 
 @Injectable()
 export class LazyActions {
 
-  constructor() {
-    //
-  }
-
-  public lazyRequest() {
-    console.log('lazy request');
-    // this.ngRedux.dispatch({ type: actionTypes.LAZY_REQUEST });
+  public lazyRequest(): Action {
+    return {
+      type: ActionTypes.get('LAZY_REQUEST')
+    };
   }
 }

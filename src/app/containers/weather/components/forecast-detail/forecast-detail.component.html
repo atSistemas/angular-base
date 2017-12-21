@@ -1,0 +1,23 @@
+<div class="forecast-detail">
+  <span class="title">
+    {{ dateTime | date: 'dd/MM/yyyy' }}
+  </span>
+  <span class="forecast-temp">
+    Day Temperature: <b>{{ day | temperature }}</b>
+  </span>
+  <span class="forecast-temp">
+    Min Daily Temperature: <b>{{ min | temperature }}</b>
+  </span>
+  <span class="forecast-temp">
+    Max Daily Temperature: <b>{{ max | temperature }}</b>
+  </span>
+  <span class="forecast-temp">
+    Night Temperature: <b>{{ night | temperature }}</b>
+  </span>
+  <span class="forecast-temp">
+    Evening Daily Temperature: <b>{{ eve | temperature }}</b>
+  </span>
+  <span class="forecast-temp">
+    Morning Daily Temperature: <b>{{ morn | temperature }}</b>
+  </span>
+</div>

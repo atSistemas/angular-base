@@ -4,7 +4,7 @@ import timedCompiler from './helpers';
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
-export default function():RequestHandler[] {
+export default function(): RequestHandler[] {
 
   const config = require('../../webpack').default;
   const compiler = timedCompiler(config);

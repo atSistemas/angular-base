@@ -1,15 +1,46 @@
-import { RouterModule } from '@angular/router';
-import { EffectsModule } from '@ngrx/effects';
-import { RouterStoreModule } from '@ngrx/router-store';
+import { ModuleWithProviders } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
+import { RouterModule, RouterStateSnapshot } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, RouterStateSerializer, routerReducer } from '@ngrx/router-store';
 
-import { routes } from '../../app/routes';
-import { RootReducer } from '../reducers';
+import { reducers, metaReducers } from '../reducers';
+import { initialState } from '../state';
 import { RequestEffect } from '../effects/request.effect';
+import { ENV } from 'base';
 
-export const BaseImports = [
-  EffectsModule.run(RequestEffect),
-  RouterModule.forRoot(routes, { preloadingStrategy: false }),
-  RouterStoreModule.connectRouter(),
-  StoreModule.provideStore(RootReducer),
+import { RouterActions } from '../actions/routing';
+
+const storeDevtools = (): ModuleWithProviders => (
+  require('@ngrx/store-devtools').StoreDevtoolsModule.instrument({
+    maxAge: 10
+  })
+);
+
+export class CustomRouterSerializer implements RouterStateSerializer<any> {
+  serialize(routerState: RouterStateSnapshot): any {
+    return routerState.url;
+  }
+}
+
+export const baseImports = [
+  StoreModule.forRoot(reducers, {
+    initialState,
+    metaReducers
+  }),
+  EffectsModule.forRoot([ RequestEffect ]),
+  StoreRouterConnectingModule
+];
+
+if (ENV === 'development') {
+  baseImports.push(...[
+    storeDevtools()
+  ]);
+}
+
+export const BaseImports = baseImports;
+
+export const StoreProviders = [
+  RouterActions,
+  { provide: RouterStateSerializer, useClass: CustomRouterSerializer }
 ];

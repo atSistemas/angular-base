@@ -4,9 +4,10 @@ import * as common from './webpack.common.config';
 const webpack = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ngToolsWebpack = require('@ngtools/webpack');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export const cache = common.cache;
 export const resolve = common.resolve;
@@ -33,7 +34,7 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'angular-router-loader?loader=system&genDir=src/compiled&aot=true'
+        '@ngtools/webpack',
       ],
       exclude: [
         /dist/,
@@ -41,18 +42,17 @@ export const module = {
         /server/,
         /webpack/,
         /node_modules/
-      ]},
-    {
-      test: /\.css$/,
-      use: ExtractTextPlugin.extract({
-        fallback: ['style-loader'],
-        use: ['css-loader?-importLoaders=1&minimize=true&sourceMap=true']
-      }),
+      ]
     },
+    {
+      test: /\.(css)$/,
+      use: ['raw-loader']
+    }
   ] as any[])
 };
 
 export const plugins = [
+  //new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({ 'process.env': { NODE_ENV: '"production"' } }),
   new webpack.DllReferencePlugin({
     context: path.join(__dirname),
@@ -69,34 +69,37 @@ export const plugins = [
   new CommonsChunkPlugin({
     name: 'vendor',
     chunks: ['app'],
-    minChunks: module => /node_modules/.test(module.resource)
+    minChunks: minChunksModule => /node_modules/.test(minChunksModule.resource)
   }),
   new HtmlWebpackPlugin({
      inject: 'body',
      title: 'Base App',
-     filename: 'eo.html',
+     filename: 'index.html',
      template: 'server/templates/index.ejs',
      chunks: ['polyfills', 'vendor', 'app'],
-     //FIXME
-     chunksSortMode: function (a, b) {
+     chunksSortMode: (a, b) => {
       const order = ['polyfills', 'vendor', 'app'];
-        if (order.indexOf(a.names[0]) > order.indexOf(b.names[0])) {
-          return 1;
-        }
-        if (order.indexOf(a.names[0]) < order.indexOf(b.names[0])) {
-          return -1;
-        }
+      if (order.indexOf(a.names[0]) > order.indexOf(b.names[0])) {
+        return 1;
+      }
+      if (order.indexOf(a.names[0]) < order.indexOf(b.names[0])) {
+        return -1;
+      }
 
       return 0;
     }
    }),
   new CopyWebpackPlugin([{ from: 'src/app/assets', to: 'assets' }]),
-  new ExtractTextPlugin({ filename: 'bundle.css', allChunks: true }),
   new webpack.optimize.UglifyJsPlugin(
-    {compressor: { warnings: false, screw_ie8 : true },
-    output: {comments: false, beautify: false},
+    { compressor: { warnings: false, screw_ie8 : true },
+    output: { comments: false, beautify: false },
     mangle: { screw_ie8 : true }
   }),
-  new webpack.NoEmitOnErrorsPlugin()
+  new webpack.NoEmitOnErrorsPlugin(),
+  new ngToolsWebpack.AngularCompilerPlugin({
+    tsConfigPath: './tsconfig.aot.json',
+    entryModule: path.join(__dirname, '../src/app/app.module#AppModule'),
+    sourceMap: true
+  }),
 ]
   .concat(common.plugins);

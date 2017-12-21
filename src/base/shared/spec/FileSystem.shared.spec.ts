@@ -19,9 +19,9 @@ describe('shared / FileSystem', () => {
 
   describe('readDir', () => {
 
-    it('Sould read a directory', () => {
+    it('Should read a directory', () => {
 
-      const dir = path.resolve(__dirname, '../../routes');
+      const dir = path.resolve(__dirname, '../../polyfills');
       const files = readDir(dir);
       expect(files.length).to.equal(1);
 
@@ -34,10 +34,11 @@ describe('shared / FileSystem', () => {
 
       const file = path.resolve(__dirname, 'test.js');
       const content = 'Hello!';
-      writeFile(file,content);
+      writeFile(file, content);
 
-      const wrote  = fs.readFileSync(file, "utf8");
-      fs.unlink(file);
+      const wrote  = fs.readFileSync(file, 'utf8');
+      // tslint:disable-next-line:no-empty
+      fs.unlink(file, () => {});
 
       expect(wrote).to.equal(content);
 

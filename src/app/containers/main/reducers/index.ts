@@ -1,26 +1,35 @@
 import { createReducer } from 'base';
 import { ActionTypes } from '../action-types';
-import { MainModel, InitialState } from '../models';
+import { Main, MainModel } from '../models';
+import { State } from 'base';
+import { Action } from '@ngrx/store';
 
-const request = (state, data) => {
-  return state;
+import { ActionReducer, ActionReducerMap } from '@ngrx/store';
+
+export function request(state: any) { return state; }
+export function error(state: any) { return state; }
+export function success(state: any, action: any) {
+  return { ...state, ...action.payload };
+}
+
+export function login(state: any) { return state; }
+
+export const actionHandlers = {
+  LOGIN: login,
+  MAIN_REQUEST: request,
+  MAIN_ERROR: error,
+  MAIN_SUCCESS: success,
 };
 
-const login = (state, data) => {
-  return state;
-};
+//export const MainReducer = createReducer<Main>(actionHandlers, new MainModel());
 
-const success = (state, action) => {
-  return Object.assign({}, state, action.payload
-  );
-};
-
-const actionHandlers = {
-  [ActionTypes.LOGIN]: login,
-  [ActionTypes.MAIN_REQUEST]: request,
-  [ActionTypes.MAIN_SUCCESS]: success,
-};
-
-const MainReducer = createReducer<MainModel>(actionHandlers, InitialState);
-
-export { MainReducer }
+export function MainReducer(state: any = new MainModel(), action: Action): Main {
+  switch (action.type) {
+    case ActionTypes.get('LOGIN'): {
+      return state;
+    }
+    default: {
+      return state;
+    }
+  }
+}

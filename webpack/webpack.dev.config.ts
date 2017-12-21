@@ -32,6 +32,7 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
+        'awesome-typescript-loader',
         '@angularclass/hmr-loader',
         'angular-router-loader'
       ],
@@ -43,19 +44,29 @@ export const module = {
         /node_modules/
       ]
     },
-      {
+    {
       test: /\.css$/,
+      exclude: /node_modules/,
       use: [
         { loader: 'to-string-loader' },
         { loader: 'style-loader' },
         { loader: 'css-loader',
           options: {
-            minimize: false,
-            sourceMap: false,
+            importLoaders: 1,
+            localIdentName: '[name]__[local]-[hash:base64:4]'
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            config: {
+              path: 'postcss.config.js'
+            },
+            plugins: () => common.postcss
           }
         }
-      ],
-    },
+      ]
+    }
   ] as any[])
 };
 

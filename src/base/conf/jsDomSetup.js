@@ -1,11 +1,22 @@
-var jsdom = require('jsdom');
-var document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-var window = document.defaultView;
+const { JSDOM } = require('jsdom');
 
-global.document = document;
-global.HTMLElement = window.HTMLElement;
-global.XMLHttpRequest = window.XMLHttpRequest;
-global.Node = window.Node;
+const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
+const { window } = jsdom;
+
+global.window = window;
+global.document = window.document;
+global.navigator = {
+  userAgent: 'node.js'
+};
+
+const props = Object.getOwnPropertyNames(window)
+  .filter(prop => typeof global[prop] === 'undefined')
+  .reduce((result, prop) => ({
+    ...result,
+    [prop]: Object.getOwnPropertyDescriptor(window, prop),
+  }), {});
+
+Object.defineProperties(global, props);
 
 require('core-js/es6');
 require('core-js/es7/reflect');
@@ -17,8 +28,8 @@ require('zone.js/dist/sync-test');
 require('zone.js/dist/async-test');
 require('zone.js/dist/fake-async-test');
 
-var testing = require('@angular/core/testing');
-var browser = require('@angular/platform-browser-dynamic/testing');
+const testing = require('@angular/core/testing');
+const browser = require('@angular/platform-browser-dynamic/testing');
 Error.stackTraceLimit = 100;
 
 testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule, browser.platformBrowserDynamicTesting());

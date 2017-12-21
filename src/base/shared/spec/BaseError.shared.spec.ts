@@ -10,8 +10,7 @@ describe('shared / Errors', () => {
       const err = new BaseError('foo');
       const isErr = err instanceof Error;
       expect(isErr).to.equal(true);
-
-   });
+    });
 
     it('should have a name and error msg ', () => {
 
@@ -19,7 +18,6 @@ describe('shared / Errors', () => {
       const err = new BaseError(msg);
       expect(err.name).to.equal('Base Error');
       expect(err.msg).to.equal('[BASE ERROR] test');
-
     });
   });
 

@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lazy-container',
-  templateUrl: './lazy.html',
+  selector: 'lazy-component',
+  templateUrl: './lazy.component.html',
 })
-export class LazyContainer {
+export class LazyComponent {
 
-  constructor() {
-    // this.actions.lazyRequest();
-  }
 }

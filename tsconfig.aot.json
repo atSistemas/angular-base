@@ -1,50 +1,69 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es2015","dom"],
+    "lib": [
+      "es2015",
+      "es2017",
+      "dom"
+    ],
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": true,
-    "pretty": false,
-    "sourceMap": true,
-    "noEmit": true,
-    "strictNullChecks": false,
-    "skipDefaultLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./src",
     "paths": {
+      "@ngui/map": [ "node_modules/@ngui/map/*" ],
+      "@angular/*": ["node_modules/@angular/*"],
       "base/*": [
         "./base/*"
       ],
       "base": [
         "./base"
+      ],
+      "app": [
+        "./app"
+      ],
+      "app/*": [
+        "./app/*"
       ]
     },
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "types": [
+      "chai",
+      "core-js",
+      "mocha",
+      "node",
+      "sinon",
+      "systemjs",
+      "webpack"
+    ],
+    "outDir": "./compiled"
   },
   "exclude": [
     "dist",
     ".base",
     "webpack",
     "node_modules",
-    "src/compiled",
+    "compiled",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",
-    "src/base/wp-plugins",
-    "src/app/index.aot.ts"
+    "src/base/wp-plugins"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true,
-    "forkChecker": true,
+    "forkChecker": false,
     "useCache": true
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
-   "skipMetadataEmit" : true
+   "skipMetadataEmit" : false,
+   "genDir": "compiled/"
  }
 }

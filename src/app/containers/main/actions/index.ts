@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Action } from 'base';
 import { ActionTypes } from '../action-types';
 import { MainService } from '../services/main-service';
@@ -13,11 +12,8 @@ export class MainActions {
 
   public mainRequest(): Action {
     return {
-      type: ActionTypes.MAIN_REQUEST,
-      payload: {
-        request: this.mainService.getData(),
-      }
+      type: ActionTypes.get('MAIN_REQUEST'),
+      request: this.mainService.getData()
     };
   }
-
-};
+}

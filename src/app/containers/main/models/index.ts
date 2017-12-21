@@ -1,12 +1,11 @@
+import { Record } from 'immutable';
 
-export interface MainModel {
+export interface Main {
   id?: number | string;
   name?: string;
-};
-
-export interface MainState {
-  main: MainModel;
 }
 
-export const InitialState = <MainModel>
-  { id: 22, name: 'Initial Name' };
+export const MainModel = Record({
+  id: 22,
+  name: 'Initial Name'
+});

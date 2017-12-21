@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { BaseError } from './BaseError';
 
-function fileExists(filename) {
+function fileExists(filename: any) {
   try {
     fs.accessSync(filename);
     return true;
@@ -10,15 +10,15 @@ function fileExists(filename) {
   }
 }
 
-function readDir(path) {
+function readDir(path: any) {
   return fs.readdirSync(path);
 }
 
-function readFile(path, options) {
+function readFile(path: any, options: any) {
   return fs.readFileSync(path, options);
 }
 
-function writeFile(file, content) {
+function writeFile(file: any, content: any) {
   try {
     fs.writeFileSync(file, content, 'utf8');
     return true;

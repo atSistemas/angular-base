@@ -1,11 +1,9 @@
-import { createActionType } from 'base';
+import { createActionTypes } from 'base/shared/CreateActionType';
 
-export const ActionTypes = createActionType([
-  'CLICK',
-  'MAIN_CONTAINER',
-  'MAIN_ERROR',
-  'MAIN_REQUEST',
-  'MAIN_SUCCESS',
-  'LAZY_CONTAINER',
+export const ActionTypes = createActionTypes([
+  'MAIN',
   'LOGIN',
+  'MAIN_REQUEST',
+  'MAIN_SUCCES',
+  'MAIN_ERROR',
 ]);

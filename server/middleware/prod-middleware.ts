@@ -4,7 +4,7 @@ const compression = require('compression');
 
 const webpack = require('webpack');
 
-export default function():RequestHandler[] {
+export default function(): RequestHandler[] {
 
   const config = require('../../webpack').default;
 
@@ -14,7 +14,7 @@ export default function():RequestHandler[] {
     base.console.success(`Bundled project in  ms!`);
   });
 
-  const middlewares:RequestHandler[] = [
+  const middlewares: RequestHandler[] = [
     compression()
   ];
 

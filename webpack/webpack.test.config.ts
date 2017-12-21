@@ -13,9 +13,13 @@ module.exports = {
     extensions: ['.ts', '.js'],
     alias: {
       base: path.resolve(__dirname, '../src/base')
-    }
+    },
+    modules: [
+      path.resolve(__dirname, 'node_modules')
+    ]
   },
   resolveLoader: {
+    // root: path.join(__dirname, 'node_modules')//,
     moduleExtensions: ['-loader']
   },
 

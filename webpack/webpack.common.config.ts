@@ -24,6 +24,7 @@ export const polyfills = [
 
 ];
 export const vendor = [
+  '@ngui/map',
   '@angular/core',
   '@angular/http',
   '@angular/common',
@@ -68,7 +69,6 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'awesome-typescript-loader',
         'angular2-template-loader',
       ],
       exclude: [/\.(spec|e2e|d)\.ts$/]
@@ -91,15 +91,28 @@ export const node = {
   setTimeout: true
 };
 
+export const postcss = [
+  require('postcss-import')(),
+  require('postcss-cssnext')(),
+  require('postcss-modules-extract-imports'),
+  require('postcss-nested')(),
+  require('postcss-reporter')(),
+  require('postcss-url')()
+];
+ 
+
 export const resolve = {
   extensions: ['.js', '.ts', '.tsx', '.css'],
   alias: {
-    base: path.resolve(__dirname, '../src/base')
+    base: path.resolve(__dirname, '../src/base'),
+    mocks: path.resolve(__dirname, '../server/api/mocks'),
+    containers: path.resolve(__dirname, '../src/app/containers'),
+    components: path.resolve(__dirname, '../src/app/components')
   }
 };
 
-export const compileError = function () {
-  this.plugin('done', function (stats) {
+export const compileError = function() {
+  this.plugin('done', function(stats) {
     if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') === -1) {
       base.console.error(stats.compilation.errors);
     }

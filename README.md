@@ -1,6 +1,6 @@
-![Angular2-Base logo](https://raw.githubusercontent.com/atSistemas/angular-base/master/app/app.assets/img/angular-base-logo.png)
+![Angular-Base logo](https://raw.githubusercontent.com/atSistemas/angular-base/master/app/app.assets/img/angular-base-logo.png)
 
-# Angular2-Base
+# Angular-Base
 
 ![Npm-Version](https://img.shields.io/badge/npm-6.2.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -15,7 +15,7 @@ there must be some changes needed by the structure to fit your needs correctly
 
 ## Overview
 
-**Angular2-Base** makes use of the latest tools to improve your workflow, and enables you to create future ready applications:
+**Angular-Base** makes use of the latest tools to improve your workflow, and enables you to create future ready applications:
 
 - [Angular 4](http://angular.io/) supported
 - Isomorphic / Universal Javascript Apps for server side rendering
@@ -47,20 +47,20 @@ To get you started, you need to meet the prerequisites, and then follow the inst
 
 ### Prerequisites
 
-Angular2-Base makes use a number of NodeJS tools to initialize and test Angular2-Base. You must have node.js 6.0.0 at least, and its package manager (npm) installed. You can get it from [nodejs.org](node).
+Angular-Base makes use a number of NodeJS tools to initialize and test Angular-Base. You must have node.js 6.0.0 at least, and its package manager (npm) installed. You can get it from [nodejs.org](node).
 
 ### Installing
 
 You can clone our Git repository:
 
-`$ git clone https://github.com/atSistemas/angular2-base.git`
+`$ git clone https://github.com/atSistemas/Angular-Base.git`
 
 This method requires Git to be installed on your computer. You can get it from
 [here](http://git-scm.com).
 
 ### Wiring up your development environment
 
-Setting up **Angular2-Base** is as easy as running:
+Setting up **Angular-Base** is as easy as running:
 
 `$ npm install`
 
@@ -78,11 +78,11 @@ Please note that `npm install` is only required on your first start, or in case 
 
 ## Architecture
 
-Angular2-Base is based on [Redux](http://redux.js.org/)  paradigm so you can find all the typical entities of an Redux project like [reducers](http://redux.js.org/docs/basics/Reducers.html) , [store](http://redux.js.org/docs/basics/Store.html), [actions](http://redux.js.org/docs/basics/Actions.html) , etc.
+Angular-Base is based on [Redux](http://redux.js.org/)  paradigm so you can find all the typical entities of an Redux project like [reducers](http://redux.js.org/docs/basics/Reducers.html) , [store](http://redux.js.org/docs/basics/Store.html), [actions](http://redux.js.org/docs/basics/Actions.html) , etc.
 
 There are four main folders:
 
-* `server` contains Angular2-Base development & production server based in express with Universal/Isomorphic support and custom middlewares like Gzip.
+* `server` contains Angular-Base development & production server based in express with Universal/Isomorphic support and custom middlewares like Gzip.
 
 ```javascript
 server
@@ -95,7 +95,7 @@ server
     server  //Server
 ```
 
-* `webpack` contains Angular2-Base Webpack2 configuration separated by enviroment that allows to use different plugins and loaders in each target enviroment.
+* `webpack` contains Angular-Base Webpack2 configuration separated by enviroment that allows to use different plugins and loaders in each target enviroment.
 
 ```javascript
 webpack
@@ -106,7 +106,7 @@ webpack
   webpack.dll.config/ //Dll config
 ```
 
-* `src/base/` contains Angular2-Base platform bootstrapping code.
+* `src/base/` contains Angular-Base platform bootstrapping code.
 
 ```javascript
 base
@@ -131,7 +131,7 @@ base
 
 * `src/app/` is the place where to put your application source code.
 
-Angular2-Base uses a "featured based" distribution, so all the necessary code for each page/features is located in its own folder inside containers folder as in `src/app/containers/myContainer`
+Angular-Base uses a "featured based" distribution, so all the necessary code for each page/features is located in its own folder inside containers folder as in `src/app/containers/myContainer`
 
 A container is an Angular2 Module who contains other components, Redux entities, functions and store subscriptions. Each container is self-contained and represents a feature like "clients" or "products" and it contains all the necessary stuff.
 ```javascript
@@ -275,13 +275,13 @@ Angular2 Async Pipe allows you to unwrap/unsubscribe from an Observer when it's 
 
 ### Generating a new container
 
-Angular2-Base uses Yeoman to generate new application containers or components.
+Angular-Base uses Yeoman to generate new application containers or components.
 
 To generate a new container run:
 
 `$ npm run generate:container`
 
-You'll be asked to provide a name for your container. After that, Angular2-Base will create all the necessary folder and file template structures you, and will rebuild the file indexes (routes, reducers, models, etc), so you don't have to worry about including all the required imports.
+You'll be asked to provide a name for your container. After that, Angular-Base will create all the necessary folder and file template structures you, and will rebuild the file indexes (routes, reducers, models, etc), so you don't have to worry about including all the required imports.
 
 After that, you can access to your container from http://localhost:8000/myContainer
 
@@ -291,11 +291,11 @@ You can rebuild the file indexes (reducers, models and routes) running `$ npm ru
 
 ### Generating a new component
 
-As with containers, Angular2-Base can automate components creation for you. To create a new component, just type:
+As with containers, Angular-Base can automate components creation for you. To create a new component, just type:
 
 `$ npm run generate:component`
 
-Same as before, you will be asked for a component name, and after that Angular2-Base will do the rest, placing a component template under `app/components`, and rebuilding all the indexes.
+Same as before, you will be asked for a component name, and after that Angular-Base will do the rest, placing a component template under `app/components`, and rebuilding all the indexes.
 
 ## Distribution
 
@@ -312,7 +312,7 @@ You can generate a complete distribution source ready for production enviroment.
 
 ## Testing your application
 
-Angular2-Base base uses - [Jsdom](https://github.com/tmpvar/jsdom) a Javascript implementation of Whatwg Dom and Html Standards using NodeJs.
+Angular-Base base uses - [Jsdom](https://github.com/tmpvar/jsdom) a Javascript implementation of Whatwg Dom and Html Standards using NodeJs.
 - [Mocha](https://mochajs.org/) as testing framework
 - [Chai](http://chaijs.com/) as assertion library
 You can write your tests normally using Mocha and Chai for assertions.
@@ -323,7 +323,7 @@ You can write your tests normally using Mocha and Chai for assertions.
 
 ### Generating code coverage
 
-Angular2-Base uses [Nyc](https://github.com/bcoe/nyc) for code coverage and you can generate reports in console or icov/html format.
+Angular-Base uses [Nyc](https://github.com/bcoe/nyc) for code coverage and you can generate reports in console or icov/html format.
 
 `$ npm run test` will perform your code coverage, generating an html report located in coverage/ folder.
 
@@ -337,5 +337,5 @@ Anyone and everyone is welcome to contribute, however, if you decide to get invo
 
 ## License
 
-**Angular2-Base** is available under the [MIT license](LICENSE).
+**Angular-Base** is available under the [MIT license](LICENSE).
 
