@@ -2,12 +2,15 @@ import 'base/imports/rx';
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
-import { AppModuleNgFactory } from '../../compiled/src/app/app.module.ngfactory';
+
+function loadAppModuleNgFactory() {
+  return require('../../compiled/src/app/app.module.ngfactory').AppModuleNgFactory;
+}
 
 enableProdMode();
 
 console.log('AOT MODE');
 
 platformBrowser()
-  .bootstrapModuleFactory(AppModuleNgFactory)
+  .bootstrapModuleFactory(loadAppModuleNgFactory())
   .catch((err) => console.error(err));
