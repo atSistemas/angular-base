@@ -2,7 +2,6 @@ import { StoreModule } from '@ngrx/store';
 import { RouterModule, RouterStateSnapshot } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer, routerReducer } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers, metaReducers } from '../reducers';
 import { initialState } from '../state';
@@ -28,7 +27,7 @@ export const baseImports = [
 
 if (ENV === 'development') {
   baseImports.push(...[
-    StoreDevtoolsModule.instrument({
+    require('@ngrx/store-devtools').StoreDevtoolsModule.instrument({
       maxAge: 10
     })
   ]);

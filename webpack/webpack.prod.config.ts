@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export const cache = common.cache;
 export const resolve = common.resolve;
@@ -52,6 +53,7 @@ export const module = {
 };
 
 export const plugins = [
+  //new BundleAnalyzerPlugin(),
   new webpack.DefinePlugin({ 'process.env': { NODE_ENV: '"production"' } }),
   new webpack.DllReferencePlugin({
     context: path.join(__dirname),
