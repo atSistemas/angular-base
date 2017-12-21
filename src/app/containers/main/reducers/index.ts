@@ -6,11 +6,13 @@ import { Action } from '@ngrx/store';
 
 import { ActionReducer, ActionReducerMap } from '@ngrx/store';
 
-export function request(state: any, action: any) { return state; }
-export function error(state: any, action: any) { return state; }
-export function success(state: any, action: any) { return action.payload; }
+export function request(state: any) { return state; }
+export function error(state: any) { return state; }
+export function success(state: any, action: any) {
+  return { ...state, ...action.payload };
+}
 
-export function login(state: any, data: any) { return state; }
+export function login(state: any) { return state; }
 
 export const actionHandlers = {
   LOGIN: login,

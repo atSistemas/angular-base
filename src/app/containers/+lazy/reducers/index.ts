@@ -5,12 +5,12 @@ import { LazyModel } from '../models';
 const lazyRequest = Symbol(ActionTypes.get('LAZY_REQUEST'));
 const lazySuccess = Symbol(ActionTypes.get('LAZY_SUCCESS'));
 
-const request = (state, data) => {
+const request = state => {
   return state;
 };
 
 const success = (state, action) => {
-  return state.update('lazy', (value) => action.payload);
+  return state.update('lazy', () => action.payload);
 };
 
 export const actionHandlers = {

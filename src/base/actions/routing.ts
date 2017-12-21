@@ -25,11 +25,11 @@ export class RouterActions {
     };
   }
 
-  back(payload: RouterActionPayload): Action {
+  back(): Action {
     return { type: RouterActionsTypes.BACK };
   }
 
-  forward(payload: RouterActionPayload): Action {
+  forward(): Action {
     return { type: RouterActionsTypes.FORWARD };
   }
 }

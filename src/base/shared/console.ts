@@ -42,25 +42,21 @@ function printLog(type: any, args: any) {
 }
 
 /* tslint:disable:only-arrow-functions */
-export const line = function(str: any) {
-  const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [symbols.CR].concat(args).concat(symbols.CR));
-};
+export const line = (...args: string[]) => (
+  console.log.apply(console, [symbols.CR].concat(args).concat(symbols.CR))
+);
 
-export const info = function(str: any) {
-  const args = Array.prototype.slice.call(arguments);
-  return printLog('info', args);
-};
+export const info = (...args: string[]) => (
+  printLog('info', args)
+);
 
-export const success = function(str: any) {
-  const args = Array.prototype.slice.call(arguments);
-  return printLog('success', args);
-};
+export const success = (...args: string[]) => (
+  printLog('success', args)
+);
 
-export const error = function(str: any) {
-  const args = Array.prototype.slice.call(arguments);
-  return printLog('error', args);
-};
+export const error = (...args: string[]) => (
+  printLog('error', args)
+);
 
 export const clear = () => {
   process.stdout.write('\x1B[2J\x1B[0f'); // \u001b[2J\u001b[0;0H");

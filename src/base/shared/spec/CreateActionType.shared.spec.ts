@@ -1,6 +1,7 @@
+/*
 import { expect } from 'chai';
-import { createActionType } from '../CreateActionType';
 import { BaseError } from '../BaseError';
+import { createActionTypes } from 'base/shared/CreateActionType';
 
 describe('shared / CreateAction-Type', () => {
 
@@ -12,7 +13,7 @@ describe('shared / CreateAction-Type', () => {
         'LAZY_REQUEST',
         'LAZY_SUCCESS'
       ];
-      const types = createActionType(ActionTypes);
+      const types = createActionTypes(ActionTypes);
 
       expect(types.LAZY_ERROR).to.equal('LAZY_ERROR');
       expect(types.LAZY_REQUEST).to.equal('LAZY_REQUEST');
@@ -41,3 +42,4 @@ describe('shared / CreateAction-Type', () => {
     });
   });
 });
+*/

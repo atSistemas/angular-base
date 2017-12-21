@@ -8,13 +8,13 @@ import { ActionTypes } from '../actionTypes';
 import { WeatherActions } from '../actions';
 import { Station } from '../models/StationModel';
 
-const stationsRequest = (state: Record<Weather>, action: Action): Record<Weather> => (
+const stationsRequest = (state: Record<Weather>): Record<Weather> => (
   state
 );
 const stationsSuccess = (state: Record<Weather>, action: Action): Record<Weather> => (
   state.set('stations', action.payload.response)
 );
-const stationsError = (state: Record<Weather>, action: Action): Record<Weather> => (
+const stationsError = (state: Record<Weather>): Record<Weather> => (
   state
 );
 
@@ -22,13 +22,13 @@ const selectStation = (state: Record<Weather>, action: Action): Record<Weather> 
   state.set('stationSelected', action.payload.station)
 );
 
-const forecastsRequest = (state: Record<Weather>, action: Action): Record<Weather> => (
+const forecastsRequest = (state: Record<Weather>): Record<Weather> => (
   state
 );
 const forecastsSuccess = (state: Record<Weather>, action: Action): Record<Weather> => (
   state.set('forecasts', action.payload.response)
 );
-const forecastsError = (state: Record<Weather>, action: Action): Record<Weather> => (
+const forecastsError = (state: Record<Weather>): Record<Weather> => (
   state
 );
 

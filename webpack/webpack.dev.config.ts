@@ -62,7 +62,7 @@ export const module = {
             config: {
               path: 'postcss.config.js'
             },
-            plugins: (loader) => common.postcss
+            plugins: () => common.postcss
           }
         }
       ]

@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as express from 'express';
 
-export function renderPage(req: express.Request, res: express.Response, next: any) {
+export function renderPage(req: express.Request, res: express.Response) {
 
   res.render('index', {
     req,

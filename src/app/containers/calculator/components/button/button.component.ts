@@ -17,7 +17,7 @@ export class ButtonComponent implements OnInit {
     else if (this.type === 'zero') this.style = 'ButtonZero';
   }
 
-  onClick(event: any) {
+  onClick() {
     this.clickButton.emit(this.value);
   }
 
