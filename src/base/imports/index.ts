@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { RouterModule, RouterStateSnapshot } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
@@ -9,6 +10,12 @@ import { RequestEffect } from '../effects/request.effect';
 import { ENV } from 'base';
 
 import { RouterActions } from '../actions/routing';
+
+const storeDevtools = (): ModuleWithProviders => (
+  require('@ngrx/store-devtools').StoreDevtoolsModule.instrument({
+    maxAge: 10
+  })
+);
 
 export class CustomRouterSerializer implements RouterStateSerializer<any> {
   serialize(routerState: RouterStateSnapshot): any {
@@ -27,9 +34,7 @@ export const baseImports = [
 
 if (ENV === 'development') {
   baseImports.push(...[
-    require('@ngrx/store-devtools').StoreDevtoolsModule.instrument({
-      maxAge: 10
-    })
+    storeDevtools()
   ]);
 }
 
