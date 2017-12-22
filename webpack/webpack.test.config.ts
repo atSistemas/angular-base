@@ -30,11 +30,6 @@ module.exports = {
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
       },
       {
-        test: /\.ts$/,
-        include: path.resolve('../src/**/*.spec.ts'),
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
-      },
-      {
         test: /\.html$/,
         loader: 'html-loader'
 
