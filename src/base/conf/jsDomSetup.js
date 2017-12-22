@@ -3,20 +3,14 @@ const { JSDOM } = require('jsdom');
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
 
-global.window = window;
+global.Event = window.Event;
 global.document = window.document;
+global.HTMLElement = window.HTMLElement;
+global.XMLHttpRequest = window.XMLHttpRequest;
+global.Node = window.Node;
 global.navigator = {
   userAgent: 'node.js'
 };
-
-const props = Object.getOwnPropertyNames(window)
-  .filter(prop => typeof global[prop] === 'undefined')
-  .reduce((result, prop) => ({
-    ...result,
-    [prop]: Object.getOwnPropertyDescriptor(window, prop),
-  }), {});
-
-Object.defineProperties(global, props);
 
 require('core-js/es6');
 require('core-js/es7/reflect');
