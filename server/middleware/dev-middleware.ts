@@ -10,13 +10,8 @@ export default function(): RequestHandler[] {
   const compiler = timedCompiler(config);
 
   const serverOptions = {
-    hot: true,
     lazy: false,
-    quiet: true,
-    watch: true,
-    noInfo: true,
-    progress: false,
-    stats: { colors: true },
+    logLevel: 'silent',
     publicPath: config.output.publicPath || '/',
     headers: { 'Access-Control-Allow-Origin': '*' }
   };
@@ -29,8 +24,7 @@ export default function(): RequestHandler[] {
 
   const middlewares: RequestHandler[] = [
     devMiddleware,
-    hotMiddleware,
-
+    hotMiddleware
   ];
 
   return middlewares;

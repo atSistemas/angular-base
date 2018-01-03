@@ -12,7 +12,13 @@ import 'core-js/es6/array';
 import 'core-js/es6/regexp';
 import 'core-js/es6/map';
 import 'core-js/es6/set';
-import 'core-js/es6/reflect';
 
 import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
+/* tslint:disable */
+require('zone.js/dist/zone');
+
+if (process.env.ENV !== 'production') {
+  Error['stackTraceLimit'] = Infinity;
+  require('zone.js/dist/long-stack-trace-zone');
+}
+/* tslint:enable */
