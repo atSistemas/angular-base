@@ -45,7 +45,7 @@ const inputNumber = (state, action) => {
 
   return ({
     ...state,
-    display: true,
+    display: value,
     resetDisplay: false,
     [newValue ? 'nextValue' : 'prevValue']: value
   });
