@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Action, State } from 'base';
 import { Record } from 'immutable';
 
-import { Weather, WeatherModel } from '../models';
+import { Weather, WeatherModel } from '../models/weather.model';
 import { ActionTypes } from '../actionTypes';
 import { WeatherActions } from '../actions';
-import { Station } from '../models/StationModel';
 
 const stationsRequest = (state: Record<Weather>): Record<Weather> => (
   state

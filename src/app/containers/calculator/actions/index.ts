@@ -5,40 +5,34 @@ import { ActionTypes } from '../actionTypes';
 @Injectable()
 export class CalculatorActions {
 
-  public inputNumber(value: any): Action {
+  inputNumber(value: number): Action {
     return {
       type: ActionTypes.get('INPUT_NUMBER'),
-      payload: {
-        value
-      }
+      payload: { value }
     };
   }
 
-  public inputOperation(value: any): Action {
+  inputOperation(value: number): Action {
     return {
       type: ActionTypes.get('INPUT_OPERATION'),
-      payload: {
-        value
-      }
+      payload: { value }
     };
   }
 
-  public inputDecimal(): Action {
+  inputDecimal(): Action {
     return {
       type: ActionTypes.get('INPUT_DECIMAL')
     };
   }
 
-  public inputOperator(operator: any): Action {
+  inputOperator(operator: any): Action {
     return {
       type: ActionTypes.get('INPUT_OPERATOR'),
-      payload: {
-        operator
-      }
+      payload: { operator }
     };
   }
 
-  public result(operator?: any): Action {
+  result(): Action {
     return {
       type: ActionTypes.get('RESULT')
     };

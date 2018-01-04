@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Record } from 'immutable';
 
-import { Forecast, Temp } from '../../models';
+import { Forecast, Temp } from '../../models/forecast.model';
 
 @Component({
   selector: 'weather-forecast-detail',

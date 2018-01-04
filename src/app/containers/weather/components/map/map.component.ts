@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Record, Seq } from 'immutable';
-import { Station } from '../../models/StationModel';
+import { Station } from '../../models/station.model';
 
 @Component({
   selector: 'weather-map',

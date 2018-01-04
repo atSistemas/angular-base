@@ -5,8 +5,10 @@ import { Map, Record, Seq } from 'immutable';
 import { Store, State } from 'base';
 
 import { WeatherMapService } from './services';
-import { Forecast, Station } from './models';
+import { Forecast } from './models/forecast.model';
+import { Station } from './models/station.model';
 import { WeatherActions } from './actions';
+
 import {
   selectStationSelected,
   selectStations,
@@ -19,7 +21,7 @@ import {
   styleUrls: ['./weather.container.css']
 })
 
-export class WeatherContainer implements OnInit {
+export class WeatherContainer  {
   private stations$: Observable<Map<number, Record<Station>>> = this.store.select(selectStations);
   private stationsSubscription: Subscription;
   private stations: Map<number, Record<Station>> = Map<number, Record<Station>>();
