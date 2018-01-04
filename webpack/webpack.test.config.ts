@@ -30,16 +30,7 @@ module.exports = {
       rules: [
           {
               test: /(?!spec)\.ts$/,
-              loaders: ['istanbul-instrumenter-loader', 'awesome-typescript-loader', 'angular2-template-loader']
-          },
-          {
-              test: /\.spec\.ts$/,
-              loaders: [
-                  {
-                      loader: 'awesome-typescript-loader',
-                      options: {configFileName: path.resolve(__dirname, '../tsconfig.json')}
-                  }, 'angular2-template-loader'
-              ]
+              loaders: ['istanbul-instrumenter-loader', 'ts-loader', 'angular2-template-loader']
           },
           {
               test: /\.html$/,
