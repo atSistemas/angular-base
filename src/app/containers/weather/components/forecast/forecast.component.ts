@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store, State } from 'base';
 import { Map, Record, Seq } from 'immutable';
 
-import { Forecast } from '../../models';
+import { Forecast } from '../../models/forecast.model';
 import { selectForecasts } from '../../selectors';
 
 @Component({

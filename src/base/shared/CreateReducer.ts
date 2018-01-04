@@ -19,9 +19,9 @@ export function createReducer<Cr>(actionHandler: any, initialState: any): void {
 
 //import { Action } from '../interfaces/action';
 
-export function createReducer<Cr>(actionHandler: any, initialState: any) {
+export function createReducer(actionHandler: any, initialState: any) {
 
-  return (state: Cr, action: Action): Cr => {
+  return (state: any, action: Action): any => {
 
     if (!state || !action) { return initialState; }
 

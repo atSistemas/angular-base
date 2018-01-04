@@ -1,5 +1,7 @@
 import { createSelector } from '@ngrx/store';
 
-import * as CalculatorModel from '../models';
+import { State } from 'base/state';
 
-export const selectFeature = (state: CalculatorModel.State) => state.display;
+export const selectDisplay = (state: State): number | string => (
+  state.calculator.display
+);

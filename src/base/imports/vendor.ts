@@ -8,4 +8,9 @@ import '@angular/platform-browser-dynamic';
 import '@ngrx/store';
 import '@ngrx/effects';
 import '@ngrx/router-store';
-import 'angular2-template-loader';
+import './rx';
+/* tslint:disable */
+if (process.env.NODE_ENV !== 'production') {
+  require('angular2-template-loader');
+}
+/* tslint:enable */

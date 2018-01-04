@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Record } from 'immutable';
 import { Store, State } from 'base';
 
-import { Station, Main } from '../../models/StationModel';
+import { Station, Main } from '../../models/station.model';
 import { WeatherActions } from '../../actions';
 
 @Component({
