@@ -1,9 +1,9 @@
 export interface Calculator {
-  display: number;
+  display: number | string;
   operator: string;
   operation: string;
-  prevValue: number;
-  nextValue: number;
+  prevValue: number | string;
+  nextValue: number | string;
   newValue: boolean;
   resetDisplay: boolean;
 }

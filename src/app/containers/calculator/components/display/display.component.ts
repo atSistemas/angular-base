@@ -11,9 +11,9 @@ import { selectDisplay } from '../../selectors';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent {
-  private display$: Observable<number> = this.store.select(selectDisplay);
+  private display$: Observable<number | string> = this.store.select(selectDisplay);
   private displaySubscription: Subscription;
-  display: number;
+  display: number | string;
   constructor(
     private store: Store<State>
   ) { }

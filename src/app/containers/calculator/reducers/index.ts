@@ -14,7 +14,7 @@ const calculate = (operator, prevValue, nextValue) => {
   return operator ? handlerOperator[operator]() : prevValue;
 };
 
-const result = (state, action) => {
+const result = (state: Calculator): Calculator => {
   const operator = state.operator;
   const prevValue = state.prevValue;
   const nextValue = state.nextValue;
@@ -28,7 +28,7 @@ const result = (state, action) => {
     resetDisplay: true
   });
 };
-const inputDecimal = (state, action) => {
+const inputDecimal = (state: Calculator, action: Action): Calculator => {
   const value = `${state.prevValue}.`;
   return ({
     ...state,
@@ -37,7 +37,7 @@ const inputDecimal = (state, action) => {
     prevValue: value
   });
 };
-const inputNumber = (state, action) => {
+const inputNumber = (state: Calculator, action: Action): Calculator => {
   const selectedValue = action.payload.value;
   const newValue = state.newValue;
   const prevValue = (newValue) ? state.nextValue : state.prevValue;
@@ -50,13 +50,13 @@ const inputNumber = (state, action) => {
     [newValue ? 'nextValue' : 'prevValue']: value
   });
 };
-const inputOperation = (state, action) => {
+const inputOperation = (state: Calculator, action: Action): Calculator => {
   let value = 0;
   const operation = action.payload.value;
   const prevValue = state.prevValue;
   switch (operation) {
     case ActionTypes.PERCENT:
-      value = prevValue / 100;
+      value = prevValue as number / 100;
       return ({
         ...state,
         display: value,
@@ -72,8 +72,8 @@ const inputOperation = (state, action) => {
         resetDisplay: true
       });
     case ActionTypes.CHANGE_SIGN:
-      value = (Math.sign(prevValue) === 1) ?
-        -Math.abs(prevValue) : Math.abs(prevValue);
+      value = (Math.sign(prevValue as number) === 1) ?
+        -Math.abs(prevValue as number) : Math.abs(prevValue as number);
       return ({
         ...state,
         display: value,
@@ -83,7 +83,7 @@ const inputOperation = (state, action) => {
       break;
   }
 };
-const inputOperator = (state, action) => {
+const inputOperator = (state: Calculator, action: Action): Calculator => {
   const currentOperator = action.payload.operator;
   const prevOperator = state.operator;
   const prevValue = state.prevValue;
