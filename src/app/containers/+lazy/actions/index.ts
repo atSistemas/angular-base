@@ -7,7 +7,7 @@ export class LazyActions {
 
   loadMessage(message: string): Action {
     return {
-      type: ActionTypes.get('LOAD_MESSAGE'),
+      type: ActionTypes.LOAD_MESSAGE,
       payload: { message }
     };
   }

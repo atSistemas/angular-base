@@ -8,7 +8,7 @@ const loadMessage = (state: Lazy, action: Action): Lazy => ({
 });
 
 const actionHandler: Map<string, any> = new Map<string, any>([
-  [ActionTypes.get('LOAD_MESSAGE'), loadMessage]
+  [ActionTypes.LOAD_MESSAGE, loadMessage]
 ]);
 
 export function LazyReducer(state: Lazy = LazyModel, action: Action) {

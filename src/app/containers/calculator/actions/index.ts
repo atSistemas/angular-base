@@ -7,34 +7,34 @@ export class CalculatorActions {
 
   inputNumber(value: number): Action {
     return {
-      type: ActionTypes.get('INPUT_NUMBER'),
+      type: ActionTypes.INPUT_NUMBER,
       payload: { value }
     };
   }
 
   inputOperation(value: number): Action {
     return {
-      type: ActionTypes.get('INPUT_OPERATION'),
+      type: ActionTypes.INPUT_OPERATION,
       payload: { value }
     };
   }
 
   inputDecimal(): Action {
     return {
-      type: ActionTypes.get('INPUT_DECIMAL')
+      type: ActionTypes.INPUT_DECIMAL
     };
   }
 
   inputOperator(operator: any): Action {
     return {
-      type: ActionTypes.get('INPUT_OPERATOR'),
+      type: ActionTypes.INPUT_OPERATOR,
       payload: { operator }
     };
   }
 
   result(): Action {
     return {
-      type: ActionTypes.get('RESULT')
+      type: ActionTypes.RESULT
     };
   }
 }

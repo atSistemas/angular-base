@@ -12,21 +12,21 @@ export class WeatherActions {
 
   selectStation(station: number): Action {
     return {
-      type: ActionTypes.get('SELECT_STATION'),
+      type: ActionTypes.SELECT_STATION,
       payload: { station }
     };
   }
 
   getStations(): Action {
     return {
-      type: ActionTypes.get('STATIONS_REQUEST'),
+      type: ActionTypes.STATIONS_REQUEST,
       request: this.weatherMapService.getStations()
     };
   }
 
   getForecast(lat: number, lon: number): Action {
     return {
-      type: ActionTypes.get('FORECASTS_REQUEST'),
+      type: ActionTypes.FORECASTS_REQUEST,
       request: this.weatherMapService.getForecast(lat, lon)
     };
   }

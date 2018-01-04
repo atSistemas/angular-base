@@ -6,10 +6,10 @@ import { Calculator, CalculatorModel } from '../models/calculator.model';
 
 const calculate = (operator, prevValue, nextValue) => {
   const handlerOperator = {
-    [ActionTypes.get('SUM')]: () => prevValue + nextValue,
-    [ActionTypes.get('DIVIDE')]: () => prevValue / nextValue,
-    [ActionTypes.get('MULTIPLY')]: () => prevValue * nextValue,
-    [ActionTypes.get('SUBSTRACT')]: () => prevValue - nextValue
+    [ActionTypes.SUM]: () => prevValue + nextValue,
+    [ActionTypes.DIVIDE]: () => prevValue / nextValue,
+    [ActionTypes.MULTIPLY]: () => prevValue * nextValue,
+    [ActionTypes.SUBSTRACT]: () => prevValue - nextValue
   };
   return operator ? handlerOperator[operator]() : prevValue;
 };
@@ -55,14 +55,14 @@ const inputOperation = (state, action) => {
   const operation = action.payload.value;
   const prevValue = state.prevValue;
   switch (operation) {
-    case ActionTypes.get('PERCENT'):
+    case ActionTypes.PERCENT:
       value = prevValue / 100;
       return ({
         ...state,
         display: value,
         prevValue: value
       });
-    case ActionTypes.get('CLEAN'):
+    case ActionTypes.CLEAN:
       value = 0;
       return ({
         ...state,
@@ -71,7 +71,7 @@ const inputOperation = (state, action) => {
         nextValue: value,
         resetDisplay: true
       });
-    case ActionTypes.get('CHANGE_SIGN'):
+    case ActionTypes.CHANGE_SIGN:
       value = (Math.sign(prevValue) === 1) ?
         -Math.abs(prevValue) : Math.abs(prevValue);
       return ({
@@ -104,11 +104,11 @@ const inputOperator = (state, action) => {
 };
 
 const actionHandler: Map<string, any> = new Map<string, any>([
-  [ActionTypes.get('RESULT'), result],
-  [ActionTypes.get('INPUT_DECIMAL'), inputDecimal],
-  [ActionTypes.get('INPUT_NUMBER'), inputNumber],
-  [ActionTypes.get('INPUT_OPERATION'), inputOperation],
-  [ActionTypes.get('INPUT_OPERATOR'), inputOperator]
+  [ActionTypes.RESULT, result],
+  [ActionTypes.INPUT_DECIMAL, inputDecimal],
+  [ActionTypes.INPUT_NUMBER, inputNumber],
+  [ActionTypes.INPUT_OPERATION, inputOperation],
+  [ActionTypes.INPUT_OPERATOR, inputOperator]
 ]);
 
 export function CalculatorReducer(state: Calculator = CalculatorModel, action: Action) {
