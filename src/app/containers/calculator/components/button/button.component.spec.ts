@@ -37,12 +37,15 @@ describe('Calculator: component: button', () => {
   });
 
   describe('behaviour', () => {
-    describe('layout', () => {
-      it('should display the value in model', () => {
-        fixture.autoDetectChanges();
-        component.value = '2';
-        expect(fixture.nativeElement.querySelector('button').innerText).to.equal('2');
-      });
+    it('should display the value in model', () => {
+      component.value = '2';
+      fixture.detectChanges();
+      const content = fixture.nativeElement
+        .querySelector('button')
+        .textContent
+        .trim()
+        .replace('\n', '');
+      expect(content).to.equal('2');
     });
 
     it('should call onClick method when button is clicked', () => {
