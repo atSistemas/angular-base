@@ -1,4 +1,4 @@
-import { createActionTypes } from 'base/shared/CreateActionType';
+import { createActionTypes } from '../../../../base/shared/CreateActionType';
 
 export const ActionTypes = createActionTypes([
   'SUM',

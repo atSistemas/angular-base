@@ -15,7 +15,7 @@ import 'core-js/es6/set';
 
 import 'core-js/es7/reflect';
 /* tslint:disable */
-require('zone.js/dist/zone');
+require('zone.js/dist/zone-node');
 
 if (process.env.ENV !== 'production') {
   Error['stackTraceLimit'] = Infinity;

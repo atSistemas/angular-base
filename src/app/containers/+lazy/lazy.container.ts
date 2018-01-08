@@ -11,7 +11,7 @@ import { selectMessage } from './selectors';
   templateUrl: './lazy.container.html',
   styleUrls: ['./lazy.container.css']
 })
-export class LazyContainer {
+export class LazyContainer implements OnInit {
   private message$: Observable<string> = this.store.select(selectMessage);
   private messageSubscription: Subscription;
   message: string;
