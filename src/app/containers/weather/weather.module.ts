@@ -14,6 +14,10 @@ import {
   StationMarkerComponent
 } from './components';
 
+export const GoogleMapsModule = NguiMapModule.forRoot({
+  apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyAGzFY_wPUFAkPgEeHw0zXgMZxP5p4sj64'
+});
+
 @NgModule({
   declarations: [
     WeatherContainer,
@@ -30,9 +34,7 @@ import {
   ],
   imports: [
     CommonModule,
-    NguiMapModule.forRoot({
-      apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyAGzFY_wPUFAkPgEeHw0zXgMZxP5p4sj64'
-    })
+    GoogleMapsModule
   ],
   providers: [
     WeatherActions,

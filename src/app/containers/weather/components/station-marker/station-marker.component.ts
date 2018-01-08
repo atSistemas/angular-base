@@ -3,7 +3,7 @@ import { Record } from 'immutable';
 import { Store, State } from 'base';
 
 import { Station, Main } from '../../models/station.model';
-import { WeatherActions } from '../../actions';
+import { WeatherActions } from '../../actions/weather.actions';
 
 @Component({
   selector: 'weather-station-marker',

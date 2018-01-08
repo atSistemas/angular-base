@@ -7,7 +7,7 @@ import { Store, State } from 'base';
 import { WeatherMapService } from './services';
 import { Forecast } from './models/forecast.model';
 import { Station } from './models/station.model';
-import { WeatherActions } from './actions';
+import { WeatherActions } from './actions/weather.actions';
 
 import {
   selectStationSelected,

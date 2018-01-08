@@ -27,7 +27,7 @@ describe('container: lazy', () => {
     component = fixture.componentInstance;
 
     de = fixture.debugElement;
-    el = fixture.nativeElement;
+    el = de.nativeElement;
   });
 
   afterEach(() => {
