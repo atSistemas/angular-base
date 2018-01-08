@@ -18,7 +18,7 @@ describe('Calculator / Components', () => {
   let fixture: ComponentFixture<ButtonPannelComponent>;
   let de: DebugElement;
   let el: HTMLElement;
-  let _store: Store<any>;
+  let store: Store<any>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -32,7 +32,7 @@ describe('Calculator / Components', () => {
     de = fixture.debugElement;
     el = fixture.nativeElement;
 
-    _store = de.injector.get(Store);
+    store = de.injector.get(Store);
   });
 
   afterEach(() => {
@@ -48,7 +48,7 @@ describe('Calculator / Components', () => {
 
     describe('behaviour', () => {
       it('should dispatch an action on button click', () => {
-        const spyDispatch = spy(_store, 'dispatch');
+        const spyDispatch = spy(store, 'dispatch');
         const buttons = de.queryAll(By.css('button'));
         buttons.forEach(button => {
           button.triggerEventHandler('click', {});

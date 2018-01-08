@@ -15,13 +15,12 @@ import { CalculatorActions } from '../../../actions';
 
 const actions = new CalculatorActions();
 
-
 describe('Calculator: component: button', () => {
   let component: DisplayComponent;
   let fixture: ComponentFixture<DisplayComponent>;
   let de: DebugElement;
   let el: HTMLElement;
-  let _store: Store<any>;
+  let store: Store<any>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,7 +36,7 @@ describe('Calculator: component: button', () => {
     de = fixture.debugElement;
     el = fixture.nativeElement;
 
-    _store = de.injector.get(Store);
+    store = de.injector.get(Store);
   });
 
   afterEach(() => {
@@ -52,11 +51,11 @@ describe('Calculator: component: button', () => {
   it('should change display on number input', async () => {
     const display = de.query(By.css('.classDisplay'));
 
-    _store.dispatch(actions.inputNumber(1));
+    store.dispatch(actions.inputNumber(1));
     fixture.detectChanges();
     expect(display.nativeElement.textContent).to.equal('1');
 
-    _store.dispatch(actions.inputNumber(2));
+    store.dispatch(actions.inputNumber(2));
     fixture.detectChanges();
     expect(display.nativeElement.textContent).to.equal('12');
   });
