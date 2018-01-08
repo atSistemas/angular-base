@@ -1,8 +1,10 @@
-import { TestBed, ComponentFixture, async, getTestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 
 import { expect } from 'chai';
+
+import { storeModuleImport } from '../../../../base/imports';
 
 import { LazyContainer } from '../lazy.container';
 import { LazyActions } from '../actions';
@@ -15,26 +17,27 @@ describe('container: lazy', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ LazyContainer ]
+      imports: [storeModuleImport],
+      declarations: [LazyContainer],
+      providers: [LazyActions]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LazyContainer);
+
     component = fixture.componentInstance;
 
-    de = fixture.debugElement.query(By.css('p'));
-    el = de.nativeElement;
-
+    de = fixture.debugElement;
+    el = fixture.nativeElement;
   });
 
   afterEach(() => {
-    getTestBed().resetTestingModule();
+    TestBed.resetTestingModule();
   });
 
   describe('layout', () => {
-    it('no messages in the DOM until component is rendered', () => {
+    it('should render "Lazy Container"', () => {
       fixture.detectChanges();
-      expect(el.textContent).to.equal('');
+      expect(el.querySelector('p').textContent).to.equal('Lazily loaded Container!');
     });
   });
-  
 });
