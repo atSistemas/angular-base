@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { expect } from 'chai';
 
-import { storeModuleImport } from '../../../../base/imports';
+import { StoreModuleImport } from '../../../../base/imports';
 
 import { LazyContainer } from '../lazy.container';
 import { LazyActions } from '../actions';
@@ -17,9 +17,9 @@ describe('container: lazy', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [storeModuleImport],
-      declarations: [LazyContainer],
-      providers: [LazyActions]
+      imports: [ StoreModuleImport ],
+      declarations: [ LazyContainer ],
+      providers: [ LazyActions ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LazyContainer);

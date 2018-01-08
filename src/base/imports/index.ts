@@ -23,14 +23,14 @@ export class CustomRouterSerializer implements RouterStateSerializer<any> {
   }
 }
 
-export const storeModuleImport =
+export const StoreModuleImport =
   StoreModule.forRoot(reducers, {
     initialState,
     metaReducers
   });
 
 export const baseImports = [
-  storeModuleImport,
+  StoreModuleImport,
   EffectsModule.forRoot([ RequestEffect ]),
   StoreRouterConnectingModule
 ];
