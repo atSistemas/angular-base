@@ -29,9 +29,11 @@ export const StoreModuleImport =
     metaReducers
   });
 
+export const EffectsModuleImport = EffectsModule.forRoot([ RequestEffect ]);
+
 export const baseImports = [
   StoreModuleImport,
-  EffectsModule.forRoot([ RequestEffect ]),
+  EffectsModuleImport,
   StoreRouterConnectingModule
 ];
 
