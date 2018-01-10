@@ -13,28 +13,6 @@ import { selectForecasts } from '../../selectors';
   styleUrls: [ './forecast.component.css' ]
 })
 
-export class ForecastComponent implements OnInit {
-  private forecasts$: Observable<Map<number, Record<Forecast>>> = this.store.select(selectForecasts);
-  private forecastsSubscription: Subscription;
-
-  private forecasts: Map<number, Record<Forecast>>;
-
-  constructor(
-    private store: Store<State>
-  ) { }
-
-  ngOnInit() {
-    this.forecastsSubscription = this.forecasts$.subscribe(forecasts => (
-      this.forecasts = forecasts
-    ));
-  }
-
-  ngOnDestroy() {
-    this.forecastsSubscription.unsubscribe();
-  }
-
-  get forecastList(): Seq.Indexed<Record<Forecast>> {
-    return this.forecasts.valueSeq();
-  }
-
+export class ForecastComponent {
+  @Input() forecasts: Seq.Indexed<Record<Forecast>>;
 }
