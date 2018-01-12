@@ -14,3 +14,4 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/distinct';
