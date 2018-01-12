@@ -128,7 +128,7 @@ describe('Integration tests in Weather Container', () => {
   });
 
   describe('Behaviour', () => {
-    it('should render a forecast after select a station', done => {
+    it('should render a forecast after selecting a station', done => {
       container.stations$
       .first(result => result.size > 0)
       .subscribe(result => {
@@ -159,8 +159,41 @@ describe('Integration tests in Weather Container', () => {
         done();
       });
     });
-    it('should render other forecast after select other station', () => {
-      // TODO
+    it('should render other forecast after selecting other station', done => {
+      let forecasts: Map<number, Record<Forecast>>;
+      let forecastDetail: HTMLElement;
+      container.stations$
+      .first(result => result.size > 0)
+      .subscribe(result => {
+        fixture.detectChanges();
+        /* Selecting first station */
+        const deNgui: DebugElement = deMap.query(By.css('ngui-map'));
+        const deStation: DebugElement = deNgui.queryAll(By.css('weather-station-marker'))[0];
+        const stationComponent: StationMarkerComponent = deStation.componentInstance;
+        stationComponent.onSelectStation();
+      });
+      container.forecasts$
+      .distinct(result => result.get(0).getIn(['dt']))
+      .subscribe(result => {
+        fixture.detectChanges();
+        const deForecast: DebugElement = de.query(By.css('weather-forecast'));
+        const deForecastDetails: DebugElement[] = deForecast.queryAll(By.css('weather-forecast-detail'));
+        /* Forecasts comparison */
+        if (!forecasts && !forecastDetail) {
+          forecasts = result;
+          forecastDetail = deForecastDetails[0].nativeElement;
+        } else {
+          expect(forecasts).to.be.not.equal(result);
+          expect(forecastDetail).to.be.not.equal(deForecastDetails[0].nativeElement);
+          done();
+        }
+        /* Selecting second station */
+        const deNgui: DebugElement = deMap.query(By.css('ngui-map'));
+        const deStation: DebugElement = deNgui.queryAll(By.css('weather-station-marker'))[1];
+        const stationComponent: StationMarkerComponent = deStation.componentInstance;
+        stationComponent.onSelectStation();
+        fixture.detectChanges();
+      });
     });
   });
 });
