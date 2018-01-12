@@ -1,25 +1,27 @@
-import 'base/imports/polyfills';
-import 'base/imports/rx';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { HttpModule, XHRBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
+import { fakeServer, SinonFakeServer } from 'sinon';
 import { By } from '@angular/platform-browser';
-import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { NguiMapModule } from '@ngui/map';
+import { Record, Map } from 'immutable';
 import { expect } from 'chai';
-//import {  } from 'sinon';
 
-import { Observable } from '../../../../base/imports/rx';
+import { OWM_API_FORECAST, OWM_API_STATION } from '../config/open-weather-map.config';
 import { StoreModuleImport, EffectsModuleImport } from '../../../../base/imports';
 import { RequestEffect } from '../../../../base/effects/request.effect';
+import { fakeResponse } from '../../../../base/shared/Utils';
 import { WeatherActions } from '../actions/weather.actions';
 import { WeatherContainer } from '../weather.container';
 import { GoogleMapsModule } from '../weather.module';
-import * as WeatherComponents from '../components';
 import { WeatherMapService } from '../services';
-import * as WeatherPipes from '../pipes';
+import { Forecast } from '../models/forecast.model';
 import { MapComponent } from '../components/map/map.component';
+import { HumidityPipe, PressurePipe, TemperaturePipe } from '../pipes';
 import { ForecastComponent } from '../components/forecast/forecast.component';
+import { StationInfoComponent } from '../components/station-info/station-info.component';
 import { StationMarkerComponent } from '../components/station-marker/station-marker.component';
 import { ForecastDetailComponent } from '../components/forecast-detail/forecast-detail.component';
 
@@ -30,26 +32,55 @@ describe('Integration tests in Weather Container', () => {
   let de: DebugElement;
   let deMap: DebugElement;
   let el: HTMLElement;
+  let server: SinonFakeServer;
 
-  // TODO: Mock weather station service responses
+  const MockStations = require('../../../../../server/api/mocks/stations.json');
+  const MockForecast01 = require('../../../../../server/api/mocks/forecast01.json');
+  const MockForecast02 = require('../../../../../server/api/mocks/forecast02.json');
+
+  beforeEach(() => {
+    server = fakeServer.create();
+    server.respondWith(
+      'GET',
+      OWM_API_STATION(),
+      fakeResponse(200, MockStations)
+    );
+    server.respondWith(
+      'GET',
+      OWM_API_FORECAST(1, 1),
+      fakeResponse(200, MockForecast01)
+    );
+    server.respondWith(
+      'GET',
+      OWM_API_FORECAST(2, 2),
+      fakeResponse(200, MockForecast02)
+    );
+    server.respondImmediately = true;
+  });
 
   beforeEach((done) => {
     TestBed.configureTestingModule({
       imports: [
-        StoreModuleImport,
-        EffectsModuleImport,
         HttpModule,
-        GoogleMapsModule
+        GoogleMapsModule,
+        StoreModuleImport,
+        EffectsModuleImport
       ],
       declarations: [
         WeatherContainer,
-        ...Object.values(WeatherComponents),
-        ...Object.values(WeatherPipes)
+        MapComponent,
+        ForecastComponent,
+        StationInfoComponent,
+        StationMarkerComponent,
+        ForecastDetailComponent,
+        HumidityPipe,
+        PressurePipe,
+        TemperaturePipe
       ],
       providers: [
+        RequestEffect,
         WeatherActions,
-        WeatherMapService,
-        RequestEffect
+        WeatherMapService
       ]
     })
     .compileComponents()
@@ -69,12 +100,26 @@ describe('Integration tests in Weather Container', () => {
   });
 
   afterEach(() => {
+    container.ngOnDestroy();
     TestBed.resetTestingModule();
+    server.restore();
   });
 
-  describe('Before onInit', () => {
-    it('should not render any station', () => {
-      expect(container.stations.size).to.equal(0);
+  describe('Layout', () => {
+    it('should render 3 mock stations', done => {
+      container.stations$.first(result => result.size > 0).subscribe(result => {
+        fixture.detectChanges();
+
+        expect(container.stations.size).to.equal(3);
+
+        const elmap: HTMLElement = deMap.nativeElement;
+        const stationsMarkers: number = elmap.firstElementChild.childElementCount - 1;
+        expect(stationsMarkers).to.equal(3);
+
+        expect(mapComponent.stations.count()).to.equal(3);
+
+        done();
+      });
     });
     it('should not render any forecast', () => {
       const forecastEl = fixture.debugElement.query(By.css('weather-forecast'));
@@ -82,29 +127,7 @@ describe('Integration tests in Weather Container', () => {
     });
   });
 
-  describe('After onInit', () => {
-    it('should render 230 stations', done => {
-      container.stations$.first(result => result.size > 0).subscribe(result => {
-        fixture.detectChanges();
-
-        expect(container.stations.size).to.equal(230);
-
-        const elmap: HTMLElement = deMap.nativeElement;
-        const stationsMarkers: number = elmap.firstElementChild.childElementCount - 1;
-        expect(stationsMarkers).to.equal(230);
-
-        expect(mapComponent.stations.count()).to.equal(230);
-
-        done();
-      });
-    });
-    it('should render a station info after hover a station', done => {
-      container.stations$.first(result => result.size > 0).subscribe(result => {
-        fixture.detectChanges();
-        // TODO
-        done();
-      });
-    });
+  describe('Behaviour', () => {
     it('should render a forecast after select a station', done => {
       container.stations$
       .first(result => result.size > 0)
@@ -115,8 +138,6 @@ describe('Integration tests in Weather Container', () => {
         const deStation: DebugElement = deNgui.queryAll(By.css('weather-station-marker'))[0];
         const stationComponent: StationMarkerComponent = deStation.componentInstance;
         stationComponent.onSelectStation();
-
-        fixture.detectChanges();
       });
 
       container.forecasts$

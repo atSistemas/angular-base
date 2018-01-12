@@ -4,34 +4,25 @@ import { Map, Record } from 'immutable';
 import { generateMap } from 'base/shared/ModelHelper';
 import { Observable } from 'rxjs/Observable';
 
-import { config } from '../config';
+import { OWM_API_FORECAST, OWM_API_STATION } from '../config/open-weather-map.config';
 import { Station, StationModel } from '../models/station.model';
 import { Forecast, ForecastModel } from '../models/forecast.model';
 
 @Injectable()
 export class WeatherMapService {
-  private API_URL: string = config.OPEN_WEATHER_MAP_API_URL;
-  private API_KEY = `appid=${ config.OPEN_WEATHER_MAP_API_KEY }`;
-
   constructor(
     private http: Http
   ) { }
 
   getStations(): Observable<Map<number, Record<Station>>> {
-    const method = '/box/city?bbox=-9,36.6,2.22,43,10&';
-    return this.http.get(this.createURL(method))
+    return this.http.get(OWM_API_STATION())
       .map(res => res.json())
       .map(stations => generateMap(stations.list, StationModel));
   }
 
   getForecast(lat: number, lon: number): Observable<Map<number, Record<Forecast>>> {
-    const method = `/forecast/daily?lat=${ lat }&lon=${ lon }&cnt=8&lang=es&units=metric&`;
-    return this.http.get(this.createURL(method))
+    return this.http.get(OWM_API_FORECAST(lat, lon))
       .map(res => res.json())
       .map(forecasts => generateMap(forecasts.list, ForecastModel));
-  }
-
-  private createURL(method: string): string {
-    return this.API_URL + method + this.API_KEY;
   }
 }

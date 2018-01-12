@@ -38,6 +38,11 @@ module.exports = {
 
           },
           {
+              test: /\.json$/,
+              include: path.resolve(__dirname, '../src/app'),
+              loader: 'json-loader'
+          },
+          {
               test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
               loader: 'null-loader'
           },
