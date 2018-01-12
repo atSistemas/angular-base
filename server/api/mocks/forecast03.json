@@ -1,0 +1,212 @@
+{
+  "city": {
+    "id": 2510911,
+    "name": "Sevilla",
+    "coord": {
+      "lon": -5.9762,
+      "lat": 37.3824
+    },
+    "country": "ES",
+    "population": 703206
+  },
+  "cod": "200",
+  "message": 2.8646964,
+  "cnt": 8,
+  "list": [
+    {
+      "dt": 1515672000,
+      "temp": {
+        "day": 15.4,
+        "min": 4.56,
+        "max": 15.4,
+        "night": 4.56,
+        "eve": 11.72,
+        "morn": 15.4
+      },
+      "pressure": 1035.9,
+      "humidity": 83,
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "nubes dispersas",
+          "icon": "03d"
+        }
+      ],
+      "speed": 4.87,
+      "deg": 301,
+      "clouds": 36
+    },
+    {
+      "dt": 1515758400,
+      "temp": {
+        "day": 11.28,
+        "min": 1.23,
+        "max": 12.37,
+        "night": 4.2,
+        "eve": 8.58,
+        "morn": 1.23
+      },
+      "pressure": 1035.08,
+      "humidity": 89,
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "nubes dispersas",
+          "icon": "03d"
+        }
+      ],
+      "speed": 2.62,
+      "deg": 41,
+      "clouds": 44
+    },
+    {
+      "dt": 1515844800,
+      "temp": {
+        "day": 11.12,
+        "min": 3.28,
+        "max": 12.71,
+        "night": 7.82,
+        "eve": 11.04,
+        "morn": 3.28
+      },
+      "pressure": 1026.44,
+      "humidity": 85,
+      "weather": [
+        {
+          "id": 501,
+          "main": "Rain",
+          "description": "lluvia moderada",
+          "icon": "10d"
+        }
+      ],
+      "speed": 2.05,
+      "deg": 115,
+      "clouds": 64,
+      "rain": 5.26
+    },
+    {
+      "dt": 1515931200,
+      "temp": {
+        "day": 9.48,
+        "min": 3.72,
+        "max": 11,
+        "night": 8.02,
+        "eve": 9.65,
+        "morn": 3.72
+      },
+      "pressure": 1027.73,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 502,
+          "main": "Rain",
+          "description": "lluvia de gran intensidad",
+          "icon": "10d"
+        }
+      ],
+      "speed": 2.02,
+      "deg": 94,
+      "clouds": 88,
+      "rain": 13.34
+    },
+    {
+      "dt": 1516017600,
+      "temp": {
+        "day": 12.57,
+        "min": 7.82,
+        "max": 12.57,
+        "night": 7.96,
+        "eve": 11.35,
+        "morn": 7.82
+      },
+      "pressure": 1017.09,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        }
+      ],
+      "speed": 4.07,
+      "deg": 40,
+      "clouds": 4,
+      "rain": 0.28
+    },
+    {
+      "dt": 1516104000,
+      "temp": {
+        "day": 13.72,
+        "min": 5.66,
+        "max": 13.72,
+        "night": 6.89,
+        "eve": 12.18,
+        "morn": 5.66
+      },
+      "pressure": 1024.25,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 4.17,
+      "deg": 53,
+      "clouds": 0
+    },
+    {
+      "dt": 1516190400,
+      "temp": {
+        "day": 13.51,
+        "min": 4.96,
+        "max": 13.51,
+        "night": 8.25,
+        "eve": 12.96,
+        "morn": 4.96
+      },
+      "pressure": 1026.11,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 3.85,
+      "deg": 56,
+      "clouds": 0
+    },
+    {
+      "dt": 1516276800,
+      "temp": {
+        "day": 15.08,
+        "min": 6.93,
+        "max": 15.08,
+        "night": 7.62,
+        "eve": 13.28,
+        "morn": 6.93
+      },
+      "pressure": 1022.43,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 4.68,
+      "deg": 50,
+      "clouds": 0
+    }
+  ]
+}
