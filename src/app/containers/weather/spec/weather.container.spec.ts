@@ -1,11 +1,8 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { HttpModule, XHRBackend } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
 import { fakeServer, SinonFakeServer } from 'sinon';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import { NguiMapModule } from '@ngui/map';
+import { HttpModule } from '@angular/http';
 import { Record, Map } from 'immutable';
 import { expect } from 'chai';
 
