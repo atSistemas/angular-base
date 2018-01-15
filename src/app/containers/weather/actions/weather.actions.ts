@@ -7,7 +7,7 @@ import { WeatherMapService } from '../services/weather-map.service';
 export class WeatherActions {
 
   constructor(
-    private weatherMapService: WeatherMapService
+    public weatherMapService: WeatherMapService
   ) { }
 
   selectStation(station: number): Action {
