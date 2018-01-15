@@ -12,7 +12,7 @@ export class CalculatorActions {
     };
   }
 
-  inputOperation(value: number): Action {
+  inputOperation(value: string): Action {
     return {
       type: ActionTypes.INPUT_OPERATION,
       payload: { value }
