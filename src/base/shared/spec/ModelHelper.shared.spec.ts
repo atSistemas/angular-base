@@ -1,90 +1,36 @@
-/*
+import { Record, Map } from 'immutable';
 import { expect } from 'chai';
-import { MainModel } from 'containers/Main/models';
-import { generateMap, generateImmutable } from '../ModelHelper';
-import { Map } from 'immutable';
 
-const mockData = [
-  {
-    "id": 1,
-    "alt": "React Base!",
-    "name": "ReactBaseLogo",
-    "width": 500,
-    "url": "/assets/images/react-base-logo.png"
-  }
-];
+import { generateMap } from '../ModelHelper';
 
 describe('shared / model-helper', () => {
 
-  describe('generateImmutable', () => {
+  interface Mock {
+    prop1: string;
+    prop2: string;
+  }
 
-    it('should return empty immutable map', () => {
-
-      const initialState = {};
-      const data = generateImmutable(initialState, MainModel);
-
-      const expectedData = Object.keys(initialState)
-        .reduce((acc, key) => {
-          let item = initialState[key];
-          return acc.set(item.id, new MainModel(item));
-        }, new Map()
-        );
-
-      expect(data).to.equal(expectedData);
-
-    });
-
-    it('should return immutable map', () => {
-
-      const initialState = mockData;
-      const data = generateImmutable(initialState, MainModel);
-
-      const expectedData = Object.keys(initialState)
-        .reduce((acc, key) => {
-          let item = initialState[key];
-          return acc.set(item.id, new MainModel(item));
-        }, new Map()
-        );
-
-      expect(data).to.deep.equal(expectedData);
-
-    });
-
+  const MockModel: Record.Factory<Mock> = Record<Mock>({
+    prop1: '',
+    prop2: ''
   });
 
   describe('generateMap', () => {
 
-    it('should return  object', () => {
+    const mockData: Mock[] = [
+      { prop1: 'value10', prop2: 'value10' },
+      { prop1: 'value11', prop2: 'value21' },
+      { prop1: 'value12', prop2: 'value22' }
+    ];
 
-      const initialState = generateImmutable(mockData, MainModel);
-      const data = generateMap(initialState, MainModel);
+    it('should return an Immutable Map', () => {
+      const expectedMap = Map([
+        [0, new MockModel(mockData[0])],
+        [1, new MockModel(mockData[1])],
+        [2, new MockModel(mockData[2])]
+      ]);
 
-      const expectedData = initialState
-        .reduce((acc, item) => {
-          return acc.set(item.id, new MainModel(item));
-        }, new Map()
-        );
-
-      expect(data).to.deep.equal(expectedData);
-
+      expect(generateMap(mockData, MockModel).toObject()).to.deep.equal(expectedMap.toObject());
     });
-
-    it('should return empty object', () => {
-
-      const initialState = generateImmutable({}, MainModel);
-      const data = generateMap(initialState, MainModel);
-
-      const expectedData = initialState
-        .reduce((acc, item) => {
-          return acc.set(item.id, new MainModel(item));
-        }, new Map()
-        );
-
-      expect(data).to.deep.equal(expectedData);
-
-    });
-
   });
-
 });
-*/

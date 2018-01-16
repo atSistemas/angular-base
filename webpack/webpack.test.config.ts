@@ -18,12 +18,13 @@ module.exports = {
       rules: [
           {
               test: /(?!spec)\.ts$/,
+              include: path.resolve(__dirname, '../src'),
+              exclude: /node_modules/,
               loaders: ['istanbul-instrumenter-loader', 'ts-loader', 'angular2-template-loader']
           },
           {
               test: /\.html$/,
               loader: 'html-loader'
-
           },
           {
               test: /\.json$/,

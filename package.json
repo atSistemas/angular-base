@@ -161,10 +161,11 @@
     "exclude": [
       "node_modules/",
       "compiled",
-      "dist/",
-      "webpack/**",
-      "**/*.spec.ts",
-      "src/base/wp-plugins/**"
+      "dist",
+      "webpack",
+      "**/**.spec.ts",
+      "src/base/conf",
+      "src/base/wp-plugins"
     ],
     "extension": [
       ".ts"
