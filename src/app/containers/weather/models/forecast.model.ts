@@ -14,7 +14,7 @@ export interface Forecast {
   temp: Record<Temp>;
 }
 
-const TempModel = Record<Temp>({
+export const TempModel = Record<Temp>({
   day: 0,
   min: 0,
   max: 0,

@@ -3,12 +3,13 @@ import { Component, DebugElement } from '@angular/core';
 import { generateMap } from 'base/shared/ModelHelper';
 import { By } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+
 import { expect } from 'chai';
 
-import { ForecastModel } from '../../../models';
 import { ForecastComponent } from '../forecast.component';
-import { HumidityPipe, PressurePipe, TemperaturePipe } from '../../../pipes';
 import { ForecastDetailComponent } from '../../forecast-detail/forecast-detail.component';
+import { HumidityPipe, PressurePipe, TemperaturePipe } from '../../../pipes';
+import { ForecastModel } from '../../../models';
 
 describe('Calculator / Components', () => {
   let component: ForecastComponent;
