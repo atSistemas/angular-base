@@ -15,8 +15,8 @@ export const aotPath = path.resolve(__dirname, '../src/app/index.aot.ts');
 export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
 export const dllPath = path.resolve(__dirname, '../dist/');
-export const polyfillsPath = path.resolve(__dirname, '../src/base/imports/polyfills');
-export const vendorPath = path.resolve(__dirname, '../src/base/imports/vendor');
+export const polyfillsPath = path.resolve(__dirname, '../src/base/conf/polyfills');
+export const vendorPath = path.resolve(__dirname, '../src/base/conf/vendor');
 export const cache = true;
 
 export const polyfills = [

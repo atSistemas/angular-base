@@ -1,3 +1,4 @@
+/*
 import { expect } from 'chai';
 import { MainModel } from 'containers/Main/models';
 import { generateMap, generateImmutable } from '../ModelHelper';
@@ -45,7 +46,6 @@ describe('shared / model-helper', () => {
         }, new Map()
         );
 
-
       expect(data).to.deep.equal(expectedData);
 
     });
@@ -87,3 +87,4 @@ describe('shared / model-helper', () => {
   });
 
 });
+*/

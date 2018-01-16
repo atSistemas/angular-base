@@ -1,5 +1,5 @@
-import 'base/imports/polyfills';
-import 'base/imports/rx';
+import 'base/conf/polyfills';
+import 'base/conf/rx';
 import { ApplicationRef, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { bootloader, removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';

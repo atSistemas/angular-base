@@ -6,9 +6,9 @@ import { Action } from '../../../../../base';
 import { ActionTypes } from '../../actionTypes';
 import { WeatherActions } from '../weather.actions';
 import { RequestEffect } from '../../../../../base/effects';
-import { EffectsModuleImport, StoreModuleImport } from '../../../../../base/imports';
+import { StoreModuleImport } from '../../../../../base/imports/store.imports';
+import { EffectsModuleImport } from '../../../../../base/imports/effects.imports';
 import { WeatherMapService } from '../../services';
-import { Observable } from 'rxjs/Observable';
 
 describe('weather actions', () => {
   let actions: WeatherActions;

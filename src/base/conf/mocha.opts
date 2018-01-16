@@ -1,3 +1,0 @@
---webpack-config webpack/webpack.test.config.ts
---require ./src/base/conf/jsDomSetup.js
-src/**/*.spec.ts

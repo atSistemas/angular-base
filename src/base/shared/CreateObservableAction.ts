@@ -1,9 +1,7 @@
 import { Observable } from 'rxjs/Observable';
-//FIXME
-// tslint:disable-next-line:no-unused-variable
-import * as fixme from 'rxjs/add/observable/of';
+import { Action } from 'base/models/action';
 
-export function createObservableAction(action: any) {
+export function createObservableAction(action: Action): Observable<Action> {
   return Observable.of({
     type: `${action.type}`,
     payload: action.payload
