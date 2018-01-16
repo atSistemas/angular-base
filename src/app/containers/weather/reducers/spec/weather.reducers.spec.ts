@@ -1,21 +1,21 @@
+import { generateMap } from 'base/shared/ModelHelper';
 import { Record, Map } from 'immutable';
 import { expect } from 'chai';
+import { Action } from 'base';
 
 import {
   Weather, WeatherModel,
   Forecast, ForecastModel,
   StationModel
 } from '../../models';
-import { Action } from '../../../../../base';
 import { ActionTypes } from '../../actionTypes';
 import { WeatherReducer } from '../weather.reducers';
-import { generateMap } from '../../../../../base/shared/ModelHelper';
 
 describe('weather reducers', () => {
   let state: Record<Weather>;
 
-  const MockStations = require('../../../../../../server/api/mocks/stations.json');
-  const MockForecasts = require('../../../../../../server/api/mocks/forecast01.json');
+  const MockStations = require('mocks/stations.json');
+  const MockForecasts = require('mocks/forecast01.json');
 
   beforeEach(() => {
     state = new WeatherModel();

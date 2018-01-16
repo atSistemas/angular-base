@@ -1,10 +1,8 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { StoreModuleImport } from 'base/imports';
 import { DebugElement } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-
 import { expect } from 'chai';
-
-import { StoreModuleImport } from '../../../../base/imports';
 
 import { LazyContainer } from '../lazy.container';
 import { LazyActions } from '../actions';

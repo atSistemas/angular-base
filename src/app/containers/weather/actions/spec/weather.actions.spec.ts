@@ -1,13 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 import { expect } from 'chai';
+import { StoreModuleImport, EffectsModuleImport } from 'base/imports';
+import { RequestEffect } from 'base/effects';
+import { Action } from 'base';
 
-import { Action } from '../../../../../base';
 import { ActionTypes } from '../../actionTypes';
 import { WeatherActions } from '../weather.actions';
-import { RequestEffect } from '../../../../../base/effects';
-import { StoreModuleImport } from '../../../../../base/imports/store.imports';
-import { EffectsModuleImport } from '../../../../../base/imports/effects.imports';
 import { WeatherMapService } from '../../services';
 
 describe('weather actions', () => {

@@ -12,19 +12,7 @@ module.exports = {
 
   devtool: 'cheap-module-source-map',
 
-  resolve: {
-      extensions: ['.ts', '.js'],
-      alias: {
-        base: path.resolve(__dirname, '../src/base')
-      },
-      modules: [
-        path.resolve(__dirname, 'node_modules')
-      ]
-    },
-
-  resolveLoader: {
-      moduleExtensions: ['-loader']
-  },
+  resolve: common.resolve,
 
   module: {
       rules: [

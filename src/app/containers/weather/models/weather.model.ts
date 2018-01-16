@@ -1,6 +1,7 @@
+import { generateMap } from 'base/shared/ModelHelper';
 import { Record, Map } from 'immutable';
 import { State } from 'base/state';
-import { generateMap } from '../../../../base/shared/ModelHelper';
+
 import { Station, StationModel } from './station.model';
 import { ForecastModel, Forecast } from './forecast.model';
 

@@ -163,7 +163,7 @@
       "compiled",
       "dist/",
       "webpack/**",
-      "**/*.spec.js",
+      "**/*.spec.ts",
       "src/base/wp-plugins/**"
     ],
     "extension": [

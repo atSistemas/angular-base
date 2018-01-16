@@ -49,7 +49,7 @@ export const vendor = [
   '@ngrx/store',
   '@ngrx/effects',
   '@ngrx/router-store',
-  './src/base/imports/rx'
+  './src/base/conf/rx'
 ];
 
 export const entry = {
@@ -111,9 +111,7 @@ export const resolve = {
   extensions: ['.js', '.ts'],
   alias: {
     base: path.resolve(__dirname, '../src/base'),
-    mocks: path.resolve(__dirname, '../server/api/mocks'),
-    containers: path.resolve(__dirname, '../src/app/containers'),
-    components: path.resolve(__dirname, '../src/app/components')
+    mocks: path.resolve(__dirname, '../server/api/mocks')
   }
 };
 

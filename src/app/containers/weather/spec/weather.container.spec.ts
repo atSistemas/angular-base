@@ -1,26 +1,29 @@
+
+import { StoreModuleImport, EffectsModuleImport } from 'base/imports';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { RequestEffect } from 'base/effects/request.effect';
 import { fakeServer, SinonFakeServer } from 'sinon';
+import { fakeResponse } from 'base/shared/Utils';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Record, Map } from 'immutable';
 import { expect } from 'chai';
 
-import { OWM_API_FORECAST, OWM_API_STATION } from '../config/open-weather-map.config';
-import { StoreModuleImport, EffectsModuleImport } from '../../../../base/imports';
-import { RequestEffect } from '../../../../base/effects/request.effect';
-import { fakeResponse } from '../../../../base/shared/Utils';
-import { WeatherActions } from '../actions/weather.actions';
-import { WeatherContainer } from '../weather.container';
-import { GoogleMapsModule } from '../weather.module';
+import {
+  MapComponent,
+  ForecastComponent,
+  ForecastDetailComponent,
+  StationInfoComponent,
+  StationMarkerComponent
+} from '../components';
 import { WeatherMapService } from '../services';
 import { Forecast } from '../models/forecast.model';
-import { MapComponent } from '../components/map/map.component';
+import { GoogleMapsModule } from '../weather.module';
+import { WeatherContainer } from '../weather.container';
+import { WeatherActions } from '../actions/weather.actions';
+import { OWM_API_FORECAST, OWM_API_STATION } from '../config';
 import { HumidityPipe, PressurePipe, TemperaturePipe } from '../pipes';
-import { ForecastComponent } from '../components/forecast/forecast.component';
-import { StationInfoComponent } from '../components/station-info/station-info.component';
-import { StationMarkerComponent } from '../components/station-marker/station-marker.component';
-import { ForecastDetailComponent } from '../components/forecast-detail/forecast-detail.component';
 
 describe('Integration tests in Weather Container', () => {
   let container: WeatherContainer;
@@ -31,9 +34,9 @@ describe('Integration tests in Weather Container', () => {
   let el: HTMLElement;
   let server: SinonFakeServer;
 
-  const MockStations = require('../../../../../server/api/mocks/stations.json');
-  const MockForecast01 = require('../../../../../server/api/mocks/forecast01.json');
-  const MockForecast02 = require('../../../../../server/api/mocks/forecast02.json');
+  const MockStations = require('mocks/stations.json');
+  const MockForecast01 = require('mocks/forecast01.json');
+  const MockForecast02 = require('mocks/forecast02.json');
 
   beforeEach(() => {
     server = fakeServer.create();

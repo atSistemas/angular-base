@@ -1,13 +1,12 @@
 import { TestBed, ComponentFixture, getTestBed } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
-import { Location } from '@angular/common';
+import { StoreModuleImport } from 'base/imports';
 import { By } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
 
 import { expect } from 'chai';
 import { spy } from 'sinon';
-
-import { StoreModuleImport } from '../../../../../../base/imports';
 
 import { ButtonPannelComponent } from '../buttonPannel.component';
 import { ButtonComponent } from '../../button/button.component';

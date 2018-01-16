@@ -1,21 +1,21 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { generateMap } from 'base/shared/ModelHelper';
 import { fakeServer, SinonFakeServer } from 'sinon';
+import { fakeResponse } from 'base/shared/Utils';
 import { Observable } from 'rxjs/Observable';
 import { HttpModule } from '@angular/http';
 import { expect } from 'chai';
 
 import { WeatherMapService } from '../weather-map.service';
 import { StationModel, ForecastModel } from '../../models';
-import { fakeResponse } from '../../../../../base/shared/Utils';
-import { generateMap } from '../../../../../base/shared/ModelHelper';
 import { OWM_API_FORECAST, OWM_API_STATION } from '../../config/open-weather-map.config';
 
 describe('weather services', () => {
   let service: WeatherMapService;
   let server: SinonFakeServer;
 
-  const MockStations = require('../../../../../../server/api/mocks/stations.json');
-  const MockForecasts = require('../../../../../../server/api/mocks/forecast01.json');
+  const MockStations = require('mocks/stations.json');
+  const MockForecasts = require('mocks/forecast01.json');
   const lat = 1;
   const lon = 1;
 

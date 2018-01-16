@@ -1,16 +1,13 @@
 import { TestBed, ComponentFixture, getTestBed } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
+import { StoreModuleImport } from 'base/imports';
+import { By } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { By } from '@angular/platform-browser';
-
 import { expect } from 'chai';
 import { spy } from 'sinon';
 
-import { StoreModuleImport } from '../../../../../../base/imports';
-
 import { DisplayComponent } from '../display.component';
-
 import { CalculatorActions } from '../../../actions';
 
 const actions = new CalculatorActions();

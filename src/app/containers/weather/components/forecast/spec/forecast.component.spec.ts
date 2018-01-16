@@ -1,19 +1,14 @@
 import { TestBed, ComponentFixture, getTestBed } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
-import { Location } from '@angular/common';
+import { generateMap } from 'base/shared/ModelHelper';
 import { By } from '@angular/platform-browser';
-
+import { Location } from '@angular/common';
 import { expect } from 'chai';
 
-import { generateMap } from '../../../../../../base/shared/ModelHelper';
-
-import { ForecastComponent } from '../forecast.component';
-import { ForecastDetailComponent } from '../../forecast-detail/forecast-detail.component';
 import { ForecastModel } from '../../../models';
-import { Seq } from 'immutable';
-import { HumidityPipe } from '../../../pipes/humidity.pipe';
-import { PressurePipe } from '../../../pipes/pressure.pipe';
-import { TemperaturePipe } from '../../../pipes/temperature.pipe';
+import { ForecastComponent } from '../forecast.component';
+import { HumidityPipe, PressurePipe, TemperaturePipe } from '../../../pipes';
+import { ForecastDetailComponent } from '../../forecast-detail/forecast-detail.component';
 
 describe('Calculator / Components', () => {
   let component: ForecastComponent;
