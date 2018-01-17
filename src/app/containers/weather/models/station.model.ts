@@ -22,7 +22,7 @@ const CoordModel = Record<Coord>({
   Lon: 0
 });
 
-const MainModel = Record<Main>({
+export const MainModel = Record<Main>({
   temp: 0,
   humidity: 0,
   pressure: 0
