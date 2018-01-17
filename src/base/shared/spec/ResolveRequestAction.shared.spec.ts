@@ -25,7 +25,7 @@ describe('shared / ResolveRequestAction', () => {
 
     it('should deep-equal mock action', async () => {
       let value;
-      observable.subscribe(_value => value = _value);
+      observable.subscribe(actionValue => value = actionValue);
       expect(value).to.deep.equal(resultAction);
     });
   });
