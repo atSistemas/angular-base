@@ -3,9 +3,9 @@ import { expect } from 'chai';
 
 import { RouterActions, RouterActionsTypes, RouterActionPayload } from '../router.actions';
 
-describe('actions', () => {
+describe('Actions', () => {
 
-  describe('router actions', () => {
+  describe('Router actions', () => {
     let action: RouterActions;
     const mock: RouterActionPayload = {
       path: ['somewhere'],
@@ -17,7 +17,7 @@ describe('actions', () => {
       action = new RouterActions();
     });
 
-    it('GO should create an action of RouterActionsTypes', () => {
+    it('"go" should create an action of RouterActionsTypes', () => {
       const expectedAction: Action = {
         type: RouterActionsTypes.GO,
         payload: mock
@@ -25,14 +25,14 @@ describe('actions', () => {
       expect(action.go(mock)).to.deep.equal(expectedAction);
     });
 
-    it('BACK should create an action of RouterActionsTypes', () => {
+    it('"back" should create an action of RouterActionsTypes', () => {
       const expectedAction: Action = {
         type: RouterActionsTypes.BACK
       };
       expect(action.back()).to.deep.equal(expectedAction);
     });
 
-    it('FORWARD should create an action of RouterActionsTypes', () => {
+    it('"forward" should create an action of RouterActionsTypes', () => {
       const expectedAction: Action = {
         type: RouterActionsTypes.FORWARD
       };
