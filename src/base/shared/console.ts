@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   default: 32,
   error: 31,
   info: 34,
@@ -21,7 +21,9 @@ if (process.platform === 'win32') {
   symbols.success = '\u221A';
 }
 
-const color = (type: any, str: any) => {
+export { symbols };
+
+export const color = (type: any, str: any) => {
   if (!colors[type]) {
     type = 'default';
   }
@@ -29,8 +31,7 @@ const color = (type: any, str: any) => {
   return '\u001b[' + colors[type] + 'm' + str + '\u001b[0m';
 };
 
-function printLog(type: any, args: any) {
-
+export const printLog = (type: any, args: any) => {
   const decorators = [' ', '[BASE]', color(type, symbols[type])].join(' ');
 
   if (typeof args[0] !== 'object') {
