@@ -58,7 +58,7 @@ class MockComponent {
   });
 }
 
-describe('Calculator / Components', () => {
+describe('Weather: component: station-marker', () => {
   let component: StationMarkerComponent;
   let fixture: ComponentFixture<MockComponent>;
   let de: DebugElement;

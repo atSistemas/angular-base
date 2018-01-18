@@ -32,8 +32,8 @@ describe('Calculator / Components', () => {
     getTestBed().resetTestingModule();
   });
 
-  describe('Weather: component: forecast', () => {
-    describe('layout', () => {
+  describe('Weather', () => {
+    describe('component: forecast', () => {
       it('should display 2 forecasts detail components', async () => {
         const mockForecasts = [{}, {}];
         component.forecasts = generateMap(mockForecasts, ForecastModel).valueSeq();

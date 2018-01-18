@@ -43,49 +43,46 @@ class MockComponent {
   });
 }
 
-describe('Calculator / Components', () => {
-  let component: MockComponent;
-  let fixture: ComponentFixture<MockComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
+describe('Weather', () => {
+  describe('component: station-info', () => {
+    let component: MockComponent;
+    let fixture: ComponentFixture<MockComponent>;
+    let de: DebugElement;
+    let el: HTMLElement;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        MockComponent,
-        StationInfoComponent,
-        HumidityPipe, PressurePipe, TemperaturePipe
-      ],
-      imports: [CommonModule, GoogleMapsModule]
-    }).compileComponents();
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          MockComponent,
+          StationInfoComponent,
+          HumidityPipe, PressurePipe, TemperaturePipe
+        ],
+        imports: [CommonModule, GoogleMapsModule]
+      }).compileComponents();
 
-    fixture = TestBed.createComponent(MockComponent);
-    component = fixture.componentInstance;
-    de = fixture.debugElement.query(By.css('weather-station-info'));
-    el = de.nativeElement;
+      fixture = TestBed.createComponent(MockComponent);
+      component = fixture.componentInstance;
+      de = fixture.debugElement.query(By.css('weather-station-info'));
+      el = de.nativeElement;
 
-    fixture.detectChanges();
-  });
+      fixture.detectChanges();
+    });
 
-  afterEach(() => {
-    getTestBed().resetTestingModule();
-  });
+    afterEach(() => {
+      getTestBed().resetTestingModule();
+    });
 
-  describe('Weather: component: station-info', () => {
     it('should render 38 °C temperature', async () => {
-      // console.log('outer', el.outerHTML);
       const temp = de.query(By.css('.content.temperature b')).nativeElement.textContent;
       expect(temp).to.equal('38 °C');
     });
 
     it('should render 77 % humidity', async () => {
-      // console.log('outer', el.outerHTML);
       const temp = de.query(By.css('.content.humidity b')).nativeElement.textContent;
       expect(temp).to.equal('77 %');
     });
 
     it('should render 0.25 hpa pressure', async () => {
-      // console.log('outer', el.outerHTML);
       const temp = de.query(By.css('.content.pressure b')).nativeElement.textContent;
       expect(temp).to.equal('0.25 hpa');
     });
