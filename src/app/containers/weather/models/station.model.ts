@@ -17,7 +17,7 @@ export interface Station {
   main: Record<Main>;
 }
 
-const CoordModel = Record<Coord>({
+export const CoordModel = Record<Coord>({
   Lat: 0,
   Lon: 0
 });
