@@ -5,7 +5,8 @@ import * as libconsole from '../console';
 
 describe('shared / console', () => {
   describe('helper functions', () => {
-    const generateColouredString = (colorCode, string) => `\u001b[${colorCode}m${string}\u001b[0m`
+    const generateColouredString = (colorCode, str) => `\u001b[${colorCode}m${str}\u001b[0m`;
+
     it('"color" should return corresponding terminal-ready coloured strings', () => {
       const defaultFormatted = libconsole.color('default', 'testing default');
       expect(defaultFormatted).to.equal(generateColouredString(libconsole.colors.default, 'testing default'));
@@ -23,7 +24,8 @@ describe('shared / console', () => {
     it('"printLog" should', () => {
       const spyOn = spy(console, 'log');
       libconsole.printLog('error', ['testing printLog']);
-      expect(spyOn.args[0][0].trim()).to.equal(`[BASE] \u001b[31m${libconsole.symbols.error}\u001b[0m testing printLog`);
+      expect(spyOn.args[0][0].trim()).to
+        .equal(`[BASE] \u001b[31m${libconsole.symbols.error}\u001b[0m testing printLog`);
       spyOn.restore();
     });
   });
@@ -32,7 +34,7 @@ describe('shared / console', () => {
     let spyOn;
 
     beforeEach(() => {
-      spyOn && spyOn.restore();
+      if (spyOn) spyOn.restore();
       spyOn = spy(console, 'log');
     });
 
@@ -69,11 +71,11 @@ describe('shared / console', () => {
     });
 
     it('"clear" should clear the screen', () => {
-      const spyOn = spy(process.stdout, 'write');
-      expect(spyOn.called).to.equal(false);
+      const spyOnStdoutWrite = spy(process.stdout, 'write');
+      expect(spyOnStdoutWrite.called).to.equal(false);
       libconsole.clear();
-      expect(spyOn.called).to.equal(true);
-      expect(spyOn.calledWith('\x1B[2J\x1B[0f'));
+      expect(spyOnStdoutWrite.called).to.equal(true);
+      expect(spyOnStdoutWrite.calledWith('\x1B[2J\x1B[0f'));
     });
   });
 });

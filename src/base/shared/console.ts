@@ -40,7 +40,7 @@ export const printLog = (type: any, args: any) => {
     args.unshift(decorators);
   }
   return console.log.apply(console, args);
-}
+};
 
 /* tslint:disable:only-arrow-functions */
 export const line = (...args: string[]) => (
