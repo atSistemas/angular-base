@@ -165,7 +165,14 @@
       "webpack",
       "**/**.spec.ts",
       "src/base/conf",
-      "src/base/wp-plugins"
+      "src/base/wp-plugins",
+      "src/base/index.ts",
+      "src/app/components/index.ts",
+      "src/app/containers/weather/index.ts",
+      "src/app/containers/calculator/index.ts",
+      "src/base/effects/index.ts",
+      "src/base/providers/index.ts",
+      "src/base/services/index.ts"
     ],
     "extension": [
       ".ts"
