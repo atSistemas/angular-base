@@ -76,6 +76,7 @@
     "@types/core-js": "0.9.44",
     "@types/express": "4.11.0",
     "@types/googlemaps": "3.30.4",
+    "@types/immutable": "^3.8.7",
     "@types/mocha": "2.2.46",
     "@types/node": "8.5.2",
     "@types/redux-logger": "3.0.5",
