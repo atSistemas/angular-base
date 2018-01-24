@@ -316,6 +316,11 @@ Angular-Base base uses - [Jsdom](https://github.com/tmpvar/jsdom) a Javascript i
 - [Chai](http://chaijs.com/) as assertion library
 You can write your tests normally using Mocha and Chai for assertions.
 
+In the starter-template, tests are placed in a `spec/` directory.  
+The test runner will run all tests in `*.spec.ts` files.  
+Various tests have already been implemented, so you can find some examples in the source code.  
+
+
 ### Running your tests
 
 `$ yarn test` will perform your unit testing, or npm test:coverage to run your tests and display a code coverage report.
