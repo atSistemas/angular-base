@@ -282,7 +282,7 @@ export class DisplayComponent {
 
 ```
 
-Angular Async Pipe allows you to unwrap/unsubscribe from an Observer when it's return his lastest value:
+Angular Async Pipe allows you to unwrap/unsubscribe from an Observer when it returns his lastest value:
 
 ```javascript
 @Component({
