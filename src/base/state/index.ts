@@ -1,20 +1,20 @@
-import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { Record } from 'immutable';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 
-import { Main, MainModel } from '../../app/containers/main/models';
-import * as CalculatorModel from '../../app/containers/calculator/models';
-import { Weather, WeatherModel } from '../../app/containers/weather/models';
+import { Lazy, LazyModel } from '../../app/containers/+lazy/models/lazy.model';
+import { Weather, WeatherModel } from '../../app/containers/weather/models/weather.model';
+import { Calculator, CalculatorModel } from '../../app/containers/calculator/models/calculator.model';
 
 export interface State {
-  main: Main;
-  calculator: CalculatorModel.State;
+  lazy: Lazy;
+  calculator: Calculator;
   weather: Record<Weather>;
   router: RouterReducerState<any>;
 }
 
 export const initialState: State = {
-  main: { id: 123, name: 'leches' },
-  calculator: CalculatorModel.initialState,
+  lazy: LazyModel,
+  calculator: CalculatorModel,
   weather: new WeatherModel(),
   router: undefined
 };

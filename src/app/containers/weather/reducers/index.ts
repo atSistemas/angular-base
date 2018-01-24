@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Action, State } from 'base';
 import { Record } from 'immutable';
 
-import { Weather, WeatherModel } from '../models';
+import { Weather, WeatherModel } from '../models/weather.model';
 import { ActionTypes } from '../actionTypes';
 import { WeatherActions } from '../actions';
-import { Station } from '../models/StationModel';
 
 const stationsRequest = (state: Record<Weather>): Record<Weather> => (
   state
@@ -33,13 +32,13 @@ const forecastsError = (state: Record<Weather>): Record<Weather> => (
 );
 
 const actionHandler: Map<string, any> = new Map<string, any>([
-  [ActionTypes.get('STATIONS_REQUEST'), stationsRequest],
-  [ActionTypes.get('STATIONS_SUCCESS'), stationsSuccess],
-  [ActionTypes.get('STATIONS_ERROR'), stationsError],
-  [ActionTypes.get('SELECT_STATION'), selectStation],
-  [ActionTypes.get('FORECASTS_REQUEST'), forecastsRequest],
-  [ActionTypes.get('FORECASTS_SUCCESS'), forecastsSuccess],
-  [ActionTypes.get('FORECASTS_ERROR'), forecastsError]
+  [ActionTypes.STATIONS_REQUEST, stationsRequest],
+  [ActionTypes.STATIONS_SUCCESS, stationsSuccess],
+  [ActionTypes.STATIONS_ERROR, stationsError],
+  [ActionTypes.SELECT_STATION, selectStation],
+  [ActionTypes.FORECASTS_REQUEST, forecastsRequest],
+  [ActionTypes.FORECASTS_SUCCESS, forecastsSuccess],
+  [ActionTypes.FORECASTS_ERROR, forecastsError]
 ]);
 
 export function WeatherReducer(state: Record<Weather> = new WeatherModel(), action: Action) {

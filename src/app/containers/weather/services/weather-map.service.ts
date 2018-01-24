@@ -5,8 +5,8 @@ import { generateMap } from 'base/shared/ModelHelper';
 import { Observable } from 'rxjs/Observable';
 
 import { config } from '../config';
-import { Station, StationModel } from '../models/StationModel';
-import { Forecast, ForecastModel } from '../models/ForecastModel';
+import { Station, StationModel } from '../models/station.model';
+import { Forecast, ForecastModel } from '../models/forecast.model';
 
 @Injectable()
 export class WeatherMapService {

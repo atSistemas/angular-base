@@ -23,9 +23,9 @@ export class ButtonPannelComponent {
   onClickOperation(value: any) {
     let actionType: any;
     switch (value) {
-      case 'C':   actionType = ActionTypes.get('CLEAN'); break;
-      case '+/-': actionType = ActionTypes.get('CHANGE_SIGN'); break;
-      case '%': actionType = ActionTypes.get('PERCENT'); break;
+      case 'C':   actionType = ActionTypes.CLEAN; break;
+      case '+/-': actionType = ActionTypes.CHANGE_SIGN; break;
+      case '%': actionType = ActionTypes.PERCENT; break;
       default: break;
     }
     this.store.dispatch(this.calculatorActions.inputOperation(actionType));
@@ -34,10 +34,10 @@ export class ButtonPannelComponent {
   onClickOperator(operator: any) {
     let actionType: any;
     switch (operator) {
-      case '÷': actionType = ActionTypes.get('DIVIDE'); break;
-      case 'x': actionType = ActionTypes.get('MULTIPLY'); break;
-      case '-': actionType = ActionTypes.get('SUBSTRACT'); break;
-      case '+': actionType = ActionTypes.get('SUM'); break;
+      case '÷': actionType = ActionTypes.DIVIDE; break;
+      case 'x': actionType = ActionTypes.MULTIPLY; break;
+      case '-': actionType = ActionTypes.SUBSTRACT; break;
+      case '+': actionType = ActionTypes.SUM; break;
       default: break;
     }
     this.store.dispatch(this.calculatorActions.inputOperator(actionType));

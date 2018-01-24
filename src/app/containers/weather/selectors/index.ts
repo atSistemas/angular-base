@@ -1,7 +1,9 @@
 import { Map, Record } from 'immutable';
 import { State } from 'base/state';
 
-import { Weather, Station, Forecast } from '../models';
+import { Forecast } from '../models/forecast.model';
+import { Station } from '../models/station.model';
+import { Weather } from '../models/weather.model';
 
 export const selectStationSelected = (state: State): number => (
   state.weather.getIn(['stationSelected'])

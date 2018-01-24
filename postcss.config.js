@@ -1,7 +1,7 @@
 module.exports = {
     plugins:{ 
         'postcss-import': {},
-        'postcss-cssnext': {},        
+        'postcss-custom-properties': {},
         'postcss-modules-extract-imports': {},
         'postcss-nested': {},
         'postcss-reporter': {},

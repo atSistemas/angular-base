@@ -1,5 +1,6 @@
-export const createActionTypes = (types: string[]): Map<string, string> => (
-  types.reduce((acc: Map<string, string>, type: string) => (
-    acc.set(type, type)
-  ), new Map<string, string>())
-);
+export function createActionTypes<T extends string>(types: T[]): {[K in T]: K} {
+  return types.reduce((res, key) => {
+    res[key] = key;
+    return res;
+  }, Object.create(null));
+}

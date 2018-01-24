@@ -21,7 +21,7 @@ describe('shared / FileSystem', () => {
 
     it('Should read a directory', () => {
 
-      const dir = path.resolve(__dirname, '../../polyfills');
+      const dir = path.resolve(__dirname, '../../state');
       const files = readDir(dir);
       expect(files.length).to.equal(1);
 
