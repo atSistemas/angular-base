@@ -1,12 +1,11 @@
+import { AngularCompilerPlugin } from '@ngtools/webpack';
 import * as path from 'path';
 import * as common from './webpack.common.config';
 
 const webpack = require('webpack');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ngToolsWebpack = require('@ngtools/webpack');
 //const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export const cache = common.cache;
@@ -14,10 +13,9 @@ export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-module-source-map';
 export const entry = {
-  app: [
-    common.aotPath,
-  ],
-  polyfills: common.polyfills
+  app: common.aotPath,
+  polyfills:  common.polyfillsPath,
+  vendor: common.vendorPath
 };
 
 export const output = {
@@ -32,11 +30,10 @@ export const output = {
 export const module = {
   rules: common.module.rules.concat([
     {
-      test: /\.ts$/,
-      loaders: [
-        '@ngtools/webpack',
-      ],
+      test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+      loader: '@ngtools/webpack',
       exclude: [
+        /compiled/,
         /dist/,
         /spec/,
         /server/,
@@ -46,7 +43,7 @@ export const module = {
     },
     {
       test: /\.(css)$/,
-      use: ['raw-loader']
+      loader: 'raw-loader'
     }
   ] as any[])
 };
@@ -68,7 +65,7 @@ export const plugins = [
   }),
   new CommonsChunkPlugin({
     name: 'vendor',
-    chunks: ['app'],
+    chunks: ['vendor'],
     minChunks: minChunksModule => /node_modules/.test(minChunksModule.resource)
   }),
   new HtmlWebpackPlugin({
@@ -85,7 +82,6 @@ export const plugins = [
       if (order.indexOf(a.names[0]) < order.indexOf(b.names[0])) {
         return -1;
       }
-
       return 0;
     }
    }),
@@ -96,10 +92,9 @@ export const plugins = [
     mangle: { screw_ie8 : true }
   }),
   new webpack.NoEmitOnErrorsPlugin(),
-  new ngToolsWebpack.AngularCompilerPlugin({
+  new AngularCompilerPlugin({
     tsConfigPath: './tsconfig.aot.json',
     entryModule: path.join(__dirname, '../src/app/app.module#AppModule'),
     sourceMap: true
-  }),
-]
-  .concat(common.plugins);
+  })
+].concat(common.plugins);

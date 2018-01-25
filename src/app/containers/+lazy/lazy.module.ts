@@ -2,26 +2,22 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LazyActions } from './actions';
-import { LazyComponent } from './lazy.component';
+import { LazyContainer } from './lazy.container';
 import { routes } from './lazy.routes';
 
 @NgModule({
   declarations: [
-    LazyComponent
+    LazyContainer
   ],
   exports: [
-    LazyComponent,
+    LazyContainer,
     RouterModule
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  providers: [LazyActions]
+  providers: [ LazyActions ]
 })
 
 export class LazyModule { }
-
-// export function WrapperLazyModule() {
-//   return LazyModule;
-// }

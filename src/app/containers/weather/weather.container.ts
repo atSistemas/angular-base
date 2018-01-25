@@ -1,14 +1,16 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 import { Map, Record, Seq } from 'immutable';
 import { Store, State } from 'base';
 
 import { WeatherMapService } from './services';
-import { Forecast, Station } from './models';
-import { WeatherActions } from './actions';
+import { Forecast } from './models/forecast.model';
+import { Station } from './models/station.model';
+import { WeatherActions } from './actions/weather.actions';
+
 import {
-  selectStationSelected,
   selectStations,
   selectForecasts
 } from './selectors';
@@ -19,13 +21,18 @@ import {
   styleUrls: ['./weather.container.css']
 })
 
-export class WeatherContainer implements OnInit {
-  private stations$: Observable<Map<number, Record<Station>>> = this.store.select(selectStations);
-  private stationsSubscription: Subscription;
-  private stations: Map<number, Record<Station>> = Map<number, Record<Station>>();
-  private stationSelected$: Observable<number> = this.store.select(selectStationSelected);
-  private stationSelectedSubscription: Subscription;
-  private stationSelected: number;
+export class WeatherContainer implements OnInit, OnDestroy {
+  stations$: Observable<Map<number, Record<Station>>> = this.store.select(selectStations);
+  stationsSubscription: Subscription;
+  stations: Map<number, Record<Station>> = Map<number, Record<Station>>();
+
+  forecasts$: Observable<Map<number, Record<Forecast>>> = this.store.select(selectForecasts);
+  forecastsSubscription: Subscription;
+  forecasts: Map<number, Record<Forecast>> = Map<number, Record<Forecast>>();
+
+  isLoaded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoadedSubscription: Subscription;
+  isLoaded = false;
 
   constructor(
     private store: Store<State>,
@@ -33,50 +40,56 @@ export class WeatherContainer implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.stationSelectedSubscription = this.stationSelected$.subscribe(selected => (
-      this.stationSelected = selected
+    this.stationsSubscription = this.stations$.first(result => result.size > 0)
+      .subscribe(stations => (
+        this.stations = stations
+      ));
+    this.forecastsSubscription = this.forecasts$.subscribe(forecasts => (
+      this.forecasts = forecasts
     ));
-    this.stationsSubscription = this.stations$.subscribe(stations => (
-      this.stations = stations
-    ));
-    if (!this.stations.count()) {
-      this.getStations();
-    }
+    this.isLoadedSubscription = this.isLoaded$.first(result => result)
+      .subscribe(isLoaded => (
+        this.isLoaded = isLoaded
+      ));
+    this.getStations();
   }
 
   ngOnDestroy() {
-    this.stationSelectedSubscription.unsubscribe();
-    this.stationsSubscription.unsubscribe();
+    this.forecastsSubscription.unsubscribe();
   }
 
   get stationList(): Seq.Indexed<Record<Station>> {
     return this.stations.valueSeq();
   }
 
-  get isStationSelected(): boolean {
-    return this.stationSelected >= 0;
+  get forecastList(): Seq.Indexed<Record<Forecast>> {
+    return this.forecasts.valueSeq();
+  }
+
+  get hasForecast(): boolean {
+    return this.forecasts.size > 0;
   }
 
   onSelectStation(station: Record<Station>) {
     const id = station.getIn(['id']);
-    if (id !== this.stationSelected) {
-      const lat = station.getIn(['coord', 'Lat']);
-      const lon = station.getIn(['coord', 'Lon']);
-      this.store.dispatch(
-        this.weatherActions.selectStation(id)
-      );
-      this.store.dispatch(
-        this.weatherActions.getForecast(lat, lon)
-      );
+    const lat = station.getIn(['coord', 'Lat']);
+    const lon = station.getIn(['coord', 'Lon']);
+    this.store.dispatch(
+      this.weatherActions.selectStation(id)
+    );
+    this.store.dispatch(
+      this.weatherActions.getForecast(lat, lon)
+    );
+  }
+
+  onLoad(isLoaded: boolean) {
+    this.isLoaded$.next(isLoaded);
+  }
+
+  getStations() {
+    if (!this.stations.count()) {
+      this.store.dispatch(this.weatherActions.getStations());
     }
-  }
-
-  getForecast(lat: number, lon: number) {
-    this.store.dispatch(this.weatherActions.getForecast(lat, lon));
-  }
-
-  private getStations() {
-    this.store.dispatch(this.weatherActions.getStations());
   }
 
 }

@@ -1,4 +1,4 @@
-import { StoreProviders } from 'base/imports';
+import { StoreProviders } from './store.providers';
 
 export const BaseProviders = [
   StoreProviders

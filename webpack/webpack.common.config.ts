@@ -15,13 +15,28 @@ export const aotPath = path.resolve(__dirname, '../src/app/index.aot.ts');
 export const buildPath = path.resolve(__dirname, '../dist');
 export const basePath = path.resolve(__dirname, '../src/base');
 export const dllPath = path.resolve(__dirname, '../dist/');
+export const polyfillsPath = path.resolve(__dirname, '../src/base/conf/polyfills');
+export const vendorPath = path.resolve(__dirname, '../src/base/conf/vendor');
 export const cache = true;
+
 export const polyfills = [
-  'core-js/es6/reflect',
+  'core-js/es6/symbol',
+  'core-js/es6/object',
+  'core-js/es6/function',
+  'core-js/es6/parse-int',
+  'core-js/es6/parse-float',
+  'core-js/es6/number',
+  'core-js/es6/math',
+  'core-js/es6/string',
+  'core-js/es6/date',
+  'core-js/es6/array',
+  'core-js/es6/regexp',
+  'core-js/es6/map',
+  'core-js/es6/set',
+  'core-js/es7/reflect',
   'core-js/client/shim',
   'zone.js/dist/zone',
   'zone.js/dist/long-stack-trace-zone',
-
 ];
 export const vendor = [
   '@ngui/map',
@@ -34,14 +49,13 @@ export const vendor = [
   '@ngrx/store',
   '@ngrx/effects',
   '@ngrx/router-store',
-  'angular2-template-loader',
-  './src/base/imports/rx'
+  './src/base/conf/rx'
 ];
 
 export const entry = {
   polyfills,
   vendor
-};
+}
 
 export const plugins = [
   new DefinePlugin({
@@ -66,13 +80,6 @@ export const plugins = [
 
 export const module = {
   rules: [
-    {
-      test: /\.ts$/,
-      loaders: [
-        'angular2-template-loader',
-      ],
-      exclude: [/\.(spec|e2e|d)\.ts$/]
-    },
     { test: /\.json$/, loader: 'json-loader', include: [mainPath] },
     { test: /\.html/, loader: 'raw-loader', include: [mainPath] },
     { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
@@ -92,7 +99,7 @@ export const node = {
 };
 
 export const postcss = [
-  require('postcss-import')(),
+  require('postcss-import')({ addDependencyTo: webpack }),
   require('postcss-cssnext')(),
   require('postcss-modules-extract-imports'),
   require('postcss-nested')(),
@@ -100,14 +107,11 @@ export const postcss = [
   require('postcss-url')()
 ];
  
-
 export const resolve = {
-  extensions: ['.js', '.ts', '.tsx', '.css'],
+  extensions: ['.js', '.ts'],
   alias: {
     base: path.resolve(__dirname, '../src/base'),
-    mocks: path.resolve(__dirname, '../server/api/mocks'),
-    containers: path.resolve(__dirname, '../src/app/containers'),
-    components: path.resolve(__dirname, '../src/app/components')
+    mocks: path.resolve(__dirname, '../server/api/mocks')
   }
 };
 

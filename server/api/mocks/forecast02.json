@@ -1,0 +1,212 @@
+{
+  "city": {
+    "id": 3118848,
+    "name": "Las Rozas de Madrid",
+    "coord": {
+      "lon": -3.8738,
+      "lat": 40.4929
+    },
+    "country": "ES",
+    "population": 86340
+  },
+  "cod": "200",
+  "message": 0.0943483,
+  "cnt": 8,
+  "list": [
+    {
+      "dt": 1515672002,
+      "temp": {
+        "day": 8.26,
+        "min": 0.26,
+        "max": 8.26,
+        "night": 0.26,
+        "eve": 4.59,
+        "morn": 8.26
+      },
+      "pressure": 962.29,
+      "humidity": 80,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 6.27,
+      "deg": 309,
+      "clouds": 0
+    },
+    {
+      "dt": 1515758400,
+      "temp": {
+        "day": 6.46,
+        "min": -3.88,
+        "max": 7.5,
+        "night": -1.75,
+        "eve": 2.93,
+        "morn": -3.88
+      },
+      "pressure": 965.69,
+      "humidity": 96,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 1.67,
+      "deg": 252,
+      "clouds": 0
+    },
+    {
+      "dt": 1515844800,
+      "temp": {
+        "day": 5.19,
+        "min": -4.32,
+        "max": 6.36,
+        "night": 1.52,
+        "eve": 3.17,
+        "morn": -4.32
+      },
+      "pressure": 957.79,
+      "humidity": 93,
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "nevada ligera",
+          "icon": "13d"
+        }
+      ],
+      "speed": 1.05,
+      "deg": 120,
+      "clouds": 88,
+      "rain": 4.01,
+      "snow": 0.11
+    },
+    {
+      "dt": 1515931200,
+      "temp": {
+        "day": 2.66,
+        "min": -3.78,
+        "max": 4.2,
+        "night": -3.78,
+        "eve": 0.98,
+        "morn": 0.47
+      },
+      "pressure": 958.34,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "nevada ligera",
+          "icon": "13d"
+        }
+      ],
+      "speed": 1.87,
+      "deg": 267,
+      "clouds": 80,
+      "snow": 0.19
+    },
+    {
+      "dt": 1516017600,
+      "temp": {
+        "day": 6.47,
+        "min": -1.16,
+        "max": 6.47,
+        "night": -1.16,
+        "eve": 4.05,
+        "morn": -1
+      },
+      "pressure": 951.44,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        }
+      ],
+      "speed": 1.68,
+      "deg": 55,
+      "clouds": 33
+    },
+    {
+      "dt": 1516104000,
+      "temp": {
+        "day": 6.57,
+        "min": -4.09,
+        "max": 6.57,
+        "night": -2.44,
+        "eve": 3.3,
+        "morn": -4.09
+      },
+      "pressure": 958.59,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 1.53,
+      "deg": 63,
+      "clouds": 3
+    },
+    {
+      "dt": 1516190400,
+      "temp": {
+        "day": 8.14,
+        "min": -3.38,
+        "max": 8.14,
+        "night": -1.9,
+        "eve": 4.61,
+        "morn": -3.38
+      },
+      "pressure": 959.64,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 1.52,
+      "deg": 119,
+      "clouds": 0
+    },
+    {
+      "dt": 1516276800,
+      "temp": {
+        "day": 6.53,
+        "min": -3.5,
+        "max": 6.53,
+        "night": -3.07,
+        "eve": 4.06,
+        "morn": -3.5
+      },
+      "pressure": 957.37,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        }
+      ],
+      "speed": 1.7,
+      "deg": 68,
+      "clouds": 48
+    }
+  ]
+}

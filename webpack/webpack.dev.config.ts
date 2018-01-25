@@ -8,9 +8,8 @@ export const resolve = common.resolve;
 export const context = common.context;
 export const devtool = 'cheap-source-map';
 export const entry = {
-
-  polyfills:  common.polyfills,
-  vendor: common.vendor,
+  polyfills:  common.polyfillsPath,
+  vendor: common.vendorPath,
   app: [
     common.appPath,
     'webpack/hot/dev-server',
@@ -32,8 +31,9 @@ export const module = {
     {
       test: /\.ts$/,
       loaders: [
-        'awesome-typescript-loader',
+        'ts-loader',
         '@angularclass/hmr-loader',
+        'angular2-template-loader',
         'angular-router-loader'
       ],
       exclude: [
@@ -55,16 +55,22 @@ export const module = {
             importLoaders: 1,
             localIdentName: '[name]__[local]-[hash:base64:4]'
           }
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            config: {
-              path: 'postcss.config.js'
-            },
-            plugins: () => common.postcss
-          }
         }
+      ]
+    },
+    {
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      use: [
+        { loader: 'to-string-loader' },
+        { loader: 'style-loader' },
+        { loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            localIdentName: '[name]__[local]-[hash:base64:4]'
+          }
+        },
+        { loader: 'sass-loader' }
       ]
     }
   ] as any[])

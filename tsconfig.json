@@ -45,12 +45,6 @@
     "compiled",
     "src/app/index.aot.ts"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "forkChecker": false,
-    "useCache": true,
-    "silent": true
-  },
   "compileOnSave": false,
   "buildOnSave": false,
   "atom": {

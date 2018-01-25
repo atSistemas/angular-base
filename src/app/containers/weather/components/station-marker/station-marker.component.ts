@@ -2,8 +2,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Record } from 'immutable';
 import { Store, State } from 'base';
 
-import { Station, Main } from '../../models/StationModel';
-import { WeatherActions } from '../../actions';
+import { Station, Main } from '../../models/station.model';
+import { WeatherActions } from '../../actions/weather.actions';
 
 @Component({
   selector: 'weather-station-marker',

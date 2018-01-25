@@ -5,6 +5,7 @@
   [fullscreenControl]="false"
   [mapTypeControl]="false"
   [streetViewControl]="false"
+  (tilesloaded)="onLoad()"
 >
   <weather-station-marker
     *ngFor="let station of stations; let i = index"

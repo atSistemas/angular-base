@@ -1,0 +1,106 @@
+{
+  "cod": 200,
+  "calctime": 0.071311,
+  "cnt": 230,
+  "list": [
+    {
+      "id": 2267226,
+      "dt": 1515682917,
+      "name": "Lagos",
+      "coord": {
+        "Lat": 1,
+        "Lon": 1
+      },
+      "main": {
+        "temp": 15,
+        "temp_min": 15,
+        "temp_max":15,
+        "pressure":1028,
+        "humidity":77
+      },
+      "wind": {
+        "speed": 5.7,
+        "deg": 250
+      },
+      "rain": null,
+      "snow": null,
+      "clouds": {
+        "today": 20
+      },
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "few clouds",
+          "icon": "02d"
+        }
+      ]
+    },
+    {
+      "id": 2264456,
+      "dt": 1515682933,
+      "name": "Portimao",
+      "coord": {
+        "Lat": 2,
+        "Lon": 2
+      },
+      "main": {
+        "temp": 15,
+        "temp_min": 15,
+        "temp_max": 15,
+        "pressure": 1028,
+        "humidity": 77
+      },
+      "wind": {
+        "speed": 5.7,
+        "deg": 250
+      },
+      "rain": null,
+      "snow": null,
+      "clouds": {
+        "today": 20
+      },
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "few clouds",
+          "icon": "02d"
+        }
+      ]
+    },
+    {
+      "id": 2262963,
+      "dt": 1515682974,
+      "name": "Setubal",
+      "coord": {
+        "Lat": 3,
+        "Lon": 3
+      },
+      "main": {
+        "temp": 14.25,
+        "temp_min": 13,
+        "temp_max": 15,
+        "pressure": 1028,
+        "humidity": 67
+      },
+      "wind":{
+        "speed": 5.7,
+        "deg": 330
+      },
+      "rain": null,
+      "snow": null,
+      "clouds": {
+        "today": 40
+      },
+      "weather": [
+        {
+          "id": 521,
+          "main": "Rain",
+          "description": "shower rain",
+          "icon": "09d"
+        }
+      ]
+    }
+  ]
+}

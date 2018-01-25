@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Record } from 'immutable';
-import { Main } from '../../models/StationModel';
+import { Main } from '../../models/station.model';
 
 @Component({
   selector: 'weather-station-info',

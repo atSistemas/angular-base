@@ -1,1 +1,0 @@
-export { BaseReduxify } from './reduxify';

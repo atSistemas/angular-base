@@ -5,42 +5,36 @@ import { ActionTypes } from '../actionTypes';
 @Injectable()
 export class CalculatorActions {
 
-  public inputNumber(value: any): Action {
+  inputNumber(value: number): Action {
     return {
-      type: ActionTypes.get('INPUT_NUMBER'),
-      payload: {
-        value
-      }
+      type: ActionTypes.INPUT_NUMBER,
+      payload: { value }
     };
   }
 
-  public inputOperation(value: any): Action {
+  inputOperation(value: string): Action {
     return {
-      type: ActionTypes.get('INPUT_OPERATION'),
-      payload: {
-        value
-      }
+      type: ActionTypes.INPUT_OPERATION,
+      payload: { value }
     };
   }
 
-  public inputDecimal(): Action {
+  inputDecimal(): Action {
     return {
-      type: ActionTypes.get('INPUT_DECIMAL')
+      type: ActionTypes.INPUT_DECIMAL
     };
   }
 
-  public inputOperator(operator: any): Action {
+  inputOperator(operator: any): Action {
     return {
-      type: ActionTypes.get('INPUT_OPERATOR'),
-      payload: {
-        operator
-      }
+      type: ActionTypes.INPUT_OPERATOR,
+      payload: { operator }
     };
   }
 
-  public result(operator?: any): Action {
+  result(): Action {
     return {
-      type: ActionTypes.get('RESULT')
+      type: ActionTypes.RESULT
     };
   }
 }

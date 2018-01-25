@@ -3,13 +3,16 @@ import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { Store, State } from 'base';
-import { BaseImports } from 'base/imports/';
-import { BaseProviders } from 'base/providers/';
+import { BaseImports } from 'base/imports';
+import { BaseProviders } from 'base/providers';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MainModule, CalculatorModule, WeatherModule } from './containers';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './components';
+/* Module Containers */
+import { HomeModule } from './containers/home/home.module';
+import { CalculatorModule } from './containers/calculator/calculator.module';
+import { WeatherModule } from './containers/weather/weather.module';
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -21,7 +24,7 @@ import { TopBarComponent } from './components';
     BaseImports,
     BrowserModule,
     HttpModule,
-    MainModule,
+    HomeModule,
     CalculatorModule,
     WeatherModule,
     AppRoutingModule

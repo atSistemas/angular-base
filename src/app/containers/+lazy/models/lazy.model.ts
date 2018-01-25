@@ -1,9 +1,7 @@
-import { Record } from 'immutable';
-/*
 export interface Lazy {
-  lazy?: String;
+  message: string;
+}
+
+export const LazyModel: Lazy = {
+  message: ''
 };
-*/
-export const LazyModel = Record({
-  lazy: 'Lazy view!'
-});
