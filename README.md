@@ -63,7 +63,7 @@ Setting up **Angular-Base** is as easy as running:
 
 This command will install all the required dependencies and start your development server, which takes care of all the changes you make to your code and runs all the awesome stuff that ends with your code automagically transpiled and running on your browser.
 
-Please note that `yarn install` is only required on your first start, or in case of updated dependencies.
+Please note that `yarn install` is only required on your first start, or in case of updated dependencies. 
 
 
 ### Initializing development server
