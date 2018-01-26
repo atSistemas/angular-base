@@ -12,7 +12,7 @@
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
     "baseUrl": "./src",
-    "outDir": "./compiled",
+    "outDir": "./dist/compiled",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -29,7 +29,6 @@
     "dist",
     "webpack",
     "node_modules",
-    "compiled",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",

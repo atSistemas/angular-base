@@ -31,7 +31,7 @@
     "build": "cross-env NODE_ENV=development webpack --config webpack/index.ts",
     "build:prod": "npm run clean && npm run generate:dll && npm run ngc && cross-env NODE_ENV=production webpack --config webpack/index.ts",
     "generate:dll": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/webpack.dll.config.ts",
-    "clean": "rimraf dist/ && rimraf compiled",
+    "clean": "rimraf dist/",
     "tslint": "tslint",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "lint:css": "npm run logo && stylelint \"src/**/*.css\" --config .stylelintrc",
@@ -160,7 +160,6 @@
     ],
     "exclude": [
       "node_modules/",
-      "compiled",
       "dist",
       "webpack",
       "**/**.spec.ts",
