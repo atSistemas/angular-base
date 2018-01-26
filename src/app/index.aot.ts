@@ -3,7 +3,7 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
 
 function loadAppModuleNgFactory() {
-  return require('../../compiled/src/app/app.module.ngfactory').AppModuleNgFactory;
+  return require('../../dist/compiled/src/app/app.module.ngfactory').AppModuleNgFactory;
 }
 
 enableProdMode();

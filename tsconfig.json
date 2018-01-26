@@ -42,7 +42,7 @@
   },
   "exclude": [
     "node_modules",
-    "compiled",
+    "dist/compiled",
     "src/app/index.aot.ts"
   ],
   "compileOnSave": false,
