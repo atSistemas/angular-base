@@ -1,10 +1,7 @@
 import * as path from 'path';
 import * as express from 'express';
-//import 'angular2-universal-polyfills';
 
-const baseUrl = path.resolve(__dirname, '../../src/app');
-
-export function renderPage(req: express.Request, res: express.Response, next: any) {
+export function renderPage(req: express.Request, res: express.Response) {
 
   res.render('index', {
     req,

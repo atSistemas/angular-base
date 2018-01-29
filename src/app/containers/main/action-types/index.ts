@@ -1,8 +1,0 @@
-export const actionTypes = {
-    CLICK:          'CLICK',
-    LAZY_CONTAINER: 'LAZY_CONTAINER',
-    MAIN_CONTAINER: 'MAIN_CONTAINER',
-    MAIN_ERROR:     'MAIN_ERROR',
-    MAIN_REQUEST:   'MAIN_REQUEST',
-    MAIN_SUCCESS:   'MAIN_SUCCESS',
-};

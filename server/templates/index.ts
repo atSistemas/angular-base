@@ -1,21 +1,21 @@
-import environment, { constants as envConstants} from '../environment';
+import environment, { constants as envConstants } from '../environment';
+import getScripts from '../lib/GetScripts';
 
-export default function renderPage():String {
+export default function renderPage(): string {
 
-  const vendor =  '<script src="dlls/vendor.js"></script>';
-  const polyfills = '<script src="/polyfills.js"></script>';
-  const app = '<script src="/app.js"></script>';
-  const style = (environment.ENV === envConstants.PRODUCTION) ? '<link rel="stylesheet" href="bundle.css">' : '';
-
+  const app = getScripts('app');
+  const vendor = getScripts('vendor');
+  const polyfills = getScripts('polyfills');
+  const favicon = (environment.ENV === envConstants.PRODUCTION) ? '<link rel="stylesheet" href="bundle.css">' : '';
   return `
   <!doctype html>
 	<html lang="utf-8">
     <head>
       <title>Angular2 Base</title>
+      <link rel="icon" href="assets/images/favicon.ico"/>
       <base href="/">
-      ${ style}
-      ${ vendor }
       ${ polyfills }
+      ${ vendor }
     </head>
     <body>
     <base-app>

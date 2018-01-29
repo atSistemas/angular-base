@@ -1,0 +1,9 @@
+<weather-map
+  [stations]="stationList"
+  (loadMap)="onLoad($event)"
+  (selectStation)="onSelectStation($event)"
+></weather-map>
+<weather-forecast
+  *ngIf="hasForecast"
+  [forecasts]="forecastList"
+></weather-forecast>

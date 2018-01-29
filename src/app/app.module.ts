@@ -1,31 +1,41 @@
-import { ApplicationRef, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { ApplicationRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponents } from './app.components';
+import { RouterModule } from '@angular/router';
+import { Store, State } from 'base';
+import { BaseImports } from 'base/imports';
+import { BaseProviders } from 'base/providers';
 
-import { BaseComponent } from '../base/components/base';
-import { BaseImports } from '../base/imports/';
-import { BaseProviders } from '../base/providers/';
-import { MainContainer } from './containers/main/main.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { TopBarComponent } from './components';
+/* Module Containers */
+import { HomeModule } from './containers/home/home.module';
+import { CalculatorModule } from './containers/calculator/calculator.module';
+import { WeatherModule } from './containers/weather/weather.module';
 
 @NgModule({
-  bootstrap: [ BaseComponent ],
+  bootstrap: [ AppComponent ],
   declarations: [
-    BaseComponent,
-    AppComponents,
+    AppComponent,
+    TopBarComponent
   ],
   imports: [
     BaseImports,
     BrowserModule,
     HttpModule,
+    HomeModule,
+    CalculatorModule,
+    WeatherModule,
+    AppRoutingModule
   ],
-  providers: [ BaseProviders ],
+  providers: [ BaseProviders ]
 })
+
 export class AppModule {
   constructor(
-    // private store: Store,
-    // public mainService: MainService
-  ) {
-    console.log('APP MODULE CONSTRUCTOR');
-  }
+    public appRef: ApplicationRef,
+    private store: Store<State>
+  ) {}
+
 }

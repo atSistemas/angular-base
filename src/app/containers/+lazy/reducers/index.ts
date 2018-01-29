@@ -1,23 +1,17 @@
-import { Action } from 'redux';
-import { Store } from '../../../../base/store';
-import { actionTypes } from '../action-types';
-import { InitialState, LazyModel, LazyModelInterface } from '../models';
+import { Action } from 'base';
+import { ActionTypes } from '../actionTypes';
+import { Lazy, LazyModel } from '../models/lazy.model';
 
-const request = (state, data) => {
-  console.log('lazy requeeeeeeest!!!');
-  return state;
-};
+const loadMessage = (state: Lazy, action: Action): Lazy => ({
+  ...state,
+  message: action.payload.message
+});
 
-const success = (state, action) => {
-  console.log('lazy sucesssssss!', action.payload);
-  const data = action.payload;
-  return state.update('lazy', (value) => action.payload);
-};
+const actionHandler: Map<string, any> = new Map<string, any>([
+  [ActionTypes.LOAD_MESSAGE, loadMessage]
+]);
 
-const actionHandlers = {
-  [actionTypes.LAZY_REQUEST]: request,
-  [actionTypes.LAZY_SUCCESS]: success,
-};
-
-const LazyReducer = Store.createReducer<LazyModelInterface>(actionHandlers, InitialState);
-export { LazyReducer }
+export function LazyReducer(state: Lazy = LazyModel, action: Action) {
+  const handler = actionHandler.get(action.type);
+  return handler ? handler(state, action) : state;
+}

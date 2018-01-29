@@ -1,0 +1,13 @@
+<marker
+  [position]="position"
+  [zIndex]="index"
+  (mouseover)="showInfoWindow($event)"
+  (mouseout)="hideInfoWindow($event)"
+  [clickable]="true"
+  (click)="onSelectStation()"
+>
+  <weather-station-info
+    [id]="infoWindowID"
+    [info]="info"
+  ></weather-station-info>
+</marker>

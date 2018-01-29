@@ -1,0 +1,10 @@
+
+<div class="forecast-container">
+  <h2>Forecast</h2>
+  <div class="forecast-list">
+    <weather-forecast-detail
+      *ngFor="let forecast of forecasts"
+      [forecast]="forecast"
+    ></weather-forecast-detail>
+  </div>
+</div>

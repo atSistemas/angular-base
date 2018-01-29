@@ -1,0 +1,16 @@
+<ngui-map
+  class="ngui-map"
+  [zoom]="zoom"
+  [center]="center"
+  [fullscreenControl]="false"
+  [mapTypeControl]="false"
+  [streetViewControl]="false"
+  (tilesloaded)="onLoad()"
+>
+  <weather-station-marker
+    *ngFor="let station of stations; let i = index"
+    [station]="station"
+    (selectStation)="onSelectStation($event)"
+    [index]="i"
+  ></weather-station-marker>
+</ngui-map>

@@ -1,40 +1,42 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noEmitHelpers": true,
-    "pretty": false,
-    "sourceMap": true,
-    "lib": ["es5", "dom"],
-    "noEmit": true,
+    "suppressImplicitAnyIndexErrors": true,
     "strictNullChecks": false,
     "skipDefaultLibCheck": true,
+    "baseUrl": "./src",
+    "outDir": "./dist/compiled",
     "typeRoots": [
       "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
     ]
   },
+  "includes": [
+    "src/styles/*",
+    "src/styles/**/*.css"
+  ],
   "exclude": [
     "dist",
-    ".base",
     "webpack",
     "node_modules",
-    "src/compiled",
     "src/**/*.e2e.ts",
     "src/**/*.spec.ts",
     "server/",
-    "src/app/index.aot.ts"
+    "src/base/wp-plugins"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "forkChecker": true,
-    "useCache": true
-  },
-  "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false },
   "angularCompilerOptions": {
-   "genDir": "src/compiled",
-   "skipMetadataEmit" : true
+    "skipMetadataEmit": true,
+    "preserveWhitespaces": false
  }
 }

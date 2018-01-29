@@ -1,16 +1,11 @@
-import 'ts-helpers';
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
 import * as path from 'path';
 import * as express from 'express';
-//import 'angular2-universal-polyfills';
 
-import * as base from '../.base';
-import { routes } from './routes';
+import * as base from '../src/base';
 import environment from './environment';
 import { applyViewEngine } from './lib/viewEngine';
 import { applyEnvMiddleWare } from './middleware';
-import { applyStaticsPaths, StaticRoute } from './statics';
+import { applyStaticsPaths } from './statics';
 import { applyServerRouting } from './routes/routing-middleware';
 
 export class Server {

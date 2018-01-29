@@ -1,0 +1,216 @@
+{
+  "city": {
+    "id": 3114472,
+    "name": "Pamplona",
+    "coord": {
+      "lon": -1.6433,
+      "lat": 42.8169
+    },
+    "country": "ES",
+    "population": 198491
+  },
+  "cod": "200",
+  "message": 0.1310328,
+  "cnt": 8,
+  "list": [
+    {
+      "dt": 1515672000,
+      "temp": {
+        "day": 6.2,
+        "min": 3.2,
+        "max": 6.2,
+        "night": 3.2,
+        "eve": 4.95,
+        "morn": 6.2
+      },
+      "pressure": 967.74,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "nevada ligera",
+          "icon": "13d"
+        }
+      ],
+      "speed": 4.56,
+      "deg": 287,
+      "clouds": 68,
+      "rain": 3.66,
+      "snow": 0.03
+    },
+    {
+      "dt": 1515758400,
+      "temp": {
+        "day": 5.96,
+        "min": -1.73,
+        "max": 5.96,
+        "night": -1.73,
+        "eve": 2.05,
+        "morn": 0.71
+      },
+      "pressure": 974.04,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        }
+      ],
+      "speed": 2.22,
+      "deg": 321,
+      "clouds": 76,
+      "rain": 0.24
+    },
+    {
+      "dt": 1515844800,
+      "temp": {
+        "day": 3.87,
+        "min": -1.49,
+        "max": 4.38,
+        "night": 2.97,
+        "eve": 3.02,
+        "morn": -1.49
+      },
+      "pressure": 967.92,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        }
+      ],
+      "speed": 3.5,
+      "deg": 152,
+      "clouds": 68,
+      "rain": 1.41
+    },
+    {
+      "dt": 1515931200,
+      "temp": {
+        "day": 3.56,
+        "min": 1.67,
+        "max": 4.12,
+        "night": 1.67,
+        "eve": 2.3,
+        "morn": 1.89
+      },
+      "pressure": 967.5,
+      "humidity": 100,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 1.77,
+      "deg": 295,
+      "clouds": 68,
+      "rain": 2.61,
+      "snow": 0.01
+    },
+    {
+      "dt": 1516017600,
+      "temp": {
+        "day": 7.92,
+        "min": 4.41,
+        "max": 7.92,
+        "night": 4.41,
+        "eve": 5.63,
+        "morn": 4.42
+      },
+      "pressure": 987.91,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 501,
+          "main": "Rain",
+          "description": "lluvia moderada",
+          "icon": "10d"
+        }
+      ],
+      "speed": 2.4,
+      "deg": 317,
+      "clouds": 58,
+      "rain": 3.28
+    },
+    {
+      "dt": 1516104000,
+      "temp": {
+        "day": 7.04,
+        "min": 1.21,
+        "max": 7.04,
+        "night": 5.16,
+        "eve": 5.95,
+        "morn": 1.21
+      },
+      "pressure": 993.85,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 1.94,
+      "deg": 200,
+      "clouds": 49
+    },
+    {
+      "dt": 1516190400,
+      "temp": {
+        "day": 7.96,
+        "min": 1.68,
+        "max": 7.96,
+        "night": 2.02,
+        "eve": 5.61,
+        "morn": 1.68
+      },
+      "pressure": 995.71,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "cielo claro",
+          "icon": "01d"
+        }
+      ],
+      "speed": 1.23,
+      "deg": 188,
+      "clouds": 0
+    },
+    {
+      "dt": 1516276800,
+      "temp": {
+        "day": 8.63,
+        "min": 1.08,
+        "max": 8.63,
+        "night": 1.99,
+        "eve": 5.51,
+        "morn": 1.08
+      },
+      "pressure": 994.05,
+      "humidity": 0,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "lluvia ligera",
+          "icon": "10d"
+        }
+      ],
+      "speed": 1.32,
+      "deg": 177,
+      "clouds": 25
+    }
+  ]
+}

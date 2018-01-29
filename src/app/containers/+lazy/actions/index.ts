@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
-import { Action } from 'redux';
-import { PayloadAction } from '../../../../base/';
-import { AppState } from '../../../../base/store';
-
-import { actionTypes } from '../action-types';
+import { Action } from 'base';
+import { ActionTypes } from '../actionTypes';
 
 @Injectable()
 export class LazyActions {
 
-  constructor(private ngRedux: NgRedux<AppState>) {}
-
-  public lazyRequest() {
-    this.ngRedux.dispatch({ type: actionTypes.LAZY_REQUEST });
+  loadMessage(message: string): Action {
+    return {
+      type: ActionTypes.LOAD_MESSAGE,
+      payload: { message }
+    };
   }
 }

@@ -1,24 +1,27 @@
-import { compose } from '@ngrx/core/compose';
-import { routerReducer, RouterState } from '@ngrx/router-store';
-import { ActionReducer, combineReducers } from '@ngrx/store';
-import { storeFreeze } from 'ngrx-store-freeze';
+import { ActionReducer, ActionReducerMap, combineReducers } from '@ngrx/store';
+import { routerReducer } from '@ngrx/router-store';
 import { storeLogger } from 'ngrx-store-logger';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { ENV, State } from 'base';
 
-import { MainReducer } from '../../app/containers/main/reducers';
-import { MainModelInterface } from '../models';
+import { LazyReducer } from '../../app/containers/+lazy/reducers';
+import { CalculatorReducer } from '../../app/containers/calculator/reducers';
+import { WeatherReducer } from '../../app/containers/weather/reducers';
 
-export interface AppState {
-  router: RouterState;
-  main?: MainModelInterface;
-}
-
-export const reducers = {
-  main: MainReducer,
+export const reducers: ActionReducerMap<State> = {
+  calculator: CalculatorReducer,
+  lazy: LazyReducer,
   router: routerReducer,
+  weather: WeatherReducer
 };
 
-const combined = combineReducers(reducers);
-
-export function rootReducer(state: any, action: any) {
-    return combined(state, action);
+export function logger(reducer: ActionReducer<State>): any {
+  return storeLogger({
+    collapsed: true
+  })(reducer);
 }
+
+export const metaReducers: any[] = (ENV !== 'development') ? [] : [
+  logger,
+  storeFreeze
+];

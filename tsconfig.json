@@ -1,35 +1,50 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
     "noEmitHelpers": false,
     "pretty": true,
     "sourceMap": true,
-    "lib": [
-      "es5",
-      "dom"
-    ],
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
-      "base": ["./base"]
+      "base/*": [
+        "./base/*"
+      ],
+      "base": [
+        "./base"
+      ],
+      "app": [
+        "./app"
+      ],
+      "app/*": [
+        "./app/*"
+      ]
     },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "types": [
+      "chai",
       "core-js",
+      "mocha",
       "node",
-      "systemjs"
+      "sinon",
+      "systemjs",
+      "webpack"
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist/compiled",
+    "src/app/index.aot.ts"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "useWebpackText": true,
-    "forkChecker": false,
-    "useCache": true
-  },
   "compileOnSave": false,
   "buildOnSave": false,
   "atom": {

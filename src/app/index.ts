@@ -1,10 +1,57 @@
-import './__workaround.browser';
-
+import 'base/conf/polyfills';
+import 'base/conf/rx';
+import { ApplicationRef, NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { bootloader } from '@angularclass/hmr';
+import { bootloader, removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+import { Store, State } from 'base';
 import { AppModule } from './app.module';
+import { AppComponent } from './app.component';
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
+@NgModule({
+  bootstrap: [ AppComponent ],
+  imports: [AppModule]
+})
+export class DevelopmentModule {
+  constructor(
+    public appRef: ApplicationRef,
+    private store: Store<State>,
+  ) {}
+
+  hmrOnInit(store) {
+    console.log('[BASE] Restoring State...');
+    if (!store || !store.rootState) return;
+    if (store.rootState) {
+      this.store.dispatch(
+        { type: 'SET_ROOT_STATE', payload: store.rootState }
+      );
+    }
+
+    if ('restoreInputValues' in store) { store.restoreInputValues(); }
+    this.appRef.tick();
+    Object.keys(store).forEach(prop => delete store[prop]);
+  }
+
+  hmrOnDestroy(store) {
+    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+    this.store.first().subscribe(s => store.rootState = s);
+    store.disposeOldHosts = createNewHosts(cmpLocation);
+    store.restoreInputValues  = createInputTransfer();
+    removeNgStyles();
+  }
+
+  hmrAfterDestroy(store) {
+    store.disposeOldHosts();
+    delete store.disposeOldHosts;
+  }
+}
+
+console.log('[BASE] DEVELOPMENT MODE');
+
+export function bootstrapApp() {
+  platformBrowserDynamic()
+  .bootstrapModule(DevelopmentModule)
   .catch((err) => console.error(err));
+}
+
+bootloader(bootstrapApp);
