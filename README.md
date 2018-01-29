@@ -1,4 +1,4 @@
-![Angular-Base logo](https://raw.githubusercontent.com/atSistemas/angular-base/master/app/app.assets/img/angular-base-logo.png)
+![Angular-Base logo](https://raw.githubusercontent.com/atSistemas/angularjs-base/master/app/app.assets/img/angular-base-logo.png)
 
 # Angular-Base
 
