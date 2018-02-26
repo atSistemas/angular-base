@@ -8,7 +8,7 @@ import { selectDisplay } from '../../selectors';
 @Component({
   selector: 'base-display',
   templateUrl: './display.component.html',
-  styleUrls: ['./display.component.css']
+  styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent {
   private display$: Observable<number | string> = this.store.select(selectDisplay);

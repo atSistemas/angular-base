@@ -5,7 +5,7 @@ import { Main } from '../../models/station.model';
 @Component({
   selector: 'weather-station-info',
   templateUrl: './station-info.component.html',
-  styleUrls: [ './station-info.component.css' ]
+  styleUrls: [ './station-info.component.scss' ]
 })
 
 export class StationInfoComponent {

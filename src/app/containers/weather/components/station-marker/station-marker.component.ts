@@ -8,7 +8,7 @@ import { WeatherActions } from '../../actions/weather.actions';
 @Component({
   selector: 'weather-station-marker',
   templateUrl: './station-marker.component.html',
-  styleUrls: [ './station-marker.component.css' ]
+  styleUrls: [ './station-marker.component.scss' ]
 })
 
 export class StationMarkerComponent {
