@@ -5,7 +5,7 @@ import { Station } from '../../models/station.model';
 @Component({
   selector: 'weather-map',
   templateUrl: './map.component.html',
-  styleUrls: [ './map.component.css' ]
+  styleUrls: [ './map.component.scss' ]
 })
 
 export class MapComponent {

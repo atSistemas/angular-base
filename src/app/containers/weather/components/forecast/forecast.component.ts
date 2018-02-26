@@ -10,7 +10,7 @@ import { selectForecasts } from '../../selectors';
 @Component({
   selector: 'weather-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: [ './forecast.component.css' ]
+  styleUrls: [ './forecast.component.scss' ]
 })
 
 export class ForecastComponent {
