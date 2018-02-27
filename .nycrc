@@ -8,8 +8,11 @@
     "webpack",
     "**/**.spec.ts",
     "src/base/conf",
+    "src/base/effects/index.ts",
+       "src/base/providers/index.ts",
+      "src/base/services/index.ts",
     "src/base/wp-plugins",
-    "src/app/**"
+    "src/app/**/*.ts"
   ],
   "extension": [
     ".ts"
