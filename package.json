@@ -41,7 +41,7 @@
     "test:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "postinstall": "npm run clean && npm run generate:dll",
-    "prepublish": "npm run lint && npm run test && npm run build && npm run build:prod"
+    "prepublishOnly": "npm run lint && npm run test && npm run build && npm run build:prod"
   },
   "dependencies": {
     "@angular/animations": "5.1.3",
