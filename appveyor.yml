@@ -17,5 +17,4 @@ test_script:
   - npm run generate:dll
   - npm run build
   - npm run build:prod
-  - npm run test
   - npm run lint
