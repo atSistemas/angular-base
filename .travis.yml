@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+    - "8.9.1"
+before_script:
+    - npm install
+env:
+  - NODE_ENV=development
+script:
+    - npm run generate:dll
+    - npm run build
+    - npm run build:prod
+    - npm run test:coverage
+    - npm run coveralls
+    - npm run lint
+notifications:
+  slack:
+    on_pull_requests: false
+    rooms:
+      - cejs-atsistemas:M6CFKRntBzELQ8smobHlwnDa#angular-base
