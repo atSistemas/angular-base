@@ -1,0 +1,28 @@
+{
+    "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules/",
+    "dist",
+    "webpack",
+    "**/**.spec.ts",
+    "src/base/conf",
+    "src/base/wp-plugins",
+    "src/app/**"
+  ],
+  "extension": [
+    ".ts"
+  ],
+  "require": [
+    "ts-node/register"
+  ],
+  "reporter": [
+    "text",
+    "text-summary",
+    "html"
+  ],
+  "all": true,
+  "sourceMap": true,
+  "instrument": true
+}

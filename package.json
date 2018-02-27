@@ -154,39 +154,5 @@
     "webpack-dll-bundles-plugin": "1.0.0-beta.5",
     "webpack-hot-middleware": "2.21.0",
     "webpack-node-externals": "1.6.0"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules/",
-      "dist",
-      "webpack",
-      "**/**.spec.ts",
-      "src/base/conf",
-      "src/base/wp-plugins",
-      "src/base/index.ts",
-      "src/app/components/index.ts",
-      "src/app/containers/weather/index.ts",
-      "src/app/containers/calculator/index.ts",
-      "src/base/effects/index.ts",
-      "src/base/providers/index.ts",
-      "src/base/services/index.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "text",
-      "text-summary",
-      "html"
-    ],
-    "all": true,
-    "sourceMap": true,
-    "instrument": true
   }
 }
