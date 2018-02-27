@@ -1,4 +1,4 @@
-![Angular-Base logo](https://raw.githubusercontent.com/atSistemas/angular-base/master/app/app.assets/img/angular-base-logo.png)
+![Angular-Base logo](https://raw.githubusercontent.com/atSistemas/angularjs-base/master/app/app.assets/img/angular-base-logo.png)
 
 # Angular-Base
 
@@ -7,7 +7,7 @@
 
 **A modular platform for Reactive Redux applications**
 
-This repository is a modular abstraction to build a [Angular](https://angular.io/) web application based on [Redux](http://redux.js.org/) paradigm.
+This repository is a modular abstraction to build a [Angular](https://angular.io/) web application based on [@ngRx/Store] (https://github.com/ngrx/store) Redux implementation.
 You can use it to quickly scaffold your Angular web application projects and development environments for these projects.
 
 This seed should clarify how to wire up all the modules of your application, even when we understand that in some cases
@@ -23,7 +23,7 @@ there must be some changes needed by the structure to fit your needs correctly
 - [Redux](http://redux.js.org/) based architecture using [@ngrx/Store](https://github.com/ngrx/store) for a reactive state managment.
 - [@ngrx/SideEffects](https://github.com/ngrx/effects) to handle Rx Side Effects
 - [Typescript2](https://www.typescriptlang.org/) and ES6 transpilation using [Typescript2](https://www.typescriptlang.org/)
-- [Webpack2](https://webpack.github.io/) for the development/production build toolchain
+- [Webpack3](https://webpack.github.io/) for the development/production build toolchain
 - Separate build configurations depending on target environment
 - [Webpack DLL](https://github.com/webpack/docs/wiki/list-of-plugins#dllplugin) that speed development builds.
 - Development & Production server using [express](https://github.com/expressjs/express) and [webpack-dev-server](https://webpack.github.io/)
