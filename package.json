@@ -38,7 +38,7 @@
     "lint:all": "npm run lint && npm run lint:css",
     "test": "npm run logo && rimraf .tmp && mocha-webpack --webpack-config webpack/webpack.test.config.ts --require ./src/base/conf/testing src/**/*.spec.ts",
     "test:watch": "rimraf .tmp && mocha-webpack --watch --webpack-config webpack/webpack.test.config.ts --require ./src/base/conf/testing src/**/*.spec.ts",
-    "test:coverage": "nyc npm test && cross-env NODE_ENV=development",
+    "test:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "postinstall": "npm run clean && npm run generate:dll"
   },
