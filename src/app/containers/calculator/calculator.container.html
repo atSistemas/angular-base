@@ -1,9 +1,12 @@
 <div class ="Calculator" >
   <div>
-    <base-display></base-display>
-    <base-buttonPannel></base-buttonPannel>
+    <base-display [display]="display$ | async"></base-display>
+    <base-buttonPannel
+      (onClickNumber)="onClickNumber($event)"
+      (onClickOperation)="onClickOperation($event)"
+      (onClickOperator)="onClickOperator($event)"
+      (onClickDecimal)="onClickDecimal()"
+      (onClickResult)="onClickResult()"
+      ></base-buttonPannel>
   </div>
 </div>
-
-
-

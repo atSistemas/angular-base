@@ -1,7 +1,4 @@
-import { Component } from '@angular/core';
-import { Store, State } from 'base';
-
-import { CalculatorActions } from '../../actions';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { ActionTypes } from '../../actionTypes';
 
 @Component({
@@ -11,27 +8,28 @@ import { ActionTypes } from '../../actionTypes';
 })
 export class ButtonPannelComponent {
 
-  constructor(
-    public store: Store<State>,
-    public calculatorActions: CalculatorActions
-  ) { }
+  @Output() onClickNumber = new EventEmitter();
+  @Output() onClickOperation = new EventEmitter();
+  @Output() onClickOperator = new EventEmitter();
+  @Output() onClickDecimal = new EventEmitter();
+  @Output() onClickResult = new EventEmitter();
 
-  onClickNumber(value: any) {
-    this.store.dispatch(this.calculatorActions.inputNumber(value));
+  clickNumber(value: any) {
+    this.onClickNumber.emit(value);
   }
 
-  onClickOperation(value: any) {
+  clickOperation(value: any) {
     let actionType: any;
     switch (value) {
-      case 'C':   actionType = ActionTypes.CLEAN; break;
+      case 'C': actionType = ActionTypes.CLEAN; break;
       case '+/-': actionType = ActionTypes.CHANGE_SIGN; break;
       case '%': actionType = ActionTypes.PERCENT; break;
       default: break;
     }
-    this.store.dispatch(this.calculatorActions.inputOperation(actionType));
+    this.onClickOperation.emit(actionType);
   }
 
-  onClickOperator(operator: any) {
+  clickOperator(operator: any) {
     let actionType: any;
     switch (operator) {
       case '÷': actionType = ActionTypes.DIVIDE; break;
@@ -40,14 +38,14 @@ export class ButtonPannelComponent {
       case '+': actionType = ActionTypes.SUM; break;
       default: break;
     }
-    this.store.dispatch(this.calculatorActions.inputOperator(actionType));
+    this.onClickOperator.emit(actionType);
   }
 
-  onClickDecimal() {
-    this.store.dispatch(this.calculatorActions.inputDecimal());
+  clickDecimal() {
+    this.onClickDecimal.emit();
   }
 
-  onClickResult() {
-    this.store.dispatch(this.calculatorActions.result());
+  clickResult() {
+    this.onClickResult.emit();
   }
 }

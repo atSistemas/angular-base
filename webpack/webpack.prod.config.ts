@@ -48,7 +48,7 @@ export const module = {
     },
     {
       test: /\.css$/,
-      use: ['raw-loader', 'css-loader'],
+      use: ['raw-loader'],
     },
   ] as any[])
 };

@@ -42,7 +42,7 @@ const inputNumber = (state: Calculator, action: Action): Calculator => {
   const newValue = state.newValue;
   const prevValue = (newValue) ? state.nextValue : state.prevValue;
   const value = parseFloat(`${prevValue}${selectedValue}`);
-
+  console.log(value);
   return ({
     ...state,
     display: value,
