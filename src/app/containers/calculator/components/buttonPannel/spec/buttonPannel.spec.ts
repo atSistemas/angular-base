@@ -46,14 +46,55 @@ describe('Calculator / Components', () => {
     });
 
     describe('behaviour', () => {
-      it('should dispatch an action on button click', () => {
-        const spyDispatch = spy(store, 'dispatch');
-        const buttons = de.queryAll(By.css('button'));
-        buttons.forEach(button => {
-          button.triggerEventHandler('click', {});
-          expect(spyDispatch.called).to.equal(true);
-          spyDispatch.reset();
+      it('should emit data value on button number click', (done) => {
+
+        component.onClickNumber.subscribe(value => {
+          expect(value).to.equal('1');
+          done();
         });
+
+        component.clickNumber('1');
+
+      });
+      it('should emit data value on button operation click', (done) => {
+
+        component.onClickOperation.subscribe(value => {
+          expect(value).to.equal('CLEAN');
+          done();
+        });
+
+        component.clickOperation('C');
+
+      });
+      it('should emit data value on button operator click', (done) => {
+
+        component.onClickOperator.subscribe(value => {
+          expect(value).to.equal('SUM');
+          done();
+        });
+
+        component.clickOperator('+');
+
+      });
+      it('should emit data value on button operator click', (done) => {
+
+        component.onClickDecimal.subscribe(value => {
+          expect(value).to.equal(undefined);
+          done();
+        });
+
+        component.clickDecimal();
+
+      });
+      it('should emit data value on button result click', (done) => {
+
+        component.onClickResult.subscribe(value => {
+          expect(value).to.equal(undefined);
+          done();
+        });
+
+        component.clickResult();
+
       });
     });
   });
