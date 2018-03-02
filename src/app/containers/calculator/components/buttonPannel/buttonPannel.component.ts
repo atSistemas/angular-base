@@ -6,7 +6,7 @@ import { ActionTypes } from '../../actionTypes'
 
 @Component({
   selector: 'base-buttonPannel',
-  styleUrls: ['buttonPannel.component.css'],
+  styleUrls: ['buttonPannel.component.scss'],
   templateUrl: 'buttonPannel.component.html'
 })
 export class ButtonPannelComponent {

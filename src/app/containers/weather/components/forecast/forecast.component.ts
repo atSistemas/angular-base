@@ -8,7 +8,7 @@ import { selectForecasts } from '../../selectors'
 
 @Component({
   selector: 'weather-forecast',
-  styleUrls: [ './forecast.component.css' ],
+  styleUrls: [ './forecast.component.scss' ],
   templateUrl: './forecast.component.html'
 })
 

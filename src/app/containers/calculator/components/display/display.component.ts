@@ -7,7 +7,7 @@ import { selectDisplay } from '../../selectors'
 
 @Component({
   selector: 'base-display',
-  styleUrls: ['./display.component.css'],
+  styleUrls: ['./display.component.scss'],
   templateUrl: './display.component.html'
 })
 export class DisplayComponent {

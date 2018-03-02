@@ -7,7 +7,7 @@ import { IStation } from '../../models/station.model'
 
 @Component({
   selector: 'weather-station-marker',
-  styleUrls: [ './station-marker.component.css' ],
+  styleUrls: [ './station-marker.component.scss' ],
   templateUrl: './station-marker.component.html'
 })
 

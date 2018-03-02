@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'logo',
-  styleUrls: ['./logo.component.css'],
+  styleUrls: ['./logo.component.scss'],
   templateUrl: './logo.component.html'
 })
 export class LogoComponent {

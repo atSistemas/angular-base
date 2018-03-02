@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'base-button',
-  styleUrls: ['./button.component.css'],
+  styleUrls: ['./button.component.scss'],
   templateUrl: './button.component.html'
 })
 

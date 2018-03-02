@@ -6,7 +6,7 @@ import { IForecast } from '../../models/forecast.model'
 
 @Component({
   selector: 'weather-forecast-detail',
-  styleUrls: [ './forecast-detail.component.css' ],
+  styleUrls: [ './forecast-detail.component.scss' ],
   templateUrl: './forecast-detail.component.html'
 })
 
