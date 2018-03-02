@@ -1,31 +1,31 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Record, Seq } from 'immutable';
-import { Station } from '../../models/station.model';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { Record, Seq } from 'immutable'
+import { IStation } from '../../models/station.model'
 
 @Component({
   selector: 'weather-map',
-  templateUrl: './map.component.html',
-  styleUrls: [ './map.component.css' ]
+  styleUrls: [ './map.component.css' ],
+  templateUrl: './map.component.html'
 })
 
 export class MapComponent {
-  @Input() stations: Seq.Indexed<Record<Station>>;
-  @Output() selectStation = new EventEmitter<Record<Station>>();
-  @Output() loadMap = new EventEmitter<boolean>();
-  zoom = 6;
-  private lat = 40.4047789;
-  private lng = -3.653974;
+  @Input() public stations: Seq.Indexed<Record<IStation>>
+  @Output() public selectStation = new EventEmitter<Record<IStation>>()
+  @Output() public loadMap = new EventEmitter<boolean>()
+  public zoom = 6
+  private lat = 40.4047789
+  private lng = -3.653974
 
-  get center() {
-    const { lat, lng } = this;
-    return { lat , lng };
+  get center () {
+    const { lat, lng } = this
+    return { lat , lng }
   }
 
-  onLoad() {
-    this.loadMap.emit(true);
+  public onLoad () {
+    this.loadMap.emit(true)
   }
 
-  onSelectStation(station: Record<Station>) {
-    this.selectStation.emit(station);
+  public onSelectStation (station: Record<IStation>) {
+    this.selectStation.emit(station)
   }
 }

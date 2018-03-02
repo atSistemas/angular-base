@@ -1,29 +1,29 @@
-import { Record } from 'immutable';
+import { Record } from 'immutable'
 
-export interface Temp {
-  day: number;
-  min: number;
-  max: number;
-  night: number;
-  eve: number;
-  morn: number;
+export interface ITemp {
+  day: number
+  min: number
+  max: number
+  night: number
+  eve: number
+  morn: number
 }
 
-export interface Forecast {
-  dt: number;
-  temp: Record<Temp>;
+export interface IForecast {
+  dt: number
+  temp: Record<ITemp>
 }
 
-export const TempModel = Record<Temp>({
+export const TempModel = Record<ITemp>({
   day: 0,
-  min: 0,
-  max: 0,
-  night: 0,
   eve: 0,
-  morn: 0
-});
+  max: 0,
+  min: 0,
+  morn: 0,
+  night: 0
+})
 
-export const ForecastModel = Record<Forecast>({
+export const ForecastModel = Record<IForecast>({
   dt: 0,
   temp: new TempModel()
-});
+})

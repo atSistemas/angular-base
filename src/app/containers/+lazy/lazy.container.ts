@@ -1,43 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, State } from 'base';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core'
+import { IState, Store } from 'base'
+import { Observable } from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 
-import { LazyActions } from './actions';
-import { selectMessage } from './selectors';
+import { LazyActions } from './actions'
+import { selectMessage } from './selectors'
 
 @Component({
   selector: 'base-lazy-container',
-  templateUrl: './lazy.container.html',
-  styleUrls: ['./lazy.container.css']
+  styleUrls: ['./lazy.container.css'],
+  templateUrl: './lazy.container.html'
 })
 export class LazyContainer implements OnInit {
-  private message$: Observable<string> = this.store.select(selectMessage);
-  private messageSubscription: Subscription;
-  message: string;
+  public message: string
+  private message$: Observable<string> = this.store.select(selectMessage)
+  private messageSubscription: Subscription
 
-  constructor(
-    private store: Store<State>,
+  constructor (
+    private store: Store<IState>,
     private lazyActions: LazyActions
   ) { }
 
-  ngOnInit() {
-    this.messageSubscription = this.message$.subscribe(selected => (
+  public ngOnInit () {
+    this.messageSubscription = this.message$.subscribe((selected) => (
       this.message = selected
-    ));
+    ))
 
     if (!this.message) {
-      this.loadMessage();
+      this.loadMessage()
     }
   }
 
-  ngOnDestroy() {
-    this.messageSubscription.unsubscribe();
+  public ngOnDestroy () {
+    this.messageSubscription.unsubscribe()
   }
 
-  private loadMessage() {
+  private loadMessage () {
     this.store.dispatch(
       this.lazyActions.loadMessage('Lazily loaded Container!')
-    );
+    )
   }
 }

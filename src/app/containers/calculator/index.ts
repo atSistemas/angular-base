@@ -1,2 +1,2 @@
-export { CalculatorContainer } from './calculator.container';
-export { CalculatorModule } from './calculator.module';
+export { CalculatorContainer } from './calculator.container'
+export { CalculatorModule } from './calculator.module'

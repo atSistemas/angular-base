@@ -1,58 +1,58 @@
-import { TestBed, ComponentFixture, getTestBed } from '@angular/core/testing';
-import { Component, DebugElement } from '@angular/core';
-import { Location } from '@angular/common';
-import { By } from '@angular/platform-browser';
+import { Location } from '@angular/common'
+import { Component, DebugElement } from '@angular/core'
+import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
 
-import { expect } from 'chai';
-import { spy } from 'sinon';
+import { expect } from 'chai'
+import { spy } from 'sinon'
 
-import { ButtonComponent } from '../button.component';
+import { ButtonComponent } from '../button.component'
 
 describe('Calculator: component: button', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
+  let component: ButtonComponent
+  let fixture: ComponentFixture<ButtonComponent>
+  let de: DebugElement
+  let el: HTMLElement
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ ButtonComponent ]
-    }).compileComponents();
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
-    de = fixture.debugElement;
-    el = fixture.nativeElement;
-  });
+    fixture = TestBed.createComponent(ButtonComponent)
+    component = fixture.componentInstance
+    de = fixture.debugElement
+    el = fixture.nativeElement
+  })
 
   afterEach(() => {
-    getTestBed().resetTestingModule();
-  });
+    getTestBed().resetTestingModule()
+  })
 
   describe('layout', () => {
     it('should only have a button', () => {
-      expect(de.children).to.have.lengthOf(1);
-      expect(de.children[0].name).to.equal('button');
-    });
-  });
+      expect(de.children).to.have.lengthOf(1)
+      expect(de.children[0].name).to.equal('button')
+    })
+  })
 
   describe('behaviour', () => {
     it('should display the value in model', () => {
-      component.value = '2';
-      fixture.detectChanges();
+      component.value = '2'
+      fixture.detectChanges()
       const content = fixture.nativeElement
         .querySelector('button')
         .textContent
         .trim()
-        .replace('\n', '');
-      expect(content).to.equal('2');
-    });
+        .replace('\n', '')
+      expect(content).to.equal('2')
+    })
 
     it('should call onClick method when button is clicked', () => {
-      fixture.autoDetectChanges();
-      const spyfn = spy(component, 'onClick');
-      de.children[0].nativeElement.click();
-      expect(spyfn.called).to.equal(true);
-    });
-  });
-});
+      fixture.autoDetectChanges()
+      const spyfn = spy(component, 'onClick')
+      de.children[0].nativeElement.click()
+      expect(spyfn.called).to.equal(true)
+    })
+  })
+})

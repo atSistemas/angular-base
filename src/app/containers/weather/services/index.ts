@@ -1,1 +1,1 @@
-export { WeatherMapService } from './weather-map.service';
+export { WeatherMapService } from './weather-map.service'

@@ -1,10 +1,10 @@
-import * as console from './shared/console';
+import * as console from './shared/console'
 
-export { console };
+export { console }
 
-export { ENV } from './shared/Env';
-export { Store } from '@ngrx/store';
-export { State } from './state';
-export { Action } from './models';
+export { ENV } from './shared/Env'
+export { Store } from '@ngrx/store'
+export { IState } from './state'
+export { IAction } from './models'
 
-export { resolveRequestAction } from './shared/ResolveRequestAction';
+export { resolveRequestAction } from './shared/ResolveRequestAction'

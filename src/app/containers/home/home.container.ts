@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'base-home-container',
-  templateUrl: './home.container.html',
-  styleUrls: ['./home.container.css']
+  styleUrls: ['./home.container.css'],
+  templateUrl: './home.container.html'
 })
 export class HomeContainer { }

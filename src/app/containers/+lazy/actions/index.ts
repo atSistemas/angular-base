@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Action } from 'base';
-import { ActionTypes } from '../actionTypes';
+import { Injectable } from '@angular/core'
+import { IAction } from 'base'
+import { ActionTypes } from '../actionTypes'
 
 @Injectable()
 export class LazyActions {
 
-  loadMessage(message: string): Action {
+  public loadMessage (message: string): IAction {
     return {
-      type: ActionTypes.LOAD_MESSAGE,
-      payload: { message }
-    };
+      payload: { message },
+      type: ActionTypes.LOAD_MESSAGE
+    }
   }
 }

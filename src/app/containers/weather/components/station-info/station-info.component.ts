@@ -1,26 +1,27 @@
-import { Component, Input } from '@angular/core';
-import { Record } from 'immutable';
-import { Main } from '../../models/station.model';
+import { Component, Input } from '@angular/core'
+import { Record } from 'immutable'
+
+import { IMain } from '../../models/station.model'
 
 @Component({
   selector: 'weather-station-info',
-  templateUrl: './station-info.component.html',
-  styleUrls: [ './station-info.component.css' ]
+  styleUrls: [ './station-info.component.css' ],
+  templateUrl: './station-info.component.html'
 })
 
 export class StationInfoComponent {
-  @Input() id: string;
-  @Input() info: Record<Main>;
+  @Input() public id: string
+  @Input() public info: Record<IMain>
 
-  get temperature() {
-    return this.info.getIn(['temp']);
+  get temperature () {
+    return this.info.getIn(['temp'])
   }
 
-  get pressure() {
-    return this.info.getIn(['pressure']);
+  get pressure () {
+    return this.info.getIn(['pressure'])
   }
 
-  get humidity() {
-    return this.info.getIn(['humidity']);
+  get humidity () {
+    return this.info.getIn(['humidity'])
   }
 }

@@ -1,15 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'logo',
-  templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.css'],
+  templateUrl: './logo.component.html'
 })
 export class LogoComponent {
 
-  @Input() src: string;
-  @Input() location: string;
-  @Input() width: number;
-  @Input() alt: string;
+  @Input() public src: string
+  @Input() public location: string
+  @Input() public width: number
+  @Input() public alt: string
 
 }

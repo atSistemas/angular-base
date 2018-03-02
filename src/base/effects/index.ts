@@ -1,1 +1,1 @@
-export { RequestEffect } from './request.effect';
+export { RequestEffect } from './request.effect'

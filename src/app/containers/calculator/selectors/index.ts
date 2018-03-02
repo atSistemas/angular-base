@@ -1,7 +1,7 @@
-import { createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store'
 
-import { State } from 'base/state';
+import { IState } from 'base/state'
 
-export const selectDisplay = (state: State): number | string => (
+export const selectDisplay = (state: IState): number | string => (
   state.calculator.display
-);
+)

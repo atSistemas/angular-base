@@ -1,18 +1,18 @@
-import { HttpModule } from '@angular/http';
-import { ApplicationRef, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { Store, State } from 'base';
-import { BaseImports } from 'base/imports';
-import { BaseProviders } from 'base/providers';
+import { ApplicationRef, NgModule } from '@angular/core'
+import { HttpModule } from '@angular/http'
+import { BrowserModule } from '@angular/platform-browser'
+import { RouterModule } from '@angular/router'
+import { IState, Store } from 'base'
+import { BaseImports } from 'base/imports'
+import { BaseProviders } from 'base/providers'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TopBarComponent } from './components';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { TopBarComponent } from './components'
+import { CalculatorModule } from './containers/calculator/calculator.module'
 /* Module Containers */
-import { HomeModule } from './containers/home/home.module';
-import { CalculatorModule } from './containers/calculator/calculator.module';
-import { WeatherModule } from './containers/weather/weather.module';
+import { HomeModule } from './containers/home/home.module'
+import { WeatherModule } from './containers/weather/weather.module'
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -33,9 +33,8 @@ import { WeatherModule } from './containers/weather/weather.module';
 })
 
 export class AppModule {
-  constructor(
+  constructor (
     public appRef: ApplicationRef,
-    private store: Store<State>
+    private store: Store<IState>
   ) {}
-
 }

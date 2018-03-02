@@ -1,1 +1,1 @@
-export { RouterActions } from './router.actions';
+export { RouterActions } from './router.actions'

@@ -1,1 +1,1 @@
-export { WeatherReducer } from './weather.reducers';
+export { WeatherReducer } from './weather.reducers'

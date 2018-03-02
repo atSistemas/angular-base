@@ -1,12 +1,12 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable'
 
-import { Action } from '../models';
-import { getActionPrefix } from './Utils';
-import { createObservableAction } from './CreateObservableAction';
+import { IAction } from '../models'
+import { createObservableAction } from './CreateObservableAction'
+import { getActionPrefix } from './Utils'
 
-export function resolveRequestAction(action: any, response: any, result: any): Observable<Action> {
+export function resolveRequestAction (action: any, response: any, result: any): Observable<IAction> {
   return createObservableAction({
-    type: `${getActionPrefix(action.type)}_${result}`,
-    payload: { response }
-  });
+    payload: { response },
+    type: `${getActionPrefix(action.type)}_${result}`
+  })
 }

@@ -1,35 +1,35 @@
-import { Injectable } from '@angular/core';
-import { NavigationExtras } from '@angular/router';
+import { Injectable } from '@angular/core'
+import { NavigationExtras } from '@angular/router'
 
-import { Action } from '../models/action';
+import { IAction } from '../models/action'
 
-export declare interface RouterActionPayload {
-  path: any[];
-  query?: object;
-  extras?: NavigationExtras;
+export declare interface IRouterActionPayload {
+  path: any[]
+  query?: object
+  extras?: NavigationExtras
 }
 
 export const RouterActionsTypes = {
-  GO: '[Router] Go',
   BACK: '[Router] Back',
-  FORWARD: '[Router] Forward'
-};
+  FORWARD: '[Router] Forward',
+  GO: '[Router] Go'
+}
 
 @Injectable()
 export class RouterActions {
 
-  go(payload: RouterActionPayload): Action {
+  public go (payload: IRouterActionPayload): IAction {
     return {
-      type: RouterActionsTypes.GO,
-      payload
-    };
+      payload,
+      type: RouterActionsTypes.GO
+    }
   }
 
-  back(): Action {
-    return { type: RouterActionsTypes.BACK };
+  public back (): IAction {
+    return { type: RouterActionsTypes.BACK }
   }
 
-  forward(): Action {
-    return { type: RouterActionsTypes.FORWARD };
+  public forward (): IAction {
+    return { type: RouterActionsTypes.FORWARD }
   }
 }

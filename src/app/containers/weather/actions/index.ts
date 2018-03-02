@@ -1,1 +1,1 @@
-export { WeatherActions } from './weather.actions';
+export { WeatherActions } from './weather.actions'

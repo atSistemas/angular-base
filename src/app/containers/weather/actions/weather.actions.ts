@@ -1,33 +1,33 @@
-import { Injectable } from '@angular/core';
-import { Action } from 'base';
-import { ActionTypes } from '../actionTypes';
-import { WeatherMapService } from '../services/weather-map.service';
+import { Injectable } from '@angular/core'
+import { IAction } from 'base'
+import { ActionTypes } from '../actionTypes'
+import { WeatherMapService } from '../services/weather-map.service'
 
 @Injectable()
 export class WeatherActions {
 
-  constructor(
+  constructor (
     public weatherMapService: WeatherMapService
   ) { }
 
-  selectStation(station: number): Action {
-    return {
-      type: ActionTypes.SELECT_STATION,
-      payload: { station }
-    };
+  public selectStation (station: number): IAction {
+    return {
+      payload: { station },
+      type: ActionTypes.SELECT_STATION
+    }
   }
 
-  getStations(): Action {
+  public getStations (): IAction {
     return {
-      type: ActionTypes.STATIONS_REQUEST,
-      request: this.weatherMapService.getStations()
-    };
+      request: this.weatherMapService.getStations(),
+      type: ActionTypes.STATIONS_REQUEST
+    }
   }
 
-  getForecast(lat: number, lon: number): Action {
+  public getForecast (lat: number, lon: number): IAction {
     return {
-      type: ActionTypes.FORECASTS_REQUEST,
-      request: this.weatherMapService.getForecast(lat, lon)
-    };
+      request: this.weatherMapService.getForecast(lat, lon),
+      type: ActionTypes.FORECASTS_REQUEST
+    }
   }
 }
