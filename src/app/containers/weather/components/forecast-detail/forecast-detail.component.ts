@@ -7,7 +7,7 @@ import { Forecast, Temp } from '../../models/forecast.model';
 @Component({
   selector: 'weather-forecast-detail',
   templateUrl: './forecast-detail.component.html',
-  styleUrls: [ './forecast-detail.component.css' ]
+  styleUrls: [ './forecast-detail.component.scss' ]
 })
 
 export class ForecastDetailComponent {

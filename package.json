@@ -1,7 +1,7 @@
 {
-  "name": "angular-base",
-  "version": "1.0.0",
-  "description": "Angular starterkit",
+  "name": "angular-base-starter",
+  "version": "1.0.1",
+  "description": "Angular starter based on @ngrx/store & Redux",
   "author": "Pablo Magaz",
   "contributors": [
     {
@@ -28,7 +28,7 @@
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json",
     "start": "npm run logo && cross-env NODE_ENV=development node server/",
     "start:prod": "npm run build:prod && cross-env NODE_ENV=production node server/",
-    "build": "cross-env NODE_ENV=development webpack --config webpack/index.ts",
+    "build": "npm run generate:dll && cross-env NODE_ENV=development webpack --config webpack/index.ts",
     "build:prod": "npm run clean && npm run generate:dll && npm run ngc && cross-env NODE_ENV=production webpack --config webpack/index.ts",
     "generate:dll": "npm run logo && cross-env NODE_ENV=production webpack --config webpack/webpack.dll.config.ts",
     "clean": "rimraf dist/",
@@ -38,9 +38,10 @@
     "lint:all": "npm run lint && npm run lint:css",
     "test": "npm run logo && rimraf .tmp && mocha-webpack --webpack-config webpack/webpack.test.config.ts --require ./src/base/conf/testing src/**/*.spec.ts",
     "test:watch": "rimraf .tmp && mocha-webpack --watch --webpack-config webpack/webpack.test.config.ts --require ./src/base/conf/testing src/**/*.spec.ts",
-    "test:coverage": "nyc npm test && cross-env NODE_ENV=development",
+    "test:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "postinstall": "npm run clean && npm run generate:dll"
+    "postinstall": "npm run clean && npm run generate:dll",
+    "prepublishOnly": "npm run lint && npm run test && npm run build && npm run build:prod"
   },
   "dependencies": {
     "@angular/animations": "5.1.3",
@@ -91,8 +92,9 @@
     "clean-css": "4.1.9",
     "compression-webpack-plugin": "1.1.3",
     "copy-webpack-plugin": "4.3.1",
+    "coveralls": "^3.0.0",
     "cross-env": "5.1.3",
-    "css-loader": "0.28.8",
+    "css-loader": "^0.28.10",
     "custom-tslint-formatters": "2.1.1",
     "es6-shim": "0.35.3",
     "extract-text-webpack-plugin": "3.0.2",
@@ -108,7 +110,7 @@
     "json-loader": "0.5.7",
     "mocha": "4.1.0",
     "mocha-webpack": "1.0.1",
-    "node-sass": "4.7.2",
+    "node-sass": "^4.7.2",
     "null-loader": "0.1.1",
     "nyc": "11.4.1",
     "path-to-regexp": "2.1.0",
@@ -127,12 +129,12 @@
     "postcss-smart-import": "0.7.6",
     "postcss-url": "7.3.0",
     "progress-bar-webpack-plugin": "1.10.0",
-    "raw-loader": "0.5.1",
+    "raw-loader": "^0.5.1",
     "reflect-metadata": "0.1.10",
     "reselect": "3.0.1",
     "rimraf": "2.6.2",
     "run-sequence": "2.2.1",
-    "sass-loader": "6.0.6",
+    "sass-loader": "^6.0.6",
     "sinon": "4.1.3",
     "string-replace-loader": "1.3.0",
     "style-loader": "0.19.1",
@@ -154,38 +156,29 @@
     "webpack-hot-middleware": "2.21.0",
     "webpack-node-externals": "1.6.0"
   },
-  "nyc": {
-    "include": [
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules/",
-      "dist",
-      "webpack",
-      "**/**.spec.ts",
-      "src/base/conf",
-      "src/base/wp-plugins",
-      "src/base/index.ts",
-      "src/app/components/index.ts",
-      "src/app/containers/weather/index.ts",
-      "src/app/containers/calculator/index.ts",
-      "src/base/effects/index.ts",
-      "src/base/providers/index.ts",
-      "src/base/services/index.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "text",
-      "text-summary",
-      "html"
-    ],
-    "all": true,
-    "sourceMap": true,
-    "instrument": true
-  }
+  "keywords": [
+    "angular",
+    "ngrx",
+    "starter",
+    "@ngrx",
+    "store",
+    "state",
+    "ng",
+    "redux",
+    "container",
+    "rxjs",
+    "stream",
+    "webpack",
+    "starter",
+    "AOT",
+    "typescript",
+    "mocha",
+    "chai",
+    "nyc"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atSistemas/angular-base/issues"
+  },
+  "homepage": "https://github.com/atSistemas/angular-base#readme"
 }
