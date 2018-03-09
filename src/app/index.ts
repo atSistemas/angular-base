@@ -1,57 +1,60 @@
-import 'base/conf/polyfills';
-import 'base/conf/rx';
-import { ApplicationRef, NgModule } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { bootloader, removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { ApplicationRef, NgModule } from '@angular/core'
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
+import { bootloader, createInputTransfer, createNewHosts, removeNgStyles } from '@angularclass/hmr'
+import 'base/conf/polyfills'
+import 'base/conf/rx'
 
-import { Store, State } from 'base';
-import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
+import { IState, Store } from 'base'
+import { AppComponent } from './app.component'
+import { AppModule } from './app.module'
 
 @NgModule({
   bootstrap: [ AppComponent ],
   imports: [AppModule]
 })
 export class DevelopmentModule {
-  constructor(
+  constructor (
     public appRef: ApplicationRef,
-    private store: Store<State>,
+    private store: Store<IState>
   ) {}
 
-  hmrOnInit(store) {
-    console.log('[BASE] Restoring State...');
-    if (!store || !store.rootState) return;
+  public hmrOnInit (store) {
+    // tslint:disable-next-line
+    console.log('[BASE] Restoring State...')
+    if (!store || !store.rootState) return
     if (store.rootState) {
       this.store.dispatch(
         { type: 'SET_ROOT_STATE', payload: store.rootState }
-      );
+      )
     }
 
-    if ('restoreInputValues' in store) { store.restoreInputValues(); }
-    this.appRef.tick();
-    Object.keys(store).forEach(prop => delete store[prop]);
+    if ('restoreInputValues' in store) { store.restoreInputValues() }
+    this.appRef.tick()
+    Object.keys(store).forEach((prop) => delete store[prop])
   }
 
-  hmrOnDestroy(store) {
-    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
-    this.store.first().subscribe(s => store.rootState = s);
-    store.disposeOldHosts = createNewHosts(cmpLocation);
-    store.restoreInputValues  = createInputTransfer();
-    removeNgStyles();
+  public hmrOnDestroy (store) {
+    const cmpLocation = this.appRef.components.map((cmp) => cmp.location.nativeElement)
+    this.store.first().subscribe((s) => store.rootState = s)
+    store.disposeOldHosts = createNewHosts(cmpLocation)
+    store.restoreInputValues = createInputTransfer()
+    removeNgStyles()
   }
 
-  hmrAfterDestroy(store) {
-    store.disposeOldHosts();
-    delete store.disposeOldHosts;
+  public hmrAfterDestroy (store) {
+    store.disposeOldHosts()
+    delete store.disposeOldHosts
   }
 }
 
-console.log('[BASE] DEVELOPMENT MODE');
+// tslint:disable-next-line
+console.log('[BASE] DEVELOPMENT MODE')
 
-export function bootstrapApp() {
+export function bootstrapApp () {
   platformBrowserDynamic()
   .bootstrapModule(DevelopmentModule)
-  .catch((err) => console.error(err));
+  // tslint:disable-next-line
+  .catch((err) => console.error(err))
 }
 
-bootloader(bootstrapApp);
+bootloader(bootstrapApp)

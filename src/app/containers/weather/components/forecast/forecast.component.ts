@@ -1,18 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { Store, State } from 'base';
-import { Map, Record, Seq } from 'immutable';
+import { Component, Input, OnInit } from '@angular/core'
+import { Map, Record, Seq } from 'immutable'
+import { Observable } from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 
-import { Forecast } from '../../models/forecast.model';
-import { selectForecasts } from '../../selectors';
+import { IForecast } from '../../models/forecast.model'
+import { selectForecasts } from '../../selectors'
 
 @Component({
   selector: 'weather-forecast',
-  templateUrl: './forecast.component.html',
-  styleUrls: [ './forecast.component.css' ]
+  styleUrls: [ './forecast.component.scss' ],
+  templateUrl: './forecast.component.html'
 })
 
 export class ForecastComponent {
-  @Input() forecasts: Seq.Indexed<Record<Forecast>>;
+  @Input() public forecasts: Seq.Indexed<Record<IForecast>>
 }

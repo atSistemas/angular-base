@@ -1,15 +1,17 @@
-import 'base/conf/rx';
-import { enableProdMode } from '@angular/core';
-import { platformBrowser } from '@angular/platform-browser';
+import { enableProdMode } from '@angular/core'
+import { platformBrowser } from '@angular/platform-browser'
+import 'base/conf/rx'
 
-function loadAppModuleNgFactory() {
-  return require('../../dist/compiled/src/app/app.module.ngfactory').AppModuleNgFactory;
+function loadAppModuleNgFactory () {
+  return require('../../dist/compiled/src/app/app.module.ngfactory').AppModuleNgFactory
 }
 
-enableProdMode();
+enableProdMode()
 
-console.log('AOT MODE');
+// tslint:disable-next-line
+console.log('AOT MODE')
 
 platformBrowser()
   .bootstrapModuleFactory(loadAppModuleNgFactory())
-  .catch((err) => console.error(err));
+  // tslint:disable-next-line
+  .catch((err) => console.error(err))

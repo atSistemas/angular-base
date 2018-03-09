@@ -1,35 +1,35 @@
-import { Record } from 'immutable';
+import { Record } from 'immutable'
 
-export interface Coord {
-  Lat: number;
-  Lon: number;
+export interface ICoord {
+  Lat: number
+  Lon: number
 }
 
-export interface Main {
-  temp: number;
-  pressure: number;
-  humidity: number;
+export interface IMain {
+  temp: number
+  pressure: number
+  humidity: number
 }
 
-export interface Station {
-  id: number;
-  coord: Record<Coord>;
-  main: Record<Main>;
+export interface IStation {
+  id: number
+  coord: Record<ICoord>
+  main: Record<IMain>
 }
 
-export const CoordModel = Record<Coord>({
+export const CoordModel = Record<ICoord>({
   Lat: 0,
   Lon: 0
-});
+})
 
-export const MainModel = Record<Main>({
-  temp: 0,
+export const MainModel = Record<IMain>({
   humidity: 0,
-  pressure: 0
-});
+  pressure: 0,
+  temp: 0
+})
 
-export const StationModel = Record<Station>({
-  id: -1,
+export const StationModel = Record<IStation>({
   coord: new CoordModel(),
+  id: -1,
   main: new MainModel()
-});
+})

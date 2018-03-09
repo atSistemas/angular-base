@@ -42,9 +42,14 @@ export const module = {
       ]
     },
     {
-      test: /\.(css)$/,
-      loader: 'raw-loader'
-    }
+      test: /\.(scss)$/,
+      exclude: [/node_modules/],
+      use: [{ loader: 'raw-loader' }, { loader: 'sass-loader' }]
+    },
+    {
+      test: /\.css$/,
+      use: ['raw-loader', 'css-loader'],
+    },
   ] as any[])
 };
 

@@ -1,4 +1,4 @@
-import { createActionTypes } from 'base/shared/CreateActionTypes';
+import { createActionTypes } from 'base/shared/CreateActionTypes'
 
 export const ActionTypes = createActionTypes([
   'SUM',
@@ -13,4 +13,4 @@ export const ActionTypes = createActionTypes([
   'INPUT_DECIMAL',
   'INPUT_OPERATOR',
   'INPUT_OPERATION'
-]);
+])

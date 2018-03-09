@@ -1,7 +1,5 @@
-import { State } from 'base/state';
+import { IState } from 'base/state'
 
-import { Lazy } from '../models/lazy.model';
-
-export const selectMessage = (state: State): string => (
+export const selectMessage = (state: IState): string => (
   state.lazy.message
-);
+)

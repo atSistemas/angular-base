@@ -1,4 +1,4 @@
-import { createActionTypes } from 'base/shared/CreateActionTypes';
+import { createActionTypes } from 'base/shared/CreateActionTypes'
 
 export const ActionTypes = createActionTypes([
   'STATIONS_REQUEST',
@@ -8,4 +8,4 @@ export const ActionTypes = createActionTypes([
   'FORECASTS_REQUEST',
   'FORECASTS_SUCCESS',
   'FORECASTS_ERROR'
-]);
+])

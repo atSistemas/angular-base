@@ -1,19 +1,19 @@
-export interface Calculator {
-  display: number | string;
-  operator: string;
-  operation: string;
-  prevValue: number | string;
-  nextValue: number | string;
-  newValue: boolean;
-  resetDisplay: boolean;
+export interface ICalculator {
+  display: number | string
+  operator: string
+  operation: string
+  prevValue: number | string
+  nextValue: number | string
+  newValue: boolean
+  resetDisplay: boolean
 }
 
-export const CalculatorModel: Calculator = {
+export const CalculatorModel: ICalculator = {
   display: 0,
-  operator: '',
-  operation: '',
-  prevValue:  0,
-  nextValue:  0,
   newValue: false,
+  nextValue:  0,
+  operation: '',
+  operator: '',
+  prevValue:  0,
   resetDisplay: false
-};
+}

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'base-calculator-container',
-  templateUrl: './calculator.container.html',
-  styleUrls: ['./calculator.container.css']
+  styleUrls: ['./calculator.container.css'],
+  templateUrl: './calculator.container.html'
 })
 
 export class CalculatorContainer {

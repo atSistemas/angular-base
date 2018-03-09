@@ -1,1 +1,1 @@
-export * from './weather.selectors';
+export * from './weather.selectors'

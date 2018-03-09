@@ -15,37 +15,36 @@ module.exports = {
   resolve: common.resolve,
 
   module: {
-      rules: [
-          {
-              test: /(?!spec)\.ts$/,
-              include: path.resolve(__dirname, '../src'),
-              exclude: /node_modules/,
-              loaders: ['istanbul-instrumenter-loader', 'ts-loader', 'angular2-template-loader']
-          },
-          {
-              test: /\.html$/,
-              loader: 'html-loader'
-          },
-          {
-              test: /\.json$/,
-              include: path.resolve(__dirname, '../src/app'),
-              loader: 'json-loader'
-          },
-          {
-              test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-              loader: 'null-loader'
-          },
-          {
-              test: /\.css$/,
-              exclude: path.resolve(__dirname, '../src/app'),
-              loader: 'null-loader'
-          },
-          {
-              test: /\.css$/,
-              include: path.resolve(__dirname, '../src/app'),
-              loader: 'raw-loader'
-          }
-      ]
+    rules: [
+      {
+        test: /(?!spec)\.ts$/,
+        include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/,
+        loaders: ['istanbul-instrumenter-loader', 'ts-loader', 'angular2-template-loader']
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
+        test: /\.json$/,
+        include: path.resolve(__dirname, '../src/app'),
+        loader: 'json-loader'
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'null-loader'
+      },
+      {
+        test: /\.(scss)$/,
+        exclude: [/node_modules/],
+        use: [{ loader: 'raw-loader' }, { loader: 'sass-loader' }]
+      },
+      {
+        test: /\.css$/,
+        use: ['raw-loader', 'css-loader'],
+      },
+    ]
   },
 
   plugins: [

@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core'
+import { RouterModule } from '@angular/router'
 
-import { CalculatorContainer } from './containers/calculator/calculator.container';
-import { HomeContainer } from './containers/home/home.container';
-import { WeatherContainer } from './containers/weather/weather.container';
+import { CalculatorContainer } from './containers/calculator/calculator.container'
+import { HomeContainer } from './containers/home/home.container'
+import { WeatherContainer } from './containers/weather/weather.container'
 
 @NgModule({
+  exports: [ RouterModule ],
   imports: [
     RouterModule.forRoot([
       { path: '', component: HomeContainer },
@@ -14,8 +15,7 @@ import { WeatherContainer } from './containers/weather/weather.container';
       { path: 'lazy', loadChildren: './containers/+lazy/lazy.module#LazyModule' },
       { path: '**', redirectTo: '' }
     ])
-  ],
-  exports: [ RouterModule ]
+  ]
 })
 
 export class AppRoutingModule { }

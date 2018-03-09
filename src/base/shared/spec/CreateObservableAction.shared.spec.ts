@@ -1,26 +1,26 @@
-import { expect } from 'chai';
+import { expect } from 'chai'
 
-import { createObservableAction } from '../CreateObservableAction';
-import { Observable } from 'base/conf/rx';
-import { Action } from '../../models/action';
+import { Observable } from 'base/conf/rx'
+import { IAction } from '../../models/action'
+import { createObservableAction } from '../CreateObservableAction'
 
 describe('shared / CreateObservableAction', () => {
 
   describe('createObservableAction', () => {
 
-    const mockAction: Action = {
-      type: 'TEST',
+    const mockAction: IAction = {
       payload: { value: 123 },
-    };
+      type: 'TEST'
+    }
 
-    let observable: Observable<Action>;
+    let observable: Observable<IAction>
 
     beforeEach(() => {
-      observable = createObservableAction(mockAction);
-    });
+      observable = createObservableAction(mockAction)
+    })
 
     it('should be an Observable instance', () => {
-      expect(observable).to.be.instanceOf(Observable);
-    });
-  });
-});
+      expect(observable).to.be.instanceOf(Observable)
+    })
+  })
+})

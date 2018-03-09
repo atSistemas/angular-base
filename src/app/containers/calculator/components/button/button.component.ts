@@ -1,24 +1,24 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'base-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  styleUrls: ['./button.component.scss'],
+  templateUrl: './button.component.html'
 })
 
 export class ButtonComponent implements OnInit {
-  style = 'Button';
-  @Input() value: string;
-  @Input() type: string;
-  @Output() clickButton = new EventEmitter();
+  public style = 'Button'
+  @Input() public value: string
+  @Input() public type: string
+  @Output() public clickButton = new EventEmitter()
 
-  ngOnInit() {
-    if (this.type === 'operator') this.style = 'ButtonOperate';
-    else if (this.type === 'zero') this.style = 'ButtonZero';
+  public ngOnInit () {
+    if (this.type === 'operator') this.style = 'ButtonOperate'
+    else if (this.type === 'zero') this.style = 'ButtonZero'
   }
 
-  onClick() {
-    this.clickButton.emit(this.value);
+  public onClick () {
+    this.clickButton.emit(this.value)
   }
 
 }

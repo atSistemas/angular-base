@@ -1,34 +1,34 @@
-import { ActionReducer, ActionReducerMap } from '@ngrx/store';
-import { Injectable } from '@angular/core';
-import { Action, State } from 'base';
-import { Record } from 'immutable';
+import { Injectable } from '@angular/core'
+import { ActionReducer, ActionReducerMap } from '@ngrx/store'
+import { IAction,IState } from 'base'
+import { Record } from 'immutable'
 
-import { Weather, WeatherModel } from '../models/weather.model';
-import { ActionTypes } from '../actionTypes';
+import { ActionTypes } from '../actionTypes'
+import { IWeather, WeatherModel } from '../models/weather.model'
 
-const stationsRequest = (state: Record<Weather>): Record<Weather> => (
+const stationsRequest = (state: Record<IWeather>): Record<IWeather> => (
   state
-);
-const stationsSuccess = (state: Record<Weather>, action: Action): Record<Weather> => (
+)
+const stationsSuccess = (state: Record<IWeather>, action: IAction): Record<IWeather> => (
   state.set('stations', action.payload.response)
-);
-const stationsError = (state: Record<Weather>): Record<Weather> => (
+)
+const stationsError = (state: Record<IWeather>): Record<IWeather> => (
   state
-);
+)
 
-const selectStation = (state: Record<Weather>, action: Action): Record<Weather> => (
+const selectStation = (state: Record<IWeather>, action: IAction): Record<IWeather> => (
   state.set('stationSelected', action.payload.station)
-);
+)
 
-const forecastsRequest = (state: Record<Weather>): Record<Weather> => (
+const forecastsRequest = (state: Record<IWeather>): Record<IWeather> => (
   state
-);
-const forecastsSuccess = (state: Record<Weather>, action: Action): Record<Weather> => (
+)
+const forecastsSuccess = (state: Record<IWeather>, action: IAction): Record<IWeather> => (
   state.set('forecasts', action.payload.response)
-);
-const forecastsError = (state: Record<Weather>): Record<Weather> => (
+)
+const forecastsError = (state: Record<IWeather>): Record<IWeather> => (
   state
-);
+)
 
 const actionHandler: Map<string, any> = new Map<string, any>([
   [ActionTypes.STATIONS_REQUEST, stationsRequest],
@@ -38,9 +38,9 @@ const actionHandler: Map<string, any> = new Map<string, any>([
   [ActionTypes.FORECASTS_REQUEST, forecastsRequest],
   [ActionTypes.FORECASTS_SUCCESS, forecastsSuccess],
   [ActionTypes.FORECASTS_ERROR, forecastsError]
-]);
+])
 
-export function WeatherReducer(state: Record<Weather> = new WeatherModel(), action: Action) {
-  const handler = actionHandler.get(action.type);
-  return handler ? handler(state, action) : state;
+export function WeatherReducer (state: Record<IWeather> = new WeatherModel(), action: IAction) {
+  const handler = actionHandler.get(action.type)
+  return handler ? handler(state, action) : state
 }

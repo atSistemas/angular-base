@@ -2,7 +2,10 @@
 
 # Angular-Base
 
-![Npm-Version](https://img.shields.io/badge/npm-8.9.4-blue.svg)
+![Build-Status](https://travis-ci.org/atSistemas/angular-base.svg?branch=master)
+![Build-Status](https://ci.appveyor.com/api/projects/status/github/atSistemas/angular-base?branch=master&svg=true)
+[![Coverage Status](https://coveralls.io/repos/github/atSistemas/angular-base/badge.svg?branch=master)](https://coveralls.io/github/atSistemas/angular-base?branch=master)
+![Npm-Version](https://img.shields.io/badge/npm-8.9.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 **A modular platform for Reactive Redux applications**

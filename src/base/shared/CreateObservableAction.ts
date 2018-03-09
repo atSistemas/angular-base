@@ -1,9 +1,9 @@
-import { Observable } from 'rxjs/Observable';
-import { Action } from 'base/models/action';
+import { IAction } from 'base/models/action'
+import { Observable } from 'rxjs/Observable'
 
-export function createObservableAction(action: Action): Observable<Action> {
+export function createObservableAction (action: IAction): Observable<IAction> {
   return Observable.of({
-    type: `${action.type}`,
-    payload: action.payload
-  });
+    payload: action.payload,
+    type: `${action.type}`
+  })
 }

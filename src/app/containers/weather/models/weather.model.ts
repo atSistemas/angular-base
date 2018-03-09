@@ -1,18 +1,17 @@
-import { generateMap } from 'base/shared/ModelHelper';
-import { Record, Map } from 'immutable';
-import { State } from 'base/state';
+import { generateMap } from 'base/shared/ModelHelper'
+import { Map, Record } from 'immutable'
 
-import { Station, StationModel } from './station.model';
-import { ForecastModel, Forecast } from './forecast.model';
+import { ForecastModel, IForecast } from './forecast.model'
+import { IStation, StationModel } from './station.model'
 
-export interface Weather {
-  forecasts: Map<number, Record<Forecast>>;
-  stations: Map<number, Record<Station>>;
-  stationSelected: number;
+export interface IWeather {
+  forecasts: Map<number, Record<IForecast>>
+  stations: Map<number, Record<IStation>>
+  stationSelected: number
 }
 
-export const WeatherModel: Record.Factory<Weather> = Record<Weather>({
-  forecasts: Map<number, Record<Forecast>>(),
-  stations: Map<number, Record<Station>>(),
-  stationSelected: -1
-});
+export const WeatherModel: Record.Factory<IWeather> = Record<IWeather>({
+  forecasts: Map<number, Record<IForecast>>(),
+  stationSelected: -1,
+  stations: Map<number, Record<IStation>>()
+})

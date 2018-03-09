@@ -1,7 +1,7 @@
-export interface Lazy {
-  message: string;
+export interface ILazy {
+  message: string
 }
 
-export const LazyModel: Lazy = {
+export const LazyModel: ILazy = {
   message: ''
-};
+}

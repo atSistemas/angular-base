@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'topbar',
-  templateUrl: './topBar.component.html',
-  styleUrls: ['./topBar.component.css'],
+  styleUrls: ['./topBar.component.scss'],
+  templateUrl: './topBar.component.html'
 })
 export class TopBarComponent {
 

@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { Action, resolveRequestAction } from 'base';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core'
+import { Actions, Effect } from '@ngrx/effects'
+import { IAction, resolveRequestAction } from 'base'
+import { Observable } from 'rxjs/Observable'
 
 @Injectable()
 export class RequestEffect {
-  @Effect() main$: Observable<Action> = this.actions$
-  .filter((action: Action) => action.request)
-  .concatMap((action: Action) => action.request
-    .mergeMap(res => resolveRequestAction(action, res, 'SUCCESS'))
-    .catch(err => resolveRequestAction(action, err, 'ERROR'))
-  );
+  @Effect() public main$: Observable<IAction> = this.actions$
+  .filter((action: IAction) => action.request)
+  .concatMap((action: IAction) => action.request
+    .mergeMap((res) => resolveRequestAction(action, res, 'SUCCESS'))
+    .catch((err) => resolveRequestAction(action, err, 'ERROR'))
+  )
 
-  constructor(
+  constructor (
     private actions$: Actions
   ) { }
 }

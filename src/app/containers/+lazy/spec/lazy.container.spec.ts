@@ -1,41 +1,41 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { StoreModuleImport } from 'base/imports';
-import { DebugElement } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import { expect } from 'chai';
+import { DebugElement } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { StoreModule } from '@ngrx/store'
+import { StoreModuleImport } from 'base/imports'
+import { expect } from 'chai'
 
-import { LazyContainer } from '../lazy.container';
-import { LazyActions } from '../actions';
+import { LazyActions } from '../actions'
+import { LazyContainer } from '../lazy.container'
 
 describe('container: lazy', () => {
-  let component: LazyContainer;
-  let fixture: ComponentFixture<LazyContainer>;
-  let de: DebugElement;
-  let el: HTMLElement;
+  let component: LazyContainer
+  let fixture: ComponentFixture<LazyContainer>
+  let de: DebugElement
+  let el: HTMLElement
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ StoreModuleImport ],
       declarations: [ LazyContainer ],
+      imports: [ StoreModuleImport ],
       providers: [ LazyActions ]
-    }).compileComponents();
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(LazyContainer);
+    fixture = TestBed.createComponent(LazyContainer)
 
-    component = fixture.componentInstance;
+    component = fixture.componentInstance
 
-    de = fixture.debugElement;
-    el = de.nativeElement;
-  });
+    de = fixture.debugElement
+    el = de.nativeElement
+  })
 
   afterEach(() => {
-    TestBed.resetTestingModule();
-  });
+    TestBed.resetTestingModule()
+  })
 
   describe('layout', () => {
     it('should render "Lazy Container"', () => {
-      fixture.detectChanges();
-      expect(el.querySelector('p').textContent).to.equal('Lazily loaded Container!');
-    });
-  });
-});
+      fixture.detectChanges()
+      expect(el.querySelector('p').textContent).to.equal('Lazily loaded Container!')
+    })
+  })
+})

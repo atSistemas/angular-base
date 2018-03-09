@@ -1,41 +1,41 @@
-import { HttpModule, Headers, RequestOptions } from '@angular/http';
-import { TestBed, getTestBed } from '@angular/core/testing';
-import { expect } from 'chai';
+import { getTestBed, TestBed } from '@angular/core/testing'
+import { Headers, HttpModule, RequestOptions } from '@angular/http'
+import { expect } from 'chai'
 
-import { BaseService } from '../base.service';
+import { BaseService } from '../base.service'
 
 describe('services', () => {
 
   describe('base service', () => {
-    let service: BaseService;
+    let service: BaseService
 
     const mockHeader = new Headers({
       'Content-Type': 'application/json'
-    });
+    })
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        providers: [ BaseService ],
-        imports: [ HttpModule ]
-      });
+        imports: [ HttpModule ],
+        providers: [ BaseService ]
+      })
 
-      service = TestBed.get(BaseService);
-    });
+      service = TestBed.get(BaseService)
+    })
 
     afterEach(() => {
-      getTestBed().resetTestingModule();
-    });
+      getTestBed().resetTestingModule()
+    })
 
     it('should have json headers ', () => {
-      expect(service.headers).to.deep.equal(mockHeader);
-    });
+      expect(service.headers).to.deep.equal(mockHeader)
+    })
 
     it('should create options from json headers', () => {
       const expectedRequestOptions = new RequestOptions({
         headers: mockHeader,
         withCredentials: true
-      });
-      expect(service.options).to.deep.equal(expectedRequestOptions);
-    });
-  });
-});
+      })
+      expect(service.options).to.deep.equal(expectedRequestOptions)
+    })
+  })
+})

@@ -1,18 +1,17 @@
-import { Map, Record } from 'immutable';
-import { State } from 'base/state';
+import { IState } from 'base/state'
+import { Map, Record } from 'immutable'
 
-import { Forecast } from '../models/forecast.model';
-import { Station } from '../models/station.model';
-import { Weather } from '../models/weather.model';
+import { IForecast } from '../models/forecast.model'
+import { IStation } from '../models/station.model'
 
-export const selectStationSelected = (state: State): number => (
+export const selectStationSelected = (state: IState): number => (
   state.weather.getIn(['stationSelected'])
-);
+)
 
-export const selectStations = (state: State): Map<number, Record<Station>> => (
+export const selectStations = (state: IState): Map<number, Record<IStation>> => (
   state.weather.getIn(['stations'])
-);
+)
 
-export const selectForecasts = (state: State): Map<number, Record<Forecast>> => (
+export const selectForecasts = (state: IState): Map<number, Record<IForecast>> => (
   state.weather.getIn(['forecasts'])
-);
+)

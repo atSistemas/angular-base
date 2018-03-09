@@ -1,30 +1,30 @@
-import { Component } from '@angular/core';
-import { Store, State } from 'base';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Component } from '@angular/core'
+import { IState, Store } from 'base'
+import { Observable } from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 
-import { selectDisplay } from '../../selectors';
+import { selectDisplay } from '../../selectors'
 
 @Component({
   selector: 'base-display',
-  templateUrl: './display.component.html',
-  styleUrls: ['./display.component.css']
+  styleUrls: ['./display.component.scss'],
+  templateUrl: './display.component.html'
 })
 export class DisplayComponent {
-  private display$: Observable<number | string> = this.store.select(selectDisplay);
-  private displaySubscription: Subscription;
-  display: number | string;
-  constructor(
-    private store: Store<State>
+  public display: number | string
+  private display$: Observable<number | string> = this.store.select(selectDisplay)
+  private displaySubscription: Subscription
+  constructor (
+    private store: Store<IState>
   ) { }
 
-  ngOnInit() {
-    this.displaySubscription = this.display$.subscribe(selected => (
+  public ngOnInit () {
+    this.displaySubscription = this.display$.subscribe((selected) => (
       this.display = selected
-    ));
+    ))
   }
 
-  ngOnDestroy() {
-    this.displaySubscription.unsubscribe();
+  public ngOnDestroy () {
+    this.displaySubscription.unsubscribe()
   }
 }

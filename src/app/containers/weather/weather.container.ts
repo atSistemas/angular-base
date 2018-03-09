@@ -1,94 +1,94 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { Map, Record, Seq } from 'immutable';
-import { Store, State } from 'base';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { IState, Store } from 'base'
+import { Map, Record, Seq } from 'immutable'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
+import { Observable } from 'rxjs/Observable'
+import { Subscription } from 'rxjs/Subscription'
 
-import { WeatherMapService } from './services';
-import { Forecast } from './models/forecast.model';
-import { Station } from './models/station.model';
-import { WeatherActions } from './actions/weather.actions';
+import { WeatherActions } from './actions/weather.actions'
+import { IForecast } from './models/forecast.model'
+import { IStation } from './models/station.model'
+import { WeatherMapService } from './services'
 
 import {
-  selectStations,
-  selectForecasts
-} from './selectors';
+  selectForecasts,
+  selectStations
+} from './selectors'
 
 @Component({
   selector: 'base-weather-container',
-  templateUrl: './weather.container.html',
-  styleUrls: ['./weather.container.css']
+  styleUrls: ['./weather.container.css'],
+  templateUrl: './weather.container.html'
 })
 
 export class WeatherContainer implements OnInit, OnDestroy {
-  stations$: Observable<Map<number, Record<Station>>> = this.store.select(selectStations);
-  stationsSubscription: Subscription;
-  stations: Map<number, Record<Station>> = Map<number, Record<Station>>();
+  public stations$: Observable<Map<number, Record<IStation>>> = this.store.select(selectStations)
+  public stationsSubscription: Subscription
+  public stations: Map<number, Record<IStation>> = Map<number, Record<IStation>>()
 
-  forecasts$: Observable<Map<number, Record<Forecast>>> = this.store.select(selectForecasts);
-  forecastsSubscription: Subscription;
-  forecasts: Map<number, Record<Forecast>> = Map<number, Record<Forecast>>();
+  public forecasts$: Observable<Map<number, Record<IForecast>>> = this.store.select(selectForecasts)
+  public forecastsSubscription: Subscription
+  public forecasts: Map<number, Record<IForecast>> = Map<number, Record<IForecast>>()
 
-  isLoaded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoadedSubscription: Subscription;
-  isLoaded = false;
+  public isLoaded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  public isLoadedSubscription: Subscription
+  public isLoaded = false
 
-  constructor(
-    private store: Store<State>,
+  constructor (
+    private store: Store<IState>,
     private weatherActions: WeatherActions
   ) { }
 
-  ngOnInit() {
-    this.stationsSubscription = this.stations$.first(result => result.size > 0)
-      .subscribe(stations => (
+  public ngOnInit () {
+    this.stationsSubscription = this.stations$.first((result) => result.size > 0)
+      .subscribe((stations) => (
         this.stations = stations
-      ));
-    this.forecastsSubscription = this.forecasts$.subscribe(forecasts => (
+      ))
+    this.forecastsSubscription = this.forecasts$.subscribe((forecasts) => (
       this.forecasts = forecasts
-    ));
-    this.isLoadedSubscription = this.isLoaded$.first(result => result)
-      .subscribe(isLoaded => (
+    ))
+    this.isLoadedSubscription = this.isLoaded$.first((result) => result)
+      .subscribe((isLoaded) => (
         this.isLoaded = isLoaded
-      ));
-    this.getStations();
+      ))
+    this.getStations()
   }
 
-  ngOnDestroy() {
-    this.forecastsSubscription.unsubscribe();
+  public ngOnDestroy () {
+    this.forecastsSubscription.unsubscribe()
   }
 
-  get stationList(): Seq.Indexed<Record<Station>> {
-    return this.stations.valueSeq();
+  get stationList (): Seq.Indexed<Record<IStation>> {
+    return this.stations.valueSeq()
   }
 
-  get forecastList(): Seq.Indexed<Record<Forecast>> {
-    return this.forecasts.valueSeq();
+  get forecastList (): Seq.Indexed<Record<IForecast>> {
+    return this.forecasts.valueSeq()
   }
 
-  get hasForecast(): boolean {
-    return this.forecasts.size > 0;
+  get hasForecast (): boolean {
+    return this.forecasts.size > 0
   }
 
-  onSelectStation(station: Record<Station>) {
-    const id = station.getIn(['id']);
-    const lat = station.getIn(['coord', 'Lat']);
-    const lon = station.getIn(['coord', 'Lon']);
+  public onSelectStation (station: Record<IStation>) {
+    const id = station.getIn(['id'])
+    const lat = station.getIn(['coord', 'Lat'])
+    const lon = station.getIn(['coord', 'Lon'])
     this.store.dispatch(
       this.weatherActions.selectStation(id)
-    );
+    )
     this.store.dispatch(
       this.weatherActions.getForecast(lat, lon)
-    );
+    )
   }
 
-  onLoad(isLoaded: boolean) {
-    this.isLoaded$.next(isLoaded);
+  public onLoad (isLoaded: boolean) {
+    this.isLoaded$.next(isLoaded)
   }
 
-  getStations() {
+  public getStations () {
     if (!this.stations.count()) {
-      this.store.dispatch(this.weatherActions.getStations());
+      this.store.dispatch(this.weatherActions.getStations())
     }
   }
 

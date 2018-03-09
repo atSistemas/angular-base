@@ -1,40 +1,40 @@
-import { Injectable } from '@angular/core';
-import { Action } from 'base';
-import { ActionTypes } from '../actionTypes';
+import { Injectable } from '@angular/core'
+import { IAction } from 'base'
+import { ActionTypes } from '../actionTypes'
 
 @Injectable()
 export class CalculatorActions {
 
-  inputNumber(value: number): Action {
+  public inputNumber (value: number): IAction {
     return {
-      type: ActionTypes.INPUT_NUMBER,
-      payload: { value }
-    };
+      payload: { value },
+      type: ActionTypes.INPUT_NUMBER
+    }
   }
 
-  inputOperation(value: string): Action {
+  public inputOperation (value: string): IAction {
     return {
-      type: ActionTypes.INPUT_OPERATION,
-      payload: { value }
-    };
+      payload: { value },
+      type: ActionTypes.INPUT_OPERATION
+    }
   }
 
-  inputDecimal(): Action {
+  public inputDecimal (): IAction {
     return {
       type: ActionTypes.INPUT_DECIMAL
-    };
+    }
   }
 
-  inputOperator(operator: any): Action {
+  public inputOperator (operator: any): IAction {
     return {
-      type: ActionTypes.INPUT_OPERATOR,
-      payload: { operator }
-    };
+      payload: { operator },
+      type: ActionTypes.INPUT_OPERATOR
+    }
   }
 
-  result(): Action {
+  public result (): IAction {
     return {
       type: ActionTypes.RESULT
-    };
+    }
   }
 }
