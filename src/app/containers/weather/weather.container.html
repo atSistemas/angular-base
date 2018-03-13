@@ -1,6 +1,6 @@
 <weather-map
   [stations]="stationList"
-  (loadMap)="onLoad($event)"
+  (loadMap)="isLoaded$.next($event)"
   (selectStation)="onSelectStation($event)"
 ></weather-map>
 <weather-forecast
