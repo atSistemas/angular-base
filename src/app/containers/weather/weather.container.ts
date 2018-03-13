@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Map, Record, Seq } from 'immutable';
 import { Store, State } from 'base';
 
-import { WeatherMapService } from './services';
+import { Subject } from 'rxjs/Subject';
+import { first, takeUntil } from 'rxjs/operators';
+
 import { Forecast } from './models/forecast.model';
 import { Station } from './models/station.model';
 import { WeatherActions } from './actions/weather.actions';
@@ -15,6 +16,7 @@ import {
   selectForecasts
 } from './selectors';
 
+// TODO: ChangeDetection to OnPush
 @Component({
   selector: 'base-weather-container',
   templateUrl: './weather.container.html',
@@ -23,39 +25,46 @@ import {
 
 export class WeatherContainer implements OnInit, OnDestroy {
   stations$: Observable<Map<number, Record<Station>>> = this.store.select(selectStations);
-  stationsSubscription: Subscription;
   stations: Map<number, Record<Station>> = Map<number, Record<Station>>();
 
   forecasts$: Observable<Map<number, Record<Forecast>>> = this.store.select(selectForecasts);
-  forecastsSubscription: Subscription;
   forecasts: Map<number, Record<Forecast>> = Map<number, Record<Forecast>>();
 
   isLoaded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoadedSubscription: Subscription;
+  // TODO: duplicated and unused
   isLoaded = false;
 
-  constructor(
-    private store: Store<State>,
-    private weatherActions: WeatherActions
-  ) { }
+  private readonly onDestroy$: Subject<void> = new Subject<void>();
+
+  constructor(private store: Store<State>,
+              private weatherActions: WeatherActions) {
+  }
 
   ngOnInit() {
-    this.stationsSubscription = this.stations$.first(result => result.size > 0)
-      .subscribe(stations => (
-        this.stations = stations
-      ));
-    this.forecastsSubscription = this.forecasts$.subscribe(forecasts => (
-      this.forecasts = forecasts
-    ));
-    this.isLoadedSubscription = this.isLoaded$.first(result => result)
-      .subscribe(isLoaded => (
-        this.isLoaded = isLoaded
-      ));
+    this.stations$
+      .pipe(
+        first(result => result.size > 0),
+        takeUntil(this.onDestroy$))
+      .subscribe(stations => {
+        this.stations = stations;
+      });
+    this.forecasts$
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((forecasts) => {
+        this.forecasts = forecasts;
+      });
+    // TODO: unused
+    this.isLoaded$.first(result => result)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(isLoaded => {
+        this.isLoaded = isLoaded;
+      });
     this.getStations();
   }
 
   ngOnDestroy() {
-    this.forecastsSubscription.unsubscribe();
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 
   get stationList(): Seq.Indexed<Record<Station>> {
@@ -80,10 +89,6 @@ export class WeatherContainer implements OnInit, OnDestroy {
     this.store.dispatch(
       this.weatherActions.getForecast(lat, lon)
     );
-  }
-
-  onLoad(isLoaded: boolean) {
-    this.isLoaded$.next(isLoaded);
   }
 
   getStations() {
