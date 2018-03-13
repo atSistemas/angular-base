@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Map, Record, Seq } from 'immutable';
 import { Store, State } from 'base';
 
-import { Subject } from "rxjs/Subject";
-import { first, takeUntil } from "rxjs/operators";
+import { Subject } from 'rxjs/Subject';
+import { first, takeUntil } from 'rxjs/operators';
 
 import { Forecast } from './models/forecast.model';
 import { Station } from './models/station.model';
